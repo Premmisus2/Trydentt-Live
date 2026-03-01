@@ -83,7 +83,7 @@ const Quote: React.FC = () => {
     console.log('Sending Webhook Payload:', payload);
 
     try {
-      const response = await fetch('https://services.leadconnectorhq.com/hooks/a9j6O8eXLyQk7lKBkZFD/webhook-trigger/93c6253e-2530-43e2-b4d3-5a0194dd7dd4', {
+      const response = await fetch('https://services.leadconnectorhq.com/hooks/a9j6O8eXLyQk7lKBkZFD/webhook-trigger/220c1782-0e8e-4072-a736-9b848a391f78', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
