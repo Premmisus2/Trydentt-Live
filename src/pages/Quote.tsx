@@ -61,25 +61,45 @@ const Quote: React.FC = () => {
   const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Split name into first and last for GHL
+    const nameParts = bookingData.name.trim().split(/\s+/);
+    const firstName = nameParts[0] || '';
+    const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
+
+    const payload = {
+      first_name: firstName,
+      last_name: lastName,
+      email: bookingData.email,
+      phone: bookingData.phone,
+      address1: bookingData.address,
+      city: bookingData.city,
+      postal_code: bookingData.zip,
+      estimate: result?.estimate,
+      serviceDetails: result?.recommendations?.join(', '),
+      source: 'Website Smart Estimator',
+      full_payload_check: true
+    };
+
+    console.log('Sending Webhook Payload:', payload);
+
     try {
       const response = await fetch('https://services.leadconnectorhq.com/hooks/a9j6O8eXLyQk7lKBkZFD/webhook-trigger/0f0403d5-4cf8-4fe0-ac74-28de4913e0fc', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          ...bookingData,
-          estimate: result?.estimate,
-          serviceDetails: result?.recommendations,
-          source: 'Website Smart Estimator'
-        }),
+        body: JSON.stringify(payload),
       });
+
+      console.log('Webhook Response Status:', response.status);
+      const responseText = await response.text();
+      console.log('Webhook Response Body:', responseText);
 
       if (response.ok) {
         navigate('/thank-you');
       } else {
-        console.error('Webhook submission failed');
-        alert('Something went wrong. Please try again later.');
+        console.error('Webhook submission failed with status:', response.status);
+        alert(`Submission issue (Status ${response.status}). Please check console for details.`);
       }
     } catch (error) {
       console.error('Error submitting form:', error);

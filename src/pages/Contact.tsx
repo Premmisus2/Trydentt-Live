@@ -18,22 +18,42 @@ const Contact: React.FC = () => {
     e.preventDefault();
     setLoading(true);
 
+    // Split name into first and last for GHL
+    const nameParts = formData.name.trim().split(/\s+/);
+    const firstName = nameParts[0] || '';
+    const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
+
+    const payload = {
+      first_name: firstName,
+      last_name: lastName,
+      email: formData.email,
+      postal_code: formData.zip,
+      service_type: formData.type,
+      message: formData.message,
+      source: 'Contact Page Form',
+      full_payload_check: true
+    };
+
+    console.log('Sending Webhook Payload:', payload);
+
     try {
       const response = await fetch('https://services.leadconnectorhq.com/hooks/a9j6O8eXLyQk7lKBkZFD/webhook-trigger/0f0403d5-4cf8-4fe0-ac74-28de4913e0fc', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          ...formData,
-          source: 'Contact Page Form'
-        }),
+        body: JSON.stringify(payload),
       });
+
+      console.log('Webhook Response Status:', response.status);
+      const responseText = await response.text();
+      console.log('Webhook Response Body:', responseText);
 
       if (response.ok) {
         navigate('/thank-you');
       } else {
-        alert('Something went wrong. Please try again.');
+        console.error('Webhook submission failed with status:', response.status);
+        alert(`Something went wrong (Status ${response.status}). Check console.`);
       }
     } catch (error) {
       console.error('Error submitting form:', error);
