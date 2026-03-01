@@ -1,20 +1,22 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Trydentt | Premium Cleaning Services
 
-# Run and deploy your AI Studio app
+A high-performance lead generation website for Trydentt Cleaning Services.
 
-This contains everything you need to run your app locally.
+## Features
+- **Smart Estimator:** Instant, AI-powered cleaning estimates for residential and commercial niches.
+- **Conversion Focused:** Optimized forms and CTAs for maximum lead capture.
+- **GHL Integration:** Native GoHighLevel external tracking and LeadConnector webhook integration.
+- **Cinematic UI:** Premium design with GSAP animations and responsive layouts.
 
-View your app in AI Studio: https://ai.studio/apps/5ad52ca0-dcf5-4825-806e-8f64a0e9308a
+## Tech Stack
+- Frontend: React 19, Vite, Tailwind CSS
+- Animations: GSAP, Motion
+- Icons: Lucide React
 
-## Run Locally
+## Deployment
+This project is optimized for deployment on Vercel or Netlify. When deploying via Vercel (connected to GitHub), every push to the `main` branch triggers an automatic build.
 
-**Prerequisites:**  Node.js
+---
 
+Live Site: [https://github.com/Premmisus2/Trydentt-Live](https://github.com/Premmisus2/Trydentt-Live)
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
