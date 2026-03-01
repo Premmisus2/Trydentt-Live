@@ -1,0 +1,7 @@
+{
+  "name": "Trydentt Cleaning Services",
+  "description": "A modern, professional cleaning services website featuring residential and commercial solutions with a Gemini-powered smart quote estimator.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
