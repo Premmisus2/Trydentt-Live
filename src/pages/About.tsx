@@ -57,9 +57,9 @@ const About: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
               <img 
-                src="https://picsum.photos/seed/team/800/800" 
+                src="https://i.imgur.com/DD9oXhj.jpg" 
                 className="rounded-3xl shadow-2xl" 
-                alt="Our Team"
+                alt="Our Quality Guarantee"
                 referrerPolicy="no-referrer"
               />
             </div>

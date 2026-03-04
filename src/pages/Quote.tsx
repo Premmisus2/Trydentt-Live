@@ -32,10 +32,10 @@ const Quote: React.FC = () => {
       setResult({
         estimate: `$${min} - $${max}`,
         recommendations: [
-          `Service: ${service} (${niche})`,
-          `Size: ${sqft} sqft`,
-          "Professional Equipment Included",
-          "Satisfaction Guaranteed"
+            `Service: ${service} (${niche})`,
+            `Size: ${sqft} sqft`,
+            "Professional Equipment Included",
+            "Satisfaction Guaranteed"
         ]
       });
       setShowBooking(true);
@@ -46,60 +46,40 @@ const Quote: React.FC = () => {
   }, [searchParams]);
 
   const handleCalculatorComplete = (data: any) => {
-    setResult({
-      estimate: `$${data.min} - $${data.max}`,
-      recommendations: [
-        `Service: ${data.service} (${data.niche})`,
-        `Size: ${data.sqft} sqft`,
-        "Professional Equipment Included",
-        "Satisfaction Guaranteed"
-      ]
-    });
-    setShowBooking(true);
+      setResult({
+        estimate: `$${data.min} - $${data.max}`,
+        recommendations: [
+            `Service: ${data.service} (${data.niche})`,
+            `Size: ${data.sqft} sqft`,
+            "Professional Equipment Included",
+            "Satisfaction Guaranteed"
+        ]
+      });
+      setShowBooking(true);
   };
 
   const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Split name into first and last for GHL
-    const nameParts = bookingData.name.trim().split(/\s+/);
-    const firstName = nameParts[0] || '';
-    const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
-
-    const payload = {
-      first_name: firstName,
-      last_name: lastName,
-      email: bookingData.email,
-      phone: bookingData.phone,
-      address1: bookingData.address,
-      city: bookingData.city,
-      postal_code: bookingData.zip,
-      estimate: result?.estimate,
-      serviceDetails: result?.recommendations?.join(', '),
-      source: 'Website Smart Estimator',
-      full_payload_check: true
-    };
-
-    console.log('Sending Webhook Payload:', payload);
-
+    
     try {
-      const response = await fetch('https://services.leadconnectorhq.com/hooks/a9j6O8eXLyQk7lKBkZFD/webhook-trigger/220c1782-0e8e-4072-a736-9b848a391f78', {
+      const response = await fetch('https://services.leadconnectorhq.com/hooks/a9j6O8eXLyQk7lKBkZFD/webhook-trigger/d77aac91-8ca5-4618-83de-92338401407d', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          ...bookingData,
+          estimate: result?.estimate,
+          serviceDetails: result?.recommendations,
+          source: 'Website Smart Estimator'
+        }),
       });
-
-      console.log('Webhook Response Status:', response.status);
-      const responseText = await response.text();
-      console.log('Webhook Response Body:', responseText);
 
       if (response.ok) {
         navigate('/thank-you');
       } else {
-        console.error('Webhook submission failed with status:', response.status);
-        alert(`Submission issue (Status ${response.status}). Please check console for details.`);
+        console.error('Webhook submission failed');
+        alert('Something went wrong. Please try again later.');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -110,14 +90,14 @@ const Quote: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {!showBooking && (
-        <div className="mb-12 min-h-[600px]">
-          <QuickCalculator onComplete={handleCalculatorComplete} />
-        </div>
+          <div className="mb-12 min-h-[600px]">
+              <QuickCalculator onComplete={handleCalculatorComplete} />
+          </div>
       )}
 
       <AnimatePresence mode="wait">
         {showBooking && (
-          <motion.div
+          <motion.div 
             key="booking"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -128,13 +108,13 @@ const Quote: React.FC = () => {
               <CheckCircle2 className="w-5 h-5" />
               <span>Complete Your Booking</span>
             </div>
-
+            
             {/* Selected Package Summary */}
             {result && (
               <div className="mb-6 p-4 bg-indigo-50 rounded-xl border border-indigo-100">
                 <h4 className="text-sm font-bold text-indigo-900 uppercase tracking-wider mb-2">Your Selected Package</h4>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-indigo-700 font-bold text-lg">{result.estimate}</span>
+                   <span className="text-indigo-700 font-bold text-lg">{result.estimate}</span>
                 </div>
                 <ul className="space-y-1">
                   {result.recommendations.map((rec, i) => (
@@ -150,76 +130,76 @@ const Quote: React.FC = () => {
             <form onSubmit={handleBookingSubmit} className="space-y-4">
               <div>
                 <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Full Name</label>
-                <input
+                <input 
                   type="text"
                   required
                   className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none"
                   value={bookingData.name}
-                  onChange={(e) => setBookingData({ ...bookingData, name: e.target.value })}
+                  onChange={(e) => setBookingData({...bookingData, name: e.target.value})}
                 />
               </div>
               <div>
                 <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Email Address</label>
-                <input
+                <input 
                   type="email"
                   required
                   className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none"
                   value={bookingData.email}
-                  onChange={(e) => setBookingData({ ...bookingData, email: e.target.value })}
+                  onChange={(e) => setBookingData({...bookingData, email: e.target.value})}
                 />
               </div>
               <div>
                 <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Phone Number</label>
-                <input
+                <input 
                   type="tel"
                   required
                   className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none"
                   value={bookingData.phone}
-                  onChange={(e) => setBookingData({ ...bookingData, phone: e.target.value })}
+                  onChange={(e) => setBookingData({...bookingData, phone: e.target.value})}
                 />
               </div>
               <div>
                 <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Street Address</label>
-                <input
+                <input 
                   type="text"
                   required
                   className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none"
                   value={bookingData.address}
-                  onChange={(e) => setBookingData({ ...bookingData, address: e.target.value })}
+                  onChange={(e) => setBookingData({...bookingData, address: e.target.value})}
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">City</label>
-                  <input
+                  <input 
                     type="text"
                     required
                     className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none"
                     value={bookingData.city}
-                    onChange={(e) => setBookingData({ ...bookingData, city: e.target.value })}
+                    onChange={(e) => setBookingData({...bookingData, city: e.target.value})}
                   />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Zip Code</label>
-                  <input
+                  <input 
                     type="text"
                     required
                     className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none"
                     value={bookingData.zip}
-                    onChange={(e) => setBookingData({ ...bookingData, zip: e.target.value })}
+                    onChange={(e) => setBookingData({...bookingData, zip: e.target.value})}
                   />
                 </div>
               </div>
 
               <div className="pt-4 flex space-x-3">
-                <button
+                <button 
                   type="button"
                   onClick={() => setShowBooking(false)}
                   className="flex-1 py-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50 transition-colors"
                 >
                   Back
                 </button>
-                <button
+                <button 
                   type="submit"
                   className="flex-[2] bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 transition-all shadow-lg"
                 >

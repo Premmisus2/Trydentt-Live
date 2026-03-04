@@ -18,42 +18,22 @@ const Contact: React.FC = () => {
     e.preventDefault();
     setLoading(true);
 
-    // Split name into first and last for GHL
-    const nameParts = formData.name.trim().split(/\s+/);
-    const firstName = nameParts[0] || '';
-    const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
-
-    const payload = {
-      first_name: firstName,
-      last_name: lastName,
-      email: formData.email,
-      postal_code: formData.zip,
-      service_type: formData.type,
-      message: formData.message,
-      source: 'Contact Page Form',
-      full_payload_check: true
-    };
-
-    console.log('Sending Webhook Payload:', payload);
-
     try {
-      const response = await fetch('https://services.leadconnectorhq.com/hooks/a9j6O8eXLyQk7lKBkZFD/webhook-trigger/220c1782-0e8e-4072-a736-9b848a391f78', {
+      const response = await fetch('https://services.leadconnectorhq.com/hooks/a9j6O8eXLyQk7lKBkZFD/webhook-trigger/d77aac91-8ca5-4618-83de-92338401407d', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          ...formData,
+          source: 'Contact Page Form'
+        }),
       });
-
-      console.log('Webhook Response Status:', response.status);
-      const responseText = await response.text();
-      console.log('Webhook Response Body:', responseText);
 
       if (response.ok) {
         navigate('/thank-you');
       } else {
-        console.error('Webhook submission failed with status:', response.status);
-        alert(`Something went wrong (Status ${response.status}). Check console.`);
+        alert('Something went wrong. Please try again.');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -77,7 +57,7 @@ const Contact: React.FC = () => {
                 <p className="text-xl text-slate-600 mb-12 leading-relaxed">
                   Have a specific requirement or a large-scale project? We're here to help. Reach out and our team will get back to you within 2 business hours.
                 </p>
-
+                
                 <div className="space-y-8">
                   <div className="flex items-start space-x-6">
                     <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center shrink-0">
@@ -85,33 +65,23 @@ const Contact: React.FC = () => {
                     </div>
                     <div>
                       <h4 className="font-bold text-slate-900 mb-1">Email Us</h4>
-                      <p className="text-slate-600">hello@trydentt.com</p>
+                      <p className="text-slate-600">homes@trydenttbuildingservices.com</p>
                     </div>
                   </div>
-
+                  
                   <div className="flex items-start space-x-6">
                     <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center shrink-0">
                       <Phone className="w-6 h-6 text-indigo-600" />
                     </div>
                     <div>
                       <h4 className="font-bold text-slate-900 mb-1">Call Us</h4>
-                      <p className="text-slate-600">(555) 000-TRYDENTT</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-6">
-                    <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center shrink-0">
-                      <MapPin className="w-6 h-6 text-indigo-600" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-slate-900 mb-1">Visit Us</h4>
-                      <p className="text-slate-600">123 Clean Way, Suite 100<br />New York, NY 10001</p>
+                      <p className="text-slate-600">+1 519-871-3368</p>
                     </div>
                   </div>
                 </div>
               </motion.div>
             </div>
-
+            
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -122,51 +92,51 @@ const Contact: React.FC = () => {
                 <MessageSquare className="w-5 h-5" />
                 <span>Send a Message</span>
               </div>
-
+              
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Full Name</label>
-                    <input
-                      type="text"
+                    <input 
+                      type="text" 
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 focus:ring-2 focus:ring-indigo-500 outline-none transition-all" 
                       placeholder="John Doe"
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
                     />
                   </div>
                   <div>
                     <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Email Address</label>
-                    <input
-                      type="email"
+                    <input 
+                      type="email" 
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 focus:ring-2 focus:ring-indigo-500 outline-none transition-all" 
                       placeholder="john@example.com"
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
                     />
                   </div>
                 </div>
-
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Zip Code</label>
-                    <input
-                      type="text"
+                    <input 
+                      type="text" 
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 focus:ring-2 focus:ring-indigo-500 outline-none transition-all" 
                       placeholder="10001"
                       value={formData.zip}
-                      onChange={(e) => setFormData({ ...formData, zip: e.target.value })}
+                      onChange={(e) => setFormData({...formData, zip: e.target.value})}
                     />
                   </div>
                   <div>
                     <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Type of Cleaning</label>
-                    <select
+                    <select 
                       className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 focus:ring-2 focus:ring-indigo-500 outline-none transition-all appearance-none"
                       value={formData.type}
-                      onChange={(e) => setFormData({ ...formData, type: e.target.value })}
+                      onChange={(e) => setFormData({...formData, type: e.target.value})}
                     >
                       <option>Residential</option>
                       <option>Commercial</option>
@@ -175,20 +145,20 @@ const Contact: React.FC = () => {
                     </select>
                   </div>
                 </div>
-
+                
                 <div>
                   <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Additional Details (Optional)</label>
-                  <textarea
-                    rows={4}
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+                  <textarea 
+                    rows={4} 
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 focus:ring-2 focus:ring-indigo-500 outline-none transition-all" 
                     placeholder="Tell us more about your needs..."
                     value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    onChange={(e) => setFormData({...formData, message: e.target.value})}
                   ></textarea>
                 </div>
-
-                <button
-                  type="submit"
+                
+                <button 
+                  type="submit" 
                   disabled={loading}
                   className="w-full btn-primary flex items-center justify-center space-x-2 group disabled:opacity-70 disabled:cursor-not-allowed"
                 >

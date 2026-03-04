@@ -3,13 +3,12 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import QuickCalculator from '../components/QuickCalculator';
 import Sparkle from '../components/Sparkle';
-import Counter from '../components/Counter';
 import ServiceCard from '../components/ServiceCard';
 import { 
   Shield, Sparkles, Clock, ArrowRight, Star, 
   Home as HomeIcon, AlertCircle, Frown, 
-  CheckCircle2, Users, Trophy, Zap, Calendar, 
-  Wind, Trash2, LayoutGrid, Send, XCircle
+  CheckCircle2, Trophy, Zap, Calendar, 
+  Wind, Trash2, Send, XCircle, DollarSign
 } from 'lucide-react';
 
 const Residential: React.FC = () => {
@@ -127,7 +126,7 @@ const Residential: React.FC = () => {
               The Difference is in the Detail
               <Sparkle className="text-indigo-200 w-5 h-5 -top-4 right-1/4" />
             </h2>
-            <p className="text-slate-500 max-w-2xl mx-auto">Why settle for "clean enough" when you can have perfection? We've identified the frustrations and built the solution.</p>
+            <p className="text-slate-500 max-w-2xl mx-auto">Experience the 'Trydentt' standard. We provide a consistent service tailored to your schedule, ensuring a spotless environment on a weekly basis.</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[240px]">
@@ -140,11 +139,11 @@ const Residential: React.FC = () => {
               className="group p-8 rounded-[2rem] bg-slate-50 border border-slate-100 flex flex-col justify-between transition-all duration-500"
             >
               <div className="w-10 h-10 bg-red-50 text-red-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Clock className="w-5 h-5" />
+                <XCircle className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Wasted Weekends</h4>
-                <p className="text-slate-500 text-sm">Spending your only free hours scrubbing instead of relaxing with family.</p>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Unreliable Service</h4>
+                <p className="text-slate-500 text-sm">No-shows and late arrivals that disrupt your entire day.</p>
               </div>
             </motion.div>
 
@@ -160,8 +159,8 @@ const Residential: React.FC = () => {
                 <AlertCircle className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Surface Level Clean</h4>
-                <p className="text-slate-500 text-sm">Dust hiding in corners and under furniture that you just don't have time for.</p>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Missed Spots</h4>
+                <p className="text-slate-500 text-sm">Finding yourself cleaning after the "professionals" have left.</p>
               </div>
             </motion.div>
 
@@ -199,12 +198,12 @@ const Residential: React.FC = () => {
               whileHover={{ y: -5, boxShadow: '0 20px 40px rgba(0,0,0,0.05)' }}
               className="group p-8 rounded-[2rem] bg-slate-50 border border-slate-100 flex flex-col justify-between transition-all duration-500"
             >
-              <div className="w-10 h-10 bg-red-50 text-red-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Frown className="w-5 h-5" />
+              <div className="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <DollarSign className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Hidden Fees</h4>
-                <p className="text-slate-500 text-sm">Surprise costs on your bill that were never discussed upfront.</p>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Affordable Excellence</h4>
+                <p className="text-slate-500 text-sm">High standards without inflated costs.</p>
               </div>
             </motion.div>
 
@@ -229,7 +228,7 @@ const Residential: React.FC = () => {
       </section>
 
       {/* 3. Services Breakdown Section */}
-      <section className="py-24 bg-indigo-50 font-sans relative overflow-hidden">
+      <section id="services" className="py-24 bg-indigo-50 font-sans relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-600/5 rounded-full blur-[120px] pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -281,7 +280,7 @@ const Residential: React.FC = () => {
                 <Sparkle className="text-indigo-300 w-6 h-6 -top-8 left-0" />
               </h2>
               <p className="text-lg text-slate-600 mb-10 leading-relaxed">
-                See the Trydentt difference in action. From kitchen grease to bathroom grime, we restore your home to its original glory.
+                See the Trydentt difference in action. From kitchen grease to bathroom grime and neglected window sills, we restore your home to its original glory.
               </p>
               <div className="space-y-6">
                 <div className="flex items-center space-x-4 group">
@@ -314,22 +313,28 @@ const Residential: React.FC = () => {
             >
               <div className="absolute inset-0 w-full h-full">
                 <img 
-                  src="https://picsum.photos/seed/clean-after-home/1200/800" 
+                  src="https://i.imgur.com/YoWEzeP.jpg" 
                   className="w-full h-full object-cover" 
                   alt="After Cleaning"
                   referrerPolicy="no-referrer"
                 />
+                <div className="absolute bottom-6 right-6 bg-indigo-600/90 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider shadow-lg">
+                  AFTER
+                </div>
               </div>
               <div 
                 className="absolute inset-0 w-full h-full overflow-hidden"
                 style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
               >
                 <img 
-                  src="https://picsum.photos/seed/dirty-before-home/1200/800?grayscale" 
+                  src="https://i.imgur.com/DQN6EnX.jpg" 
                   className="w-full h-full object-cover" 
                   alt="Before Cleaning"
                   referrerPolicy="no-referrer"
                 />
+                <div className="absolute bottom-6 left-6 bg-slate-800/90 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider shadow-lg">
+                  BEFORE
+                </div>
               </div>
               
               <div 
@@ -352,75 +357,7 @@ const Residential: React.FC = () => {
                 onChange={(e) => setSliderPosition(parseInt(e.target.value))}
                 className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30"
               />
-              
-              <div className="absolute bottom-6 left-6 bg-black/50 backdrop-blur-md text-white px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider z-10">Before</div>
-              <div className="absolute bottom-6 right-6 bg-indigo-600/80 backdrop-blur-md text-white px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider z-10">After</div>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Statistics Section */}
-      <section className="bg-slate-50 py-24 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="breeze-overlay animate-breeze opacity-20" style={{ animationDuration: '15s' }} />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12 relative"
-          >
-            <h2 className="text-3xl font-bold text-slate-900 mb-4 font-display">
-              Home Cleaning Statistics
-              <Sparkle className="text-indigo-400 w-4 h-4 -top-2 right-1/3" />
-            </h2>
-            <div className="w-40 h-0.5 bg-slate-900 mx-auto" />
-          </motion.div>
-          
-          <div className="flex flex-wrap rounded-[2rem] overflow-hidden shadow-2xl">
-            <div className="w-full sm:w-1/2 lg:w-1/4 bg-indigo-950 p-12 text-center group hover:bg-indigo-900 transition-colors">
-              <div className="mb-6 flex justify-center">
-                <LayoutGrid className="w-12 h-12 text-white/80 group-hover:text-white transition-colors" />
-              </div>
-              <p className="text-4xl font-bold text-white mb-4 font-mono">
-                <Counter value={1800} />+
-              </p>
-              <div className="w-14 h-0.5 bg-white/80 mx-auto mb-4 group-hover:w-20 transition-all" />
-              <p className="text-white/80 text-lg font-medium group-hover:text-white transition-colors">Homes Cleaned</p>
-            </div>
-            <div className="w-full sm:w-1/2 lg:w-1/4 bg-indigo-900 p-12 text-center group hover:bg-indigo-800 transition-colors">
-              <div className="mb-6 flex justify-center">
-                <Users className="w-12 h-12 text-white/80 group-hover:text-white transition-colors" />
-              </div>
-              <p className="text-4xl font-bold text-white mb-4 font-mono">
-                <Counter value={30} />+
-              </p>
-              <div className="w-14 h-0.5 bg-white/80 mx-auto mb-4 group-hover:w-20 transition-all" />
-              <p className="text-white/80 text-lg font-medium group-hover:text-white transition-colors">Home Specialists</p>
-            </div>
-            <div className="w-full sm:w-1/2 lg:w-1/4 bg-indigo-800 p-12 text-center group hover:bg-indigo-700 transition-colors">
-              <div className="mb-6 flex justify-center">
-                <Trophy className="w-12 h-12 text-white/80 group-hover:text-white transition-colors" />
-              </div>
-              <p className="text-4xl font-bold text-white mb-4 font-mono">
-                <Counter value={100} />%
-              </p>
-              <div className="w-14 h-0.5 bg-white/80 mx-auto mb-4 group-hover:w-20 transition-all" />
-              <p className="text-white/80 text-lg font-medium group-hover:text-white transition-colors">Satisfaction Rate</p>
-            </div>
-            <div className="w-full sm:w-1/2 lg:w-1/4 bg-indigo-700 p-12 text-center group hover:bg-indigo-600 transition-colors">
-              <div className="mb-6 flex justify-center">
-                <Star className="w-12 h-12 text-white/80 group-hover:text-white transition-colors" />
-              </div>
-              <p className="text-4xl font-bold text-white mb-4 font-mono">
-                <Counter value={450} />+
-              </p>
-              <div className="w-14 h-0.5 bg-white/80 mx-auto mb-4 group-hover:w-20 transition-all" />
-              <p className="text-white/80 text-lg font-medium group-hover:text-white transition-colors">Happy Families</p>
-            </div>
           </div>
         </div>
       </section>
@@ -443,9 +380,9 @@ const Residential: React.FC = () => {
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
               <div className="text-white">
-                <h2 className="text-4xl md:text-5xl font-bold mb-8 font-display">Ready for a spotless home?</h2>
+                <h2 className="text-4xl md:text-5xl font-bold mb-8 font-display">Ready for a spotless clean?</h2>
                 <p className="text-xl text-indigo-100 mb-10">
-                  Join 1,800+ happy families. Fill out this simple form and we'll get back to you with a custom plan in less than 2 hours.
+                  Join our list of happy families. Fill out this simple form and we'll get back to you with a custom plan in less than two hours.
                 </p>
                 <div className="flex items-center space-x-6">
                   <div className="flex items-center space-x-2">

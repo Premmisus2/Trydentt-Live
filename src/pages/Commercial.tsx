@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import QuickCalculator from '../components/QuickCalculator';
 import Sparkle from '../components/Sparkle';
-import Counter from '../components/Counter';
 import ServiceCard from '../components/ServiceCard';
 import { 
   Shield, Sparkles, Clock, ArrowRight, Star, 
@@ -82,12 +81,12 @@ const Commercial: React.FC = () => {
               <Sparkle className="text-indigo-400 w-4 h-4 -top-2 -right-2" />
             </div>
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 leading-[1.1] relative">
-              Pristine Workspaces. <span className="text-indigo-600">Professional Excellence.</span>
+              Pristine Workspaces, <span className="text-indigo-600">Professional Excellence.</span>
               <Sparkle className="text-indigo-300 w-6 h-6 -top-6 -left-4" />
               <Sparkle className="text-indigo-200 w-4 h-4 bottom-0 -right-8" />
             </h1>
             <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto">
-              Your workspace is a reflection of your brand. Trydentt delivers consistent, high-intensity sanitation so your team can focus on excellence.
+              Your workspace is a reflection of your brand. Trydentt delivers consistent high-quality sanitation, so your team can focus on excellence.
             </p>
 
             <div className="flex flex-col items-center mb-12">
@@ -128,7 +127,7 @@ const Commercial: React.FC = () => {
               The Difference is in the Detail
               <Sparkle className="text-indigo-200 w-5 h-5 -top-4 right-1/4" />
             </h2>
-            <p className="text-slate-500 max-w-2xl mx-auto">Why settle for "clean enough" when you can have perfection? We've identified the frustrations and built the solution.</p>
+            <p className="text-slate-500 max-w-2xl mx-auto">Experience the 'Trydentt' standard. We provide a consistent service for your business, ensuring quality sanitation so your team can focus on what they are best at.</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[240px]">
@@ -180,7 +179,8 @@ const Commercial: React.FC = () => {
                 </div>
                 <h4 className="text-3xl font-bold mb-6 font-display leading-tight">The Trydentt Business Standard</h4>
                 <p className="text-indigo-100 text-lg leading-relaxed">
-                  Consistent, high-intensity sanitation tailored to your business schedule. We work when you don't, ensuring a safe, productive environment.
+                  - Consistent, high-quality sanitation tailored to your business's needs<br />
+                  - We work when you don't, ensuring a safe and clean environment
                 </p>
               </div>
               <div className="relative z-10 mt-8">
@@ -230,7 +230,7 @@ const Commercial: React.FC = () => {
       </section>
 
       {/* 3. Services Breakdown Section */}
-      <section className="py-24 bg-indigo-50 font-sans relative overflow-hidden">
+      <section id="services" className="py-24 bg-indigo-50 font-sans relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-600/5 rounded-full blur-[120px] pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -247,7 +247,7 @@ const Commercial: React.FC = () => {
               <Sparkle className="text-indigo-300 w-4 h-4 -top-4 -right-8" />
             </h2>
             <p className="text-slate-600 max-w-2xl mx-auto text-sm">
-              Meticulous cleaning solutions tailored for every business environment. From corporate offices to retail storefronts.
+              Meticulous cleaning solutions, tailored to your business environment, from corporate offices to restaurants and more.
             </p>
           </motion.div>
 
@@ -282,7 +282,7 @@ const Commercial: React.FC = () => {
                 <Sparkle className="text-indigo-300 w-6 h-6 -top-8 left-0" />
               </h2>
               <p className="text-lg text-slate-600 mb-10 leading-relaxed">
-                See the Trydentt difference in action. From corporate lobbies to high-traffic retail spaces, we maintain the highest standards of hygiene.
+                See the Trydentt difference in action. From corporate lobbies to high-traffic restaurants, we maintain the highest standards of hygiene.
               </p>
               <div className="space-y-6">
                 <div className="flex items-center space-x-4 group">
@@ -315,7 +315,7 @@ const Commercial: React.FC = () => {
             >
               <div className="absolute inset-0 w-full h-full">
                 <img 
-                  src="https://picsum.photos/seed/clean-after-office/1200/800" 
+                  src="https://i.imgur.com/2uxblQz.jpg" 
                   className="w-full h-full object-cover" 
                   alt="After Cleaning"
                   referrerPolicy="no-referrer"
@@ -326,7 +326,7 @@ const Commercial: React.FC = () => {
                 style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
               >
                 <img 
-                  src="https://picsum.photos/seed/dirty-before-office/1200/800?grayscale" 
+                  src="https://i.imgur.com/ByhV0ZH.jpg" 
                   className="w-full h-full object-cover" 
                   alt="Before Cleaning"
                   referrerPolicy="no-referrer"
@@ -361,71 +361,6 @@ const Commercial: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. Statistics Section */}
-      <section className="bg-slate-50 py-24 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="breeze-overlay animate-breeze opacity-20" style={{ animationDuration: '15s' }} />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12 relative"
-          >
-            <h2 className="text-3xl font-bold text-slate-900 mb-4 font-display">
-              Commercial Statistics
-              <Sparkle className="text-indigo-400 w-4 h-4 -top-2 right-1/3" />
-            </h2>
-            <div className="w-40 h-0.5 bg-slate-900 mx-auto" />
-          </motion.div>
-          
-          <div className="flex flex-wrap rounded-[2rem] overflow-hidden shadow-2xl">
-            <div className="w-full sm:w-1/2 lg:w-1/4 bg-indigo-950 p-12 text-center group hover:bg-indigo-900 transition-colors">
-              <div className="mb-6 flex justify-center">
-                <Building2 className="w-12 h-12 text-white/80 group-hover:text-white transition-colors" />
-              </div>
-              <p className="text-4xl font-bold text-white mb-4 font-mono">
-                <Counter value={700} />+
-              </p>
-              <div className="w-14 h-0.5 bg-white/80 mx-auto mb-4 group-hover:w-20 transition-all" />
-              <p className="text-white/80 text-lg font-medium group-hover:text-white transition-colors">Offices Cleaned</p>
-            </div>
-            <div className="w-full sm:w-1/2 lg:w-1/4 bg-indigo-900 p-12 text-center group hover:bg-indigo-800 transition-colors">
-              <div className="mb-6 flex justify-center">
-                <Users className="w-12 h-12 text-white/80 group-hover:text-white transition-colors" />
-              </div>
-              <p className="text-4xl font-bold text-white mb-4 font-mono">
-                <Counter value={15} />+
-              </p>
-              <div className="w-14 h-0.5 bg-white/80 mx-auto mb-4 group-hover:w-20 transition-all" />
-              <p className="text-white/80 text-lg font-medium group-hover:text-white transition-colors">Commercial Teams</p>
-            </div>
-            <div className="w-full sm:w-1/2 lg:w-1/4 bg-indigo-800 p-12 text-center group hover:bg-indigo-700 transition-colors">
-              <div className="mb-6 flex justify-center">
-                <Trophy className="w-12 h-12 text-white/80 group-hover:text-white transition-colors" />
-              </div>
-              <p className="text-4xl font-bold text-white mb-4 font-mono">
-                <Counter value={100} />%
-              </p>
-              <div className="w-14 h-0.5 bg-white/80 mx-auto mb-4 group-hover:w-20 transition-all" />
-              <p className="text-white/80 text-lg font-medium group-hover:text-white transition-colors">Reliability Rate</p>
-            </div>
-            <div className="w-full sm:w-1/2 lg:w-1/4 bg-indigo-700 p-12 text-center group hover:bg-indigo-600 transition-colors">
-              <div className="mb-6 flex justify-center">
-                <Star className="w-12 h-12 text-white/80 group-hover:text-white transition-colors" />
-              </div>
-              <p className="text-4xl font-bold text-white mb-4 font-mono">
-                <Counter value={120} />+
-              </p>
-              <div className="w-14 h-0.5 bg-white/80 mx-auto mb-4 group-hover:w-20 transition-all" />
-              <p className="text-white/80 text-lg font-medium group-hover:text-white transition-colors">Corporate Partners</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Quick Estimate Calculator Section */}
       <section className="py-24 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -446,7 +381,7 @@ const Commercial: React.FC = () => {
               <div className="text-white">
                 <h2 className="text-4xl md:text-5xl font-bold mb-8 font-display">Elevate your workspace?</h2>
                 <p className="text-xl text-indigo-100 mb-10">
-                  Join 120+ corporate partners. Fill out this simple form and we'll get back to you with a custom proposal in less than 2 hours.
+                  Join our group of corporate partners. Fill out this simple form, and we'll get back to you with a custom proposal in less than two hours.
                 </p>
                 <div className="flex items-center space-x-6">
                   <div className="flex items-center space-x-2">

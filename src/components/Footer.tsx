@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
-import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Youtube } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -29,14 +29,6 @@ const Footer: React.FC = () => {
                   </span>
                   <Facebook className="w-5 h-5" />
                 </li>
-                {/* Twitter */}
-                <li className="group relative bg-white rounded-full w-10 h-10 flex justify-center items-center shadow-lg cursor-pointer transition-all duration-200 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] hover:bg-[#1DA1F2] hover:text-white text-slate-900">
-                  <span className="absolute -top-10 bg-[#1DA1F2] text-white text-xs px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 group-hover:-top-12 transition-all duration-300 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] pointer-events-none whitespace-nowrap">
-                    Twitter
-                    <span className="absolute w-2 h-2 bg-[#1DA1F2] -bottom-1 left-1/2 -translate-x-1/2 rotate-45"></span>
-                  </span>
-                  <Twitter className="w-5 h-5" />
-                </li>
                 {/* Instagram */}
                 <li className="group relative bg-white rounded-full w-10 h-10 flex justify-center items-center shadow-lg cursor-pointer transition-all duration-200 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] hover:bg-[#E4405F] hover:text-white text-slate-900">
                   <span className="absolute -top-10 bg-[#E4405F] text-white text-xs px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 group-hover:-top-12 transition-all duration-300 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] pointer-events-none whitespace-nowrap">
@@ -53,14 +45,6 @@ const Footer: React.FC = () => {
                   </span>
                   <Linkedin className="w-5 h-5" />
                 </li>
-                {/* Youtube */}
-                <li className="group relative bg-white rounded-full w-10 h-10 flex justify-center items-center shadow-lg cursor-pointer transition-all duration-200 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] hover:bg-[#CD201F] hover:text-white text-slate-900">
-                  <span className="absolute -top-10 bg-[#CD201F] text-white text-xs px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 group-hover:-top-12 transition-all duration-300 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] pointer-events-none whitespace-nowrap">
-                    Youtube
-                    <span className="absolute w-2 h-2 bg-[#CD201F] -bottom-1 left-1/2 -translate-x-1/2 rotate-45"></span>
-                  </span>
-                  <Youtube className="w-5 h-5" />
-                </li>
               </ul>
             </div>
           </div>
@@ -68,10 +52,8 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-white font-semibold mb-6">Services</h3>
             <ul className="space-y-4 text-sm">
-              <li><Link to="/residential" className="hover:text-white transition-colors">Residential Cleaning</Link></li>
-              <li><Link to="/commercial" className="hover:text-white transition-colors">Commercial Cleaning</Link></li>
-              <li><Link to="/quote" className="hover:text-white transition-colors">Deep Cleaning</Link></li>
-              <li><Link to="/quote" className="hover:text-white transition-colors">Move In/Out</Link></li>
+              <li><Link to="/residential#services" className="hover:text-white transition-colors">Residential Cleaning</Link></li>
+              <li><Link to="/commercial#services" className="hover:text-white transition-colors">Commercial Cleaning</Link></li>
             </ul>
           </div>
 
@@ -88,17 +70,13 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-white font-semibold mb-6">Contact</h3>
             <ul className="space-y-4 text-sm">
-              <li className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-indigo-400 shrink-0" />
-                <span>123 Clean Way, Suite 100<br />New York, NY 10001</span>
-              </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-indigo-400 shrink-0" />
-                <span>(555) 000-TRYDENTT</span>
+                <span>+1 519-871-3368</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-indigo-400 shrink-0" />
-                <span>hello@trydentt.com</span>
+                <span>homes@trydenttbuildingservices.com</span>
               </li>
             </ul>
           </div>

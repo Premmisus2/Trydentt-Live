@@ -80,6 +80,10 @@
     z-index: 1;
   }
 
+  .btn-primary > * {
+    @apply relative z-10;
+  }
+
   .btn-primary::before {
     content: '';
     @apply absolute top-1/2 left-1/2 w-0 h-0 bg-indigo-700 rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-out;
