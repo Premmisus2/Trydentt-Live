@@ -129,7 +129,7 @@ const Residential: React.FC = () => {
             <p className="text-slate-500 max-w-2xl mx-auto">Experience the 'Trydentt' standard. We provide a consistent service tailored to your schedule, ensuring a spotless environment on a weekly basis.</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[240px]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-auto md:auto-rows-[240px]">
             {/* Problem 1 */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
