@@ -16,4 +16,9 @@ export interface QuoteRequest {
 export interface GeminiResponse {
   estimate: string;
   recommendations: string[];
+  niche?: 'residential' | 'commercial';
+  service?: string;
+  sqft?: number;
+  minPrice?: number;
+  maxPrice?: number;
 }
