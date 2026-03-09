@@ -6,7 +6,7 @@ import { getSmartEstimate } from '../services/geminiService';
 import { QuoteRequest, GeminiResponse } from '../types';
 import QuickCalculator from '../components/QuickCalculator';
 
-const GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/a9j6O8eXLyQk7lKBkZFD/webhook-trigger/d77aac91-8ca5-4618-83de-92338401407d';
+const GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/a9j6O8eXLyQk7lKBkZFD/webhook-trigger/865822e0-e073-470a-be28-9d4e0b7037e4';
 
 const Quote: React.FC = () => {
   const navigate = useNavigate();
