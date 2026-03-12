@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { CheckCircle2, ArrowRight, Sparkles } from 'lucide-react';
 import Sparkle from '../components/Sparkle';
 
+declare global {
+  interface Window { fbq: (...args: any[]) => void; }
+}
+
 const ThankYou: React.FC = () => {
+  useEffect(() => {
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'Lead');
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center relative overflow-hidden">
       {/* Background Animations */}
