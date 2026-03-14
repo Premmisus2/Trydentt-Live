@@ -444,6 +444,20 @@ const Residential: React.FC = () => {
         </div>
       </section>
 
+      {/* Service Areas Internal Links */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl font-bold text-slate-900 mb-6">Residential Cleaning Across Southwestern Ontario</h2>
+          <p className="text-slate-500 mb-8 max-w-2xl mx-auto">We serve families in London and all surrounding communities with the same high standard of care.</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Link to="/london-ontario-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">London, ON</Link>
+            <Link to="/st-thomas-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">St. Thomas</Link>
+            <Link to="/woodstock-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">Woodstock</Link>
+            <Link to="/strathroy-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">Strathroy</Link>
+          </div>
+        </div>
+      </section>
+
       {/* 6. Low-Friction CTA Form Section */}
       <section id="booking-form" className="py-24 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

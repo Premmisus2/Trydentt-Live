@@ -100,11 +100,11 @@ const Home: React.FC = () => {
   return (
     <div className="overflow-hidden bg-slate-50 selection:bg-indigo-600/20 selection:text-indigo-900">
       <Helmet>
-        <title>Trydentt Cleaning Services | Professional Cleaning in Ontario</title>
-        <meta name="description" content="Trydentt Cleaning Services delivers meticulous, eco-friendly residential and commercial cleaning across Ontario — London, Toronto, Mississauga, Kitchener & more. Get your free quote today." />
+        <title>Trydentt Cleaning Services London ON | House & Office Cleaning</title>
+        <meta name="description" content="Trydentt Cleaning Services — London Ontario's trusted cleaning company. Professional house cleaning, office cleaning, deep cleaning & more. Eco-friendly, fully insured, 100% satisfaction guarantee. Call (519) 871-3368." />
         <link rel="canonical" href="https://trydenttcleaning.ca/" />
-        <meta property="og:title" content="Trydentt Cleaning Services | Professional Cleaning in Ontario" />
-        <meta property="og:description" content="Premium residential & commercial cleaning across Ontario. Eco-friendly, insured, 100% satisfaction guarantee. Get your free quote now." />
+        <meta property="og:title" content="Trydentt Cleaning Services London ON | House & Office Cleaning" />
+        <meta property="og:description" content="London Ontario's trusted cleaning company. Professional house cleaning, office cleaning, deep cleaning. Eco-friendly, fully insured, 100% satisfaction guarantee." />
         <meta property="og:url" content="https://trydenttcleaning.ca/" />
         <script type="application/ld+json">{`
           {
