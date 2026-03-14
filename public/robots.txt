@@ -3,4 +3,7 @@ User-agent: *
 Allow: /
 Disallow: /thank-you
 
+# Block search engine crawling of parameterized quote URLs
+Disallow: /quote?
+
 Sitemap: https://trydenttcleaning.ca/sitemap.xml

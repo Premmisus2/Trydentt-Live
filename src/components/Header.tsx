@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from './Logo';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [areasOpen, setAreasOpen] = useState(false);
   const location = useLocation();
 
   const navLinks = [
@@ -15,10 +16,17 @@ const Header: React.FC = () => {
     { name: 'Contact', path: '/contact' },
   ];
 
+  const serviceAreas = [
+    { name: 'London, ON', path: '/london-ontario-cleaning' },
+    { name: 'St. Thomas', path: '/st-thomas-cleaning' },
+    { name: 'Woodstock', path: '/woodstock-cleaning' },
+    { name: 'Strathroy', path: '/strathroy-cleaning' },
+  ];
+
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-500">
+    <nav className="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-500" role="navigation" aria-label="Main navigation">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           <Link to="/" className="flex items-center space-x-3 group">
@@ -30,7 +38,7 @@ const Header: React.FC = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -43,6 +51,50 @@ const Header: React.FC = () => {
                 <span className={`absolute -bottom-1 left-0 h-0.5 bg-indigo-600 transition-all duration-300 ${isActive(link.path) ? 'w-full' : 'w-0 group-hover/link:w-full'}`} />
               </Link>
             ))}
+
+            {/* Service Areas Dropdown */}
+            <div className="relative group/areas">
+              <button
+                className="text-sm font-bold tracking-wide text-slate-600 hover:text-indigo-600 transition-all duration-300 flex items-center space-x-1"
+                onClick={() => setAreasOpen(!areasOpen)}
+                onMouseEnter={() => setAreasOpen(true)}
+                aria-expanded={areasOpen}
+                aria-haspopup="true"
+              >
+                <span>Areas</span>
+                <ChevronDown className="w-3 h-3" />
+              </button>
+              {areasOpen && (
+                <div
+                  className="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-100 py-2 z-50"
+                  onMouseLeave={() => setAreasOpen(false)}
+                >
+                  {serviceAreas.map((area) => (
+                    <Link
+                      key={area.path}
+                      to={area.path}
+                      onClick={() => setAreasOpen(false)}
+                      className={`block px-4 py-2 text-sm font-medium transition-colors ${
+                        isActive(area.path) ? 'text-indigo-600 bg-indigo-50' : 'text-slate-600 hover:text-indigo-600 hover:bg-indigo-50'
+                      }`}
+                    >
+                      {area.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Phone Number */}
+            <a
+              href="tel:+15198713368"
+              className="hidden lg:flex items-center space-x-1.5 text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors"
+              aria-label="Call Trydentt Cleaning at 519-871-3368"
+            >
+              <Phone className="w-4 h-4" />
+              <span>(519) 871-3368</span>
+            </a>
+
             <Link
               to="/quote"
               className="btn-primary group"
@@ -52,10 +104,19 @@ const Header: React.FC = () => {
           </div>
 
           {/* Mobile toggle */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center space-x-3">
+            <a
+              href="tel:+15198713368"
+              className="text-indigo-600 hover:text-indigo-700"
+              aria-label="Call Trydentt Cleaning"
+            >
+              <Phone className="w-5 h-5" />
+            </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-slate-600 hover:text-indigo-600 focus:outline-none"
+              aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={isOpen}
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -78,6 +139,21 @@ const Header: React.FC = () => {
               {link.name}
             </Link>
           ))}
+          <div className="border-t border-slate-100 pt-3">
+            <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Service Areas</p>
+            {serviceAreas.map((area) => (
+              <Link
+                key={area.path}
+                to={area.path}
+                onClick={() => setIsOpen(false)}
+                className={`block text-base font-medium py-1 ${
+                  isActive(area.path) ? 'text-indigo-600' : 'text-slate-600'
+                }`}
+              >
+                {area.name}
+              </Link>
+            ))}
+          </div>
           <Link
             to="/quote"
             onClick={() => setIsOpen(false)}

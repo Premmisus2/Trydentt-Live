@@ -1,22 +1,40 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
 import { CheckCircle2, ArrowRight, Sparkles } from 'lucide-react';
 import Sparkle from '../components/Sparkle';
 
 declare global {
-  interface Window { fbq: (...args: any[]) => void; }
+  interface Window {
+    fbq: (...args: any[]) => void;
+    gtag: (...args: any[]) => void;
+  }
 }
 
 const ThankYou: React.FC = () => {
   useEffect(() => {
+    // Meta Pixel conversion
     if (typeof window.fbq === 'function') {
       window.fbq('track', 'Lead');
+    }
+    // GA4 conversion event
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'generate_lead', {
+        event_category: 'conversion',
+        event_label: 'form_submission',
+      });
     }
   }, []);
 
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center relative overflow-hidden">
+      <Helmet>
+        <title>Thank You | Trydentt Cleaning Services</title>
+        <meta name="description" content="Thank you for your booking request. Our team will contact you shortly to confirm your cleaning appointment." />
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
+
       {/* Background Animations */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="breeze-overlay animate-breeze" />

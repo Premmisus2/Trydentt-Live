@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Sparkles, Calculator, CheckCircle2, Loader2, RefreshCw, AlertTriangle, ChevronDown } from 'lucide-react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
@@ -134,7 +135,13 @@ const Quote: React.FC = () => {
           sqft: result?.sqft,
           minPrice: result?.minPrice,
           maxPrice: result?.maxPrice,
-          source: 'Website Smart Estimator'
+          source: 'Website Smart Estimator',
+          utm_source: searchParams.get('utm_source') || '',
+          utm_medium: searchParams.get('utm_medium') || '',
+          utm_campaign: searchParams.get('utm_campaign') || '',
+          utm_term: searchParams.get('utm_term') || '',
+          utm_content: searchParams.get('utm_content') || '',
+          landing_page: window.location.href,
         }),
       });
 
@@ -152,6 +159,16 @@ const Quote: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <Helmet>
+        <title>Get a Free Cleaning Quote | Trydentt Cleaning Services</title>
+        <meta name="description" content="Get an instant, AI-powered cleaning estimate for your home or business. No phone calls required. Professional cleaning services in London, Ontario and across Ontario." />
+        <link rel="canonical" href="https://trydenttcleaning.ca/quote" />
+        <meta property="og:title" content="Get a Free Cleaning Quote | Trydentt Cleaning Services" />
+        <meta property="og:description" content="Instant cleaning estimates for your home or business. No phone calls, no hassle. Get your free quote now." />
+        <meta property="og:url" content="https://trydenttcleaning.ca/quote" />
+        <meta property="og:image" content="https://trydenttcleaning.ca/og-image.jpg" />
+      </Helmet>
+
       {!showBooking && (
         <div className="mb-12 min-h-[600px]">
           <QuickCalculator onComplete={handleCalculatorComplete} />

@@ -26,6 +26,7 @@ const CityLanding: React.FC<CityLandingProps> = ({ city, slug, distance, populat
         <meta property="og:title" content={`Cleaning Services ${city} Ontario | Trydentt Cleaning`} />
         <meta property="og:description" content={`${city}'s trusted cleaning service. House cleaning, office cleaning, deep cleaning. Eco-friendly, insured, satisfaction guaranteed.`} />
         <meta property="og:url" content={`https://trydenttcleaning.ca/${slug}`} />
+        <meta property="og:image" content="https://trydenttcleaning.ca/og-image.jpg" />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
@@ -45,6 +46,51 @@ const CityLanding: React.FC<CityLandingProps> = ({ city, slug, distance, populat
             "provider": {"@id": "https://trydenttcleaning.ca/#organization"},
             "areaServed": {"@type": "City", "name": "${city}", "addressRegion": "Ontario", "addressCountry": "CA"},
             "description": "Professional residential and commercial cleaning services in ${city}, Ontario. Eco-friendly, fully insured, 100% satisfaction guarantee."
+          }
+        `}</script>
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Trydentt Cleaning Services — ${city}",
+            "description": "Professional residential and commercial cleaning services serving ${city}, Ontario. Eco-friendly products, fully insured, 100% satisfaction guarantee.",
+            "url": "https://trydenttcleaning.ca/${slug}",
+            "telephone": "+15198713368",
+            "email": "homes@trydenttbuildingservices.com",
+            "priceRange": "$$",
+            "image": "https://trydenttcleaning.ca/og-image.jpg",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "${city}",
+              "addressRegion": "ON",
+              "addressCountry": "CA"
+            },
+            "areaServed": {
+              "@type": "City",
+              "name": "${city}",
+              "addressRegion": "Ontario",
+              "addressCountry": "CA"
+            },
+            "parentOrganization": {"@id": "https://trydenttcleaning.ca/#organization"},
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+                "opens": "07:00",
+                "closes": "19:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "08:00",
+                "closes": "17:00"
+              }
+            ],
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "24"
+            }
           }
         `}</script>
         <script type="application/ld+json">{`
@@ -92,7 +138,7 @@ const CityLanding: React.FC<CityLandingProps> = ({ city, slug, distance, populat
               <MapPin className="w-4 h-4" />
               <span>Now Serving {city}, Ontario</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 leading-[1.1]">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 leading-[1.1]">
               Professional Cleaning in <span className="text-indigo-600">{city}, Ontario</span>
             </h1>
             <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto">
@@ -167,7 +213,7 @@ const CityLanding: React.FC<CityLandingProps> = ({ city, slug, distance, populat
                 ))}
               </ul>
               <Link to="/residential" className="inline-flex items-center space-x-2 text-indigo-600 font-bold hover:text-indigo-500 transition-colors">
-                <span>Learn More</span><ArrowRight className="w-4 h-4" />
+                <span>Explore Residential Services</span><ArrowRight className="w-4 h-4" />
               </Link>
             </motion.div>
 
@@ -181,7 +227,7 @@ const CityLanding: React.FC<CityLandingProps> = ({ city, slug, distance, populat
                 ))}
               </ul>
               <Link to="/commercial" className="inline-flex items-center space-x-2 text-white font-bold hover:text-indigo-300 transition-colors">
-                <span>Learn More</span><ArrowRight className="w-4 h-4" />
+                <span>Explore Commercial Services</span><ArrowRight className="w-4 h-4" />
               </Link>
             </motion.div>
           </div>

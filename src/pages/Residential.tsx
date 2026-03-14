@@ -63,6 +63,7 @@ const Residential: React.FC = () => {
         <meta property="og:title" content="Residential Cleaning London ON | Trydentt Cleaning Services" />
         <meta property="og:description" content="Premium house cleaning for London, Ontario families. Eco-friendly, fully insured, satisfaction guaranteed." />
         <meta property="og:url" content="https://trydenttcleaning.ca/residential" />
+        <meta property="og:image" content="https://trydenttcleaning.ca/og-image.jpg" />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
@@ -154,7 +155,7 @@ const Residential: React.FC = () => {
               <span>Premium Residential Care</span>
               <Sparkle className="text-indigo-400 w-4 h-4 -top-2 -right-2" />
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 leading-[1.1] relative">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 leading-[1.1] relative">
               Your Home, Your Sanctuary. <span className="text-indigo-600">Reclaim Your Weekends.</span>
               <Sparkle className="text-indigo-300 w-6 h-6 -top-6 -left-4" />
               <Sparkle className="text-indigo-200 w-4 h-4 bottom-0 -right-8" />
@@ -169,9 +170,10 @@ const Residential: React.FC = () => {
                 whileTap={{ scale: 0.98 }}
                 className="relative group"
               >
-                <Link 
-                  to="/quote?niche=residential" 
+                <Link
+                  to="/quote?niche=residential"
                   className="relative z-10 inline-flex items-center space-x-3 bg-indigo-600 hover:bg-indigo-500 text-white px-10 py-5 rounded-2xl text-xl font-bold shadow-[0_20px_50px_rgba(79,70,229,0.3)] transition-all duration-300"
+                  onClick={() => typeof window.gtag === 'function' && window.gtag('event', 'cta_click', { event_label: 'hero_book_home_clean', page: 'residential' })}
                 >
                   <span>Book Your Home Clean</span>
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
@@ -217,7 +219,7 @@ const Residential: React.FC = () => {
                 <XCircle className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Unreliable Service</h4>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Unreliable Service</h3>
                 <p className="text-slate-500 text-sm">No-shows and late arrivals that disrupt your entire day.</p>
               </div>
             </motion.div>
@@ -234,7 +236,7 @@ const Residential: React.FC = () => {
                 <AlertCircle className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Missed Spots</h4>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Missed Spots</h3>
                 <p className="text-slate-500 text-sm">Finding yourself cleaning after the "professionals" have left.</p>
               </div>
             </motion.div>
@@ -251,7 +253,7 @@ const Residential: React.FC = () => {
                 <div className="w-14 h-14 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                   <Sparkles className="w-7 h-7 text-white" />
                 </div>
-                <h4 className="text-3xl font-bold mb-6 font-display leading-tight">The Trydentt Home Standard</h4>
+                <h3 className="text-3xl font-bold mb-6 font-display leading-tight">The Trydentt Home Standard</h3>
                 <p className="text-indigo-100 text-lg leading-relaxed">
                   Punctual, precise, and professional. We restore your time and sanity with a meticulous multi-point checklist and a 100% satisfaction guarantee.
                 </p>
@@ -277,7 +279,7 @@ const Residential: React.FC = () => {
                 <DollarSign className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Affordable Excellence</h4>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Affordable Excellence</h3>
                 <p className="text-slate-500 text-sm">High standards without inflated costs.</p>
               </div>
             </motion.div>
@@ -294,7 +296,7 @@ const Residential: React.FC = () => {
                 <CheckCircle2 className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Zero Stress</h4>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Zero Stress</h3>
                 <p className="text-slate-500 text-sm">A spotless space, every single time. No management required.</p>
               </div>
             </motion.div>
@@ -363,7 +365,7 @@ const Residential: React.FC = () => {
                     <Trophy className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">Dedicated Home Care</h4>
+                    <h3 className="font-bold text-slate-900">Dedicated Home Care</h3>
                     <p className="text-sm text-slate-500">We treat your home with the respect and care it deserves.</p>
                   </div>
                 </div>
@@ -372,7 +374,7 @@ const Residential: React.FC = () => {
                     <Shield className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">Family & Pet Safe</h4>
+                    <h3 className="font-bold text-slate-900">Family & Pet Safe</h3>
                     <p className="text-sm text-slate-500">100% non-toxic cleaning agents used in every home.</p>
                   </div>
                 </div>
@@ -387,10 +389,13 @@ const Residential: React.FC = () => {
               className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-video group"
             >
               <div className="absolute inset-0 w-full h-full">
-                <img 
-                  src="https://i.imgur.com/YoWEzeP.jpg" 
-                  className="w-full h-full object-cover" 
-                  alt="After Cleaning"
+                <img
+                  src="https://i.imgur.com/YoWEzeP.jpg"
+                  width={800}
+                  height={450}
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                  alt="Clean residential bathroom after Trydentt house cleaning service in London ON"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute bottom-6 right-6 bg-indigo-600/90 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider shadow-lg">
@@ -401,10 +406,13 @@ const Residential: React.FC = () => {
                 className="absolute inset-0 w-full h-full overflow-hidden"
                 style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
               >
-                <img 
-                  src="https://i.imgur.com/DQN6EnX.jpg" 
-                  className="w-full h-full object-cover" 
-                  alt="Before Cleaning"
+                <img
+                  src="https://i.imgur.com/DQN6EnX.jpg"
+                  width={800}
+                  height={450}
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                  alt="Dirty residential bathroom before Trydentt cleaning in London Ontario"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute bottom-6 left-6 bg-slate-800/90 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider shadow-lg">
@@ -424,12 +432,13 @@ const Residential: React.FC = () => {
                 </div>
               </div>
               
-              <input 
-                type="range" 
-                min="0" 
-                max="100" 
-                value={sliderPosition} 
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={sliderPosition}
                 onChange={(e) => setSliderPosition(parseInt(e.target.value))}
+                aria-label="Slide to compare before and after home cleaning results"
                 className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30"
               />
             </motion.div>

@@ -52,11 +52,13 @@ const WhyChooseUs: React.FC = () => {
                 className="relative z-10 w-48 h-48 md:w-96 md:h-96 rounded-full p-2 bg-white shadow-2xl border border-indigo-50 md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
             >
                 <div className="w-full h-full rounded-full overflow-hidden relative bg-white flex items-center justify-center">
-                    <img 
-                        src="https://www.countryflags.com/wp-content/uploads/canada-flag-png-large.png" 
-                        alt="Canadian Flag - Trydentt Excellence" 
+                    <img
+                        src="/canada-flag.svg"
+                        width={400}
+                        height={400}
+                        loading="lazy"
+                        alt="Canadian flag — Trydentt Cleaning is proudly Canadian owned and operated"
                         className="w-[110%] h-[110%] object-cover"
-                        referrerPolicy="no-referrer"
                     />
                     
                     {/* Subtle Badge Overlay */}

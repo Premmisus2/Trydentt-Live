@@ -30,6 +30,7 @@ const LondonOntario: React.FC = () => {
         <meta property="og:title" content="Cleaning Services London Ontario | Trydentt Cleaning" />
         <meta property="og:description" content="London Ontario's top-rated cleaning service. House cleaning, office cleaning, deep cleaning. Eco-friendly, insured, satisfaction guaranteed." />
         <meta property="og:url" content="https://trydenttcleaning.ca/london-ontario-cleaning" />
+        <meta property="og:image" content="https://trydenttcleaning.ca/og-image.jpg" />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
@@ -38,6 +39,61 @@ const LondonOntario: React.FC = () => {
               {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://trydenttcleaning.ca/"},
               {"@type": "ListItem", "position": 2, "name": "London Ontario Cleaning", "item": "https://trydenttcleaning.ca/london-ontario-cleaning"}
             ]
+          }
+        `}</script>
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Trydentt Cleaning Services — London",
+            "description": "London Ontario's trusted cleaning company. Professional residential and commercial cleaning. Eco-friendly, fully insured, 100% satisfaction guarantee.",
+            "url": "https://trydenttcleaning.ca/london-ontario-cleaning",
+            "telephone": "+15198713368",
+            "email": "homes@trydenttbuildingservices.com",
+            "priceRange": "$$",
+            "image": "https://trydenttcleaning.ca/og-image.jpg",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "London",
+              "addressRegion": "ON",
+              "addressCountry": "CA"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "42.9849",
+              "longitude": "-81.2453"
+            },
+            "areaServed": [
+              {"@type": "City", "name": "London", "addressRegion": "Ontario"},
+              {"@type": "City", "name": "Byron"},
+              {"@type": "City", "name": "Masonville"},
+              {"@type": "City", "name": "Wortley Village"},
+              {"@type": "City", "name": "Old North"},
+              {"@type": "City", "name": "Hyde Park"},
+              {"@type": "City", "name": "Oakridge"},
+              {"@type": "City", "name": "Lambeth"},
+              {"@type": "City", "name": "Westmount"}
+            ],
+            "parentOrganization": {"@id": "https://trydenttcleaning.ca/#organization"},
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+                "opens": "07:00",
+                "closes": "19:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "08:00",
+                "closes": "17:00"
+              }
+            ],
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "24"
+            }
           }
         `}</script>
         <script type="application/ld+json">{`
@@ -106,7 +162,7 @@ const LondonOntario: React.FC = () => {
               <MapPin className="w-4 h-4" />
               <span>Proudly Serving London, Ontario</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 leading-[1.1]">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 leading-[1.1]">
               London Ontario's <span className="text-indigo-600">Most Trusted</span> Cleaning Service
             </h1>
             <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto">
@@ -204,7 +260,7 @@ const LondonOntario: React.FC = () => {
                 ))}
               </ul>
               <Link to="/residential" className="inline-flex items-center space-x-2 text-indigo-600 font-bold hover:text-indigo-500 transition-colors">
-                <span>Learn More</span>
+                <span>Explore Residential Services</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </motion.div>
@@ -228,7 +284,7 @@ const LondonOntario: React.FC = () => {
                 ))}
               </ul>
               <Link to="/commercial" className="inline-flex items-center space-x-2 text-white font-bold hover:text-indigo-300 transition-colors">
-                <span>Learn More</span>
+                <span>Explore Commercial Services</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </motion.div>

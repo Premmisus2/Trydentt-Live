@@ -13,6 +13,7 @@ const About: React.FC = () => {
         <meta property="og:title" content="About Trydentt Cleaning | Trusted Ontario Cleaning Company" />
         <meta property="og:description" content="Canadian-owned, fully insured, 30+ years combined experience. Learn why Ontario trusts Trydentt." />
         <meta property="og:url" content="https://trydenttcleaning.ca/about" />
+        <meta property="og:image" content="https://trydenttcleaning.ca/og-image.jpg" />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
@@ -76,10 +77,13 @@ const About: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
-              <img 
-                src="https://i.imgur.com/DD9oXhj.jpg" 
-                className="rounded-3xl shadow-2xl" 
-                alt="Our Quality Guarantee"
+              <img
+                src="https://i.imgur.com/DD9oXhj.jpg"
+                width={600}
+                height={400}
+                loading="lazy"
+                className="rounded-3xl shadow-2xl"
+                alt="Trydentt Cleaning team delivering quality cleaning service in London Ontario"
                 referrerPolicy="no-referrer"
               />
             </div>

@@ -106,6 +106,7 @@ const Home: React.FC = () => {
         <meta property="og:title" content="Trydentt Cleaning Services London ON | House & Office Cleaning" />
         <meta property="og:description" content="London Ontario's trusted cleaning company. Professional house cleaning, office cleaning, deep cleaning. Eco-friendly, fully insured, 100% satisfaction guarantee." />
         <meta property="og:url" content="https://trydenttcleaning.ca/" />
+        <meta property="og:image" content="https://trydenttcleaning.ca/og-image.jpg" />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
@@ -189,7 +190,7 @@ const Home: React.FC = () => {
               <span>New Standard of Professional Hygiene</span>
               <Sparkle className="text-indigo-400 w-4 h-4 -top-2 -right-2" />
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 leading-[1.1] relative">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 leading-[1.1] relative">
               Modern Cleaning for <span className="text-indigo-600">Modern Lives.</span>
               <Sparkle className="text-indigo-300 w-6 h-6 -top-6 -left-4" />
               <Sparkle className="text-indigo-200 w-4 h-4 bottom-0 -right-8" />
@@ -204,9 +205,10 @@ const Home: React.FC = () => {
                 whileTap={{ scale: 0.98 }}
                 className="relative group"
               >
-                <Link 
-                  to="/quote" 
+                <Link
+                  to="/quote"
                   className="relative z-10 inline-flex items-center space-x-3 bg-indigo-600 hover:bg-indigo-500 text-white px-10 py-5 rounded-2xl text-xl font-bold shadow-[0_20px_50px_rgba(79,70,229,0.3)] transition-all duration-300"
+                  onClick={() => typeof window.gtag === 'function' && window.gtag('event', 'cta_click', { event_label: 'hero_get_quote', page: 'home' })}
                 >
                   <span>Get a Free Quote</span>
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
@@ -215,14 +217,14 @@ const Home: React.FC = () => {
                 <div className="absolute -inset-1 bg-indigo-400 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200" />
               </motion.div>
               
-              <div className="mt-4 flex items-center space-x-4 text-slate-400 text-xs font-medium">
+              <div className="mt-4 flex items-center space-x-4 text-slate-500 text-xs font-medium">
                 <span className="flex items-center">
-                  <CheckCircle2 className="w-3 h-3 text-indigo-500 mr-1" />
+                  <CheckCircle2 className="w-3 h-3 text-indigo-600 mr-1" />
                   100% Satisfaction Guarantee
                 </span>
-                <span className="w-1 h-1 bg-slate-300 rounded-full" />
+                <span className="w-1 h-1 bg-slate-400 rounded-full" />
                 <span className="flex items-center">
-                  <CheckCircle2 className="w-3 h-3 text-indigo-500 mr-1" />
+                  <CheckCircle2 className="w-3 h-3 text-indigo-600 mr-1" />
                   No Hidden Fees
                 </span>
               </div>
@@ -231,11 +233,14 @@ const Home: React.FC = () => {
             <div className="flex items-center justify-center space-x-4 mb-12">
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4].map((i) => (
-                  <img 
+                  <img
                     key={i}
-                    src={`https://picsum.photos/seed/${i + 10}/100/100`} 
+                    src={`https://picsum.photos/seed/${i + 10}/100/100`}
+                    width={40}
+                    height={40}
+                    loading="lazy"
                     className="w-10 h-10 rounded-full border-2 border-white"
-                    alt="Trydentt Cleaning satisfied customer"
+                    alt={`Trydentt Cleaning customer review ${i}`}
                     referrerPolicy="no-referrer"
                   />
                 ))}
@@ -332,7 +337,7 @@ const Home: React.FC = () => {
                 <XCircle className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Unreliable Service</h4>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Unreliable Service</h3>
                 <p className="text-slate-500 text-sm">No-shows and late arrivals that disrupt your entire day.</p>
               </div>
             </motion.div>
@@ -349,7 +354,7 @@ const Home: React.FC = () => {
                 <AlertCircle className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Missed Spots</h4>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Missed Spots</h3>
                 <p className="text-slate-500 text-sm">Finding yourself cleaning after the "professionals" have left.</p>
               </div>
             </motion.div>
@@ -366,7 +371,7 @@ const Home: React.FC = () => {
                 <div className="w-14 h-14 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                   <Sparkles className="w-7 h-7 text-white" />
                 </div>
-                <h4 className="text-3xl font-bold mb-6 font-display leading-tight">The Trydentt Standard</h4>
+                <h3 className="text-3xl font-bold mb-6 font-display leading-tight">The Trydentt Standard</h3>
                 <p className="text-indigo-100 text-lg leading-relaxed">
                   Punctual, precise, and professional. We restore your time and sanity with a meticulous multi-point checklist and a 100% satisfaction guarantee.
                 </p>
@@ -393,7 +398,7 @@ const Home: React.FC = () => {
                 <DollarSign className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Affordable Excellence</h4>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Affordable Excellence</h3>
                 <p className="text-slate-500 text-sm">High standards without inflated costs.</p>
               </div>
             </motion.div>
@@ -410,7 +415,7 @@ const Home: React.FC = () => {
                 <CheckCircle2 className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Zero Stress</h4>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Zero Stress</h3>
                 <p className="text-slate-500 text-sm">A spotless space, every single time. No management required.</p>
               </div>
             </motion.div>
@@ -446,15 +451,17 @@ const Home: React.FC = () => {
 
           <div className="flex justify-center mb-12">
             <div className="inline-flex p-1 bg-white/50 backdrop-blur-sm rounded-2xl border border-indigo-100 shadow-sm">
-              <button 
+              <button
                 onClick={() => setActiveTab('residential')}
-                className={`px-8 py-3 rounded-xl text-sm font-bold transition-all ${activeTab === 'residential' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-500 hover:text-indigo-600'}`}
+                aria-label="Show residential cleaning services"
+                className={`px-8 py-3 rounded-xl text-sm font-bold transition-all ${activeTab === 'residential' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-700 hover:text-indigo-600'}`}
               >
                 Residential
               </button>
-              <button 
+              <button
                 onClick={() => setActiveTab('commercial')}
-                className={`px-8 py-3 rounded-xl text-sm font-bold transition-all ${activeTab === 'commercial' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-500 hover:text-indigo-600'}`}
+                aria-label="Show commercial cleaning services"
+                className={`px-8 py-3 rounded-xl text-sm font-bold transition-all ${activeTab === 'commercial' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-700 hover:text-indigo-600'}`}
               >
                 Commercial
               </button>
@@ -512,7 +519,7 @@ const Home: React.FC = () => {
                     <Trophy className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">Uncompromising Quality</h4>
+                    <h3 className="font-bold text-slate-900">Uncompromising Quality</h3>
                     <p className="text-sm text-slate-500">We deliver meticulous results that speak for themselves.</p>
                   </div>
                 </div>
@@ -521,7 +528,7 @@ const Home: React.FC = () => {
                     <Shield className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">100% Satisfaction Guarantee</h4>
+                    <h3 className="font-bold text-slate-900">100% Satisfaction Guarantee</h3>
                     <p className="text-sm text-slate-500">If you're not happy, we return within 24 hours to fix it.</p>
                   </div>
                 </div>
@@ -536,10 +543,13 @@ const Home: React.FC = () => {
               className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-video group"
             >
               <div className="absolute inset-0 w-full h-full">
-                <img 
-                  src="https://i.imgur.com/qpkTEco.jpg" 
-                  className="w-full h-full object-cover" 
-                  alt="After Cleaning"
+                <img
+                  src="https://i.imgur.com/qpkTEco.jpg"
+                  width={800}
+                  height={450}
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                  alt="Sparkling clean kitchen after Trydentt professional deep cleaning service"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute bottom-6 right-6 bg-indigo-600/90 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider shadow-lg">
@@ -550,10 +560,13 @@ const Home: React.FC = () => {
                 className="absolute inset-0 w-full h-full overflow-hidden"
                 style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
               >
-                <img 
-                  src="https://i.imgur.com/BLgbuHK.jpg" 
-                  className="w-full h-full object-cover" 
-                  alt="Before Cleaning"
+                <img
+                  src="https://i.imgur.com/BLgbuHK.jpg"
+                  width={800}
+                  height={450}
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                  alt="Dirty kitchen before Trydentt cleaning service in London Ontario"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute bottom-6 left-6 bg-slate-800/90 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider shadow-lg">
@@ -574,12 +587,13 @@ const Home: React.FC = () => {
                 </div>
               </div>
               
-              <input 
-                type="range" 
-                min="0" 
-                max="100" 
-                value={sliderPosition} 
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={sliderPosition}
                 onChange={(e) => setSliderPosition(parseInt(e.target.value))}
+                aria-label="Slide to compare before and after cleaning results"
                 className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30"
               />
             </motion.div>
@@ -626,9 +640,10 @@ const Home: React.FC = () => {
                 <p className="text-slate-600 mb-8">
                   Ready to experience the difference? Get a personalized estimate in seconds.
                 </p>
-                <Link 
-                  to="/quote" 
+                <Link
+                  to="/quote"
                   className="w-full bg-indigo-600 text-white py-4 rounded-xl font-bold hover:bg-indigo-700 transition-all shadow-lg flex items-center justify-center space-x-2 group"
+                  onClick={() => typeof window.gtag === 'function' && window.gtag('event', 'cta_click', { event_label: 'bottom_start_quote', page: 'home' })}
                 >
                   <span>Start My Quote</span>
                   <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

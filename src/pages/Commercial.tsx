@@ -64,6 +64,7 @@ const Commercial: React.FC = () => {
         <meta property="og:title" content="Commercial Cleaning Ontario | Trydentt Cleaning Services" />
         <meta property="og:description" content="Professional commercial cleaning for Ontario businesses. Office, retail, janitorial services. Fully insured & bonded." />
         <meta property="og:url" content="https://trydenttcleaning.ca/commercial" />
+        <meta property="og:image" content="https://trydenttcleaning.ca/og-image.jpg" />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
@@ -147,7 +148,7 @@ const Commercial: React.FC = () => {
               <span>Professional Commercial Solutions</span>
               <Sparkle className="text-indigo-400 w-4 h-4 -top-2 -right-2" />
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 leading-[1.1] relative">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 leading-[1.1] relative">
               Pristine Workspaces, <span className="text-indigo-600">Professional Excellence.</span>
               <Sparkle className="text-indigo-300 w-6 h-6 -top-6 -left-4" />
               <Sparkle className="text-indigo-200 w-4 h-4 bottom-0 -right-8" />
@@ -162,9 +163,10 @@ const Commercial: React.FC = () => {
                 whileTap={{ scale: 0.98 }}
                 className="relative group"
               >
-                <Link 
-                  to="/quote?niche=commercial" 
+                <Link
+                  to="/quote?niche=commercial"
                   className="relative z-10 inline-flex items-center space-x-3 bg-indigo-600 hover:bg-indigo-500 text-white px-10 py-5 rounded-2xl text-xl font-bold shadow-[0_20px_50px_rgba(79,70,229,0.3)] transition-all duration-300"
+                  onClick={() => typeof window.gtag === 'function' && window.gtag('event', 'cta_click', { event_label: 'hero_request_proposal', page: 'commercial' })}
                 >
                   <span>Request a Custom Proposal</span>
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
@@ -210,7 +212,7 @@ const Commercial: React.FC = () => {
                 <Users className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Unreliable Janitors</h4>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Unreliable Janitors</h3>
                 <p className="text-slate-500 text-sm">Late arrivals and missed trash bins affecting your office environment and employee morale.</p>
               </div>
             </motion.div>
@@ -227,7 +229,7 @@ const Commercial: React.FC = () => {
                 <AlertCircle className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Poor First Impressions</h4>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Poor First Impressions</h3>
                 <p className="text-slate-500 text-sm">Dusty lobbies and smudged windows affecting client trust and your brand image.</p>
               </div>
             </motion.div>
@@ -244,7 +246,7 @@ const Commercial: React.FC = () => {
                 <div className="w-14 h-14 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                   <Sparkles className="w-7 h-7 text-white" />
                 </div>
-                <h4 className="text-3xl font-bold mb-6 font-display leading-tight">The Trydentt Business Standard</h4>
+                <h3 className="text-3xl font-bold mb-6 font-display leading-tight">The Trydentt Business Standard</h3>
                 <p className="text-indigo-100 text-lg leading-relaxed">
                   - Consistent, high-quality sanitation tailored to your business's needs<br />
                   - We work when you don't, ensuring a safe and clean environment
@@ -271,7 +273,7 @@ const Commercial: React.FC = () => {
                 <Shield className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Liability Risks</h4>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Liability Risks</h3>
                 <p className="text-slate-500 text-sm">Uninsured cleaners posing a risk to your business and property.</p>
               </div>
             </motion.div>
@@ -288,7 +290,7 @@ const Commercial: React.FC = () => {
                 <CheckCircle2 className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Fully Insured</h4>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Fully Insured</h3>
                 <p className="text-slate-500 text-sm">Total liability and workers comp coverage for your protection.</p>
               </div>
             </motion.div>
@@ -357,7 +359,7 @@ const Commercial: React.FC = () => {
                     <Trophy className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">Professional Standards</h4>
+                    <h3 className="font-bold text-slate-900">Professional Standards</h3>
                     <p className="text-sm text-slate-500">Partnering with local businesses to maintain pristine environments.</p>
                   </div>
                 </div>
@@ -366,7 +368,7 @@ const Commercial: React.FC = () => {
                     <Shield className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">Fully Insured & Bonded</h4>
+                    <h3 className="font-bold text-slate-900">Fully Insured & Bonded</h3>
                     <p className="text-sm text-slate-500">Total liability coverage for your business protection.</p>
                   </div>
                 </div>
@@ -381,10 +383,13 @@ const Commercial: React.FC = () => {
               className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-video group"
             >
               <div className="absolute inset-0 w-full h-full">
-                <img 
-                  src="https://i.imgur.com/2uxblQz.jpg" 
-                  className="w-full h-full object-cover" 
-                  alt="After Cleaning"
+                <img
+                  src="https://i.imgur.com/2uxblQz.jpg"
+                  width={800}
+                  height={450}
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                  alt="Clean commercial office space after Trydentt janitorial service"
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -392,10 +397,13 @@ const Commercial: React.FC = () => {
                 className="absolute inset-0 w-full h-full overflow-hidden"
                 style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
               >
-                <img 
-                  src="https://i.imgur.com/ByhV0ZH.jpg" 
-                  className="w-full h-full object-cover" 
-                  alt="Before Cleaning"
+                <img
+                  src="https://i.imgur.com/ByhV0ZH.jpg"
+                  width={800}
+                  height={450}
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                  alt="Dirty commercial workspace before Trydentt office cleaning service"
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -412,12 +420,13 @@ const Commercial: React.FC = () => {
                 </div>
               </div>
               
-              <input 
-                type="range" 
-                min="0" 
-                max="100" 
-                value={sliderPosition} 
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={sliderPosition}
                 onChange={(e) => setSliderPosition(parseInt(e.target.value))}
+                aria-label="Slide to compare before and after commercial cleaning results"
                 className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30"
               />
               

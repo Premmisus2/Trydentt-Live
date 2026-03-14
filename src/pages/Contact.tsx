@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Send, MessageSquare, Loader2 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const Contact: React.FC = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,7 +28,13 @@ const Contact: React.FC = () => {
         },
         body: JSON.stringify({
           ...formData,
-          source: 'Contact Page Form'
+          source: 'Contact Page Form',
+          utm_source: searchParams.get('utm_source') || '',
+          utm_medium: searchParams.get('utm_medium') || '',
+          utm_campaign: searchParams.get('utm_campaign') || '',
+          utm_term: searchParams.get('utm_term') || '',
+          utm_content: searchParams.get('utm_content') || '',
+          landing_page: window.location.href,
         }),
       });
 
@@ -45,6 +53,16 @@ const Contact: React.FC = () => {
 
   return (
     <div className="bg-white">
+      <Helmet>
+        <title>Contact Trydentt Cleaning | London Ontario | Free Estimates</title>
+        <meta name="description" content="Contact Trydentt Cleaning Services in London, Ontario. Call +1 519-871-3368 or fill out our form for a free estimate. We respond within 2 business hours." />
+        <link rel="canonical" href="https://trydenttcleaning.ca/contact" />
+        <meta property="og:title" content="Contact Trydentt Cleaning | London Ontario" />
+        <meta property="og:description" content="Get in touch for a free cleaning estimate. Call or message us — we respond within 2 hours." />
+        <meta property="og:url" content="https://trydenttcleaning.ca/contact" />
+        <meta property="og:image" content="https://trydenttcleaning.ca/og-image.jpg" />
+      </Helmet>
+
       <section className="pt-20 pb-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -121,12 +139,12 @@ const Contact: React.FC = () => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Zip Code</label>
-                    <input 
-                      type="text" 
+                    <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Postal Code</label>
+                    <input
+                      type="text"
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 focus:ring-2 focus:ring-indigo-500 outline-none transition-all" 
-                      placeholder="10001"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+                      placeholder="N6A 1A1"
                       value={formData.zip}
                       onChange={(e) => setFormData({...formData, zip: e.target.value})}
                     />

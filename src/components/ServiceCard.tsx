@@ -66,7 +66,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
             className="flex items-center text-indigo-600 font-bold text-sm tracking-wide group-hover:text-white"
             onClick={(e) => e.stopPropagation()}
           >
-            <span>Learn More</span>
+            <span>Get a {service.name} Quote</span>
             <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>
