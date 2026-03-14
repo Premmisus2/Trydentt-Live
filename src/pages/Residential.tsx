@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import QuickCalculator from '../components/QuickCalculator';
 import Sparkle from '../components/Sparkle';
@@ -55,6 +56,80 @@ const Residential: React.FC = () => {
 
   return (
     <div className="overflow-hidden bg-slate-50 selection:bg-indigo-600/20 selection:text-indigo-900">
+      <Helmet>
+        <title>Residential Cleaning London ON | House Cleaning | Trydentt</title>
+        <meta name="description" content="Professional house cleaning services in London, Ontario and surrounding areas. Deep cleaning, move-in/move-out, eco-friendly options. Fully insured, 100% satisfaction guarantee. Get a free quote." />
+        <link rel="canonical" href="https://trydenttcleaning.ca/residential" />
+        <meta property="og:title" content="Residential Cleaning London ON | Trydentt Cleaning Services" />
+        <meta property="og:description" content="Premium house cleaning for London, Ontario families. Eco-friendly, fully insured, satisfaction guaranteed." />
+        <meta property="og:url" content="https://trydenttcleaning.ca/residential" />
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://trydenttcleaning.ca/"},
+              {"@type": "ListItem", "position": 2, "name": "Residential Cleaning", "item": "https://trydenttcleaning.ca/residential"}
+            ]
+          }
+        `}</script>
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Residential Cleaning",
+            "provider": {"@id": "https://trydenttcleaning.ca/#organization"},
+            "areaServed": {"@type": "City", "name": "London", "addressRegion": "Ontario", "addressCountry": "CA"},
+            "description": "Professional house cleaning services in London, Ontario. Deep cleaning, move-in/move-out, eco-friendly options. Fully insured with 100% satisfaction guarantee.",
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "CAD",
+              "availability": "https://schema.org/InStock"
+            }
+          }
+        `}</script>
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What's included in a general house cleaning?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Our general house cleaning includes dusting all surfaces, vacuuming and mopping floors, sanitizing bathrooms and kitchens, wiping down high-touch areas, and taking out trash. We focus on high-touch points to ensure a healthy living environment."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How often should I schedule a deep cleaning?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We recommend a deep cleaning every 3 to 6 months, depending on household size, pets, and lifestyle. Deep cleans target neglected areas like behind appliances, inside ovens, grout scrubbing, and baseboards."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you offer move-in and move-out cleaning in London?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes! Our move-in/move-out cleaning service in London, Ontario covers everything from baseboards to ceiling fans, ensuring you get your deposit back or step into a spotless new home."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are your cleaning products safe for pets and children?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. We use only EPA-certified, plant-based products that are tough on dirt but completely safe for pets and children. No harsh chemicals, ever."
+                }
+              }
+            ]
+          }
+        `}</script>
+      </Helmet>
+
       {/* Hero Section */}
       <section className="relative pt-20 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
         {/* Fresh Breeze Animation */}
@@ -68,7 +143,7 @@ const Residential: React.FC = () => {
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-indigo-600/5 rounded-full blur-[100px] translate-y-1/2 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}

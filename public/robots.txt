@@ -1,4 +1,6 @@
+# Trydentt Cleaning Services — trydenttcleaning.ca
 User-agent: *
 Allow: /
+Disallow: /thank-you
 
 Sitemap: https://trydenttcleaning.ca/sitemap.xml

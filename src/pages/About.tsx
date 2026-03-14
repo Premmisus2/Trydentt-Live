@@ -1,10 +1,30 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
 import { Shield, Users, Target, Heart } from 'lucide-react';
 
 const About: React.FC = () => {
   return (
     <div className="bg-white">
+      <Helmet>
+        <title>About Trydentt Cleaning | Trusted Ontario Cleaning Company</title>
+        <meta name="description" content="Learn about Trydentt Cleaning Services — a trusted, Canadian-owned cleaning company serving Ontario. Over 30 years of combined experience, fully insured, 100% satisfaction guarantee." />
+        <link rel="canonical" href="https://trydenttcleaning.ca/about" />
+        <meta property="og:title" content="About Trydentt Cleaning | Trusted Ontario Cleaning Company" />
+        <meta property="og:description" content="Canadian-owned, fully insured, 30+ years combined experience. Learn why Ontario trusts Trydentt." />
+        <meta property="og:url" content="https://trydenttcleaning.ca/about" />
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://trydenttcleaning.ca/"},
+              {"@type": "ListItem", "position": 2, "name": "About", "item": "https://trydenttcleaning.ca/about"}
+            ]
+          }
+        `}</script>
+      </Helmet>
+
       {/* Hero */}
       <section className="pt-20 pb-32 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

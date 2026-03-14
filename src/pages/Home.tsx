@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { useRef } from 'react';
 import QuickCalculator from '../components/QuickCalculator';
@@ -98,6 +99,72 @@ const Home: React.FC = () => {
 
   return (
     <div className="overflow-hidden bg-slate-50 selection:bg-indigo-600/20 selection:text-indigo-900">
+      <Helmet>
+        <title>Trydentt Cleaning Services | Professional Cleaning in Ontario</title>
+        <meta name="description" content="Trydentt Cleaning Services delivers meticulous, eco-friendly residential and commercial cleaning across Ontario — London, Toronto, Mississauga, Kitchener & more. Get your free quote today." />
+        <link rel="canonical" href="https://trydenttcleaning.ca/" />
+        <meta property="og:title" content="Trydentt Cleaning Services | Professional Cleaning in Ontario" />
+        <meta property="og:description" content="Premium residential & commercial cleaning across Ontario. Eco-friendly, insured, 100% satisfaction guarantee. Get your free quote now." />
+        <meta property="og:url" content="https://trydenttcleaning.ca/" />
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://trydenttcleaning.ca/"}
+            ]
+          }
+        `}</script>
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How much does house cleaning cost in London, Ontario?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "House cleaning in London, Ontario typically ranges from $120 to $350 depending on the size of your home and type of clean. Trydentt offers free, no-obligation quotes with transparent pricing and no hidden fees."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is Trydentt Cleaning fully insured?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Trydentt Cleaning Services is fully insured and bonded. We carry comprehensive general liability insurance and workers' compensation coverage to protect your property and our team."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you use eco-friendly cleaning products?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Absolutely. We use EPA-certified, plant-based cleaning products that are safe for children, pets, and the environment. Our eco-friendly approach delivers the same powerful clean without harsh chemicals."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What areas does Trydentt Cleaning serve?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Trydentt Cleaning Services is based in London, Ontario and serves the surrounding areas including St. Thomas, Woodstock, Strathroy, Ingersoll, Tillsonburg, Aylmer, Dorchester, Komoka, and Byron."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is your satisfaction guarantee?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We offer a 100% satisfaction guarantee. If you're not completely happy with your clean, contact us within 24 hours and we'll return to make it right at no extra charge."
+                }
+              }
+            ]
+          }
+        `}</script>
+      </Helmet>
+
       {/* Hero Section */}
       <section className="relative pt-20 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
         {/* Fresh Breeze Animation */}
@@ -168,7 +235,7 @@ const Home: React.FC = () => {
                     key={i}
                     src={`https://picsum.photos/seed/${i + 10}/100/100`} 
                     className="w-10 h-10 rounded-full border-2 border-white"
-                    alt="User"
+                    alt="Trydentt Cleaning satisfied customer"
                     referrerPolicy="no-referrer"
                   />
                 ))}

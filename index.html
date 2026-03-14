@@ -14,6 +14,14 @@
     <meta name="facebook-domain-verification" content="g4gqjpw074c9snuxxszvn1ndub6afc" />
     <meta name="facebook-domain-verification" content="g6l2jl8rbm0o8u8tuwvn2532mh6p" />
 
+    <!-- Geo & Language Targeting -->
+    <meta name="geo.region" content="CA-ON" />
+    <meta name="geo.placename" content="London" />
+    <meta name="geo.position" content="42.9849;-81.2453" />
+    <meta name="ICBM" content="42.9849, -81.2453" />
+    <link rel="alternate" hreflang="en-ca" href="https://trydenttcleaning.ca/" />
+    <link rel="alternate" hreflang="x-default" href="https://trydenttcleaning.ca/" />
+
     <!-- Open Graph (Facebook / Instagram Ads) -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://trydenttcleaning.ca/" />
@@ -29,44 +37,90 @@
     <meta name="twitter:description" content="Premium residential & commercial cleaning across Ontario. Eco-friendly, insured, satisfaction guaranteed." />
     <meta name="twitter:image" content="https://trydenttcleaning.ca/og-image.jpg" />
 
-    <!-- Local Business Structured Data -->
+    <!-- CleaningService Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "@id": "https://trydenttcleaning.ca/",
+      "@type": "CleaningService",
+      "@id": "https://trydenttcleaning.ca/#organization",
       "name": "Trydentt Cleaning Services",
-      "description": "Professional residential and commercial cleaning services across Ontario. Eco-friendly products, fully insured, 100% satisfaction guarantee.",
+      "alternateName": "Trydentt Building Services",
+      "description": "Professional residential and commercial cleaning services in London, Ontario and across the province. Eco-friendly products, fully insured, 100% satisfaction guarantee.",
       "url": "https://trydenttcleaning.ca/",
       "telephone": "+15198713368",
       "email": "homes@trydenttbuildingservices.com",
       "priceRange": "$$",
       "image": "https://trydenttcleaning.ca/og-image.jpg",
+      "logo": "https://trydenttcleaning.ca/og-image.jpg",
+      "currenciesAccepted": "CAD",
+      "paymentAccepted": "Cash, Credit Card, E-Transfer",
       "address": {
         "@type": "PostalAddress",
-        "addressRegion": "Ontario",
+        "addressLocality": "London",
+        "addressRegion": "ON",
         "addressCountry": "CA"
       },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "42.9849",
+        "longitude": "-81.2453"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "07:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:00",
+          "closes": "17:00"
+        }
+      ],
       "areaServed": [
         {"@type": "City", "name": "London", "addressRegion": "Ontario", "addressCountry": "CA"},
-        {"@type": "City", "name": "Toronto", "addressRegion": "Ontario", "addressCountry": "CA"},
-        {"@type": "City", "name": "Mississauga", "addressRegion": "Ontario", "addressCountry": "CA"},
-        {"@type": "City", "name": "Oakville", "addressRegion": "Ontario", "addressCountry": "CA"},
-        {"@type": "City", "name": "Kitchener", "addressRegion": "Ontario", "addressCountry": "CA"},
-        {"@type": "City", "name": "Barrie", "addressRegion": "Ontario", "addressCountry": "CA"},
-        {"@type": "City", "name": "Kingston", "addressRegion": "Ontario", "addressCountry": "CA"},
-        {"@type": "City", "name": "Windsor", "addressRegion": "Ontario", "addressCountry": "CA"}
+        {"@type": "City", "name": "St. Thomas", "addressRegion": "Ontario", "addressCountry": "CA"},
+        {"@type": "City", "name": "Woodstock", "addressRegion": "Ontario", "addressCountry": "CA"},
+        {"@type": "City", "name": "Strathroy", "addressRegion": "Ontario", "addressCountry": "CA"},
+        {"@type": "City", "name": "Ingersoll", "addressRegion": "Ontario", "addressCountry": "CA"},
+        {"@type": "City", "name": "Tillsonburg", "addressRegion": "Ontario", "addressCountry": "CA"},
+        {"@type": "City", "name": "Aylmer", "addressRegion": "Ontario", "addressCountry": "CA"},
+        {"@type": "City", "name": "Dorchester", "addressRegion": "Ontario", "addressCountry": "CA"},
+        {"@type": "City", "name": "Komoka", "addressRegion": "Ontario", "addressCountry": "CA"},
+        {"@type": "City", "name": "Byron", "addressRegion": "Ontario", "addressCountry": "CA"}
       ],
-      "serviceType": [
-        "Residential Cleaning",
-        "Commercial Cleaning",
-        "Deep Cleaning",
-        "Move-In/Move-Out Cleaning",
-        "Post-Construction Cleaning",
-        "Eco-Friendly Cleaning",
-        "Office Cleaning",
-        "Janitorial Services"
-      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Cleaning Services",
+        "itemListElement": [
+          {
+            "@type": "OfferCatalog",
+            "name": "Residential Cleaning",
+            "itemListElement": [
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "General House Cleaning"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Deep Cleaning"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Move-In/Move-Out Cleaning"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Post-Construction Cleaning"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Eco-Friendly Cleaning"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Seasonal Cleaning"}}
+            ]
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Commercial Cleaning",
+            "itemListElement": [
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Office Cleaning"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Carpet & Upholstery Cleaning"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Window & Glass Cleaning"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Post-Event Cleaning"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Janitorial Services"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Retail Store Cleaning"}}
+            ]
+          }
+        ]
+      },
       "sameAs": [
         "https://www.facebook.com/trydenttcleaning",
         "https://www.instagram.com/trydenttcleaning",
@@ -79,6 +133,15 @@
       }
     }
     </script>
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WT37C3RDXE"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WT37C3RDXE');
+    </script>
+
     <!-- Meta Pixel -->
     <script>
     !function(f,b,e,v,n,t,s)

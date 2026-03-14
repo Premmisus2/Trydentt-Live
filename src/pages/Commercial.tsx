@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import QuickCalculator from '../components/QuickCalculator';
 import Sparkle from '../components/Sparkle';
@@ -56,6 +57,72 @@ const Commercial: React.FC = () => {
 
   return (
     <div className="overflow-hidden bg-slate-50 selection:bg-indigo-600/20 selection:text-indigo-900">
+      <Helmet>
+        <title>Commercial Cleaning Ontario | Office & Janitorial | Trydentt</title>
+        <meta name="description" content="Professional commercial cleaning services across Ontario. Office cleaning, janitorial, carpet & upholstery, window cleaning, post-event cleanup. Fully insured & bonded. Get a custom proposal." />
+        <link rel="canonical" href="https://trydenttcleaning.ca/commercial" />
+        <meta property="og:title" content="Commercial Cleaning Ontario | Trydentt Cleaning Services" />
+        <meta property="og:description" content="Professional commercial cleaning for Ontario businesses. Office, retail, janitorial services. Fully insured & bonded." />
+        <meta property="og:url" content="https://trydenttcleaning.ca/commercial" />
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://trydenttcleaning.ca/"},
+              {"@type": "ListItem", "position": 2, "name": "Commercial Cleaning", "item": "https://trydenttcleaning.ca/commercial"}
+            ]
+          }
+        `}</script>
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Commercial Cleaning",
+            "provider": {"@id": "https://trydenttcleaning.ca/#organization"},
+            "areaServed": {"@type": "City", "name": "London", "addressRegion": "Ontario", "addressCountry": "CA"},
+            "description": "Professional commercial cleaning services in London, Ontario. Office cleaning, janitorial, carpet & upholstery, window cleaning. Fully insured & bonded.",
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "CAD",
+              "availability": "https://schema.org/InStock"
+            }
+          }
+        `}</script>
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Do you offer after-hours commercial cleaning?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. We schedule our commercial cleaning around your business hours so your operations are never disrupted. Evening and weekend cleaning is available for offices, retail stores, and commercial spaces in London, Ontario."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do you handle commercial cleaning contracts?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We provide customized proposals based on your facility size, cleaning frequency, and specific requirements. We offer flexible month-to-month agreements with no long-term lock-ins."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is Trydentt insured for commercial properties?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Absolutely. Trydentt carries full commercial general liability insurance and workers' compensation coverage, protecting your business and property at all times."
+                }
+              }
+            ]
+          }
+        `}</script>
+      </Helmet>
+
       {/* Hero Section */}
       <section className="relative pt-20 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
         {/* Fresh Breeze Animation */}
@@ -69,7 +136,7 @@ const Commercial: React.FC = () => {
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-indigo-600/5 rounded-full blur-[100px] translate-y-1/2 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}

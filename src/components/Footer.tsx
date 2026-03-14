@@ -88,6 +88,7 @@ const Footer: React.FC = () => {
             <h3 className="text-white font-semibold mb-6">Company</h3>
             <ul className="space-y-4 text-sm">
               <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
+              <li><Link to="/london-ontario-cleaning" className="hover:text-white transition-colors">London, Ontario</Link></li>
               <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
               <li><Link to="/quote" className="hover:text-white transition-colors">Book Online</Link></li>
               <li><Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
@@ -108,7 +109,7 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-indigo-400 shrink-0 mt-0.5" />
-                <span>Serving all of Ontario — London, Toronto, Mississauga, Oakville, Kitchener, Barrie, Kingston &amp; Windsor</span>
+                <span>London, Ontario &amp; surrounding areas — St. Thomas, Woodstock, Strathroy, Ingersoll &amp; more</span>
               </li>
             </ul>
           </div>
