@@ -380,7 +380,7 @@ const Commercial: React.FC = () => {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-video group"
+              className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[3/4] max-h-[500px] mx-auto group"
             >
               <div className="absolute inset-0 w-full h-full">
                 <img
@@ -389,7 +389,7 @@ const Commercial: React.FC = () => {
                   height={450}
                   loading="lazy"
                   className="w-full h-full object-cover"
-                  alt="Commercial kitchen floor covered in debris before Trydentt cleaning service"
+                  alt="Commercial washroom with debris and broken glass before Trydentt cleaning service"
 
                 />
               </div>
@@ -403,7 +403,7 @@ const Commercial: React.FC = () => {
                   height={450}
                   loading="lazy"
                   className="w-full h-full object-cover"
-                  alt="Spotless commercial kitchen floor after Trydentt janitorial cleaning service"
+                  alt="Spotless commercial washroom after Trydentt janitorial cleaning service"
 
                 />
               </div>
