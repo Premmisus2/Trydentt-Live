@@ -390,29 +390,29 @@ const Residential: React.FC = () => {
             >
               <div className="absolute inset-0 w-full h-full">
                 <img
-                  src="/images/residential-before.jpg"
+                  src="/images/residential-after.jpg"
                   width={800}
                   height={450}
                   loading="lazy"
                   className="w-full h-full object-cover"
-                  alt="Window sill with water damage staining before Trydentt residential cleaning in London ON"
+                  alt="Spotless light fixture after Trydentt residential cleaning service in London Ontario"
 
                 />
                 <div className="absolute bottom-6 right-6 bg-indigo-600/90 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider shadow-lg">
                   AFTER
                 </div>
               </div>
-              <div 
+              <div
                 className="absolute inset-0 w-full h-full overflow-hidden"
                 style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
               >
                 <img
-                  src="/images/residential-after.jpg"
+                  src="/images/residential-before.jpg"
                   width={800}
                   height={450}
                   loading="lazy"
                   className="w-full h-full object-cover"
-                  alt="Spotless light fixture and ceiling after Trydentt house cleaning service in London Ontario"
+                  alt="Dusty light fixture before Trydentt house cleaning service in London Ontario"
 
                 />
                 <div className="absolute bottom-6 left-6 bg-slate-800/90 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider shadow-lg">

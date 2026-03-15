@@ -544,29 +544,29 @@ const Home: React.FC = () => {
             >
               <div className="absolute inset-0 w-full h-full">
                 <img
-                  src="/images/home-before.jpg"
-                  width={800}
-                  height={450}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                  alt="Window sill with mold and water stains before Trydentt deep cleaning service in London Ontario"
-
-                />
-                <div className="absolute bottom-6 right-6 bg-indigo-600/90 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider shadow-lg">
-                  AFTER
-                </div>
-              </div>
-              <div 
-                className="absolute inset-0 w-full h-full overflow-hidden"
-                style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-              >
-                <img
                   src="/images/home-after.jpg"
                   width={800}
                   height={450}
                   loading="lazy"
                   className="w-full h-full object-cover"
                   alt="Clean window sill after Trydentt mold remediation cleaning in London Ontario"
+
+                />
+                <div className="absolute bottom-6 right-6 bg-indigo-600/90 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider shadow-lg">
+                  AFTER
+                </div>
+              </div>
+              <div
+                className="absolute inset-0 w-full h-full overflow-hidden"
+                style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
+              >
+                <img
+                  src="/images/home-before.jpg"
+                  width={800}
+                  height={450}
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                  alt="Window sill with mold and water stains before Trydentt deep cleaning service in London Ontario"
 
                 />
                 <div className="absolute bottom-6 left-6 bg-slate-800/90 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider shadow-lg">
