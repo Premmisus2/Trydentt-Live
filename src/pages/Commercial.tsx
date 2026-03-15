@@ -380,7 +380,7 @@ const Commercial: React.FC = () => {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[3/4] max-h-[500px] mx-auto group"
+              className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-video group"
             >
               <div className="absolute inset-0 w-full h-full">
                 <img
