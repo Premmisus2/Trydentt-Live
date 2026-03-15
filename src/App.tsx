@@ -54,6 +54,26 @@ const App: React.FC = () => {
                     description="Strathroy's trusted cleaning service. Trydentt delivers meticulous residential and commercial cleaning with eco-friendly products, full insurance, and a 100% satisfaction guarantee."
                     areas={['Downtown Strathroy', 'North Strathroy', 'Caradoc', 'Mount Brydges', 'Adelaide', 'Kerwood', 'Appin']} />
                 } />
+                <Route path="/ingersoll-cleaning" element={
+                  <CityLanding city="Ingersoll" slug="ingersoll-cleaning" distance="30 minutes" population="13,000"
+                    description="Professional cleaning services now available in Ingersoll, Ontario. Trydentt brings eco-friendly residential and commercial cleaning with full insurance, flexible scheduling, and a 100% satisfaction guarantee."
+                    areas={['Downtown Ingersoll', 'North Ingersoll', 'South Ingersoll', 'Salford', 'Verschoyle', 'Centreville']} />
+                } />
+                <Route path="/tillsonburg-cleaning" element={
+                  <CityLanding city="Tillsonburg" slug="tillsonburg-cleaning" distance="50 minutes" population="18,000"
+                    description="Tillsonburg's go-to cleaning team. Trydentt Cleaning provides thorough residential and commercial cleaning services with eco-friendly products, full insurance, and our 100% satisfaction guarantee."
+                    areas={['Downtown Tillsonburg', 'North Tillsonburg', 'South Tillsonburg', 'Ostrander', 'Brownsville', 'Courtland', 'Straffordville']} />
+                } />
+                <Route path="/aylmer-cleaning" element={
+                  <CityLanding city="Aylmer" slug="aylmer-cleaning" distance="45 minutes" population="8,000"
+                    description="Reliable cleaning services for Aylmer, Ontario homes and businesses. Trydentt Cleaning offers eco-friendly products, fully insured team members, and a 100% satisfaction guarantee on every clean."
+                    areas={['Downtown Aylmer', 'East Aylmer', 'West Aylmer', 'Springfield', 'Malahide', 'Vienna', 'Port Bruce']} />
+                } />
+                <Route path="/dorchester-cleaning" element={
+                  <CityLanding city="Dorchester" slug="dorchester-cleaning" distance="15 minutes" population="4,000"
+                    description="Just minutes from London, Dorchester gets the same top-tier cleaning service. Trydentt provides eco-friendly residential and commercial cleaning with no travel surcharges and a 100% satisfaction guarantee."
+                    areas={['Dorchester', 'Belmont', 'Harrietsville', 'Nilestown', 'Putnam', 'Avon']} />
+                } />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/terms" element={<Terms />} />
                 <Route path="*" element={<NotFound />} />

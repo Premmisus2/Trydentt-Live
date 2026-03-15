@@ -78,13 +78,13 @@ const About: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
               <img
-                src="https://i.imgur.com/DD9oXhj.jpg"
+                src="/images/about-team.jpg"
                 width={600}
                 height={400}
                 loading="lazy"
                 className="rounded-3xl shadow-2xl"
                 alt="Trydentt Cleaning team delivering quality cleaning service in London Ontario"
-                referrerPolicy="no-referrer"
+
               />
             </div>
             <div className="order-1 lg:order-2">

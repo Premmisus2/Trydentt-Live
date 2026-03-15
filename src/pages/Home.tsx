@@ -196,7 +196,7 @@ const Home: React.FC = () => {
               <Sparkle className="text-indigo-200 w-4 h-4 bottom-0 -right-8" />
             </h1>
             <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto">
-              Trydentt Cleaning Services delivers a meticulous, eco-friendly clean for your home or business. Experience a new standard of professional hygiene.
+              London Ontario's trusted cleaning company. Trydentt delivers meticulous, eco-friendly house cleaning and commercial cleaning services — fully insured, with a 100% satisfaction guarantee.
             </p>
 
             <div className="flex flex-col items-center mb-12">
@@ -241,7 +241,7 @@ const Home: React.FC = () => {
                     loading="lazy"
                     className="w-10 h-10 rounded-full border-2 border-white"
                     alt={`Trydentt Cleaning customer review ${i}`}
-                    referrerPolicy="no-referrer"
+  
                   />
                 ))}
               </div>
@@ -270,7 +270,7 @@ const Home: React.FC = () => {
                   <HomeIcon className="w-8 h-8" />
                 </div>
                 <h3 className="text-3xl font-bold text-slate-900 mb-4 font-display">Residential Cleaning</h3>
-                <p className="text-slate-600 mb-8 text-lg">Premium care for your residence from apartments to houses, we handle it all with meticulous detail.</p>
+                <p className="text-slate-600 mb-8 text-lg">Professional house cleaning in London, Ontario — from apartments to family homes, we handle it all with meticulous detail and eco-friendly products.</p>
                 <Link to="/residential" className="btn-primary inline-flex items-center space-x-2">
                   <span>Explore Home Services</span>
                   <ArrowRight className="w-4 h-4" />
@@ -288,7 +288,7 @@ const Home: React.FC = () => {
                   <Building2 className="w-8 h-8" />
                 </div>
                 <h3 className="text-3xl font-bold text-white mb-4 font-display">Commercial Cleaning</h3>
-                <p className="text-slate-400 mb-8 text-lg">Professional hygiene standards for your business, dining, offices, and industrial spaces kept pristine.</p>
+                <p className="text-slate-400 mb-8 text-lg">Commercial cleaning and janitorial services for offices, restaurants, retail stores, and industrial spaces across Southwestern Ontario.</p>
                 <Link to="/commercial" className="bg-white text-slate-900 px-6 py-3 rounded-full font-semibold hover:bg-indigo-50 hover:-translate-y-0.5 hover:scale-105 shadow-lg transition-all flex items-center justify-center space-x-2 w-fit">
                   <span>Business Solutions</span>
                   <ArrowRight className="w-4 h-4" />
@@ -321,7 +321,7 @@ const Home: React.FC = () => {
               The Difference is in the Detail
               <Sparkle className="text-indigo-200 w-5 h-5 -top-4 right-1/4" />
             </h2>
-            <p className="text-slate-500 max-w-2xl mx-auto">Experience the 'Trydentt' standard. We provide a consistent service tailored to your schedule, ensuring a spotless environment on a weekly basis.</p>
+            <p className="text-slate-500 max-w-2xl mx-auto">Experience the Trydentt standard — professional cleaning in London, Ontario and surrounding areas. We deliver consistent, detail-oriented service tailored to your schedule, whether it's weekly house cleaning or daily office maintenance.</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-auto md:auto-rows-[240px]">
@@ -445,7 +445,7 @@ const Home: React.FC = () => {
               <Sparkle className="text-indigo-300 w-4 h-4 -top-4 -right-8" />
             </h2>
             <p className="text-slate-600 max-w-2xl mx-auto text-sm">
-              We provide meticulous cleaning solutions tailored for every environment. Select a category to explore our specialized offerings.
+              From deep cleaning and move-in/move-out services to office janitorial and post-event cleanup — explore our full range of residential and commercial cleaning solutions in London, Ontario.
             </p>
           </motion.div>
 
@@ -511,7 +511,7 @@ const Home: React.FC = () => {
                 <Sparkle className="text-indigo-300 w-6 h-6 -top-8 left-0" />
               </h2>
               <p className="text-lg text-slate-600 mb-10 leading-relaxed">
-                Don't just take our word for it. See the Trydentt difference in action. From neglected fixtures to pristine surfaces, we restore every detail to its original glory.
+                Don't just take our word for it — see the Trydentt difference in action. From mold-stained window sills to pristine surfaces, our London cleaning team restores every detail to its original glory.
               </p>
               <div className="space-y-6">
                 <div className="flex items-center space-x-4 group">
@@ -544,13 +544,13 @@ const Home: React.FC = () => {
             >
               <div className="absolute inset-0 w-full h-full">
                 <img
-                  src="https://i.imgur.com/qpkTEco.jpg"
+                  src="/images/home-before.jpg"
                   width={800}
                   height={450}
                   loading="lazy"
                   className="w-full h-full object-cover"
-                  alt="Sparkling clean kitchen after Trydentt professional deep cleaning service"
-                  referrerPolicy="no-referrer"
+                  alt="Window sill with mold and water stains before Trydentt deep cleaning service in London Ontario"
+
                 />
                 <div className="absolute bottom-6 right-6 bg-indigo-600/90 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider shadow-lg">
                   AFTER
@@ -561,13 +561,13 @@ const Home: React.FC = () => {
                 style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
               >
                 <img
-                  src="https://i.imgur.com/BLgbuHK.jpg"
+                  src="/images/home-after.jpg"
                   width={800}
                   height={450}
                   loading="lazy"
                   className="w-full h-full object-cover"
-                  alt="Dirty kitchen before Trydentt cleaning service in London Ontario"
-                  referrerPolicy="no-referrer"
+                  alt="Clean window sill after Trydentt mold remediation cleaning in London Ontario"
+
                 />
                 <div className="absolute bottom-6 left-6 bg-slate-800/90 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider shadow-lg">
                   BEFORE
@@ -621,7 +621,7 @@ const Home: React.FC = () => {
               <div className="text-white">
                 <h2 className="text-4xl md:text-5xl font-bold mb-8 font-display">Ready for a cleaner space?</h2>
                 <p className="text-xl text-indigo-100 mb-10">
-                  Join our list of happy clients. Fill out this simple form and we'll get back to you with a custom plan in less than 2 hours.
+                  Join hundreds of happy homes and businesses across London, St. Thomas, Woodstock, and beyond. Get a custom cleaning plan in less than 2 hours.
                 </p>
                 <div className="flex items-center space-x-6">
                   <div className="flex items-center space-x-2">

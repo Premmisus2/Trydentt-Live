@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-slate-900 text-slate-300 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 mb-12">
           <div className="col-span-1 md:col-span-1">
             <Link to="/" className="flex items-center space-x-3 mb-6">
               <Logo className="w-8 h-8" />
@@ -93,6 +93,20 @@ const Footer: React.FC = () => {
               <li><Link to="/quote" className="hover:text-white transition-colors">Book Online</Link></li>
               <li><Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
               <li><Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-white font-semibold mb-6">Service Areas</h3>
+            <ul className="space-y-4 text-sm">
+              <li><Link to="/london-ontario-cleaning" className="hover:text-white transition-colors">London, ON</Link></li>
+              <li><Link to="/st-thomas-cleaning" className="hover:text-white transition-colors">St. Thomas</Link></li>
+              <li><Link to="/woodstock-cleaning" className="hover:text-white transition-colors">Woodstock</Link></li>
+              <li><Link to="/strathroy-cleaning" className="hover:text-white transition-colors">Strathroy</Link></li>
+              <li><Link to="/ingersoll-cleaning" className="hover:text-white transition-colors">Ingersoll</Link></li>
+              <li><Link to="/tillsonburg-cleaning" className="hover:text-white transition-colors">Tillsonburg</Link></li>
+              <li><Link to="/aylmer-cleaning" className="hover:text-white transition-colors">Aylmer</Link></li>
+              <li><Link to="/dorchester-cleaning" className="hover:text-white transition-colors">Dorchester</Link></li>
             </ul>
           </div>
 

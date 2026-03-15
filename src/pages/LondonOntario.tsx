@@ -92,7 +92,7 @@ const LondonOntario: React.FC = () => {
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.9",
-              "reviewCount": "24"
+              "reviewCount": "10"
             }
           }
         `}</script>

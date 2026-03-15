@@ -154,7 +154,7 @@ const Commercial: React.FC = () => {
               <Sparkle className="text-indigo-200 w-4 h-4 bottom-0 -right-8" />
             </h1>
             <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto">
-              Your workspace is a reflection of your brand. Trydentt delivers consistent high-quality sanitation, so your team can focus on excellence.
+              Your workspace is a reflection of your brand. Trydentt delivers professional commercial cleaning and janitorial services in London, Ontario — consistent, fully insured, and tailored to your business hours.
             </p>
 
             <div className="flex flex-col items-center mb-12">
@@ -196,7 +196,7 @@ const Commercial: React.FC = () => {
               The Difference is in the Detail
               <Sparkle className="text-indigo-200 w-5 h-5 -top-4 right-1/4" />
             </h2>
-            <p className="text-slate-500 max-w-2xl mx-auto">Experience the 'Trydentt' standard. We provide a consistent service for your business, ensuring quality sanitation so your team can focus on what they are best at.</p>
+            <p className="text-slate-500 max-w-2xl mx-auto">Experience the Trydentt standard — reliable commercial cleaning across London and Southwestern Ontario. From office cleaning and carpet care to post-event cleanup, we keep your business spotless so your team can focus on what they do best.</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-auto md:auto-rows-[240px]">
@@ -316,7 +316,7 @@ const Commercial: React.FC = () => {
               <Sparkle className="text-indigo-300 w-4 h-4 -top-4 -right-8" />
             </h2>
             <p className="text-slate-600 max-w-2xl mx-auto text-sm">
-              Meticulous cleaning solutions, tailored to your business environment, from corporate offices to restaurants and more.
+              Professional office cleaning, janitorial services, carpet and upholstery care, window cleaning, and post-event restoration — tailored to your London, Ontario business.
             </p>
           </motion.div>
 
@@ -351,7 +351,7 @@ const Commercial: React.FC = () => {
                 <Sparkle className="text-indigo-300 w-6 h-6 -top-8 left-0" />
               </h2>
               <p className="text-lg text-slate-600 mb-10 leading-relaxed">
-                See the Trydentt difference in action. From corporate lobbies to high-traffic restaurants, we maintain the highest standards of hygiene.
+                See the Trydentt difference in action. From trashed restaurant kitchens to spotless commercial floors, our London cleaning team maintains the highest standards of commercial hygiene.
               </p>
               <div className="space-y-6">
                 <div className="flex items-center space-x-4 group">
@@ -384,13 +384,13 @@ const Commercial: React.FC = () => {
             >
               <div className="absolute inset-0 w-full h-full">
                 <img
-                  src="https://i.imgur.com/2uxblQz.jpg"
+                  src="/images/commercial-before.jpg"
                   width={800}
                   height={450}
                   loading="lazy"
                   className="w-full h-full object-cover"
-                  alt="Clean commercial office space after Trydentt janitorial service"
-                  referrerPolicy="no-referrer"
+                  alt="Commercial kitchen floor covered in debris before Trydentt cleaning service"
+
                 />
               </div>
               <div 
@@ -398,13 +398,13 @@ const Commercial: React.FC = () => {
                 style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
               >
                 <img
-                  src="https://i.imgur.com/ByhV0ZH.jpg"
+                  src="/images/commercial-after.jpg"
                   width={800}
                   height={450}
                   loading="lazy"
                   className="w-full h-full object-cover"
-                  alt="Dirty commercial workspace before Trydentt office cleaning service"
-                  referrerPolicy="no-referrer"
+                  alt="Spotless commercial kitchen floor after Trydentt janitorial cleaning service"
+
                 />
               </div>
               
@@ -454,6 +454,10 @@ const Commercial: React.FC = () => {
             <Link to="/st-thomas-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">St. Thomas</Link>
             <Link to="/woodstock-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">Woodstock</Link>
             <Link to="/strathroy-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">Strathroy</Link>
+            <Link to="/ingersoll-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">Ingersoll</Link>
+            <Link to="/tillsonburg-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">Tillsonburg</Link>
+            <Link to="/aylmer-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">Aylmer</Link>
+            <Link to="/dorchester-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">Dorchester</Link>
           </div>
         </div>
       </section>
@@ -471,7 +475,7 @@ const Commercial: React.FC = () => {
               <div className="text-white">
                 <h2 className="text-4xl md:text-5xl font-bold mb-8 font-display">Elevate your workspace?</h2>
                 <p className="text-xl text-indigo-100 mb-10">
-                  Join our group of corporate partners. Fill out this simple form, and we'll get back to you with a custom proposal in less than two hours.
+                  Join businesses across London, St. Thomas, Woodstock, and Southwestern Ontario who trust Trydentt. Get a custom commercial cleaning proposal in less than two hours.
                 </p>
                 <div className="flex items-center space-x-6">
                   <div className="flex items-center space-x-2">

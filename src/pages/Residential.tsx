@@ -161,7 +161,7 @@ const Residential: React.FC = () => {
               <Sparkle className="text-indigo-200 w-4 h-4 bottom-0 -right-8" />
             </h1>
             <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto">
-              Stop spending your precious free time scrubbing floors. Trydentt delivers a meticulous, family-safe clean so you can focus on what matters most.
+              Stop spending weekends scrubbing floors. Trydentt delivers professional house cleaning in London, Ontario — meticulous, eco-friendly, and family-safe so you can focus on what matters most.
             </p>
 
             <div className="flex flex-col items-center mb-12">
@@ -203,7 +203,7 @@ const Residential: React.FC = () => {
               The Difference is in the Detail
               <Sparkle className="text-indigo-200 w-5 h-5 -top-4 right-1/4" />
             </h2>
-            <p className="text-slate-500 max-w-2xl mx-auto">Experience the 'Trydentt' standard. We provide a consistent service tailored to your schedule, ensuring a spotless environment on a weekly basis.</p>
+            <p className="text-slate-500 max-w-2xl mx-auto">Experience the Trydentt standard — reliable residential cleaning in London and surrounding areas. We provide consistent, detail-oriented house cleaning tailored to your schedule, from weekly maintenance to one-time deep cleans.</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-auto md:auto-rows-[240px]">
@@ -322,7 +322,7 @@ const Residential: React.FC = () => {
               <Sparkle className="text-indigo-300 w-4 h-4 -top-4 -right-8" />
             </h2>
             <p className="text-slate-600 max-w-2xl mx-auto text-sm">
-              Tailored cleaning solutions for every home. From daily maintenance to deep seasonal refreshes.
+              Tailored home cleaning solutions for every need — general house cleaning, deep cleaning, move-in/move-out, post-construction cleanup, and eco-friendly options for families across London, Ontario.
             </p>
           </motion.div>
 
@@ -357,7 +357,7 @@ const Residential: React.FC = () => {
                 <Sparkle className="text-indigo-300 w-6 h-6 -top-8 left-0" />
               </h2>
               <p className="text-lg text-slate-600 mb-10 leading-relaxed">
-                See the Trydentt difference in action. From kitchen grease to bathroom grime and neglected window sills, we restore your home to its original glory.
+                See the Trydentt difference in action. From mold-stained window sills to neglected fixtures, our residential cleaning team in London restores every surface to its original glory.
               </p>
               <div className="space-y-6">
                 <div className="flex items-center space-x-4 group">
@@ -390,13 +390,13 @@ const Residential: React.FC = () => {
             >
               <div className="absolute inset-0 w-full h-full">
                 <img
-                  src="https://i.imgur.com/YoWEzeP.jpg"
+                  src="/images/residential-before.jpg"
                   width={800}
                   height={450}
                   loading="lazy"
                   className="w-full h-full object-cover"
-                  alt="Clean residential bathroom after Trydentt house cleaning service in London ON"
-                  referrerPolicy="no-referrer"
+                  alt="Window sill with water damage staining before Trydentt residential cleaning in London ON"
+
                 />
                 <div className="absolute bottom-6 right-6 bg-indigo-600/90 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider shadow-lg">
                   AFTER
@@ -407,13 +407,13 @@ const Residential: React.FC = () => {
                 style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
               >
                 <img
-                  src="https://i.imgur.com/DQN6EnX.jpg"
+                  src="/images/residential-after.jpg"
                   width={800}
                   height={450}
                   loading="lazy"
                   className="w-full h-full object-cover"
-                  alt="Dirty residential bathroom before Trydentt cleaning in London Ontario"
-                  referrerPolicy="no-referrer"
+                  alt="Spotless light fixture and ceiling after Trydentt house cleaning service in London Ontario"
+
                 />
                 <div className="absolute bottom-6 left-6 bg-slate-800/90 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider shadow-lg">
                   BEFORE
@@ -463,6 +463,10 @@ const Residential: React.FC = () => {
             <Link to="/st-thomas-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">St. Thomas</Link>
             <Link to="/woodstock-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">Woodstock</Link>
             <Link to="/strathroy-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">Strathroy</Link>
+            <Link to="/ingersoll-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">Ingersoll</Link>
+            <Link to="/tillsonburg-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">Tillsonburg</Link>
+            <Link to="/aylmer-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">Aylmer</Link>
+            <Link to="/dorchester-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">Dorchester</Link>
           </div>
         </div>
       </section>
@@ -480,7 +484,7 @@ const Residential: React.FC = () => {
               <div className="text-white">
                 <h2 className="text-4xl md:text-5xl font-bold mb-8 font-display">Ready for a spotless clean?</h2>
                 <p className="text-xl text-indigo-100 mb-10">
-                  Join our list of happy families. Fill out this simple form and we'll get back to you with a custom plan in less than two hours.
+                  Join families across London, St. Thomas, Woodstock, and Strathroy who trust Trydentt with their homes. Get a custom cleaning plan in less than two hours.
                 </p>
                 <div className="flex items-center space-x-6">
                   <div className="flex items-center space-x-2">

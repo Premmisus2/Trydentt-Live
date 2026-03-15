@@ -21,6 +21,10 @@ const Header: React.FC = () => {
     { name: 'St. Thomas', path: '/st-thomas-cleaning' },
     { name: 'Woodstock', path: '/woodstock-cleaning' },
     { name: 'Strathroy', path: '/strathroy-cleaning' },
+    { name: 'Ingersoll', path: '/ingersoll-cleaning' },
+    { name: 'Tillsonburg', path: '/tillsonburg-cleaning' },
+    { name: 'Aylmer', path: '/aylmer-cleaning' },
+    { name: 'Dorchester', path: '/dorchester-cleaning' },
   ];
 
   const isActive = (path: string) => location.pathname === path;

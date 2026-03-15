@@ -89,7 +89,7 @@ const CityLanding: React.FC<CityLandingProps> = ({ city, slug, distance, populat
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.9",
-              "reviewCount": "24"
+              "reviewCount": "10"
             }
           }
         `}</script>

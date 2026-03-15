@@ -7,6 +7,13 @@ import { getSmartEstimate } from '../services/geminiService';
 import { QuoteRequest, GeminiResponse } from '../types';
 import QuickCalculator from '../components/QuickCalculator';
 
+declare global {
+  interface Window {
+    fbq: (...args: any[]) => void;
+    gtag: (...args: any[]) => void;
+  }
+}
+
 const GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/a9j6O8eXLyQk7lKBkZFD/webhook-trigger/220c1782-0e8e-4072-a736-9b848a391f78';
 
 const Quote: React.FC = () => {
@@ -101,6 +108,24 @@ const Quote: React.FC = () => {
       maxPrice: data.max
     });
     setShowBooking(true);
+
+    // Meta Pixel — high-intent signal for retargeting
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'InitiateCheckout', {
+        content_name: data.service,
+        content_category: data.niche,
+        value: data.min,
+        currency: 'CAD',
+      });
+    }
+    // GA4 — quote completed event
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'begin_checkout', {
+        currency: 'CAD',
+        value: data.min,
+        items: [{ item_name: data.service, item_category: data.niche }],
+      });
+    }
   };
 
   const handleBookingSubmit = async (e: React.FormEvent) => {
