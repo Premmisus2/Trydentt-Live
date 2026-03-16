@@ -8,3 +8,6 @@ createRoot(document.getElementById('root')!).render(
     <App />
   </StrictMode>,
 );
+
+// Signal to prerenderer that the app has mounted
+document.dispatchEvent(new Event('render-event'));
