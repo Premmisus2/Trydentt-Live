@@ -61,6 +61,14 @@ const Contact: React.FC = () => {
         <meta property="og:description" content="Get in touch for a free cleaning estimate. Call or message us — we respond within 2 hours." />
         <meta property="og:url" content="https://trydenttcleaning.ca/contact" />
         <meta property="og:image" content="https://trydenttcleaning.ca/og-image.jpg" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://trydenttcleaning.ca/" },
+            { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://trydenttcleaning.ca/contact" }
+          ]
+        })}</script>
       </Helmet>
 
       <section className="pt-20 pb-24 bg-slate-50">

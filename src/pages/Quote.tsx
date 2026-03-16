@@ -192,7 +192,18 @@ const Quote: React.FC = () => {
         <meta property="og:description" content="Instant cleaning estimates for your home or business. No phone calls, no hassle. Get your free quote now." />
         <meta property="og:url" content="https://trydenttcleaning.ca/quote" />
         <meta property="og:image" content="https://trydenttcleaning.ca/og-image.jpg" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://trydenttcleaning.ca/" },
+            { "@type": "ListItem", "position": 2, "name": "Free Quote", "item": "https://trydenttcleaning.ca/quote" }
+          ]
+        })}</script>
       </Helmet>
+
+      <h1 className="text-3xl md:text-4xl font-bold text-slate-900 text-center mb-2">Get Your Free Cleaning Estimate</h1>
+      <p className="text-slate-500 text-center mb-8">Instant AI-powered quotes for homes and businesses across London, Ontario</p>
 
       {!showBooking && (
         <div className="mb-12 min-h-[600px]">
