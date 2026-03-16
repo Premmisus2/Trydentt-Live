@@ -53,7 +53,7 @@ const WhyChooseUs: React.FC = () => {
             >
                 <div className="w-full h-full rounded-full overflow-hidden relative bg-white flex items-center justify-center">
                     <img
-                        src="/canada-flag.svg"
+                        src="/canada-flag.jpg"
                         width={400}
                         height={400}
                         loading="lazy"
