@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
 import {
   MapPin, ArrowRight, CheckCircle2, Star, Shield,
-  Sparkles, Home as HomeIcon, Building2, Phone, Clock
+  Sparkles, Home as HomeIcon, Building2, Phone, Clock, ChevronDown
 } from 'lucide-react';
 
 const neighborhoods = [
@@ -26,43 +26,28 @@ const LondonOntario: React.FC = () => {
       <Helmet>
         <title>Cleaning Services London Ontario | House & Office Cleaning | Trydentt</title>
         <meta name="description" content="London Ontario's trusted cleaning company. Residential & commercial cleaning in London, ON — Byron, Masonville, Wortley Village, Old North & all neighbourhoods. Eco-friendly, fully insured. Free quotes." />
-        <link rel="canonical" href="https://trydenttcleaning.ca/london-ontario-cleaning" />
+        <link rel="canonical" href="https://www.trydenttcleaning.ca/london-ontario-cleaning" />
         <meta property="og:title" content="Cleaning Services London Ontario | Trydentt Cleaning" />
         <meta property="og:description" content="London Ontario's top-rated cleaning service. House cleaning, office cleaning, deep cleaning. Eco-friendly, insured, satisfaction guaranteed." />
-        <meta property="og:url" content="https://trydenttcleaning.ca/london-ontario-cleaning" />
-        <meta property="og:image" content="https://trydenttcleaning.ca/og-image.jpg" />
+        <meta property="og:url" content="https://www.trydenttcleaning.ca/london-ontario-cleaning" />
+        <meta property="og:image" content="https://www.trydenttcleaning.ca/og-image.jpg" />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://trydenttcleaning.ca/"},
-              {"@type": "ListItem", "position": 2, "name": "London Ontario Cleaning", "item": "https://trydenttcleaning.ca/london-ontario-cleaning"}
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trydenttcleaning.ca/"},
+              {"@type": "ListItem", "position": 2, "name": "London Ontario Cleaning", "item": "https://www.trydenttcleaning.ca/london-ontario-cleaning"}
             ]
           }
         `}</script>
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "Trydentt Cleaning Services — London",
-            "description": "London Ontario's trusted cleaning company. Professional residential and commercial cleaning. Eco-friendly, fully insured, 100% satisfaction guarantee.",
-            "url": "https://trydenttcleaning.ca/london-ontario-cleaning",
-            "telephone": "+15198713368",
-            "email": "homes@trydenttbuildingservices.com",
-            "priceRange": "$$",
-            "image": "https://trydenttcleaning.ca/og-image.jpg",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "London",
-              "addressRegion": "ON",
-              "addressCountry": "CA"
-            },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "42.9849",
-              "longitude": "-81.2453"
-            },
+            "@type": "Service",
+            "name": "Cleaning Services in London, Ontario",
+            "serviceType": "Cleaning Service",
+            "provider": {"@id": "https://www.trydenttcleaning.ca/#organization"},
             "areaServed": [
               {"@type": "City", "name": "London", "addressRegion": "Ontario"},
               {"@type": "City", "name": "Byron"},
@@ -74,26 +59,8 @@ const LondonOntario: React.FC = () => {
               {"@type": "City", "name": "Lambeth"},
               {"@type": "City", "name": "Westmount"}
             ],
-            "parentOrganization": {"@id": "https://trydenttcleaning.ca/#organization"},
-            "openingHoursSpecification": [
-              {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-                "opens": "07:00",
-                "closes": "19:00"
-              },
-              {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": "Saturday",
-                "opens": "08:00",
-                "closes": "17:00"
-              }
-            ],
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "reviewCount": "10"
-            }
+            "description": "London Ontario's trusted cleaning company. Professional residential and commercial cleaning. Eco-friendly, fully insured, 100% satisfaction guarantee.",
+            "url": "https://www.trydenttcleaning.ca/london-ontario-cleaning"
           }
         `}</script>
         <script type="application/ld+json">{`
@@ -106,7 +73,7 @@ const LondonOntario: React.FC = () => {
                 "name": "What is the best cleaning company in London, Ontario?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Trydentt Cleaning Services is London Ontario's top-rated cleaning company with a 4.9/5 rating. We serve all London neighbourhoods including Byron, Masonville, Wortley Village, Old North, and more. Fully insured, eco-friendly, with a 100% satisfaction guarantee."
+                  "text": "Trydentt Cleaning Services is London Ontario's top-rated cleaning company with a 5/5 rating. We serve all London neighbourhoods including Byron, Masonville, Wortley Village, Old North, and more. Fully insured, eco-friendly, with a 100% satisfaction guarantee."
                 }
               },
               {
@@ -193,7 +160,7 @@ const LondonOntario: React.FC = () => {
               <div className="flex items-center text-amber-400">
                 {[1, 2, 3, 4, 5].map((i) => <Star key={i} className="w-5 h-5 fill-current" />)}
               </div>
-              <p className="text-slate-500 font-medium">4.9/5 — Trusted by London families & businesses</p>
+              <p className="text-slate-500 font-medium">5/5 — Trusted by London families & businesses</p>
             </div>
           </motion.div>
         </div>
@@ -324,6 +291,66 @@ const LondonOntario: React.FC = () => {
                 </span>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section — Visible HTML (matches schema in Helmet) */}
+      <section className="py-24 bg-slate-50 relative overflow-hidden">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 font-display">
+              Frequently Asked Questions
+            </h2>
+            <p className="mt-4 text-lg text-slate-600">
+              Questions about cleaning in London, Ontario.
+            </p>
+          </motion.div>
+          <div className="space-y-4">
+            {[
+              {
+                q: "What is the best cleaning company in London, Ontario?",
+                a: "Trydentt Cleaning Services is London Ontario's top-rated cleaning company with a 5/5 rating. We serve all London neighbourhoods including Byron, Masonville, Wortley Village, Old North, and more. Fully insured, eco-friendly, with a 100% satisfaction guarantee."
+              },
+              {
+                q: "How much does a house cleaner cost in London, Ontario?",
+                a: "House cleaning in London, Ontario typically costs $120–$350 depending on home size and cleaning type. Regular maintenance cleaning is more affordable, while deep cleaning and move-out cleaning are priced higher. Trydentt offers free, transparent quotes with no hidden fees."
+              },
+              {
+                q: "Do you clean homes in Byron and Masonville?",
+                a: "Yes! We serve all London neighbourhoods including Byron, Masonville, Wortley Village, Old North, Old South, Westmount, Hyde Park, Oakridge, Lambeth, and all surrounding areas within a 40km radius."
+              },
+              {
+                q: "Do you offer office cleaning in London, Ontario?",
+                a: "Yes. Trydentt provides professional commercial cleaning for London offices, retail stores, restaurants, and industrial spaces. We offer flexible after-hours scheduling, custom proposals, and are fully insured and bonded."
+              },
+              {
+                q: "Can I book a same-week cleaning in London?",
+                a: "In most cases, yes. We offer quick turnaround booking for London and surrounding areas. Request a free quote online and we typically respond within 2 hours with availability."
+              }
+            ].map((faq, i) => (
+              <motion.details
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="group bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden"
+              >
+                <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-left text-slate-900 font-semibold text-lg hover:bg-slate-50 transition-colors list-none [&::-webkit-details-marker]:hidden">
+                  <span>{faq.q}</span>
+                  <ChevronDown className="w-5 h-5 text-slate-400 transition-transform group-open:rotate-180 flex-shrink-0 ml-4" />
+                </summary>
+                <div className="px-6 pb-5 text-slate-600 leading-relaxed">
+                  {faq.a}
+                </div>
+              </motion.details>
+            ))}
           </div>
         </div>
       </section>

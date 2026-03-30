@@ -8,8 +8,8 @@ import ServiceCard from '../components/ServiceCard';
 import { 
   Shield, Sparkles, Clock, ArrowRight, Star, 
   Home as HomeIcon, AlertCircle, Frown, 
-  CheckCircle2, Trophy, Zap, Calendar, 
-  Wind, Trash2, Send, XCircle, DollarSign
+  CheckCircle2, Trophy, Zap, Calendar,
+  Wind, Trash2, Send, XCircle, DollarSign, ChevronDown
 } from 'lucide-react';
 
 const Residential: React.FC = () => {
@@ -59,18 +59,18 @@ const Residential: React.FC = () => {
       <Helmet>
         <title>Residential Cleaning London ON | House Cleaning | Trydentt</title>
         <meta name="description" content="Professional house cleaning services in London, Ontario and surrounding areas. Deep cleaning, move-in/move-out, eco-friendly options. Fully insured, 100% satisfaction guarantee. Get a free quote." />
-        <link rel="canonical" href="https://trydenttcleaning.ca/residential" />
+        <link rel="canonical" href="https://www.trydenttcleaning.ca/residential" />
         <meta property="og:title" content="Residential Cleaning London ON | Trydentt Cleaning Services" />
         <meta property="og:description" content="Premium house cleaning for London, Ontario families. Eco-friendly, fully insured, satisfaction guaranteed." />
-        <meta property="og:url" content="https://trydenttcleaning.ca/residential" />
-        <meta property="og:image" content="https://trydenttcleaning.ca/og-image.jpg" />
+        <meta property="og:url" content="https://www.trydenttcleaning.ca/residential" />
+        <meta property="og:image" content="https://www.trydenttcleaning.ca/og-image.jpg" />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://trydenttcleaning.ca/"},
-              {"@type": "ListItem", "position": 2, "name": "Residential Cleaning", "item": "https://trydenttcleaning.ca/residential"}
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trydenttcleaning.ca/"},
+              {"@type": "ListItem", "position": 2, "name": "Residential Cleaning", "item": "https://www.trydenttcleaning.ca/residential"}
             ]
           }
         `}</script>
@@ -79,7 +79,7 @@ const Residential: React.FC = () => {
             "@context": "https://schema.org",
             "@type": "Service",
             "serviceType": "Residential Cleaning",
-            "provider": {"@id": "https://trydenttcleaning.ca/#organization"},
+            "provider": {"@id": "https://www.trydenttcleaning.ca/#organization"},
             "areaServed": {"@type": "City", "name": "London", "addressRegion": "Ontario", "addressCountry": "CA"},
             "description": "Professional house cleaning services in London, Ontario. Deep cleaning, move-in/move-out, eco-friendly options. Fully insured with 100% satisfaction guarantee.",
             "offers": {
@@ -389,15 +389,17 @@ const Residential: React.FC = () => {
               className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-video group"
             >
               <div className="absolute inset-0 w-full h-full">
-                <img
-                  src="/images/residential-after.jpg"
-                  width={800}
-                  height={450}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                  alt="Spotless light fixture after Trydentt residential cleaning service in London Ontario"
-
-                />
+                <picture>
+                  <source srcSet="/images/residential-after.webp" type="image/webp" />
+                  <img
+                    src="/images/residential-after.jpg"
+                    width={800}
+                    height={450}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                    alt="Spotless light fixture after Trydentt residential cleaning service in London Ontario"
+                  />
+                </picture>
                 <div className="absolute bottom-6 right-6 bg-indigo-600/90 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider shadow-lg">
                   AFTER
                 </div>
@@ -406,15 +408,17 @@ const Residential: React.FC = () => {
                 className="absolute inset-0 w-full h-full overflow-hidden"
                 style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
               >
-                <img
-                  src="/images/residential-before.jpg"
-                  width={800}
-                  height={450}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                  alt="Dusty light fixture before Trydentt house cleaning service in London Ontario"
-
-                />
+                <picture>
+                  <source srcSet="/images/residential-before.webp" type="image/webp" />
+                  <img
+                    src="/images/residential-before.jpg"
+                    width={800}
+                    height={450}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                    alt="Dusty light fixture before Trydentt house cleaning service in London Ontario"
+                  />
+                </picture>
                 <div className="absolute bottom-6 left-6 bg-slate-800/90 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider shadow-lg">
                   BEFORE
                 </div>
@@ -471,10 +475,66 @@ const Residential: React.FC = () => {
         </div>
       </section>
 
+      {/* FAQ Section — Visible HTML (matches schema in Helmet) */}
+      <section className="py-24 bg-slate-50 relative overflow-hidden">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 font-display">
+              Frequently Asked Questions
+            </h2>
+            <p className="mt-4 text-lg text-slate-600">
+              Questions about our residential services.
+            </p>
+          </motion.div>
+          <div className="space-y-4">
+            {[
+              {
+                q: "What's included in a general house cleaning?",
+                a: "Our general house cleaning includes dusting all surfaces, vacuuming and mopping floors, sanitizing bathrooms and kitchens, wiping down high-touch areas, and taking out trash. We focus on high-touch points to ensure a healthy living environment."
+              },
+              {
+                q: "How often should I schedule a deep cleaning?",
+                a: "We recommend a deep cleaning every 3 to 6 months, depending on household size, pets, and lifestyle. Deep cleans target neglected areas like behind appliances, inside ovens, grout scrubbing, and baseboards."
+              },
+              {
+                q: "Do you offer move-in and move-out cleaning in London?",
+                a: "Yes! Our move-in/move-out cleaning service in London, Ontario covers everything from baseboards to ceiling fans, ensuring you get your deposit back or step into a spotless new home."
+              },
+              {
+                q: "Are your cleaning products safe for pets and children?",
+                a: "Yes. We use only EPA-certified, plant-based products that are tough on dirt but completely safe for pets and children. No harsh chemicals, ever."
+              }
+            ].map((faq, i) => (
+              <motion.details
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="group bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden"
+              >
+                <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-left text-slate-900 font-semibold text-lg hover:bg-slate-50 transition-colors list-none [&::-webkit-details-marker]:hidden">
+                  <span>{faq.q}</span>
+                  <ChevronDown className="w-5 h-5 text-slate-400 transition-transform group-open:rotate-180 flex-shrink-0 ml-4" />
+                </summary>
+                <div className="px-6 pb-5 text-slate-600 leading-relaxed">
+                  {faq.a}
+                </div>
+              </motion.details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 6. Low-Friction CTA Form Section */}
       <section id="booking-form" className="py-24 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

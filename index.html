@@ -13,13 +13,16 @@
     <!-- Preconnect to external origins for faster loading -->
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
+    <!-- Fonts self-hosted — no external font requests needed -->
+    <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/outfit.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://connect.facebook.net" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
     <meta name="theme-color" content="#4F46E5" />
     <meta name="format-detection" content="telephone=no" />
-    <link rel="canonical" href="https://trydenttcleaning.ca/" />
+    <link rel="canonical" href="https://www.trydenttcleaning.ca/" />
     <meta name="google-site-verification" content="GotGUwJf1n_Dm0MXkrkad1NfVbcVwaVK5kyXCDJgSIU" />
     <meta name="facebook-domain-verification" content="g4gqjpw074c9snuxxszvn1ndub6afc" />
     <meta name="facebook-domain-verification" content="g6l2jl8rbm0o8u8tuwvn2532mh6p" />
@@ -29,15 +32,15 @@
     <meta name="geo.placename" content="London" />
     <meta name="geo.position" content="42.9849;-81.2453" />
     <meta name="ICBM" content="42.9849, -81.2453" />
-    <link rel="alternate" hreflang="en-ca" href="https://trydenttcleaning.ca/" />
-    <link rel="alternate" hreflang="x-default" href="https://trydenttcleaning.ca/" />
+    <link rel="alternate" hreflang="en-ca" href="https://www.trydenttcleaning.ca/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.trydenttcleaning.ca/" />
 
     <!-- Open Graph (Facebook / Instagram Ads) -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://trydenttcleaning.ca/" />
+    <meta property="og:url" content="https://www.trydenttcleaning.ca/" />
     <meta property="og:title" content="Trydentt Cleaning Services London ON | House & Office Cleaning" />
     <meta property="og:description" content="London Ontario's trusted cleaning company. Professional house cleaning, office cleaning, deep cleaning. Eco-friendly, fully insured, 100% satisfaction guarantee." />
-    <meta property="og:image" content="https://trydenttcleaning.ca/og-image.jpg" />
+    <meta property="og:image" content="https://www.trydenttcleaning.ca/og-image.jpg" />
     <meta property="og:site_name" content="Trydentt Cleaning Services" />
     <meta property="og:locale" content="en_CA" />
 
@@ -45,29 +48,30 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Trydentt Cleaning Services London ON | House & Office Cleaning" />
     <meta name="twitter:description" content="London Ontario's trusted cleaning company. Eco-friendly, fully insured, 100% satisfaction guarantee. Call (519) 871-3368." />
-    <meta name="twitter:image" content="https://trydenttcleaning.ca/og-image.jpg" />
+    <meta name="twitter:image" content="https://www.trydenttcleaning.ca/og-image.jpg" />
 
     <!-- CleaningService Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "CleaningService",
-      "@id": "https://trydenttcleaning.ca/#organization",
+      "@id": "https://www.trydenttcleaning.ca/#organization",
       "name": "Trydentt Cleaning Services",
       "alternateName": ["Trydentt Building Services", "Trydentt", "Team Trydentt", "Trident Cleaning", "Trydent Cleaning"],
       "description": "Professional residential and commercial cleaning services in London, Ontario and across the province. Eco-friendly products, fully insured, 100% satisfaction guarantee.",
-      "url": "https://trydenttcleaning.ca/",
+      "url": "https://www.trydenttcleaning.ca/",
       "telephone": "+15198713368",
       "email": "homes@trydenttbuildingservices.com",
       "priceRange": "$$",
-      "image": "https://trydenttcleaning.ca/og-image.jpg",
-      "logo": "https://trydenttcleaning.ca/og-image.jpg",
+      "image": "https://www.trydenttcleaning.ca/og-image.jpg",
+      "logo": "https://www.trydenttcleaning.ca/og-image.jpg",
       "currenciesAccepted": "CAD",
       "paymentAccepted": "Cash, Credit Card, E-Transfer",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "London",
         "addressRegion": "ON",
+        "postalCode": "N6A",
         "addressCountry": "CA"
       },
       "geo": {
@@ -138,8 +142,18 @@
       ],
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "4.9",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "worstRating": "1",
         "reviewCount": "10"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+15198713368",
+        "contactType": "customer service",
+        "email": "homes@trydenttbuildingservices.com",
+        "areaServed": "CA",
+        "availableLanguage": "English"
       }
     }
     </script>
@@ -150,12 +164,7 @@
       "@type": "WebSite",
       "name": "Trydentt Cleaning Services",
       "alternateName": ["Trydentt", "Team Trydentt", "Trydentt Building Services"],
-      "url": "https://trydenttcleaning.ca/",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://trydenttcleaning.ca/?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
+      "url": "https://www.trydenttcleaning.ca/"
     }
     </script>
     <!-- Google Analytics (GA4) -->
@@ -167,18 +176,20 @@
     gtag('config', 'G-WT37C3RDXE');
     </script>
 
-    <!-- Meta Pixel -->
+    <!-- Meta Pixel (deferred to not block first paint) -->
     <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1221912536436874');
-    fbq('track', 'PageView');
+    window.addEventListener('load', function() {
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1221912536436874');
+      fbq('track', 'PageView');
+    });
     </script>
   </head>
   <body>
@@ -199,8 +210,8 @@
         <h2>Contact Us</h2>
         <p>Phone: <a href="tel:+15198713368">+1 519-871-3368</a></p>
         <p>Email: <a href="mailto:homes@trydenttbuildingservices.com">homes@trydenttbuildingservices.com</a></p>
-        <p>Website: <a href="https://trydenttcleaning.ca">trydenttcleaning.ca</a></p>
-        <p>Fully insured &amp; bonded. Proudly Canadian owned and operated. Rated 4.9 stars.</p>
+        <p>Website: <a href="https://www.trydenttcleaning.ca">trydenttcleaning.ca</a></p>
+        <p>Fully insured &amp; bonded. Proudly Canadian owned and operated. Rated 5.0 stars.</p>
       </div>
     </noscript>
     <script type="module" src="/src/main.tsx"></script>

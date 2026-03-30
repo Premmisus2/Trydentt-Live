@@ -9,18 +9,18 @@ const About: React.FC = () => {
       <Helmet>
         <title>About Trydentt Cleaning | Trusted Ontario Cleaning Company</title>
         <meta name="description" content="Learn about Trydentt Cleaning Services — a trusted, Canadian-owned cleaning company serving Ontario. Over 30 years of combined experience, fully insured, 100% satisfaction guarantee." />
-        <link rel="canonical" href="https://trydenttcleaning.ca/about" />
+        <link rel="canonical" href="https://www.trydenttcleaning.ca/about" />
         <meta property="og:title" content="About Trydentt Cleaning | Trusted Ontario Cleaning Company" />
         <meta property="og:description" content="Canadian-owned, fully insured, 30+ years combined experience. Learn why Ontario trusts Trydentt." />
-        <meta property="og:url" content="https://trydenttcleaning.ca/about" />
-        <meta property="og:image" content="https://trydenttcleaning.ca/og-image.jpg" />
+        <meta property="og:url" content="https://www.trydenttcleaning.ca/about" />
+        <meta property="og:image" content="https://www.trydenttcleaning.ca/og-image.jpg" />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://trydenttcleaning.ca/"},
-              {"@type": "ListItem", "position": 2, "name": "About", "item": "https://trydenttcleaning.ca/about"}
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trydenttcleaning.ca/"},
+              {"@type": "ListItem", "position": 2, "name": "About", "item": "https://www.trydenttcleaning.ca/about"}
             ]
           }
         `}</script>
@@ -77,15 +77,17 @@ const About: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
-              <img
-                src="/images/about-team.jpg"
-                width={600}
-                height={400}
-                loading="lazy"
-                className="rounded-3xl shadow-2xl"
-                alt="Trydentt Cleaning team delivering quality cleaning service in London Ontario"
-
-              />
+              <picture>
+                <source srcSet="/images/about-team.webp" type="image/webp" />
+                <img
+                  src="/images/about-team.jpg"
+                  width={600}
+                  height={400}
+                  loading="lazy"
+                  className="rounded-3xl shadow-2xl"
+                  alt="Trydentt Cleaning team delivering quality cleaning service in London Ontario"
+                />
+              </picture>
             </div>
             <div className="order-1 lg:order-2">
               <h2 className="text-3xl font-bold mb-8">Our Quality Guarantee</h2>

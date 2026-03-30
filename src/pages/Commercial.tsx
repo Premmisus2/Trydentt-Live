@@ -10,7 +10,7 @@ import {
   Building2, AlertCircle, Frown, 
   CheckCircle2, Users, Trophy, Zap, 
   Briefcase, Store, GlassWater, PartyPopper,
-  MapPin, Send, XCircle
+  MapPin, Send, XCircle, ChevronDown
 } from 'lucide-react';
 
 const Commercial: React.FC = () => {
@@ -60,18 +60,18 @@ const Commercial: React.FC = () => {
       <Helmet>
         <title>Commercial Cleaning Ontario | Office & Janitorial | Trydentt</title>
         <meta name="description" content="Professional commercial cleaning services across Ontario. Office cleaning, janitorial, carpet & upholstery, window cleaning, post-event cleanup. Fully insured & bonded. Get a custom proposal." />
-        <link rel="canonical" href="https://trydenttcleaning.ca/commercial" />
+        <link rel="canonical" href="https://www.trydenttcleaning.ca/commercial" />
         <meta property="og:title" content="Commercial Cleaning Ontario | Trydentt Cleaning Services" />
         <meta property="og:description" content="Professional commercial cleaning for Ontario businesses. Office, retail, janitorial services. Fully insured & bonded." />
-        <meta property="og:url" content="https://trydenttcleaning.ca/commercial" />
-        <meta property="og:image" content="https://trydenttcleaning.ca/og-image.jpg" />
+        <meta property="og:url" content="https://www.trydenttcleaning.ca/commercial" />
+        <meta property="og:image" content="https://www.trydenttcleaning.ca/og-image.jpg" />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://trydenttcleaning.ca/"},
-              {"@type": "ListItem", "position": 2, "name": "Commercial Cleaning", "item": "https://trydenttcleaning.ca/commercial"}
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trydenttcleaning.ca/"},
+              {"@type": "ListItem", "position": 2, "name": "Commercial Cleaning", "item": "https://www.trydenttcleaning.ca/commercial"}
             ]
           }
         `}</script>
@@ -80,7 +80,7 @@ const Commercial: React.FC = () => {
             "@context": "https://schema.org",
             "@type": "Service",
             "serviceType": "Commercial Cleaning",
-            "provider": {"@id": "https://trydenttcleaning.ca/#organization"},
+            "provider": {"@id": "https://www.trydenttcleaning.ca/#organization"},
             "areaServed": {"@type": "City", "name": "London", "addressRegion": "Ontario", "addressCountry": "CA"},
             "description": "Professional commercial cleaning services in London, Ontario. Office cleaning, janitorial, carpet & upholstery, window cleaning. Fully insured & bonded.",
             "offers": {
@@ -383,29 +383,33 @@ const Commercial: React.FC = () => {
               className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-video group"
             >
               <div className="absolute inset-0 w-full h-full">
-                <img
-                  src="/images/commercial-before.jpg"
-                  width={800}
-                  height={450}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                  alt="Commercial washroom with debris and broken glass before Trydentt cleaning service"
-
-                />
+                <picture>
+                  <source srcSet="/images/commercial-before.webp" type="image/webp" />
+                  <img
+                    src="/images/commercial-before.jpg"
+                    width={800}
+                    height={450}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                    alt="Commercial washroom with debris and broken glass before Trydentt cleaning service"
+                  />
+                </picture>
               </div>
-              <div 
+              <div
                 className="absolute inset-0 w-full h-full overflow-hidden"
                 style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
               >
-                <img
-                  src="/images/commercial-after.jpg"
-                  width={800}
-                  height={450}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                  alt="Spotless commercial washroom after Trydentt janitorial cleaning service"
-
-                />
+                <picture>
+                  <source srcSet="/images/commercial-after.webp" type="image/webp" />
+                  <img
+                    src="/images/commercial-after.jpg"
+                    width={800}
+                    height={450}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                    alt="Spotless commercial washroom after Trydentt janitorial cleaning service"
+                  />
+                </picture>
               </div>
               
               <div 
@@ -462,10 +466,62 @@ const Commercial: React.FC = () => {
         </div>
       </section>
 
+      {/* FAQ Section — Visible HTML (matches schema in Helmet) */}
+      <section className="py-24 bg-slate-50 relative overflow-hidden">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 font-display">
+              Frequently Asked Questions
+            </h2>
+            <p className="mt-4 text-lg text-slate-600">
+              Questions about commercial cleaning.
+            </p>
+          </motion.div>
+          <div className="space-y-4">
+            {[
+              {
+                q: "Do you offer after-hours commercial cleaning?",
+                a: "Yes. We schedule our commercial cleaning around your business hours so your operations are never disrupted. Evening and weekend cleaning is available for offices, retail stores, and commercial spaces in London, Ontario."
+              },
+              {
+                q: "How do you handle commercial cleaning contracts?",
+                a: "We provide customized proposals based on your facility size, cleaning frequency, and specific requirements. We offer flexible month-to-month agreements with no long-term lock-ins."
+              },
+              {
+                q: "Is Trydentt insured for commercial properties?",
+                a: "Absolutely. Trydentt carries full commercial general liability insurance and workers' compensation coverage, protecting your business and property at all times."
+              }
+            ].map((faq, i) => (
+              <motion.details
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="group bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden"
+              >
+                <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-left text-slate-900 font-semibold text-lg hover:bg-slate-50 transition-colors list-none [&::-webkit-details-marker]:hidden">
+                  <span>{faq.q}</span>
+                  <ChevronDown className="w-5 h-5 text-slate-400 transition-transform group-open:rotate-180 flex-shrink-0 ml-4" />
+                </summary>
+                <div className="px-6 pb-5 text-slate-600 leading-relaxed">
+                  {faq.a}
+                </div>
+              </motion.details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 6. Low-Friction CTA Form Section */}
       <section id="booking-form" className="py-24 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

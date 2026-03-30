@@ -187,17 +187,17 @@ const Quote: React.FC = () => {
       <Helmet>
         <title>Get a Free Cleaning Quote | Trydentt Cleaning Services</title>
         <meta name="description" content="Get an instant, AI-powered cleaning estimate for your home or business. No phone calls required. Professional cleaning services in London, Ontario and across Ontario." />
-        <link rel="canonical" href="https://trydenttcleaning.ca/quote" />
+        <link rel="canonical" href="https://www.trydenttcleaning.ca/quote" />
         <meta property="og:title" content="Get a Free Cleaning Quote | Trydentt Cleaning Services" />
         <meta property="og:description" content="Instant cleaning estimates for your home or business. No phone calls, no hassle. Get your free quote now." />
-        <meta property="og:url" content="https://trydenttcleaning.ca/quote" />
-        <meta property="og:image" content="https://trydenttcleaning.ca/og-image.jpg" />
+        <meta property="og:url" content="https://www.trydenttcleaning.ca/quote" />
+        <meta property="og:image" content="https://www.trydenttcleaning.ca/og-image.jpg" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://trydenttcleaning.ca/" },
-            { "@type": "ListItem", "position": 2, "name": "Free Quote", "item": "https://trydenttcleaning.ca/quote" }
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trydenttcleaning.ca/" },
+            { "@type": "ListItem", "position": 2, "name": "Free Quote", "item": "https://www.trydenttcleaning.ca/quote" }
           ]
         })}</script>
       </Helmet>

@@ -20,21 +20,21 @@ const CityLanding: React.FC<CityLandingProps> = ({ city, slug, distance, populat
   return (
     <div className="overflow-hidden bg-slate-50 selection:bg-indigo-600/20 selection:text-indigo-900">
       <Helmet>
-        <title>Cleaning Services {city} Ontario | House & Office Cleaning | Trydentt</title>
+        <title>{`Cleaning Services ${city} Ontario | House & Office Cleaning | Trydentt`}</title>
         <meta name="description" content={`Professional cleaning services in ${city}, Ontario. Residential & commercial cleaning — eco-friendly, fully insured, 100% satisfaction guarantee. Free quotes from Trydentt Cleaning.`} />
-        <link rel="canonical" href={`https://trydenttcleaning.ca/${slug}`} />
+        <link rel="canonical" href={`https://www.trydenttcleaning.ca/${slug}`} />
         <meta property="og:title" content={`Cleaning Services ${city} Ontario | Trydentt Cleaning`} />
         <meta property="og:description" content={`${city}'s trusted cleaning service. House cleaning, office cleaning, deep cleaning. Eco-friendly, insured, satisfaction guaranteed.`} />
-        <meta property="og:url" content={`https://trydenttcleaning.ca/${slug}`} />
-        <meta property="og:image" content="https://trydenttcleaning.ca/og-image.jpg" />
+        <meta property="og:url" content={`https://www.trydenttcleaning.ca/${slug}`} />
+        <meta property="og:image" content="https://www.trydenttcleaning.ca/og-image.jpg" />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://trydenttcleaning.ca/"},
-              {"@type": "ListItem", "position": 2, "name": "London Ontario Cleaning", "item": "https://trydenttcleaning.ca/london-ontario-cleaning"},
-              {"@type": "ListItem", "position": 3, "name": "${city} Cleaning", "item": "https://trydenttcleaning.ca/${slug}"}
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trydenttcleaning.ca/"},
+              {"@type": "ListItem", "position": 2, "name": "London Ontario Cleaning", "item": "https://www.trydenttcleaning.ca/london-ontario-cleaning"},
+              {"@type": "ListItem", "position": 3, "name": "${city} Cleaning", "item": "https://www.trydenttcleaning.ca/${slug}"}
             ]
           }
         `}</script>
@@ -42,55 +42,12 @@ const CityLanding: React.FC<CityLandingProps> = ({ city, slug, distance, populat
           {
             "@context": "https://schema.org",
             "@type": "Service",
+            "name": "Cleaning Services in ${city}",
             "serviceType": "Cleaning Service",
-            "provider": {"@id": "https://trydenttcleaning.ca/#organization"},
+            "provider": {"@id": "https://www.trydenttcleaning.ca/#organization"},
             "areaServed": {"@type": "City", "name": "${city}", "addressRegion": "Ontario", "addressCountry": "CA"},
-            "description": "Professional residential and commercial cleaning services in ${city}, Ontario. Eco-friendly, fully insured, 100% satisfaction guarantee."
-          }
-        `}</script>
-        <script type="application/ld+json">{`
-          {
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "Trydentt Cleaning Services — ${city}",
-            "description": "Professional residential and commercial cleaning services serving ${city}, Ontario. Eco-friendly products, fully insured, 100% satisfaction guarantee.",
-            "url": "https://trydenttcleaning.ca/${slug}",
-            "telephone": "+15198713368",
-            "email": "homes@trydenttbuildingservices.com",
-            "priceRange": "$$",
-            "image": "https://trydenttcleaning.ca/og-image.jpg",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "${city}",
-              "addressRegion": "ON",
-              "addressCountry": "CA"
-            },
-            "areaServed": {
-              "@type": "City",
-              "name": "${city}",
-              "addressRegion": "Ontario",
-              "addressCountry": "CA"
-            },
-            "parentOrganization": {"@id": "https://trydenttcleaning.ca/#organization"},
-            "openingHoursSpecification": [
-              {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-                "opens": "07:00",
-                "closes": "19:00"
-              },
-              {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": "Saturday",
-                "opens": "08:00",
-                "closes": "17:00"
-              }
-            ],
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "reviewCount": "10"
-            }
+            "description": "Professional residential and commercial cleaning services in ${city}, Ontario. Eco-friendly, fully insured, 100% satisfaction guarantee.",
+            "url": "https://www.trydenttcleaning.ca/${slug}"
           }
         `}</script>
         <script type="application/ld+json">{`
@@ -163,7 +120,7 @@ const CityLanding: React.FC<CityLandingProps> = ({ city, slug, distance, populat
               <div className="flex items-center text-amber-400">
                 {[1, 2, 3, 4, 5].map((i) => <Star key={i} className="w-5 h-5 fill-current" />)}
               </div>
-              <p className="text-slate-500 font-medium">4.9/5 — Trusted across Southwestern Ontario</p>
+              <p className="text-slate-500 font-medium">5/5 — Trusted across Southwestern Ontario</p>
             </div>
           </motion.div>
         </div>

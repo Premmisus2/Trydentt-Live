@@ -12,7 +12,7 @@ import {
   Home as HomeIcon, Building2, AlertCircle, Frown, Smile, DollarSign,
   CheckCircle2, Trophy, Zap, Calendar, 
   Wind, Trash2, GlassWater, PartyPopper, 
-  Briefcase, Store, MapPin, Send, XCircle
+  Briefcase, Store, MapPin, Send, XCircle, ChevronDown
 } from 'lucide-react';
 
 const Home: React.FC = () => {
@@ -102,17 +102,17 @@ const Home: React.FC = () => {
       <Helmet>
         <title>Trydentt Cleaning Services London ON | House & Office Cleaning</title>
         <meta name="description" content="Trydentt Cleaning Services — London Ontario's trusted cleaning company. Professional house cleaning, office cleaning, deep cleaning & more. Eco-friendly, fully insured, 100% satisfaction guarantee. Call (519) 871-3368." />
-        <link rel="canonical" href="https://trydenttcleaning.ca/" />
+        <link rel="canonical" href="https://www.trydenttcleaning.ca/" />
         <meta property="og:title" content="Trydentt Cleaning Services London ON | House & Office Cleaning" />
         <meta property="og:description" content="London Ontario's trusted cleaning company. Professional house cleaning, office cleaning, deep cleaning. Eco-friendly, fully insured, 100% satisfaction guarantee." />
-        <meta property="og:url" content="https://trydenttcleaning.ca/" />
-        <meta property="og:image" content="https://trydenttcleaning.ca/og-image.jpg" />
+        <meta property="og:url" content="https://www.trydenttcleaning.ca/" />
+        <meta property="og:image" content="https://www.trydenttcleaning.ca/og-image.jpg" />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://trydenttcleaning.ca/"}
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trydenttcleaning.ca/"}
             ]
           }
         `}</script>
@@ -249,7 +249,7 @@ const Home: React.FC = () => {
                 <div className="flex items-center text-amber-400">
                   {[1, 2, 3, 4, 5].map((i) => <Star key={i} className="w-4 h-4 fill-current" />)}
                 </div>
-                <p className="text-slate-500 font-medium">4.9/5 from multiple local reviews</p>
+                <p className="text-slate-500 font-medium">5/5 from 10 Google reviews</p>
               </div>
             </div>
           </motion.div>
@@ -543,15 +543,17 @@ const Home: React.FC = () => {
               className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-video group"
             >
               <div className="absolute inset-0 w-full h-full">
-                <img
-                  src="/images/home-after.jpg"
-                  width={800}
-                  height={450}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                  alt="Clean window sill after Trydentt mold remediation cleaning in London Ontario"
-
-                />
+                <picture>
+                  <source srcSet="/images/home-after.webp" type="image/webp" />
+                  <img
+                    src="/images/home-after.jpg"
+                    width={800}
+                    height={450}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                    alt="Clean window sill after Trydentt mold remediation cleaning in London Ontario"
+                  />
+                </picture>
                 <div className="absolute bottom-6 right-6 bg-indigo-600/90 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider shadow-lg">
                   AFTER
                 </div>
@@ -560,15 +562,17 @@ const Home: React.FC = () => {
                 className="absolute inset-0 w-full h-full overflow-hidden"
                 style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
               >
-                <img
-                  src="/images/home-before.jpg"
-                  width={800}
-                  height={450}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                  alt="Window sill with mold and water stains before Trydentt deep cleaning service in London Ontario"
-
-                />
+                <picture>
+                  <source srcSet="/images/home-before.webp" type="image/webp" />
+                  <img
+                    src="/images/home-before.jpg"
+                    width={800}
+                    height={450}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                    alt="Window sill with mold and water stains before Trydentt deep cleaning service in London Ontario"
+                  />
+                </picture>
                 <div className="absolute bottom-6 left-6 bg-slate-800/90 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider shadow-lg">
                   BEFORE
                 </div>
@@ -605,6 +609,66 @@ const Home: React.FC = () => {
       <section className="py-24 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <QuickCalculator />
+        </div>
+      </section>
+
+      {/* FAQ Section — Visible HTML (matches schema in Helmet) */}
+      <section className="py-24 bg-slate-50 relative overflow-hidden">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 font-display">
+              Frequently Asked Questions
+            </h2>
+            <p className="mt-4 text-lg text-slate-600">
+              Everything you need to know about our cleaning services in London, Ontario.
+            </p>
+          </motion.div>
+          <div className="space-y-4">
+            {[
+              {
+                q: "How much does house cleaning cost in London, Ontario?",
+                a: "House cleaning in London, Ontario typically ranges from $120 to $350 depending on the size of your home and type of clean. Trydentt offers free, no-obligation quotes with transparent pricing and no hidden fees."
+              },
+              {
+                q: "Is Trydentt Cleaning fully insured?",
+                a: "Yes. Trydentt Cleaning Services is fully insured and bonded. We carry comprehensive general liability insurance and workers' compensation coverage to protect your property and our team."
+              },
+              {
+                q: "Do you use eco-friendly cleaning products?",
+                a: "We use EPA-certified, plant-based cleaning products that are safe for children, pets, and the environment. Our eco-friendly approach delivers the same powerful clean without harsh chemicals."
+              },
+              {
+                q: "What areas does Trydentt Cleaning serve?",
+                a: "Trydentt Cleaning Services is based in London, Ontario and serves the surrounding areas including St. Thomas, Woodstock, Strathroy, Ingersoll, Tillsonburg, Aylmer, Dorchester, Komoka, and Byron."
+              },
+              {
+                q: "What is your satisfaction guarantee?",
+                a: "We offer a 100% satisfaction guarantee. If you're not completely happy with your clean, contact us within 24 hours and we'll return to make it right at no extra charge."
+              }
+            ].map((faq, i) => (
+              <motion.details
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="group bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden"
+              >
+                <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-left text-slate-900 font-semibold text-lg hover:bg-slate-50 transition-colors list-none [&::-webkit-details-marker]:hidden">
+                  <span>{faq.q}</span>
+                  <ChevronDown className="w-5 h-5 text-slate-400 transition-transform group-open:rotate-180 flex-shrink-0 ml-4" />
+                </summary>
+                <div className="px-6 pb-5 text-slate-600 leading-relaxed">
+                  {faq.a}
+                </div>
+              </motion.details>
+            ))}
+          </div>
         </div>
       </section>
 

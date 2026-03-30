@@ -56,17 +56,17 @@ const Contact: React.FC = () => {
       <Helmet>
         <title>Contact Trydentt Cleaning | London Ontario | Free Estimates</title>
         <meta name="description" content="Contact Trydentt Cleaning Services in London, Ontario. Call +1 519-871-3368 or fill out our form for a free estimate. We respond within 2 business hours." />
-        <link rel="canonical" href="https://trydenttcleaning.ca/contact" />
+        <link rel="canonical" href="https://www.trydenttcleaning.ca/contact" />
         <meta property="og:title" content="Contact Trydentt Cleaning | London Ontario" />
         <meta property="og:description" content="Get in touch for a free cleaning estimate. Call or message us — we respond within 2 hours." />
-        <meta property="og:url" content="https://trydenttcleaning.ca/contact" />
-        <meta property="og:image" content="https://trydenttcleaning.ca/og-image.jpg" />
+        <meta property="og:url" content="https://www.trydenttcleaning.ca/contact" />
+        <meta property="og:image" content="https://www.trydenttcleaning.ca/og-image.jpg" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://trydenttcleaning.ca/" },
-            { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://trydenttcleaning.ca/contact" }
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trydenttcleaning.ca/" },
+            { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.trydenttcleaning.ca/contact" }
           ]
         })}</script>
       </Helmet>
