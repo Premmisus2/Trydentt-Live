@@ -43,6 +43,7 @@ export default defineConfig(({mode}) => {
             renderer: new PuppeteerRenderer({
               renderAfterTime: 5000,
               headless: true,
+              args: ['--no-sandbox', '--disable-setuid-sandbox'],
             }),
             postProcess(renderedRoute) {
               if (renderedRoute.route.endsWith('/') && renderedRoute.route !== '/') {
