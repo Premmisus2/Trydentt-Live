@@ -74,19 +74,22 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Build and pre-render
+        run: npm run build
+        env:
+          VITE_GHL_QUOTE_WEBHOOK: ${{ secrets.VITE_GHL_QUOTE_WEBHOOK }}
+          VITE_GHL_CONTACT_WEBHOOK: ${{ secrets.VITE_GHL_CONTACT_WEBHOOK }}
+
+      - name: Prepare Vercel output
+        run: |
+          mkdir -p .vercel/output/static
+          cp -r dist/. .vercel/output/static/
+          cat > .vercel/output/config.json << 'EOF'
+          {"version":3,"routes":[{"src":"/assets/(.*)","headers":{"cache-control":"public, max-age=31536000, immutable"},"continue":true},{"handle":"filesystem"},{"src":"/(.*)","dest":"/index.html"}]}
+          EOF
+
       - name: Install Vercel CLI
         run: npm install -g vercel@latest
 
-      - name: Link Vercel project
-        run: |
-          mkdir -p .vercel
-          echo '{"projectId":"${{ secrets.VERCEL_PROJECT_ID }}","orgId":"${{ secrets.VERCEL_ORG_ID }}"}' > .vercel/project.json
-
-      - name: Pull Vercel environment variables
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }} --scope=premmisus
-
-      - name: Build and pre-render
-        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }} --scope=premmisus
-
       - name: Deploy to Vercel (production)
-        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }} --scope=premmisus
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
