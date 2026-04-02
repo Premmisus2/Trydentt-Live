@@ -6,17 +6,14 @@ import {defineConfig, loadEnv} from 'vite';
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
 
-  // Skip pre-renderer in CI/Vercel — pre-rendering runs locally via npm run build:prerender
-  const isLocal = !process.env.CI && !process.env.VERCEL;
   const isProduction = mode === 'production';
-  const shouldPrerender = isProduction && isLocal;
+  const shouldPrerender = isProduction;
 
   return {
     plugins: [
       react(),
       tailwindcss(),
       // Pre-render all routes at build time so crawlers see full HTML
-      // Only runs locally (Vercel doesn't have Chrome for Puppeteer)
       ...(shouldPrerender ? [
         (async () => {
           const { default: prerender } = await import('@prerenderer/rollup-plugin');
