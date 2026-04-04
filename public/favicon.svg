@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#4F46E5"/>
-  <text x="16" y="24" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="800" fill="#fff" text-anchor="middle">T</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <path d="M64 64H448V344C448 396 384 448 256 448C128 448 64 396 64 344V64Z" fill="#3264B9"/>
+  <rect x="112" y="112" width="64" height="200" fill="white"/>
+  <rect x="224" y="112" width="64" height="280" fill="white"/>
+  <rect x="336" y="112" width="64" height="200" fill="white"/>
 </svg>

@@ -21,7 +21,7 @@ const Contact: React.FC = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('https://services.leadconnectorhq.com/hooks/a9j6O8eXLyQk7lKBkZFD/webhook-trigger/d77aac91-8ca5-4618-83de-92338401407d', {
+      const response = await fetch(import.meta.env.VITE_GHL_CONTACT_WEBHOOK, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,6 +67,56 @@ const Contact: React.FC = () => {
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trydenttcleaning.ca/" },
             { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.trydenttcleaning.ca/contact" }
+          ]
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "name": "Contact Trydentt Cleaning Services",
+          "description": "Contact Trydentt Cleaning Services in London, Ontario for a free estimate or to book a cleaning. We respond within 2 business hours.",
+          "url": "https://www.trydenttcleaning.ca/contact",
+          "mainEntity": {
+            "@type": "LocalBusiness",
+            "name": "Trydentt Cleaning Services",
+            "telephone": "+15198713368",
+            "email": "homes@trydenttbuildingservices.com",
+            "url": "https://www.trydenttcleaning.ca",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "London",
+              "addressRegion": "Ontario",
+              "addressCountry": "CA"
+            }
+          }
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How quickly does Trydentt Cleaning respond to inquiries?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We respond to all inquiries within 2 business hours during operating hours. For urgent requests, call us directly at (519) 871-3368."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What areas does Trydentt Cleaning serve?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Trydentt Cleaning Services serves London, Ontario and surrounding areas including St. Thomas, Woodstock, Strathroy, Ingersoll, Tillsonburg, Aylmer, and Dorchester."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I book a cleaning directly through the contact form?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Fill out the contact form with your name, email, and cleaning needs and a team member will follow up to confirm your booking. You can also use our free quote tool for an instant estimate before booking."
+              }
+            }
           ]
         })}</script>
       </Helmet>

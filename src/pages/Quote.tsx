@@ -14,7 +14,7 @@ declare global {
   }
 }
 
-const GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/a9j6O8eXLyQk7lKBkZFD/webhook-trigger/220c1782-0e8e-4072-a736-9b848a391f78';
+const GHL_WEBHOOK_URL = import.meta.env.VITE_GHL_QUOTE_WEBHOOK;
 
 const Quote: React.FC = () => {
   const navigate = useNavigate();
@@ -198,6 +198,69 @@ const Quote: React.FC = () => {
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trydenttcleaning.ca/" },
             { "@type": "ListItem", "position": 2, "name": "Free Quote", "item": "https://www.trydenttcleaning.ca/quote" }
+          ]
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Free Cleaning Estimate",
+          "description": "Get an instant, AI-powered cleaning estimate for your home or business in London, Ontario. No phone calls required.",
+          "url": "https://www.trydenttcleaning.ca/quote",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Trydentt Cleaning Services",
+            "telephone": "+15198713368",
+            "url": "https://www.trydenttcleaning.ca"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "London",
+            "addressRegion": "Ontario",
+            "addressCountry": "CA"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "CAD",
+            "description": "Free cleaning estimate — no obligation"
+          }
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I get a free cleaning estimate?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Use our online quote tool to get an instant AI-powered estimate. Select your service type, enter your home or office size, and receive a price range in seconds. No phone call required."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How quickly will I receive my cleaning quote?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Instantly. Our AI-powered estimator generates a price range in seconds based on your property size and cleaning needs. You can then book directly online."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is the online cleaning estimate binding?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The online estimate gives you an accurate price range based on typical properties in London, Ontario. Final pricing is confirmed after a brief consultation and may vary slightly depending on property condition."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What cleaning services can I get a quote for?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You can get instant estimates for residential cleaning (regular house cleaning, deep cleaning, move-in/move-out) and commercial cleaning (offices, retail spaces). Trydentt serves London, Ontario and surrounding areas."
+              }
+            }
           ]
         })}</script>
       </Helmet>
