@@ -206,12 +206,7 @@ const Quote: React.FC = () => {
           "name": "Free Cleaning Estimate",
           "description": "Get an instant, AI-powered cleaning estimate for your home or business in London, Ontario. No phone calls required.",
           "url": "https://www.trydenttcleaning.ca/quote",
-          "provider": {
-            "@type": "LocalBusiness",
-            "name": "Trydentt Cleaning Services",
-            "telephone": "+15198713368",
-            "url": "https://www.trydenttcleaning.ca"
-          },
+          "provider": { "@id": "https://www.trydenttcleaning.ca/#organization" },
           "areaServed": {
             "@type": "City",
             "name": "London",
