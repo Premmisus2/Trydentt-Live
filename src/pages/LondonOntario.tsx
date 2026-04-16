@@ -6,6 +6,7 @@ import {
   MapPin, ArrowRight, CheckCircle2, Star, Shield,
   Sparkles, Home as HomeIcon, Building2, Phone, Clock, ChevronDown
 } from 'lucide-react';
+import HeroLeadForm from '../components/HeroLeadForm';
 
 const neighborhoods = [
   'Byron', 'Wortley Village', 'Old North', 'Old South', 'Masonville',
@@ -28,7 +29,7 @@ const LondonOntario: React.FC = () => {
         <meta name="description" content="London Ontario's trusted cleaning company. Residential & commercial cleaning in London, ON — Byron, Masonville, Wortley Village, Old North & all neighbourhoods. Eco-friendly, fully insured. Free quotes." />
         <link rel="canonical" href="https://www.trydenttcleaning.ca/london-ontario-cleaning" />
         <meta property="og:title" content="Cleaning Services London Ontario | Trydentt Cleaning" />
-        <meta property="og:description" content="London Ontario's top-rated cleaning service. House cleaning, office cleaning, deep cleaning. Eco-friendly, insured, satisfaction guaranteed." />
+        <meta property="og:description" content="One of London Ontario's most trusted cleaning services. House cleaning, office cleaning, deep cleaning. Eco-friendly, insured, satisfaction guaranteed." />
         <meta property="og:url" content="https://www.trydenttcleaning.ca/london-ontario-cleaning" />
         <meta property="og:image" content="https://www.trydenttcleaning.ca/og-image.jpg" />
         <script type="application/ld+json">{`
@@ -73,7 +74,7 @@ const LondonOntario: React.FC = () => {
                 "name": "What is the best cleaning company in London, Ontario?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Trydentt Cleaning Services is London Ontario's top-rated cleaning company with a 5/5 rating. We serve all London neighbourhoods including Byron, Masonville, Wortley Village, Old North, and more. Fully insured, eco-friendly, with a 100% satisfaction guarantee."
+                  "text": "Trydentt Cleaning Services is one of London Ontario's most trusted cleaning companies, with a 5/5 Google rating. We serve all London neighbourhoods including Byron, Masonville, Wortley Village, Old North, and more. Fully insured, eco-friendly, with a 100% satisfaction guarantee."
                 }
               },
               {
@@ -81,7 +82,7 @@ const LondonOntario: React.FC = () => {
                 "name": "How much does a house cleaner cost in London, Ontario?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "House cleaning in London, Ontario typically costs $120–$350 depending on home size and cleaning type. Regular maintenance cleaning is more affordable, while deep cleaning and move-out cleaning are priced higher. Trydentt offers free, transparent quotes with no hidden fees."
+                  "text": "House cleaning in London, Ontario typically starts at $150 and ranges up to $350 depending on home size and cleaning type. Regular maintenance cleaning is more affordable, while deep cleaning and move-out cleaning are priced higher. Trydentt offers free, transparent quotes with no hidden fees."
                 }
               },
               {
@@ -119,34 +120,34 @@ const LondonOntario: React.FC = () => {
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-indigo-600/5 rounded-full blur-[100px] translate-y-1/2 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <div className="inline-flex items-center space-x-2 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium mb-8">
-              <MapPin className="w-4 h-4" />
-              <span>Proudly Serving London, Ontario</span>
-            </div>
-            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 leading-[1.1]">
-              London Ontario's <span className="text-indigo-600">Most Trusted</span> Cleaning Service
-            </h1>
-            <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto">
-              Professional residential and commercial cleaning for every London neighbourhood. Eco-friendly products, fully insured, and backed by our 100% satisfaction guarantee.
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            {/* Left: Hero Content */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center lg:text-left"
+            >
+              <div className="inline-flex items-center space-x-2 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <MapPin className="w-4 h-4" />
+                <span>Proudly Serving London, Ontario</span>
+              </div>
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-slate-900 mb-6 leading-[1.1]">
+                One of London Ontario's <span className="text-indigo-600">Most Trusted</span> Cleaning Services
+              </h1>
+              <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+                Professional residential cleaning for every London neighbourhood. Eco-friendly products, fully insured, and backed by our 100% satisfaction guarantee.
+              </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-              <motion.div whileHover={{ scale: 1.05, y: -4 }} whileTap={{ scale: 0.98 }} className="relative group">
-                <Link
-                  to="/quote"
-                  className="relative z-10 inline-flex items-center space-x-3 bg-indigo-600 hover:bg-indigo-500 text-white px-10 py-5 rounded-2xl text-xl font-bold shadow-[0_20px_50px_rgba(79,70,229,0.3)] transition-all duration-300"
-                >
-                  <span>Get a Free Quote</span>
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <div className="absolute -inset-1 bg-indigo-400 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200" />
-              </motion.div>
+              <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-6 mb-6">
+                <div className="flex items-center space-x-3">
+                  <div className="flex items-center text-amber-400">
+                    {[1, 2, 3, 4, 5].map((i) => <Star key={i} className="w-5 h-5 fill-current" />)}
+                  </div>
+                  <p className="text-slate-600 font-medium text-sm">5/5 — Trusted by London families</p>
+                </div>
+              </div>
+
               <a
                 href="tel:+15198713368"
                 className="inline-flex items-center space-x-2 text-slate-700 hover:text-indigo-600 font-semibold text-lg transition-colors"
@@ -154,15 +155,11 @@ const LondonOntario: React.FC = () => {
                 <Phone className="w-5 h-5" />
                 <span>(519) 871-3368</span>
               </a>
-            </div>
+            </motion.div>
 
-            <div className="flex items-center justify-center space-x-4">
-              <div className="flex items-center text-amber-400">
-                {[1, 2, 3, 4, 5].map((i) => <Star key={i} className="w-5 h-5 fill-current" />)}
-              </div>
-              <p className="text-slate-500 font-medium">5/5 — Trusted by London families & businesses</p>
-            </div>
-          </motion.div>
+            {/* Right: Inline Lead Form */}
+            <HeroLeadForm />
+          </div>
         </div>
       </section>
 
@@ -315,11 +312,11 @@ const LondonOntario: React.FC = () => {
             {[
               {
                 q: "What is the best cleaning company in London, Ontario?",
-                a: "Trydentt Cleaning Services is London Ontario's top-rated cleaning company with a 5/5 rating. We serve all London neighbourhoods including Byron, Masonville, Wortley Village, Old North, and more. Fully insured, eco-friendly, with a 100% satisfaction guarantee."
+                a: "Trydentt Cleaning Services is one of London Ontario's most trusted cleaning companies, with a 5/5 Google rating. We serve all London neighbourhoods including Byron, Masonville, Wortley Village, Old North, and more. Fully insured, eco-friendly, with a 100% satisfaction guarantee."
               },
               {
                 q: "How much does a house cleaner cost in London, Ontario?",
-                a: "House cleaning in London, Ontario typically costs $120–$350 depending on home size and cleaning type. Regular maintenance cleaning is more affordable, while deep cleaning and move-out cleaning are priced higher. Trydentt offers free, transparent quotes with no hidden fees."
+                a: "House cleaning in London, Ontario typically starts at $150 and ranges up to $350 depending on home size and cleaning type. Regular maintenance cleaning is more affordable, while deep cleaning and move-out cleaning are priced higher. Trydentt offers free, transparent quotes with no hidden fees."
               },
               {
                 q: "Do you clean homes in Byron and Masonville?",
@@ -388,7 +385,7 @@ const LondonOntario: React.FC = () => {
 
               <div className="bg-white rounded-[2rem] p-8 md:p-10 shadow-2xl flex flex-col items-center justify-center text-center">
                 <h3 className="text-2xl font-bold text-slate-900 mb-4">Get Your Free Quote</h3>
-                <p className="text-slate-600 mb-8">London's most trusted cleaning service. Response within 2 hours.</p>
+                <p className="text-slate-600 mb-8">One of London's most trusted cleaning services. Response within 2 hours.</p>
                 <Link
                   to="/quote"
                   className="w-full bg-indigo-600 text-white py-4 rounded-xl font-bold hover:bg-indigo-700 transition-all shadow-lg flex items-center justify-center space-x-2 group"

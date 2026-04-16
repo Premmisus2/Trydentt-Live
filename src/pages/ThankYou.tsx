@@ -14,13 +14,21 @@ declare global {
 
 const ThankYou: React.FC = () => {
   useEffect(() => {
+    const FIRED_KEY = 'trydentt_lead_fired';
+    if (sessionStorage.getItem(FIRED_KEY) === '1') return;
+    sessionStorage.setItem(FIRED_KEY, '1');
+
     // Meta Pixel conversion
     if (typeof window.fbq === 'function') {
       window.fbq('track', 'Lead');
     }
-    // GA4 conversion event
+    // GA4 conversion events — second event name matches the Google Ads imported conversion action
     if (typeof window.gtag === 'function') {
       window.gtag('event', 'generate_lead', {
+        event_category: 'conversion',
+        event_label: 'form_submission',
+      });
+      window.gtag('event', 'ads_conversion_Request_quote_1', {
         event_category: 'conversion',
         event_label: 'form_submission',
       });

@@ -47,10 +47,17 @@ const QuickCalculator: React.FC<{ onComplete?: (data: any) => void }> = ({ onCom
       const service = serviceList.find(s => s.name === selectedService);
       if (service) {
         const base = sqft * service.multiplier;
-        setEstimate({
-          min: Math.floor(base * 0.9),
-          max: Math.ceil(base * 1.1)
-        });
+        const MIN_FLOOR = 150;
+        const MIN_FLOOR_MAX = 200;
+        const rawMin = Math.floor(base * 0.9);
+        const rawMax = Math.ceil(base * 1.1);
+        if (rawMax <= MIN_FLOOR) {
+          setEstimate({ min: MIN_FLOOR, max: MIN_FLOOR_MAX });
+        } else if (rawMin < MIN_FLOOR) {
+          setEstimate({ min: MIN_FLOOR, max: rawMax });
+        } else {
+          setEstimate({ min: rawMin, max: rawMax });
+        }
       }
     }
   }, [niche, selectedService, sqft]);

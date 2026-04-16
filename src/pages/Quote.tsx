@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Sparkles, Calculator, CheckCircle2, Loader2, RefreshCw, AlertTriangle, ChevronDown } from 'lucide-react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { getSmartEstimate } from '../services/geminiService';
-import { QuoteRequest, GeminiResponse } from '../types';
+import type { QuoteRequest, GeminiResponse } from '../types';
 import QuickCalculator from '../components/QuickCalculator';
 
 declare global {

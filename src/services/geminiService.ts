@@ -1,5 +1,5 @@
 import { GoogleGenAI, Type } from "@google/genai";
-import { QuoteRequest } from "../types";
+import type { QuoteRequest } from "../types";
 
 export const getSmartEstimate = async (data: QuoteRequest) => {
   // Use the platform-provided GEMINI_API_KEY
