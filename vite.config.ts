@@ -27,6 +27,7 @@ export default defineConfig(({mode}) => {
             '/quote',
             '/contact',
             '/london-ontario-cleaning',
+            '/london-ontario-cleaning-offer',
             '/st-thomas-cleaning',
             '/woodstock-cleaning',
             '/strathroy-cleaning',
