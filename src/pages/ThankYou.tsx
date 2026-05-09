@@ -18,12 +18,27 @@ const ThankYou: React.FC = () => {
     if (sessionStorage.getItem(FIRED_KEY) === '1') return;
     sessionStorage.setItem(FIRED_KEY, '1');
 
-    // Meta Pixel conversion
+    // Meta Pixel conversion.
+    // If /api/lead stored an event_id, fire the client-side Lead event with the same eventID
+    // so Meta deduplicates against the server-side Conversions API event.
     if (typeof window.fbq === 'function') {
-      window.fbq('track', 'Lead');
+      const eventId = sessionStorage.getItem('trydentt_lead_event_id') || undefined;
+      if (eventId) {
+        window.fbq('track', 'Lead', {}, { eventID: eventId });
+      } else {
+        window.fbq('track', 'Lead');
+      }
     }
     // GA4 conversion events — second event name matches the Google Ads imported conversion action
     if (typeof window.gtag === 'function') {
+      // Manual page_view — Vite/React Router doesn't fire one on navigation,
+      // so without this gtag attributes the events below to the previous page,
+      // which breaks the GA4→Google Ads conversion import.
+      window.gtag('event', 'page_view', {
+        page_path: '/thank-you',
+        page_title: 'Thank You',
+        page_location: window.location.href,
+      });
       window.gtag('event', 'generate_lead', {
         event_category: 'conversion',
         event_label: 'form_submission',

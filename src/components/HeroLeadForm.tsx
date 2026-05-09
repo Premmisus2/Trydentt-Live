@@ -11,6 +11,13 @@ declare global {
 }
 
 const GHL_WEBHOOK_URL = import.meta.env.VITE_GHL_QUOTE_WEBHOOK;
+const USE_LEAD_API = import.meta.env.VITE_USE_LEAD_API === 'true';
+
+const getCookie = (name: string): string | undefined => {
+  if (typeof document === 'undefined') return undefined;
+  const match = document.cookie.match(new RegExp(`(^|;\\s*)${name}=([^;]+)`));
+  return match ? decodeURIComponent(match[2]) : undefined;
+};
 
 const HeroLeadForm: React.FC = () => {
   const navigate = useNavigate();
@@ -43,31 +50,56 @@ const HeroLeadForm: React.FC = () => {
       setErrors({ phone: phoneErr, postalCode: postalErr });
       return;
     }
-    if (!GHL_WEBHOOK_URL) {
+    if (!USE_LEAD_API && !GHL_WEBHOOK_URL) {
       console.error('VITE_GHL_QUOTE_WEBHOOK is not configured');
       alert('Submission temporarily unavailable. Please call (519) 871-3368.');
       return;
     }
     setSubmitting(true);
+
+    const endpoint = USE_LEAD_API ? '/api/lead' : GHL_WEBHOOK_URL;
+    const eventId =
+      USE_LEAD_API && typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
+        ? crypto.randomUUID()
+        : undefined;
+
+    const payload = {
+      name,
+      phone: `+1 ${phone}`,
+      postalCode,
+      source: 'Landing Page — London Ontario (Hero Form)',
+      niche: 'residential',
+      utm_source: searchParams.get('utm_source') || '',
+      utm_medium: searchParams.get('utm_medium') || '',
+      utm_campaign: searchParams.get('utm_campaign') || '',
+      utm_term: searchParams.get('utm_term') || '',
+      utm_content: searchParams.get('utm_content') || '',
+      landing_page: window.location.href,
+      ...(USE_LEAD_API
+        ? {
+            event_id: eventId,
+            fbp: getCookie('_fbp'),
+            fbc: getCookie('_fbc'),
+            client_user_agent: navigator.userAgent,
+          }
+        : {}),
+    };
+
     try {
-      const response = await fetch(GHL_WEBHOOK_URL, {
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name,
-          phone: `+1 ${phone}`,
-          postalCode,
-          source: 'Landing Page — London Ontario (Hero Form)',
-          niche: 'residential',
-          utm_source: searchParams.get('utm_source') || '',
-          utm_medium: searchParams.get('utm_medium') || '',
-          utm_campaign: searchParams.get('utm_campaign') || '',
-          utm_term: searchParams.get('utm_term') || '',
-          utm_content: searchParams.get('utm_content') || '',
-          landing_page: window.location.href,
-        }),
+        body: JSON.stringify(payload),
       });
       if (response.ok) {
+        if (USE_LEAD_API && eventId) {
+          try {
+            const data = await response.clone().json();
+            sessionStorage.setItem('trydentt_lead_event_id', data?.eventId || eventId);
+          } catch {
+            sessionStorage.setItem('trydentt_lead_event_id', eventId);
+          }
+        }
         navigate('/thank-you');
       } else {
         setSubmitting(false);
