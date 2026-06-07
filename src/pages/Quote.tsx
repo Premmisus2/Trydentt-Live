@@ -200,6 +200,10 @@ const Quote: React.FC = () => {
             sessionStorage.setItem('trydentt_lead_event_id', eventId);
           }
         }
+        // Pass the estimator's quote to /thank-you so the Google Ads conversion carries lead value.
+        if (result?.minPrice != null) {
+          sessionStorage.setItem('trydentt_lead_value', String(result.minPrice));
+        }
         navigate('/thank-you');
       } else {
         console.error('Webhook submission failed');

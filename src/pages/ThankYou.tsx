@@ -43,9 +43,18 @@ const ThankYou: React.FC = () => {
         event_category: 'conversion',
         event_label: 'form_submission',
       });
-      window.gtag('event', 'ads_conversion_Request_quote_1', {
-        event_category: 'conversion',
-        event_label: 'form_submission',
+      // Google Ads conversion — native tag-based action "Website Lead (tag)" (id 7639483573).
+      // Replaces the old GA4-imported "Request quote" action, which recorded 0 for 7.5 weeks
+      // because its measurement source was the GA4 import, not the on-page tag. This send_to
+      // label fires straight to the Google Ads tag (AW-17950162168, loaded in index.html).
+      // Value: use the estimator's quote (stored by the Quote form) when present; otherwise
+      // the action's default value (150 CAD) applies.
+      const leadValueRaw = sessionStorage.getItem('trydentt_lead_value');
+      const leadValue = leadValueRaw && !Number.isNaN(Number(leadValueRaw)) ? Number(leadValueRaw) : undefined;
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-17950162168/G0jUCLWJ5bocEPj5pu9C',
+        ...(leadValue ? { value: leadValue } : {}),
+        currency: 'CAD',
       });
     }
   }, []);
