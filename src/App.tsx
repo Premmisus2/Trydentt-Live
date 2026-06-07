@@ -21,6 +21,9 @@ const LondonOntario = lazy(() => import('./pages/LondonOntario'));
 const LondonOntarioOffer = lazy(() => import('./pages/LondonOntarioOffer'));
 const CityLanding = lazy(() => import('./pages/CityLanding'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+const MoveOut = lazy(() => import('./pages/MoveOut'));
+const Reset = lazy(() => import('./pages/Reset'));
+const FridayReset = lazy(() => import('./pages/FridayReset'));
 
 const App: React.FC = () => {
   return (
@@ -41,6 +44,9 @@ const App: React.FC = () => {
                 <Route path="/thank-you" element={<ThankYou />} />
                 <Route path="/london-ontario-cleaning" element={<LondonOntario />} />
                 <Route path="/london-ontario-cleaning-offer" element={<LondonOntarioOffer />} />
+                <Route path="/move-out" element={<MoveOut />} />
+                <Route path="/reset" element={<Reset />} />
+                <Route path="/friday-reset" element={<FridayReset />} />
                 <Route path="/st-thomas-cleaning" element={
                   <CityLanding city="St. Thomas" slug="st-thomas-cleaning" distance="30 minutes" population="42,000"
                     description="Trydentt Cleaning brings London-quality professional cleaning to St. Thomas, Ontario. Residential and commercial cleaning with eco-friendly products, full insurance, and our 100% satisfaction guarantee — no travel surcharges."
