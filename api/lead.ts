@@ -45,6 +45,14 @@ interface LeadPayload {
   fbp?: string;
   fbc?: string;
   client_user_agent?: string;
+  // SKU calculator fields (added 2026-05-10 — Trydentt Meta relaunch).
+  // See /Documents/Premmisus/Clients/Trydentt/research/synthesis-trydentt-meta-relaunch-2026-05-10.md
+  sku?: 'move-out' | 'bi-weekly' | 'friday-reset' | 'class-a-office';
+  bedrooms?: number;
+  bathrooms?: number;
+  addons?: string[];
+  frequency?: 'one-time' | 'weekly' | 'biweekly';
+  annualLockIn?: boolean;
 }
 
 const GRAPH_API_VERSION = 'v21.0';
@@ -108,6 +116,93 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         }))
     : Promise.resolve({ ok: false, status: 0, error: 'GHL_QUOTE_WEBHOOK not configured' });
 
+  // GHL contacts/upsert — direct API call to map SKU-specific custom fields.
+  // Locked 2026-05-12 to fix the W19 launch issue where the webhook flow didn't map new SKU fields.
+  // Custom field IDs created 2026-05-10 (see synthesis-trydentt-meta-relaunch-2026-05-10.md § 8).
+  const GHL_FIELDS = {
+    SKU:                'qAAgvClbJypC2oRytwh0',
+    Bedrooms:           'pilQzcu36c4v8134urN9',
+    Bathrooms:          'iGeeGPLcJKDbBB0TlrPN',
+    Frequency:          'FeYU7YM3vV5pgGAmrvAc',
+    QuotedPrice:        'D8IFqKDvu3apxHx5DePZ',
+    AnnualLockIn:       'pOuYn7R7DaStCgV6FO1C',
+    AddonsSelected:     'Wp6n6dERDHp7sb26ieoT',
+    BusinessName:       'P2WJVApaeym5cI8Jn0Tl',
+    BuildingType:       '7JpUVwjnjLN2WcdstaO4',
+    CurrentCleanerSetup:'joejB67jH5YoMc0ksZpi',
+    DecisionMakerRole:  'XyFbnn4oRYTjosuEfH57',
+  };
+  const SKU_VALUE_MAP: Record<string, string> = {
+    'move-out':       'Move-Out Recovery System',
+    'bi-weekly':      'Bi-Weekly Reset Program',
+    'friday-reset':   'Friday Reset',
+    'class-a-office': 'Class-A Office Standard',
+  };
+  const FREQUENCY_VALUE_MAP: Record<string, string> = {
+    'one-time': 'One-time',
+    'weekly':   'Weekly',
+    'biweekly': 'Bi-weekly',
+  };
+
+  const ghlApiKey = process.env.GHL_API_KEY;
+  const ghlLocationId = process.env.GHL_LOCATION_ID;
+  const customFields: { id: string; key?: string; field_value: string | number | boolean }[] = [];
+  if (body.sku && SKU_VALUE_MAP[body.sku]) customFields.push({ id: GHL_FIELDS.SKU, field_value: SKU_VALUE_MAP[body.sku] });
+  if (typeof body.bedrooms === 'number') customFields.push({ id: GHL_FIELDS.Bedrooms, field_value: body.bedrooms });
+  if (typeof body.bathrooms === 'number') customFields.push({ id: GHL_FIELDS.Bathrooms, field_value: body.bathrooms });
+  if (body.frequency && FREQUENCY_VALUE_MAP[body.frequency]) customFields.push({ id: GHL_FIELDS.Frequency, field_value: FREQUENCY_VALUE_MAP[body.frequency] });
+  if (typeof body.minPrice === 'number') customFields.push({ id: GHL_FIELDS.QuotedPrice, field_value: body.minPrice });
+  if (body.annualLockIn === true) customFields.push({ id: GHL_FIELDS.AnnualLockIn, field_value: 'Yes' });
+  if (Array.isArray(body.addons) && body.addons.length > 0) customFields.push({ id: GHL_FIELDS.AddonsSelected, field_value: body.addons.join(', ') });
+
+  // Commercial-specific (Class-A Office Standard) — parsed from serviceDetails per Commercial.tsx
+  if (body.sku === 'class-a-office' && Array.isArray(body.serviceDetails)) {
+    const detail = (prefix: string) => body.serviceDetails?.find((d) => d.startsWith(prefix))?.replace(prefix, '').trim();
+    const biz = detail('Business: ');
+    const role = detail('Role: ');
+    const building = detail('Building: ');
+    const cleaner = detail('Current cleaner: ');
+    if (biz) customFields.push({ id: GHL_FIELDS.BusinessName, field_value: biz });
+    if (role) customFields.push({ id: GHL_FIELDS.DecisionMakerRole, field_value: role });
+    if (building) customFields.push({ id: GHL_FIELDS.BuildingType, field_value: building });
+    if (cleaner) customFields.push({ id: GHL_FIELDS.CurrentCleanerSetup, field_value: cleaner });
+  }
+
+  const ghlApiEnabled = Boolean(ghlApiKey && ghlLocationId);
+  const ghlApiPromise = ghlApiEnabled
+    ? fetch('https://services.leadconnectorhq.com/contacts/upsert', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${ghlApiKey}`,
+          Version: '2021-07-28',
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          locationId: ghlLocationId,
+          firstName,
+          lastName,
+          email: body.email,
+          phone: normalizedPhone ? `+${normalizedPhone}` : body.phone,
+          address1: body.address,
+          city: body.city,
+          postalCode: body.postalCode,
+          source: body.source || 'Trydentt Website',
+          tags: [body.sku, body.utm_campaign].filter(Boolean) as string[],
+          customFields,
+        }),
+      })
+        .then(async (r) => {
+          const json = (await r.json().catch(() => ({}))) as Record<string, unknown>;
+          return { ok: r.ok, status: r.status, contactId: (json.contact as { id?: string } | undefined)?.id };
+        })
+        .catch((err: unknown) => ({
+          ok: false,
+          status: 0,
+          error: err instanceof Error ? err.message : String(err),
+        }))
+    : Promise.resolve({ ok: false, status: 0, error: 'GHL_API_KEY or GHL_LOCATION_ID not configured', skipped: true });
+
   // Meta CAPI Lead event — dedup on event_id with client-side Pixel.
   const capiEnabled = Boolean(pixelId && capiToken);
   const capiPromise: Promise<unknown> = capiEnabled
@@ -165,14 +260,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         }))
     : Promise.resolve({ ok: false, skipped: true });
 
-  const [ghlResult, capiResult] = await Promise.all([ghlPromise, capiPromise]);
+  const [ghlResult, ghlApiResult, capiResult] = await Promise.all([ghlPromise, ghlApiPromise, capiPromise]);
 
-  // GHL is primary — CAPI failure should not block the user experience.
-  const success = (ghlResult as { ok: boolean }).ok;
+  // Success if EITHER GHL path (webhook or direct API) accepted the lead.
+  // Webhook is the legacy primary; direct API enriches with custom fields and is now the more reliable path.
+  const success = (ghlResult as { ok: boolean }).ok || (ghlApiResult as { ok: boolean }).ok;
   res.status(success ? 200 : 502).json({
     ok: success,
     eventId,
     ghl: ghlResult,
+    ghlApi: ghlApiResult,
     capi: capiResult,
   });
 }

@@ -137,13 +137,6 @@
         "https://www.instagram.com/trydenttcleaning",
         "https://www.linkedin.com/company/trydentt"
       ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "bestRating": "5",
-        "worstRating": "1",
-        "reviewCount": "10"
-      },
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+15198713368",
@@ -176,18 +169,22 @@
 
     <!-- Meta Pixel (deferred to not block first paint) -->
     <script>
-    window.addEventListener('load', function() {
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '1221912536436874');
-      fbq('track', 'PageView');
-    });
+    // Meta Pixel — runs immediately. fbevents.js loads async (t.async=!0), so this does NOT
+    // block first paint. It was previously wrapped in window.addEventListener('load', ...),
+    // which made PageView fire almost never: visitors (esp. mobile ad clicks) bounced before
+    // the full 'load' event, and SPA route changes never re-fire 'load'. Result: the pixel
+    // logged ~4 events in 28 days and Meta recorded ~0 landing-page-views. Unwrapping restores
+    // Meta's canonical behavior so PageView fires on every hard load (every ad landing).
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1221912536436874');
+    fbq('track', 'PageView');
     </script>
   </head>
   <body>
@@ -209,7 +206,7 @@
         <p>Phone: <a href="tel:+15198713368">+1 519-871-3368</a></p>
         <p>Email: <a href="mailto:homes@trydenttbuildingservices.com">homes@trydenttbuildingservices.com</a></p>
         <p>Website: <a href="https://www.trydenttcleaning.ca">trydenttcleaning.ca</a></p>
-        <p>Fully insured &amp; bonded. Proudly Canadian owned and operated. Rated 5.0 stars.</p>
+        <p>Fully insured &amp; bonded. Proudly Canadian owned and operated.</p>
       </div>
     </noscript>
     <script type="module" src="/src/main.tsx"></script>

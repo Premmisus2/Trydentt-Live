@@ -1,571 +1,396 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { motion, AnimatePresence } from 'motion/react';
-import QuickCalculator from '../components/QuickCalculator';
-import Sparkle from '../components/Sparkle';
-import ServiceCard from '../components/ServiceCard';
-import { 
-  Shield, Sparkles, Clock, ArrowRight, Star, 
-  Building2, AlertCircle, Frown, 
-  CheckCircle2, Users, Trophy, Zap, 
-  Briefcase, Store, GlassWater, PartyPopper,
-  MapPin, Send, XCircle, ChevronDown
-} from 'lucide-react';
+import { motion } from 'motion/react';
+import { Check, Star, Shield, Building2, Sparkles, ArrowRight, AlertCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+
+// Class-A Office Standard landing page. Different ICP and flow than the 3 residential SKUs.
+// Form is a free 12-Point Audit booking, NOT a flat-rate calculator — commercial pricing
+// is generated post-walkthrough from sqft + frequency + scope.
+
+const BUILDING_TYPES = ['Office', 'Retail', 'Medical / Dental', 'Industrial / Warehouse', 'Other'];
+const FREQUENCIES = ['3x / week', '5x / week', '7x / week', 'Custom'];
+const CURRENT_CLEANER = ['DIY / no service', 'In-house janitorial staff', 'Existing commercial service'];
+
+const getCookie = (name: string): string | undefined => {
+  if (typeof document === 'undefined') return undefined;
+  const match = document.cookie.match(new RegExp(`(^|;\\s*)${name}=([^;]+)`));
+  return match ? decodeURIComponent(match[2]) : undefined;
+};
 
 const Commercial: React.FC = () => {
-  const [sliderPosition, setSliderPosition] = useState(50);
+  const navigate = useNavigate();
+  const [form, setForm] = useState({
+    businessName: '',
+    contactName: '',
+    role: '',
+    phone: '',
+    email: '',
+    sqft: '',
+    buildingType: 'Office',
+    frequency: '5x / week',
+    currentCleaner: 'Existing commercial service',
+    preferredAuditDate: '',
+  });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitted, setSubmitted] = useState(false);
 
-  const commercialServices = [
-    { 
-      name: 'Office Cleaning', 
-      desc: 'Productive environments through professional hygiene.', 
-      details: 'Boost productivity with a spotless workspace. We handle trash removal, restroom sanitation, and breakroom cleaning on a schedule that fits your operations.',
-      icon: <Briefcase className="w-6 h-6" /> 
-    },
-    { 
-      name: 'Carpet & Upholstery', 
-      desc: 'Deep fiber cleaning for high-traffic business areas.', 
-      details: 'Revitalize your office furniture and flooring. Our hot water extraction method removes deep-seated dirt and allergens, extending the life of your assets.',
-      icon: <Zap className="w-6 h-6" /> 
-    },
-    { 
-      name: 'Window & Glass', 
-      desc: 'Crystal clear views for your storefront or office.', 
-      details: 'Let the light in with streak-free window cleaning. We clean interior and exterior glass, including partitions and mirrors, for a crystal-clear view.',
-      icon: <GlassWater className="w-6 h-6" /> 
-    },
-    { 
-      name: 'Post-Event Cleaning', 
-      desc: 'Rapid restoration after your corporate gatherings.', 
-      details: 'From corporate galas to office parties, we handle the aftermath. We\'ll have your venue back to business-ready condition in record time.',
-      icon: <PartyPopper className="w-6 h-6" /> 
-    },
-    { 
-      name: 'Janitorial Services', 
-      desc: 'Consistent, daily maintenance for your facility.', 
-      details: 'Comprehensive day-to-day facility management. We restock supplies, maintain floors, and ensure your building meets all health and safety standards.',
-      icon: <Shield className="w-6 h-6" /> 
-    },
-    { 
-      name: 'Retail Store Cleaning', 
-      desc: 'Pristine shopping experiences for your customers.', 
-      details: 'Create an inviting atmosphere for your customers. We focus on high-traffic areas, fitting rooms, and displays to enhance the shopping experience.',
-      icon: <Store className="w-6 h-6" /> 
-    },
-  ];
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.businessName || !form.contactName || !form.phone) {
+      setSubmitError('Business name, contact name, and phone are required.');
+      return;
+    }
+    setSubmitting(true);
+    setSubmitError(null);
+
+    const eventId =
+      typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
+        ? crypto.randomUUID()
+        : undefined;
+
+    const payload = {
+      name: form.contactName,
+      phone: form.phone,
+      email: form.email,
+      niche: 'commercial',
+      service: 'Class-A Office Standard',
+      sku: 'class-a-office' as const,
+      source: 'commercial-audit-form',
+      landing_page: typeof window !== 'undefined' ? window.location.href : undefined,
+      serviceDetails: [
+        `Business: ${form.businessName}`,
+        `Role: ${form.role}`,
+        `Sqft: ${form.sqft}`,
+        `Building: ${form.buildingType}`,
+        `Frequency: ${form.frequency}`,
+        `Current cleaner: ${form.currentCleaner}`,
+        `Preferred audit: ${form.preferredAuditDate}`,
+      ],
+      event_id: eventId,
+      fbp: getCookie('_fbp'),
+      fbc: getCookie('_fbc'),
+      client_user_agent: typeof navigator !== 'undefined' ? navigator.userAgent : undefined,
+    };
+
+    try {
+      const res = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const json = await res.json();
+      if (!json.ok) throw new Error('Submission failed.');
+      if (eventId) {
+        sessionStorage.setItem('trydentt_lead_event_id', json?.eventId || eventId);
+      }
+      setSubmitted(true);
+      navigate('/thank-you');
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Submission failed.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
-    <div className="overflow-hidden bg-slate-50 selection:bg-indigo-600/20 selection:text-indigo-900">
+    <>
       <Helmet>
-        <title>Commercial Cleaning Ontario | Office & Janitorial | Trydentt</title>
-        <meta name="description" content="Professional commercial cleaning services across Ontario. Office cleaning, janitorial, carpet & upholstery, window cleaning, post-event cleanup. Fully insured & bonded. Get a custom proposal." />
+        <title>Commercial Office Cleaning London ON — Class-A Office Standard | Trydentt</title>
+        <meta
+          name="description"
+          content="Class-A Office Standard commercial cleaning for London businesses where appearance is part of revenue. Free 12-Point Office Cleanliness Audit. Insured and bonded."
+        />
         <link rel="canonical" href="https://www.trydenttcleaning.ca/commercial" />
-        <meta property="og:title" content="Commercial Cleaning Ontario | Trydentt Cleaning Services" />
-        <meta property="og:description" content="Professional commercial cleaning for Ontario businesses. Office, retail, janitorial services. Fully insured & bonded." />
-        <meta property="og:url" content="https://www.trydenttcleaning.ca/commercial" />
-        <meta property="og:image" content="https://www.trydenttcleaning.ca/og-image.jpg" />
-        <script type="application/ld+json">{`
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trydenttcleaning.ca/"},
-              {"@type": "ListItem", "position": 2, "name": "Commercial Cleaning", "item": "https://www.trydenttcleaning.ca/commercial"}
-            ]
-          }
-        `}</script>
-        <script type="application/ld+json">{`
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "serviceType": "Commercial Cleaning",
-            "provider": {"@id": "https://www.trydenttcleaning.ca/#organization"},
-            "areaServed": {"@type": "City", "name": "London", "addressRegion": "Ontario", "addressCountry": "CA"},
-            "description": "Professional commercial cleaning services in London, Ontario. Office cleaning, janitorial, carpet & upholstery, window cleaning. Fully insured & bonded.",
-            "offers": {
-              "@type": "Offer",
-              "priceCurrency": "CAD",
-              "availability": "https://schema.org/InStock"
-            }
-          }
-        `}</script>
-        <script type="application/ld+json">{`
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "Do you offer after-hours commercial cleaning?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes. We schedule our commercial cleaning around your business hours so your operations are never disrupted. Evening and weekend cleaning is available for offices, retail stores, and commercial spaces in London, Ontario."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How do you handle commercial cleaning contracts?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "We provide customized proposals based on your facility size, cleaning frequency, and specific requirements. We offer flexible month-to-month agreements with no long-term lock-ins."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Is Trydentt insured for commercial properties?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Absolutely. Trydentt carries full commercial general liability insurance and workers' compensation coverage, protecting your business and property at all times."
-                }
-              }
-            ]
-          }
-        `}</script>
+        <meta property="og:title" content="Class-A Office Standard — Trydentt Cleaning London" />
+        <meta property="og:description" content="Commercial cleaning for London offices where appearance is part of revenue. Free 12-Point Audit." />
+        <meta property="og:url" content="https://trydenttcleaning.ca/commercial" />
       </Helmet>
 
-      {/* Hero Section */}
-      <section className="relative pt-20 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
-        {/* Fresh Breeze Animation */}
-        <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="breeze-overlay animate-breeze" />
-          <div className="breeze-overlay animate-breeze delay-4000" style={{ animationDelay: '4s' }} />
-        </div>
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-slate-50 pt-12 pb-20">
+        <div className="absolute top-1/3 -left-32 w-96 h-96 bg-indigo-200/40 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-100/40 rounded-full blur-3xl pointer-events-none" />
 
-        {/* Premium Background Glows */}
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-indigo-600/5 rounded-full blur-[100px] translate-y-1/2 pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 relative z-10 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center max-w-4xl mx-auto"
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-full text-xs font-bold mb-6 uppercase tracking-wider"
           >
-            <div className="inline-flex items-center space-x-2 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium mb-8 relative">
-              <Building2 className="w-4 h-4" />
-              <span>Professional Commercial Solutions</span>
-              <Sparkle className="text-indigo-400 w-4 h-4 -top-2 -right-2" />
-            </div>
-            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 leading-[1.1] relative">
-              Pristine Workspaces, <span className="text-indigo-600">Professional Excellence.</span>
-              <Sparkle className="text-indigo-300 w-6 h-6 -top-6 -left-4" />
-              <Sparkle className="text-indigo-200 w-4 h-4 bottom-0 -right-8" />
-            </h1>
-            <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto">
-              Your workspace is a reflection of your brand. Trydentt delivers professional commercial cleaning and janitorial services in London, Ontario — consistent, fully insured, and tailored to your business hours.
-            </p>
+            <Sparkles className="w-3 h-3" />
+            Class-A Office Standard
+          </motion.div>
 
-            <div className="flex flex-col items-center mb-12">
-              <motion.div
-                whileHover={{ scale: 1.05, y: -4 }}
-                whileTap={{ scale: 0.98 }}
-                className="relative group"
-              >
-                <Link
-                  to="/quote?niche=commercial"
-                  className="relative z-10 inline-flex items-center space-x-3 bg-indigo-600 hover:bg-indigo-500 text-white px-10 py-5 rounded-2xl text-xl font-bold shadow-[0_20px_50px_rgba(79,70,229,0.3)] transition-all duration-300"
-                  onClick={() => typeof window.gtag === 'function' && window.gtag('event', 'cta_click', { event_label: 'hero_request_proposal', page: 'commercial' })}
-                >
-                  <span>Request a Custom Proposal</span>
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <div className="absolute -inset-1 bg-indigo-400 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200" />
-              </motion.div>
-            </div>
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.05 }}
+            className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-slate-900 leading-[1.05] max-w-4xl mx-auto"
+          >
+            Pass your next surprise client walkthrough. <span className="text-indigo-600">Every time.</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto"
+          >
+            Class-A Office Standard commercial cleaning for London businesses where appearance is part of revenue.
+            Book your <strong>free 12-Point Office Cleanliness Audit</strong> — we walk the floor with you and quote on the spot.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="mt-8 flex flex-wrap justify-center gap-3 text-sm font-medium text-slate-600"
+          >
+            <Trust icon={<Shield className="w-4 h-4 text-indigo-600" />} label="Insured & Bonded" />
+            <Trust icon={<Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />} label="Satisfaction guaranteed" />
+            <Trust icon={<Building2 className="w-4 h-4 text-indigo-600" />} label="London commercial specialists" />
           </motion.div>
         </div>
       </section>
 
-      {/* 2. PAS Framework Section - Redesigned Bento Grid */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        {/* Fresh Breeze Animation */}
-        <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="breeze-overlay animate-breeze opacity-30" style={{ animationDuration: '12s' }} />
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16 relative"
-          >
-            <h2 className="text-4xl font-bold mb-4 font-display text-slate-900">
-              The Difference is in the Detail
-              <Sparkle className="text-indigo-200 w-5 h-5 -top-4 right-1/4" />
+      {/* 3-tier menu */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-indigo-600 font-bold uppercase tracking-wider text-sm mb-3">
+              Three tiers. Built around your walkthrough.
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold font-display text-slate-900">
+              Standard or Class-A — <span className="text-indigo-600">your call.</span>
             </h2>
-            <p className="text-slate-500 max-w-2xl mx-auto">Experience the Trydentt standard — reliable commercial cleaning across London and Southwestern Ontario. From office cleaning and carpet care to post-event cleanup, we keep your business spotless so your team can focus on what they do best.</p>
-          </motion.div>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-auto md:auto-rows-[240px]">
-            {/* Problem 1 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5, boxShadow: '0 20px 40px rgba(0,0,0,0.05)' }}
-              className="group p-8 rounded-[2rem] bg-slate-50 border border-slate-100 flex flex-col justify-between transition-all duration-500"
-            >
-              <div className="w-10 h-10 bg-red-50 text-red-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Users className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Unreliable Janitors</h3>
-                <p className="text-slate-500 text-sm">Late arrivals and missed trash bins affecting your office environment and employee morale.</p>
-              </div>
-            </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Free Audit (decoy) */}
+            <div className="p-8 rounded-3xl border-2 border-slate-200 bg-slate-50 flex flex-col">
+              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Start here</p>
+              <h3 className="text-2xl font-bold font-display text-slate-900 mb-2">Free 12-Point Audit</h3>
+              <p className="text-4xl font-bold font-display text-slate-900 mb-1">$0</p>
+              <p className="text-sm text-slate-500 mb-6">One-time walkthrough</p>
+              <ul className="space-y-2 text-sm text-slate-700 mb-6 flex-grow">
+                {AUDIT_INCLUDES.map(i => (
+                  <li key={i} className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
+                    <span>{i}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href="#audit-form" className="block text-center px-5 py-3 rounded-xl bg-white border-2 border-indigo-600 text-indigo-600 font-bold hover:bg-indigo-50 transition-all">
+                Book my free audit
+              </a>
+            </div>
 
-            {/* Problem 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, delay: 0.1 }}
-              whileHover={{ y: -5, boxShadow: '0 20px 40px rgba(0,0,0,0.05)' }}
-              className="group p-8 rounded-[2rem] bg-slate-50 border border-slate-100 flex flex-col justify-between transition-all duration-500"
-            >
-              <div className="w-10 h-10 bg-red-50 text-red-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                <AlertCircle className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Poor First Impressions</h3>
-                <p className="text-slate-500 text-sm">Dusty lobbies and smudged windows affecting client trust and your brand image.</p>
-              </div>
-            </motion.div>
+            {/* Standard */}
+            <div className="p-8 rounded-3xl border-2 border-slate-200 bg-white flex flex-col">
+              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Mid-tier</p>
+              <h3 className="text-2xl font-bold font-display text-slate-900 mb-2">Standard</h3>
+              <p className="text-4xl font-bold font-display text-slate-900 mb-1">$0.08-0.10<span className="text-base text-slate-500"> /sqft / visit</span></p>
+              <p className="text-sm text-slate-500 mb-6">Monthly contract · 3x/wk avg</p>
+              <ul className="space-y-2 text-sm text-slate-700 mb-6 flex-grow">
+                {STANDARD_INCLUDES.map(i => (
+                  <li key={i} className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
+                    <span>{i}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href="#audit-form" className="block text-center px-5 py-3 rounded-xl bg-white border-2 border-indigo-600 text-indigo-600 font-bold hover:bg-indigo-50 transition-all">
+                Get a Standard quote
+              </a>
+            </div>
 
-            {/* Solution - Large Card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, delay: 0.2 }}
-              whileHover={{ y: -8, boxShadow: '0 25px 50px rgba(79, 70, 229, 0.2)', borderColor: 'rgba(79, 70, 229, 0.4)' }}
-              className="md:row-span-2 p-10 rounded-[2.5rem] bg-indigo-600 text-white flex flex-col justify-between relative overflow-hidden group border border-transparent transition-all duration-500"
-            >
-              <div className="relative z-10">
-                <div className="w-14 h-14 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                  <Sparkles className="w-7 h-7 text-white" />
-                </div>
-                <h3 className="text-3xl font-bold mb-6 font-display leading-tight">The Trydentt Business Standard</h3>
-                <p className="text-indigo-100 text-lg leading-relaxed">
-                  - Consistent, high-quality sanitation tailored to your business's needs<br />
-                  - We work when you don't, ensuring a safe and clean environment
-                </p>
+            {/* Class-A Total Care */}
+            <div className="p-8 rounded-3xl border-2 border-indigo-600 bg-slate-900 text-white flex flex-col relative overflow-hidden h-full">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" />
+              <div className="self-start mb-4 px-3 py-1 bg-indigo-500 text-white text-[10px] font-bold rounded-full uppercase tracking-wider shadow-lg">
+                Most chosen
               </div>
-              <div className="relative z-10 mt-8">
-                <Link to="/quote?niche=commercial" className="inline-flex items-center space-x-2 text-white font-bold group/link">
-                  <span>Get a Proposal Today</span>
-                  <ArrowRight className="w-5 h-5 group-hover/link:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
-            </motion.div>
-
-            {/* Problem 3 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, delay: 0.3 }}
-              whileHover={{ y: -5, boxShadow: '0 20px 40px rgba(0,0,0,0.05)' }}
-              className="group p-8 rounded-[2rem] bg-slate-50 border border-slate-100 flex flex-col justify-between transition-all duration-500"
-            >
-              <div className="w-10 h-10 bg-red-50 text-red-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Shield className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Liability Risks</h3>
-                <p className="text-slate-500 text-sm">Uninsured cleaners posing a risk to your business and property.</p>
-              </div>
-            </motion.div>
-
-            {/* Solution 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, delay: 0.4 }}
-              whileHover={{ y: -5, boxShadow: '0 20px 40px rgba(79, 70, 229, 0.05)', borderColor: 'rgba(79, 70, 229, 0.2)' }}
-              className="group p-8 rounded-[2rem] bg-white border border-slate-100 flex flex-col justify-between transition-all duration-500"
-            >
-              <div className="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                <CheckCircle2 className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Fully Insured</h3>
-                <p className="text-slate-500 text-sm">Total liability and workers comp coverage for your protection.</p>
-              </div>
-            </motion.div>
+              <p className="text-xs font-bold text-indigo-200 uppercase tracking-wider mb-2">Premium</p>
+              <h3 className="text-2xl font-bold font-display mb-2">Class-A Total Care</h3>
+              <p className="text-4xl font-bold font-display mb-1">$0.12-0.15<span className="text-base text-indigo-200"> /sqft / visit</span></p>
+              <p className="text-sm text-indigo-200 mb-6">Monthly contract · 5x/wk avg</p>
+              <ul className="space-y-2 text-sm text-indigo-100 mb-6 flex-grow">
+                {CLASS_A_INCLUDES.map(i => (
+                  <li key={i} className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-white shrink-0 mt-0.5" />
+                    <span>{i}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href="#audit-form" className="block text-center px-5 py-3 rounded-xl bg-white text-indigo-600 font-bold hover:bg-indigo-50 transition-all">
+                Get a Class-A quote
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 3. Services Breakdown Section */}
-      <section id="services" className="py-24 bg-indigo-50 font-sans relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-600/5 rounded-full blur-[120px] pointer-events-none" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16 relative"
-          >
-            <h2 className="text-4xl font-bold mb-6 font-display text-slate-900 relative inline-block pb-4">
-              Commercial Services
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-indigo-600 rounded-full" />
-              <span className="absolute bottom-0 left-1/2 translate-x-4 w-3 h-1 bg-slate-800 rounded-full" />
-              <Sparkle className="text-indigo-300 w-4 h-4 -top-4 -right-8" />
+      {/* Audit Form */}
+      <section id="audit-form" className="py-16 bg-gradient-to-br from-indigo-50 via-white to-slate-50 scroll-mt-24">
+        <div className="max-w-3xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold font-display text-slate-900 mb-3">
+              Book your free 12-Point Audit
             </h2>
-            <p className="text-slate-600 max-w-2xl mx-auto text-sm">
-              Professional office cleaning, janitorial services, carpet and upholstery care, window cleaning, and post-event restoration — tailored to your London, Ontario business.
+            <p className="text-slate-600">
+              We walk your floor with you. You get a written quote within 24 hours. No contract required to book the audit.
             </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {commercialServices.map((service, idx) => (
-              <ServiceCard 
-                key={idx}
-                service={service}
-                index={idx}
-              />
-            ))}
           </div>
-        </div>
-      </section>
 
-      {/* 5. Visual Proof Section */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="breeze-overlay animate-breeze opacity-40" style={{ animationDuration: '10s', animationDirection: 'reverse' }} />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
+          {submitted ? (
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="bg-white rounded-3xl border-2 border-indigo-100 p-10 text-center shadow-xl"
             >
-              <h2 className="text-4xl font-bold mb-8 font-display text-slate-900">
-                Visual Proof of Excellence
-                <Sparkle className="text-indigo-300 w-6 h-6 -top-8 left-0" />
-              </h2>
-              <p className="text-lg text-slate-600 mb-10 leading-relaxed">
-                See the Trydentt difference in action. From trashed restaurant kitchens to spotless commercial floors, our London cleaning team maintains the highest standards of commercial hygiene.
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-600 text-white mb-6">
+                <Check className="w-8 h-8" />
+              </div>
+              <h3 className="text-2xl font-bold font-display text-slate-900 mb-3">Audit request received.</h3>
+              <p className="text-slate-600 max-w-md mx-auto">
+                A Trydentt team member will call within 24 hours to confirm the audit date.
+                Nothing to pay, nothing to sign — we walk your floor and quote on the spot.
               </p>
-              <div className="space-y-6">
-                <div className="flex items-center space-x-4 group">
-                  <div className="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
-                    <Trophy className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-slate-900">Professional Standards</h3>
-                    <p className="text-sm text-slate-500">Partnering with local businesses to maintain pristine environments.</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4 group">
-                  <div className="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
-                    <Shield className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-slate-900">Fully Insured & Bonded</h3>
-                    <p className="text-sm text-slate-500">Total liability coverage for your business protection.</p>
-                  </div>
-                </div>
-              </div>
             </motion.div>
+          ) : (
+            <form onSubmit={handleSubmit} className="bg-white rounded-3xl border border-slate-200 p-8 shadow-xl space-y-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Field label="Business name *" value={form.businessName} onChange={v => setForm(f => ({ ...f, businessName: v }))} />
+                <Field label="Your role" value={form.role} onChange={v => setForm(f => ({ ...f, role: v }))} placeholder="Office mgr, owner, GM" />
+                <Field label="Contact name *" value={form.contactName} onChange={v => setForm(f => ({ ...f, contactName: v }))} />
+                <Field label="Phone *" value={form.phone} onChange={v => setForm(f => ({ ...f, phone: v }))} />
+                <Field label="Email" value={form.email} onChange={v => setForm(f => ({ ...f, email: v }))} />
+                <Field label="Approx. sqft" value={form.sqft} onChange={v => setForm(f => ({ ...f, sqft: v }))} placeholder="e.g. 3000" />
+              </div>
 
-            {/* Before/After Slider */}
-            <motion.div 
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-video group"
-            >
-              <div className="absolute inset-0 w-full h-full">
-                <picture>
-                  <source srcSet="/images/commercial-before.webp" type="image/webp" />
-                  <img
-                    src="/images/commercial-before.jpg"
-                    width={800}
-                    height={450}
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                    alt="Commercial washroom with debris and broken glass before Trydentt cleaning service"
-                  />
-                </picture>
-              </div>
-              <div
-                className="absolute inset-0 w-full h-full overflow-hidden"
-                style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-              >
-                <picture>
-                  <source srcSet="/images/commercial-after.webp" type="image/webp" />
-                  <img
-                    src="/images/commercial-after.jpg"
-                    width={800}
-                    height={450}
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                    alt="Spotless commercial washroom after Trydentt janitorial cleaning service"
-                  />
-                </picture>
-              </div>
-              
-              <div 
-                className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-20"
-                style={{ left: `${sliderPosition}%` }}
-              >
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-xl flex items-center justify-center">
-                  <div className="flex space-x-0.5">
-                    <div className="w-0.5 h-4 bg-slate-300 rounded-full" />
-                    <div className="w-0.5 h-4 bg-slate-300 rounded-full" />
-                  </div>
+              <Select label="Building type" value={form.buildingType} options={BUILDING_TYPES} onChange={v => setForm(f => ({ ...f, buildingType: v }))} />
+              <Select label="Desired frequency" value={form.frequency} options={FREQUENCIES} onChange={v => setForm(f => ({ ...f, frequency: v }))} />
+              <Select label="Current cleaning setup" value={form.currentCleaner} options={CURRENT_CLEANER} onChange={v => setForm(f => ({ ...f, currentCleaner: v }))} />
+
+              <Field label="Preferred audit date" type="date" value={form.preferredAuditDate} onChange={v => setForm(f => ({ ...f, preferredAuditDate: v }))} />
+
+              {submitError && (
+                <div className="flex items-center gap-2 text-red-600 text-sm">
+                  <AlertCircle className="w-4 h-4" />
+                  <span>{submitError}</span>
                 </div>
-              </div>
-              
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value={sliderPosition}
-                onChange={(e) => setSliderPosition(parseInt(e.target.value))}
-                aria-label="Slide to compare before and after commercial cleaning results"
-                className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30"
-              />
-              
-              <div className="absolute bottom-6 left-6 bg-black/50 backdrop-blur-md text-white px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider z-10">Before</div>
-              <div className="absolute bottom-6 right-6 bg-indigo-600/80 backdrop-blur-md text-white px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider z-10">After</div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+              )}
 
-      {/* Quick Estimate Calculator Section */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <QuickCalculator />
-        </div>
-      </section>
-
-      {/* Service Areas Internal Links */}
-      <section className="py-16 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">Commercial Cleaning Across Southwestern Ontario</h2>
-          <p className="text-slate-500 mb-8 max-w-2xl mx-auto">We serve businesses in London and all surrounding communities with consistent, professional-grade cleaning.</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link to="/london-ontario-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">London, ON</Link>
-            <Link to="/st-thomas-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">St. Thomas</Link>
-            <Link to="/woodstock-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">Woodstock</Link>
-            <Link to="/strathroy-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">Strathroy</Link>
-            <Link to="/ingersoll-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">Ingersoll</Link>
-            <Link to="/tillsonburg-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">Tillsonburg</Link>
-            <Link to="/aylmer-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">Aylmer</Link>
-            <Link to="/dorchester-cleaning" className="px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:bg-indigo-100 transition-colors">Dorchester</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section — Visible HTML (matches schema in Helmet) */}
-      <section className="py-24 bg-slate-50 relative overflow-hidden">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 font-display">
-              Frequently Asked Questions
-            </h2>
-            <p className="mt-4 text-lg text-slate-600">
-              Questions about commercial cleaning.
-            </p>
-          </motion.div>
-          <div className="space-y-4">
-            {[
-              {
-                q: "Do you offer after-hours commercial cleaning?",
-                a: "Yes. We schedule our commercial cleaning around your business hours so your operations are never disrupted. Evening and weekend cleaning is available for offices, retail stores, and commercial spaces in London, Ontario."
-              },
-              {
-                q: "How do you handle commercial cleaning contracts?",
-                a: "We provide customized proposals based on your facility size, cleaning frequency, and specific requirements. We offer flexible month-to-month agreements with no long-term lock-ins."
-              },
-              {
-                q: "Is Trydentt insured for commercial properties?",
-                a: "Absolutely. Trydentt carries full commercial general liability insurance and workers' compensation coverage, protecting your business and property at all times."
-              }
-            ].map((faq, i) => (
-              <motion.details
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="group bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden"
+              <button
+                type="submit"
+                disabled={submitting}
+                className={`w-full py-4 rounded-2xl font-bold shadow-xl flex items-center justify-center gap-2 transition-all ${
+                  submitting
+                    ? 'bg-slate-300 text-slate-500 cursor-not-allowed'
+                    : 'bg-indigo-600 text-white hover:bg-indigo-700'
+                }`}
               >
-                <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-left text-slate-900 font-semibold text-lg hover:bg-slate-50 transition-colors list-none [&::-webkit-details-marker]:hidden">
-                  <span>{faq.q}</span>
-                  <ChevronDown className="w-5 h-5 text-slate-400 transition-transform group-open:rotate-180 flex-shrink-0 ml-4" />
-                </summary>
-                <div className="px-6 pb-5 text-slate-600 leading-relaxed">
-                  {faq.a}
-                </div>
-              </motion.details>
-            ))}
-          </div>
+                <span>{submitting ? 'Submitting…' : 'Book my free 12-Point Audit'}</span>
+                {!submitting && <ArrowRight className="w-4 h-4" />}
+              </button>
+
+              <p className="text-xs text-slate-500 text-center">
+                No payment. No contract. We walk your floor and quote within 24 hours.
+              </p>
+            </form>
+          )}
         </div>
       </section>
 
-      {/* 6. Low-Friction CTA Form Section */}
-      <section id="booking-form" className="py-24 bg-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-indigo-600 rounded-[3rem] p-12 md:p-20 relative overflow-hidden"
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
-              <div className="text-white">
-                <h2 className="text-4xl md:text-5xl font-bold mb-8 font-display">Elevate your workspace?</h2>
-                <p className="text-xl text-indigo-100 mb-10">
-                  Join businesses across London, St. Thomas, Woodstock, and Southwestern Ontario who trust Trydentt. Get a custom commercial cleaning proposal in less than two hours.
-                </p>
-                <div className="flex items-center space-x-6">
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle2 className="w-5 h-5 text-indigo-300" />
-                    <span className="text-sm font-medium">Custom proposals</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle2 className="w-5 h-5 text-indigo-300" />
-                    <span className="text-sm font-medium">Fully insured & bonded</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-[2rem] p-8 md:p-10 shadow-2xl flex flex-col items-center justify-center text-center">
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">Request a Proposal</h3>
-                <p className="text-slate-600 mb-8">
-                  Get a customized cleaning plan for your business. Fast, professional, and tailored to your needs.
-                </p>
-                <Link 
-                  to="/quote?niche=commercial" 
-                  className="w-full bg-indigo-600 text-white py-4 rounded-xl font-bold hover:bg-indigo-700 transition-all shadow-lg flex items-center justify-center space-x-2 group"
-                >
-                  <span>Request My Proposal</span>
-                  <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </div>
-            <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl" />
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-400/20 rounded-full translate-x-1/4 translate-y-1/4 blur-3xl" />
-          </motion.div>
+      {/* Guarantee */}
+      <section className="py-16 bg-slate-900 text-white">
+        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold font-display mb-4">
+            24-hour walkthrough re-clean guarantee.
+          </h2>
+          <p className="text-slate-300 text-lg leading-relaxed">
+            Flag anything on your monthly walkthrough and we re-clean it within 24 hours — at no cost.
+            That is the Trydentt Class-A Office Standard.
+          </p>
         </div>
       </section>
-    </div>
+    </>
   );
 };
+
+const Trust: React.FC<{ icon: React.ReactNode; label: string }> = ({ icon, label }) => (
+  <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-full shadow-sm">
+    {icon}
+    <span>{label}</span>
+  </div>
+);
+
+const Field: React.FC<{
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  placeholder?: string;
+  type?: string;
+}> = ({ label, value, onChange, placeholder, type = 'text' }) => (
+  <div>
+    <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">{label}</label>
+    <input
+      type={type}
+      value={value}
+      onChange={e => onChange(e.target.value)}
+      placeholder={placeholder}
+      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 text-sm focus:border-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-100"
+    />
+  </div>
+);
+
+const Select: React.FC<{
+  label: string;
+  value: string;
+  options: string[];
+  onChange: (v: string) => void;
+}> = ({ label, value, options, onChange }) => (
+  <div>
+    <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">{label}</label>
+    <select
+      value={value}
+      onChange={e => onChange(e.target.value)}
+      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 text-sm focus:border-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-100"
+    >
+      {options.map(o => (
+        <option key={o} value={o}>{o}</option>
+      ))}
+    </select>
+  </div>
+);
+
+const AUDIT_INCLUDES = [
+  '12-Point Office Cleanliness scorecard',
+  'Walk the floor with you in person',
+  'Written quote within 24h',
+  'No contract required to book',
+  'Zero pressure — yours to use as a benchmark',
+];
+
+const STANDARD_INCLUDES = [
+  'Routine office maintenance',
+  'Restrooms, kitchen, break room',
+  'High-touch surface disinfection',
+  'Trash & recycling',
+  'Vacuum & mop hard floors',
+  'Insured and bonded',
+];
+
+const CLASS_A_INCLUDES = [
+  'Everything in Standard',
+  'Premium glass, conference, lobby treatment',
+  'Branded uniformed team',
+  'Detail-level dust & polish',
+  'Surprise-walkthrough ready, every visit',
+  '24h re-clean guarantee on flagged items',
+];
 
 export default Commercial;

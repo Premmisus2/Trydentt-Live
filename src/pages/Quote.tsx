@@ -15,7 +15,9 @@ declare global {
 }
 
 const GHL_WEBHOOK_URL = import.meta.env.VITE_GHL_QUOTE_WEBHOOK;
-const USE_LEAD_API = import.meta.env.VITE_USE_LEAD_API === 'true';
+// Always route through /api/lead — server-side Meta CAPI + GHL upsert with SKU custom fields.
+// (Previously gated on VITE_USE_LEAD_API; locked to true 2026-05-14 to fix W19 attribution gap.)
+const USE_LEAD_API = true;
 
 const getCookie = (name: string): string | undefined => {
   if (typeof document === 'undefined') return undefined;

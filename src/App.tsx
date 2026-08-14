@@ -1,9 +1,28 @@
-import React, { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { Suspense, lazy, useEffect, useRef } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+
+// Fire a Meta Pixel PageView on SPA route changes. The initial PageView is fired by the base
+// pixel snippet in index.html, so skip the first render to avoid double-counting it. Meta-only
+// by design — GA4/Google Ads page_view is handled per-page (see ThankYou.tsx) and must not be
+// touched here.
+const MetaPixelRouteTracker: React.FC = () => {
+  const { pathname } = useLocation();
+  const isFirstRender = useRef(true);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'PageView');
+    }
+  }, [pathname]);
+  return null;
+};
 
 // Eager load Home for fastest LCP
 import Home from './pages/Home';
@@ -19,6 +38,9 @@ const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const Terms = lazy(() => import('./pages/Terms'));
 const LondonOntario = lazy(() => import('./pages/LondonOntario'));
 const LondonOntarioOffer = lazy(() => import('./pages/LondonOntarioOffer'));
+const MoveOut = lazy(() => import('./pages/MoveOut'));
+const BiWeeklyReset = lazy(() => import('./pages/BiWeeklyReset'));
+const FridayReset = lazy(() => import('./pages/FridayReset'));
 const CityLanding = lazy(() => import('./pages/CityLanding'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -27,6 +49,7 @@ const App: React.FC = () => {
     <HelmetProvider>
       <BrowserRouter>
         <ScrollToTop />
+        <MetaPixelRouteTracker />
         <div className="flex flex-col min-h-screen font-sans">
           <Header />
           <main className="flex-grow pt-20">
@@ -41,6 +64,9 @@ const App: React.FC = () => {
                 <Route path="/thank-you" element={<ThankYou />} />
                 <Route path="/london-ontario-cleaning" element={<LondonOntario />} />
                 <Route path="/london-ontario-cleaning-offer" element={<LondonOntarioOffer />} />
+                <Route path="/move-out" element={<MoveOut />} />
+                <Route path="/reset" element={<BiWeeklyReset />} />
+                <Route path="/friday-reset" element={<FridayReset />} />
                 <Route path="/st-thomas-cleaning" element={
                   <CityLanding city="St. Thomas" slug="st-thomas-cleaning" distance="30 minutes" population="42,000"
                     description="Trydentt Cleaning brings London-quality professional cleaning to St. Thomas, Ontario. Residential and commercial cleaning with eco-friendly products, full insurance, and our 100% satisfaction guarantee — no travel surcharges."

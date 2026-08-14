@@ -19,7 +19,32 @@ const getCookie = (name: string): string | undefined => {
   return match ? decodeURIComponent(match[2]) : undefined;
 };
 
-const HeroLeadForm: React.FC = () => {
+interface HeroLeadFormProps {
+  /** CRM source label written to GHL. Lets each SKU landing page attribute its own leads. */
+  source?: string;
+  /** SKU name (e.g. "Move-Out Recovery System") passed through to GHL when set. */
+  sku?: string;
+  /** GHL niche field. */
+  niche?: string;
+  /** Small pill above the heading. */
+  badge?: string;
+  /** Form card heading. */
+  heading?: string;
+  /** Sub-line under the heading. */
+  subheading?: string;
+  /** Submit button label. */
+  ctaLabel?: string;
+}
+
+const HeroLeadForm: React.FC<HeroLeadFormProps> = ({
+  source = 'Landing Page: London Ontario (Hero Form)',
+  sku,
+  niche = 'residential',
+  badge = 'FREE QUOTE · NO OBLIGATION',
+  heading = 'Get Your Free Residential Cleaning Quote',
+  subheading = 'Response within 2 hours. No spam, ever.',
+  ctaLabel = 'Get My Quote',
+}) => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [name, setName] = useState('');
@@ -67,8 +92,9 @@ const HeroLeadForm: React.FC = () => {
       name,
       phone: `+1 ${phone}`,
       postalCode,
-      source: 'Landing Page — London Ontario (Hero Form)',
-      niche: 'residential',
+      source,
+      niche,
+      ...(sku ? { sku } : {}),
       utm_source: searchParams.get('utm_source') || '',
       utm_medium: searchParams.get('utm_medium') || '',
       utm_campaign: searchParams.get('utm_campaign') || '',
@@ -122,13 +148,13 @@ const HeroLeadForm: React.FC = () => {
       <div className="relative z-10">
         <div className="inline-flex items-center space-x-2 px-3 py-1.5 bg-indigo-50 text-indigo-700 rounded-full text-xs font-bold mb-4">
           <Sparkles className="w-3 h-3" />
-          <span>FREE QUOTE · NO OBLIGATION</span>
+          <span>{badge}</span>
         </div>
         <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2 font-display leading-tight">
-          Get Your Free Residential Cleaning Quote
+          {heading}
         </h2>
         <p className="text-slate-500 text-sm mb-6">
-          Response within 2 hours. No spam, ever.
+          {subheading}
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -196,7 +222,7 @@ const HeroLeadForm: React.FC = () => {
                 <span>Sending...</span>
               </>
             ) : (
-              <span>Get My Quote</span>
+              <span>{ctaLabel}</span>
             )}
           </motion.button>
 
@@ -211,7 +237,7 @@ const HeroLeadForm: React.FC = () => {
             </div>
             <div className="flex items-center space-x-1.5">
               <Star className="w-3.5 h-3.5 text-amber-400 fill-current" />
-              <span className="font-medium">5-star rated</span>
+              <span className="font-medium">Satisfaction guaranteed</span>
             </div>
           </div>
 

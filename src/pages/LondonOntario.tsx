@@ -29,7 +29,7 @@ const LondonOntario: React.FC = () => {
         <meta name="description" content="London Ontario's trusted cleaning company. Residential & commercial cleaning in London, ON — Byron, Masonville, Wortley Village, Old North & all neighbourhoods. Eco-friendly, fully insured. Free quotes." />
         <link rel="canonical" href="https://www.trydenttcleaning.ca/london-ontario-cleaning" />
         <meta property="og:title" content="Cleaning Services London Ontario | Trydentt Cleaning" />
-        <meta property="og:description" content="One of London Ontario's most trusted cleaning services. House cleaning, office cleaning, deep cleaning. Eco-friendly, insured, satisfaction guaranteed." />
+        <meta property="og:description" content="Professional cleaning services in London, Ontario. House cleaning, office cleaning, deep cleaning. Eco-friendly, insured, satisfaction guaranteed." />
         <meta property="og:url" content="https://www.trydenttcleaning.ca/london-ontario-cleaning" />
         <meta property="og:image" content="https://www.trydenttcleaning.ca/og-image.jpg" />
         <script type="application/ld+json">{`
@@ -74,7 +74,7 @@ const LondonOntario: React.FC = () => {
                 "name": "What is the best cleaning company in London, Ontario?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Trydentt Cleaning Services is one of London Ontario's most trusted cleaning companies, with a 5/5 Google rating. We serve all London neighbourhoods including Byron, Masonville, Wortley Village, Old North, and more. Fully insured, eco-friendly, with a 100% satisfaction guarantee."
+                  "text": "Trydentt Cleaning Services provides professional residential and commercial cleaning across London, Ontario. We serve all London neighbourhoods including Byron, Masonville, Wortley Village, Old North, and more. Fully insured, eco-friendly, with a 100% satisfaction guarantee."
                 }
               },
               {
@@ -133,20 +133,12 @@ const LondonOntario: React.FC = () => {
                 <span>Proudly Serving London, Ontario</span>
               </div>
               <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-slate-900 mb-6 leading-[1.1]">
-                One of London Ontario's <span className="text-indigo-600">Most Trusted</span> Cleaning Services
+                Professional Cleaning Services in <span className="text-indigo-600">London, Ontario</span>
               </h1>
               <p className="text-lg text-slate-600 mb-8 leading-relaxed">
                 Professional residential cleaning for every London neighbourhood. Eco-friendly products, fully insured, and backed by our 100% satisfaction guarantee.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-6 mb-6">
-                <div className="flex items-center space-x-3">
-                  <div className="flex items-center text-amber-400">
-                    {[1, 2, 3, 4, 5].map((i) => <Star key={i} className="w-5 h-5 fill-current" />)}
-                  </div>
-                  <p className="text-slate-600 font-medium text-sm">5/5 — Trusted by London families</p>
-                </div>
-              </div>
 
               <a
                 href="tel:+15198713368"
@@ -312,7 +304,7 @@ const LondonOntario: React.FC = () => {
             {[
               {
                 q: "What is the best cleaning company in London, Ontario?",
-                a: "Trydentt Cleaning Services is one of London Ontario's most trusted cleaning companies, with a 5/5 Google rating. We serve all London neighbourhoods including Byron, Masonville, Wortley Village, Old North, and more. Fully insured, eco-friendly, with a 100% satisfaction guarantee."
+                a: "Trydentt Cleaning Services provides professional residential and commercial cleaning across London, Ontario. We serve all London neighbourhoods including Byron, Masonville, Wortley Village, Old North, and more. Fully insured, eco-friendly, with a 100% satisfaction guarantee."
               },
               {
                 q: "How much does a house cleaner cost in London, Ontario?",
@@ -385,7 +377,7 @@ const LondonOntario: React.FC = () => {
 
               <div className="bg-white rounded-[2rem] p-8 md:p-10 shadow-2xl flex flex-col items-center justify-center text-center">
                 <h3 className="text-2xl font-bold text-slate-900 mb-4">Get Your Free Quote</h3>
-                <p className="text-slate-600 mb-8">One of London's most trusted cleaning services. Response within 2 hours.</p>
+                <p className="text-slate-600 mb-8">Professional cleaning services in London, Ontario. Response within 2 hours.</p>
                 <Link
                   to="/quote"
                   className="w-full bg-indigo-600 text-white py-4 rounded-xl font-bold hover:bg-indigo-700 transition-all shadow-lg flex items-center justify-center space-x-2 group"

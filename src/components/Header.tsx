@@ -6,14 +6,21 @@ import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [areasOpen, setAreasOpen] = useState(false);
+  const [residentialOpen, setResidentialOpen] = useState(false);
   const location = useLocation();
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Residential', path: '/residential' },
     { name: 'Commercial', path: '/commercial' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
+  ];
+
+  const residentialSkus = [
+    { name: 'Move-Out Recovery System', path: '/move-out', tagline: 'Leave a clean that passes inspection' },
+    { name: 'Bi-Weekly Reset', path: '/reset', tagline: 'Reclaim 6 Saturdays a year' },
+    { name: 'Friday Reset', path: '/friday-reset', tagline: 'Walk into a showroom-clean home' },
+    { name: 'All residential services', path: '/residential', tagline: '' },
   ];
 
   const serviceAreas = [
@@ -43,7 +50,55 @@ const Header: React.FC = () => {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-6">
-            {navLinks.map((link) => (
+            {/* Home */}
+            <Link
+              to="/"
+              className={`text-sm font-bold tracking-wide transition-all duration-300 hover:text-indigo-600 relative group/link ${
+                isActive('/') ? 'text-indigo-600' : 'text-slate-600'
+              }`}
+            >
+              Home
+              <span className={`absolute -bottom-1 left-0 h-0.5 bg-indigo-600 transition-all duration-300 ${isActive('/') ? 'w-full' : 'w-0 group-hover/link:w-full'}`} />
+            </Link>
+
+            {/* Residential Dropdown */}
+            <div className="relative group/residential">
+              <button
+                className={`text-sm font-bold tracking-wide transition-all duration-300 flex items-center space-x-1 ${
+                  residentialSkus.some(s => isActive(s.path)) ? 'text-indigo-600' : 'text-slate-600 hover:text-indigo-600'
+                }`}
+                onClick={() => setResidentialOpen(!residentialOpen)}
+                onMouseEnter={() => setResidentialOpen(true)}
+                aria-expanded={residentialOpen}
+                aria-haspopup="true"
+              >
+                <span>Residential</span>
+                <ChevronDown className="w-3 h-3" />
+              </button>
+              {residentialOpen && (
+                <div
+                  className="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-xl border border-slate-100 py-2 z-50"
+                  onMouseLeave={() => setResidentialOpen(false)}
+                >
+                  {residentialSkus.map((sku) => (
+                    <Link
+                      key={sku.path}
+                      to={sku.path}
+                      onClick={() => setResidentialOpen(false)}
+                      className={`block px-4 py-3 transition-colors ${
+                        isActive(sku.path) ? 'bg-indigo-50' : 'hover:bg-indigo-50'
+                      }`}
+                    >
+                      <div className={`text-sm font-bold ${isActive(sku.path) ? 'text-indigo-600' : 'text-slate-900'}`}>{sku.name}</div>
+                      {sku.tagline && <div className="text-xs text-slate-500 mt-0.5">{sku.tagline}</div>}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Other top-level links */}
+            {navLinks.filter(l => l.path !== '/').map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
@@ -131,7 +186,31 @@ const Header: React.FC = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-white border-b border-slate-100 px-4 py-6 space-y-4">
-          {navLinks.map((link) => (
+          <Link
+            to="/"
+            onClick={() => setIsOpen(false)}
+            className={`block text-lg font-medium ${isActive('/') ? 'text-indigo-600' : 'text-slate-700'}`}
+          >
+            Home
+          </Link>
+
+          <div className="border-t border-slate-100 pt-3">
+            <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Residential</p>
+            {residentialSkus.map((sku) => (
+              <Link
+                key={sku.path}
+                to={sku.path}
+                onClick={() => setIsOpen(false)}
+                className={`block text-base font-medium py-1.5 ${
+                  isActive(sku.path) ? 'text-indigo-600' : 'text-slate-600'
+                }`}
+              >
+                {sku.name}
+              </Link>
+            ))}
+          </div>
+
+          {navLinks.filter(l => l.path !== '/').map((link) => (
             <Link
               key={link.path}
               to={link.path}

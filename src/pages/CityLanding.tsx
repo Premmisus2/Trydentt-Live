@@ -116,12 +116,6 @@ const CityLanding: React.FC<CityLandingProps> = ({ city, slug, distance, populat
               </a>
             </div>
 
-            <div className="flex items-center justify-center space-x-4">
-              <div className="flex items-center text-amber-400">
-                {[1, 2, 3, 4, 5].map((i) => <Star key={i} className="w-5 h-5 fill-current" />)}
-              </div>
-              <p className="text-slate-500 font-medium">5/5 — Trusted across Southwestern Ontario</p>
-            </div>
           </motion.div>
         </div>
       </section>

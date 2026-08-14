@@ -9,7 +9,7 @@ const LondonOntarioOffer: React.FC = () => {
     <div className="overflow-hidden bg-slate-50 selection:bg-indigo-600/20 selection:text-indigo-900">
       <Helmet>
         <title>House Cleaning London Ontario from $150 | Instant Quote | Trydentt</title>
-        <meta name="description" content="Professional house cleaning in London, Ontario from $150. Transparent pricing, no hidden fees. Free online quote in 60 seconds — no sales calls. Eco-friendly, fully insured, 5-star rated." />
+        <meta name="description" content="Professional house cleaning in London, Ontario from $150. Transparent pricing, no hidden fees. Free online quote in 60 seconds — no sales calls. Eco-friendly, fully insured." />
         <link rel="canonical" href="https://www.trydenttcleaning.ca/london-ontario-cleaning-offer" />
         <meta name="robots" content="noindex, follow" />
         <meta property="og:title" content="House Cleaning London Ontario from $150 | Trydentt" />
@@ -29,7 +29,7 @@ const LondonOntarioOffer: React.FC = () => {
             >
               <div className="inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
                 <Star className="w-4 h-4 fill-indigo-600" />
-                5.0 stars in London, Ontario
+                Flat-rate cleaning · London, Ontario
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 font-display leading-[1.1]">
                 House cleaning in London<br />
@@ -85,16 +85,12 @@ const LondonOntarioOffer: React.FC = () => {
       <section className="py-12 bg-white border-y border-slate-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <div className="flex items-center justify-center gap-2 text-slate-700 mb-2">
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              <span className="font-bold text-slate-900">5.0</span>
-              <span className="text-slate-500">— every London family, every clean</span>
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-slate-700 mb-3 font-medium">
+              <span className="flex items-center gap-2"><Shield className="w-4 h-4 text-indigo-600" /> Fully insured and bonded</span>
+              <span className="flex items-center gap-2"><Leaf className="w-4 h-4 text-indigo-600" /> Eco-friendly products</span>
+              <span className="flex items-center gap-2"><Clock className="w-4 h-4 text-indigo-600" /> Same-week booking</span>
             </div>
-            <p className="text-slate-600">Byron • Masonville • Old North • Wortley Village • Hyde Park • Oakridge • Lambeth</p>
+            <p className="text-slate-600">Serving Byron, Masonville, Old North, Wortley Village, Hyde Park, Oakridge, and Lambeth</p>
           </div>
         </div>
       </section>

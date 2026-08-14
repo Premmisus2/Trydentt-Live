@@ -230,28 +230,6 @@ const Home: React.FC = () => {
               </div>
             </div>
             
-            <div className="flex items-center justify-center space-x-4 mb-12">
-              <div className="flex -space-x-2">
-                {[1, 2, 3, 4].map((i) => (
-                  <img
-                    key={i}
-                    src={`https://picsum.photos/seed/${i + 10}/100/100`}
-                    width={40}
-                    height={40}
-                    loading="lazy"
-                    className="w-10 h-10 rounded-full border-2 border-white"
-                    alt={`Trydentt Cleaning customer review ${i}`}
-  
-                  />
-                ))}
-              </div>
-              <div className="text-left text-sm">
-                <div className="flex items-center text-amber-400">
-                  {[1, 2, 3, 4, 5].map((i) => <Star key={i} className="w-4 h-4 fill-current" />)}
-                </div>
-                <p className="text-slate-500 font-medium">5/5 from 10 Google reviews</p>
-              </div>
-            </div>
           </motion.div>
         </div>
         <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-indigo-100/50 rounded-full blur-3xl -z-10" />
