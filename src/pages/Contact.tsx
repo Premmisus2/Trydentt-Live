@@ -4,12 +4,19 @@ import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Send, MessageSquare, Loader2 } from 'lucide-react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
+const getCookie = (name: string): string | undefined => {
+  if (typeof document === 'undefined') return undefined;
+  const match = document.cookie.match(new RegExp(`(^|;\\s*)${name}=([^;]+)`));
+  return match ? decodeURIComponent(match[2]) : undefined;
+};
+
 const Contact: React.FC = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     zip: '',
     type: 'Residential',
     message: ''
@@ -20,14 +27,23 @@ const Contact: React.FC = () => {
     e.preventDefault();
     setLoading(true);
 
+    const eventId =
+      typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
+        ? crypto.randomUUID()
+        : undefined;
+
     try {
-      const response = await fetch(import.meta.env.VITE_GHL_CONTACT_WEBHOOK, {
+      const response = await fetch('/api/lead', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           ...formData,
+          phone: formData.phone || undefined,
+          postalCode: formData.zip,
+          niche: formData.type === 'Commercial' ? 'commercial' : 'residential',
+          service: formData.type,
           source: 'Contact Page Form',
           utm_source: searchParams.get('utm_source') || '',
           utm_medium: searchParams.get('utm_medium') || '',
@@ -35,10 +51,15 @@ const Contact: React.FC = () => {
           utm_term: searchParams.get('utm_term') || '',
           utm_content: searchParams.get('utm_content') || '',
           landing_page: window.location.href,
+          event_id: eventId,
+          fbp: getCookie('_fbp'),
+          fbc: getCookie('_fbc'),
+          client_user_agent: navigator.userAgent,
         }),
       });
 
       if (response.ok) {
+        if (eventId) sessionStorage.setItem('trydentt_lead_event_id', eventId);
         navigate('/thank-you');
       } else {
         alert('Something went wrong. Please try again.');
@@ -58,7 +79,7 @@ const Contact: React.FC = () => {
         <meta name="description" content="Contact Trydentt Cleaning Services in London, Ontario. Call +1 519-871-3368 or fill out our form for a free estimate. We respond within 2 business hours." />
         <link rel="canonical" href="https://www.trydenttcleaning.ca/contact" />
         <meta property="og:title" content="Contact Trydentt Cleaning | London Ontario" />
-        <meta property="og:description" content="Get in touch for a free cleaning estimate. Call or message us — we respond within 2 hours." />
+        <meta property="og:description" content="Get in touch for a free cleaning estimate. Call or message us. We respond within 2 hours." />
         <meta property="og:url" content="https://www.trydenttcleaning.ca/contact" />
         <meta property="og:image" content="https://www.trydenttcleaning.ca/og-image.jpg" />
         <script type="application/ld+json">{JSON.stringify({
@@ -197,6 +218,18 @@ const Contact: React.FC = () => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
+                    <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Phone (Optional)</label>
+                    <input
+                      type="tel"
+                      inputMode="tel"
+                      autoComplete="tel"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+                      placeholder="(519) 555-0123"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    />
+                  </div>
+                  <div>
                     <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Postal Code</label>
                     <input
                       type="text"
@@ -207,19 +240,20 @@ const Contact: React.FC = () => {
                       onChange={(e) => setFormData({...formData, zip: e.target.value})}
                     />
                   </div>
-                  <div>
-                    <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Type of Cleaning</label>
-                    <select 
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 focus:ring-2 focus:ring-indigo-500 outline-none transition-all appearance-none"
-                      value={formData.type}
-                      onChange={(e) => setFormData({...formData, type: e.target.value})}
-                    >
-                      <option>Residential</option>
-                      <option>Commercial</option>
-                      <option>Deep Clean</option>
-                      <option>Move In/Out</option>
-                    </select>
-                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Type of Cleaning</label>
+                  <select
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 focus:ring-2 focus:ring-indigo-500 outline-none transition-all appearance-none"
+                    value={formData.type}
+                    onChange={(e) => setFormData({...formData, type: e.target.value})}
+                  >
+                    <option>Residential</option>
+                    <option>Commercial</option>
+                    <option>Deep Clean</option>
+                    <option>Move In/Out</option>
+                  </select>
                 </div>
                 
                 <div>
