@@ -22,7 +22,7 @@ const PrivacyPolicy: React.FC = () => {
               <a href="mailto:homes@trydenttbuildingservices.com" className="text-indigo-600 hover:underline">
                 homes@trydenttbuildingservices.com
               </a>{' '}
-              or call <a href="tel:+15198713368" className="text-indigo-600 hover:underline">+1 519-871-3368</a>.
+              or call <a href="tel:+15487617171" className="text-indigo-600 hover:underline">+1 548-761-7171</a>.
             </p>
           </section>
 
@@ -146,8 +146,8 @@ const PrivacyPolicy: React.FC = () => {
               </p>
               <p>
                 Phone:{' '}
-                <a href="tel:+15198713368" className="text-indigo-600 hover:underline">
-                  +1 519-871-3368
+                <a href="tel:+15487617171" className="text-indigo-600 hover:underline">
+                  +1 548-761-7171
                 </a>
               </p>
             </div>

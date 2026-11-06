@@ -55,10 +55,10 @@ const Contact: React.FC = () => {
     <div className="bg-white">
       <Helmet>
         <title>Contact Trydentt Cleaning | London Ontario | Free Estimates</title>
-        <meta name="description" content="Contact Trydentt Cleaning Services in London, Ontario. Call +1 519-871-3368 or fill out our form for a free estimate. We respond within 2 business hours." />
+        <meta name="description" content="Contact Trydentt Cleaning Services in London, Ontario. Call +1 548-761-7171 or fill out our form for a free estimate. We respond within 2 business hours." />
         <link rel="canonical" href="https://www.trydenttcleaning.ca/contact" />
         <meta property="og:title" content="Contact Trydentt Cleaning | London Ontario" />
-        <meta property="og:description" content="Get in touch for a free cleaning estimate. Call or message us — we respond within 2 hours." />
+        <meta property="og:description" content="Get in touch for a free cleaning estimate. Call or message us. We respond within 2 hours." />
         <meta property="og:url" content="https://www.trydenttcleaning.ca/contact" />
         <meta property="og:image" content="https://www.trydenttcleaning.ca/og-image.jpg" />
         <script type="application/ld+json">{JSON.stringify({
@@ -98,7 +98,7 @@ const Contact: React.FC = () => {
               "name": "How quickly does Trydentt Cleaning respond to inquiries?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "We respond to all inquiries within 2 business hours during operating hours. For urgent requests, call us directly at (519) 871-3368."
+                "text": "We respond to all inquiries within 2 business hours during operating hours. For urgent requests, call us directly at (548) 761-7171."
               }
             },
             {
@@ -151,7 +151,7 @@ const Contact: React.FC = () => {
                     </div>
                     <div>
                       <h4 className="font-bold text-slate-900 mb-1">Call Us</h4>
-                      <p className="text-slate-600">+1 519-871-3368</p>
+                      <p className="text-slate-600">+1 548-761-7171</p>
                     </div>
                   </div>
                 </div>

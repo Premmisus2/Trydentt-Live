@@ -203,7 +203,7 @@ const BiWeeklyReset: React.FC = () => {
             Lock my London rate →
           </a>
           <div className="mt-6 text-indigo-200 text-sm flex items-center justify-center gap-2">
-            <Phone className="w-4 h-4" /> Or call (519) 871-3368
+            <Phone className="w-4 h-4" /> Or call (548) 761-7171
           </div>
         </div>
       </section>

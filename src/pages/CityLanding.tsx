@@ -21,7 +21,7 @@ const CityLanding: React.FC<CityLandingProps> = ({ city, slug, distance, populat
     <div className="overflow-hidden bg-slate-50 selection:bg-indigo-600/20 selection:text-indigo-900">
       <Helmet>
         <title>{`Cleaning Services ${city} Ontario | House & Office Cleaning | Trydentt`}</title>
-        <meta name="description" content={`Professional cleaning services in ${city}, Ontario. Residential & commercial cleaning — eco-friendly, fully insured, 100% satisfaction guarantee. Free quotes from Trydentt Cleaning.`} />
+        <meta name="description" content={`Professional cleaning services in ${city}, Ontario. Residential & commercial cleaning. Eco-friendly, fully insured, 100% satisfaction guarantee. Free quotes from Trydentt Cleaning.`} />
         <link rel="canonical" href={`https://www.trydenttcleaning.ca/${slug}`} />
         <meta property="og:title" content={`Cleaning Services ${city} Ontario | Trydentt Cleaning`} />
         <meta property="og:description" content={`${city}'s trusted cleaning service. House cleaning, office cleaning, deep cleaning. Eco-friendly, insured, satisfaction guaranteed.`} />
@@ -110,9 +110,9 @@ const CityLanding: React.FC<CityLandingProps> = ({ city, slug, distance, populat
                 </Link>
                 <div className="absolute -inset-1 bg-indigo-400 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200" />
               </motion.div>
-              <a href="tel:+15198713368" className="inline-flex items-center space-x-2 text-slate-700 hover:text-indigo-600 font-semibold text-lg transition-colors">
+              <a href="tel:+15487617171" className="inline-flex items-center space-x-2 text-slate-700 hover:text-indigo-600 font-semibold text-lg transition-colors">
                 <Phone className="w-5 h-5" />
-                <span>(519) 871-3368</span>
+                <span>(548) 761-7171</span>
               </a>
             </div>
 
@@ -225,7 +225,7 @@ const CityLanding: React.FC<CityLandingProps> = ({ city, slug, distance, populat
                 <Link to="/quote" className="w-full bg-indigo-600 text-white py-4 rounded-xl font-bold hover:bg-indigo-700 transition-all shadow-lg flex items-center justify-center space-x-2 group">
                   <span>Start My Quote</span><ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <p className="mt-4 text-sm text-slate-400">Or call: <a href="tel:+15198713368" className="text-indigo-600 font-semibold">(519) 871-3368</a></p>
+                <p className="mt-4 text-sm text-slate-400">Or call: <a href="tel:+15487617171" className="text-indigo-600 font-semibold">(548) 761-7171</a></p>
               </div>
             </div>
             <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl" />

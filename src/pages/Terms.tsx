@@ -103,7 +103,7 @@ const Terms: React.FC = () => {
           <section>
             <h2 className="text-xl font-bold text-slate-900 mb-3">10. Intellectual Property</h2>
             <p>
-              All content on this website — including text, graphics, logos, and images — is the
+              All content on this website, including text, graphics, logos, and images, is the
               property of Trydentt Cleaning Services and is protected by Canadian copyright law.
               You may not reproduce or distribute any content without our prior written consent.
             </p>
@@ -141,8 +141,8 @@ const Terms: React.FC = () => {
               </p>
               <p>
                 Phone:{' '}
-                <a href="tel:+15198713368" className="text-indigo-600 hover:underline">
-                  +1 519-871-3368
+                <a href="tel:+15487617171" className="text-indigo-600 hover:underline">
+                  +1 548-761-7171
                 </a>
               </p>
             </div>

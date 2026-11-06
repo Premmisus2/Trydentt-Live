@@ -115,7 +115,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-4 text-sm">
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-indigo-400 shrink-0" />
-                <a href="tel:+15198713368" className="hover:text-white transition-colors">+1 519-871-3368</a>
+                <a href="tel:+15487617171" className="hover:text-white transition-colors">+1 548-761-7171</a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-indigo-400 shrink-0" />
@@ -123,7 +123,7 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-indigo-400 shrink-0 mt-0.5" />
-                <span>London, Ontario &amp; surrounding areas — St. Thomas, Woodstock, Strathroy, Ingersoll &amp; more</span>
+                <span>London, Ontario &amp; surrounding areas, including St. Thomas, Woodstock, Strathroy, Ingersoll &amp; more</span>
               </li>
             </ul>
           </div>

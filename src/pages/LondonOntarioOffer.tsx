@@ -9,7 +9,7 @@ const LondonOntarioOffer: React.FC = () => {
     <div className="overflow-hidden bg-slate-50 selection:bg-indigo-600/20 selection:text-indigo-900">
       <Helmet>
         <title>House Cleaning London Ontario from $150 | Instant Quote | Trydentt</title>
-        <meta name="description" content="Professional house cleaning in London, Ontario from $150. Transparent pricing, no hidden fees. Free online quote in 60 seconds — no sales calls. Eco-friendly, fully insured." />
+        <meta name="description" content="Professional house cleaning in London, Ontario from $150. Transparent pricing, no hidden fees. Free online quote in 60 seconds, with no sales calls. Eco-friendly, fully insured." />
         <link rel="canonical" href="https://www.trydenttcleaning.ca/london-ontario-cleaning-offer" />
         <meta name="robots" content="noindex, follow" />
         <meta property="og:title" content="House Cleaning London Ontario from $150 | Trydentt" />
@@ -36,7 +36,7 @@ const LondonOntarioOffer: React.FC = () => {
                 <span className="text-indigo-600">from $150.</span>
               </h1>
               <p className="text-xl text-slate-600 mb-8 leading-relaxed">
-                Transparent flat-rate pricing. Zero hidden fees. See your exact quote in 60 seconds — no sales call, no pressure.
+                Transparent flat-rate pricing. Zero hidden fees. See your exact quote in 60 seconds. No sales call, no pressure.
               </p>
               <ul className="space-y-3 mb-8">
                 {[
@@ -72,7 +72,7 @@ const LondonOntarioOffer: React.FC = () => {
               <div className="glass-card rounded-3xl p-6 md:p-8 bg-white shadow-2xl shadow-indigo-900/10 border border-slate-200/60">
                 <div className="mb-4">
                   <div className="text-sm font-semibold text-indigo-600 uppercase tracking-wide">Get your quote</div>
-                  <div className="text-2xl font-bold text-slate-900">Instant price — no calls</div>
+                  <div className="text-2xl font-bold text-slate-900">Instant price, no calls</div>
                 </div>
                 <HeroLeadForm />
               </div>
@@ -109,8 +109,8 @@ const LondonOntarioOffer: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { size: 'Condo / 1 bed', price: '$150', details: 'Up to 1,000 sq ft' },
-              { size: '2–3 bedroom home', price: '$200–$275', details: '1,000–2,000 sq ft' },
-              { size: '4+ bedroom home', price: '$300–$450', details: '2,000+ sq ft' },
+              { size: '2-3 bedroom home', price: '$200-$275', details: '1,000-2,000 sq ft' },
+              { size: '4+ bedroom home', price: '$300-$450', details: '2,000+ sq ft' },
             ].map((tier) => (
               <div key={tier.size} className="bg-white rounded-2xl p-6 border border-slate-200 hover:border-indigo-300 transition-colors">
                 <div className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-2">{tier.size}</div>
@@ -120,7 +120,7 @@ const LondonOntarioOffer: React.FC = () => {
             ))}
           </div>
           <div className="text-center mt-8 text-sm text-slate-500">
-            Final price depends on bedrooms, bathrooms, and condition. Exact quote in 60 seconds — above.
+            Final price depends on bedrooms, bathrooms, and condition. Get your exact quote above in 60 seconds.
           </div>
         </div>
       </section>
@@ -142,7 +142,7 @@ const LondonOntarioOffer: React.FC = () => {
             Get my exact price →
           </a>
           <div className="mt-6 text-indigo-200 text-sm flex items-center justify-center gap-2">
-            <Phone className="w-4 h-4" /> Or call (519) 871-3368
+            <Phone className="w-4 h-4" /> Or call (548) 761-7171
           </div>
         </div>
       </section>

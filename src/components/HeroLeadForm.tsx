@@ -77,7 +77,7 @@ const HeroLeadForm: React.FC<HeroLeadFormProps> = ({
     }
     if (!USE_LEAD_API && !GHL_WEBHOOK_URL) {
       console.error('VITE_GHL_QUOTE_WEBHOOK is not configured');
-      alert('Submission temporarily unavailable. Please call (519) 871-3368.');
+      alert('Submission temporarily unavailable. Please call (548) 761-7171.');
       return;
     }
     setSubmitting(true);
@@ -242,7 +242,7 @@ const HeroLeadForm: React.FC<HeroLeadFormProps> = ({
           </div>
 
           <p className="text-center text-xs text-slate-400 pt-1">
-            Or call <a href="tel:+15198713368" className="text-indigo-600 font-semibold hover:underline">(519) 871-3368</a>
+            Or call <a href="tel:+15487617171" className="text-indigo-600 font-semibold hover:underline">(548) 761-7171</a>
           </p>
         </form>
       </div>

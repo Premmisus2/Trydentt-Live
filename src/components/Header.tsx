@@ -146,12 +146,12 @@ const Header: React.FC = () => {
 
             {/* Phone Number */}
             <a
-              href="tel:+15198713368"
+              href="tel:+15487617171"
               className="hidden lg:flex items-center space-x-1.5 text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors"
-              aria-label="Call Trydentt Cleaning at 519-871-3368"
+              aria-label="Call Trydentt Cleaning at 548-761-7171"
             >
               <Phone className="w-4 h-4" />
-              <span>(519) 871-3368</span>
+              <span>(548) 761-7171</span>
             </a>
 
             <Link
@@ -165,7 +165,7 @@ const Header: React.FC = () => {
           {/* Mobile toggle */}
           <div className="md:hidden flex items-center space-x-3">
             <a
-              href="tel:+15198713368"
+              href="tel:+15487617171"
               className="text-indigo-600 hover:text-indigo-700"
               aria-label="Call Trydentt Cleaning"
             >

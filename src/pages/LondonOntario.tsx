@@ -26,7 +26,7 @@ const LondonOntario: React.FC = () => {
     <div className="overflow-hidden bg-slate-50 selection:bg-indigo-600/20 selection:text-indigo-900">
       <Helmet>
         <title>Cleaning Services London Ontario | House & Office Cleaning | Trydentt</title>
-        <meta name="description" content="London Ontario's trusted cleaning company. Residential & commercial cleaning in London, ON — Byron, Masonville, Wortley Village, Old North & all neighbourhoods. Eco-friendly, fully insured. Free quotes." />
+        <meta name="description" content="London Ontario's trusted cleaning company. Residential & commercial cleaning in London, ON, including Byron, Masonville, Wortley Village, Old North & all neighbourhoods. Eco-friendly, fully insured. Free quotes." />
         <link rel="canonical" href="https://www.trydenttcleaning.ca/london-ontario-cleaning" />
         <meta property="og:title" content="Cleaning Services London Ontario | Trydentt Cleaning" />
         <meta property="og:description" content="Professional cleaning services in London, Ontario. House cleaning, office cleaning, deep cleaning. Eco-friendly, insured, satisfaction guaranteed." />
@@ -141,11 +141,11 @@ const LondonOntario: React.FC = () => {
 
 
               <a
-                href="tel:+15198713368"
+                href="tel:+15487617171"
                 className="inline-flex items-center space-x-2 text-slate-700 hover:text-indigo-600 font-semibold text-lg transition-colors"
               >
                 <Phone className="w-5 h-5" />
-                <span>(519) 871-3368</span>
+                <span>(548) 761-7171</span>
               </a>
             </motion.div>
 
@@ -284,7 +284,7 @@ const LondonOntario: React.FC = () => {
         </div>
       </section>
 
-      {/* FAQ Section — Visible HTML (matches schema in Helmet) */}
+      {/* FAQ Section: visible HTML (matches schema in Helmet) */}
       <section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -385,7 +385,7 @@ const LondonOntario: React.FC = () => {
                   <span>Start My Quote</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <p className="mt-4 text-sm text-slate-400">Or call us: <a href="tel:+15198713368" className="text-indigo-600 font-semibold">(519) 871-3368</a></p>
+                <p className="mt-4 text-sm text-slate-400">Or call us: <a href="tel:+15487617171" className="text-indigo-600 font-semibold">(548) 761-7171</a></p>
               </div>
             </div>
             <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl" />
