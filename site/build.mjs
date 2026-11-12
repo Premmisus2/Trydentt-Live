@@ -128,7 +128,7 @@ ${ogTags}
 <meta name="ICBM" content="42.9849, -81.2453">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${asset('site.css')}">
 ${ld}
 <script async src="https://www.googletagmanager.com/gtag/js?id=${tr.ga4}"></script>
