@@ -502,7 +502,7 @@
         },
         {
           "t": "li",
-          "text": "London, Ontario & surrounding areas, St. Thomas, Woodstock, Strathroy, Ingersoll & more",
+          "text": "London, Ontario & surrounding areas: St. Thomas, Woodstock, Strathroy, Ingersoll & more",
           "s": -1,
           "list": 4
         },
@@ -1109,7 +1109,7 @@
           "name": "email"
         },
         {
-          "label": "Approx. sqft",
+          "label": "Approx. sq ft",
           "name": "sqft",
           "placeholder": "e.g. 3000"
         },
@@ -1159,7 +1159,7 @@
       "button": "Book my free 12-Point Audit",
       "busyLabel": "Submitting…",
       "successHeading": "Audit request received.",
-      "successText": "A Trydentt team member will call within 24 hours to confirm the audit date. Nothing to pay, nothing to sign, we walk your floor and quote on the spot.",
+      "successText": "A Trydentt team member will call within 24 hours to confirm the audit date. Nothing to pay, nothing to sign. We walk your floor and send a written quote within 24 hours.",
       "posts": "/api/lead",
       "payloadFixed": {
         "niche": "commercial",
@@ -1256,7 +1256,7 @@
       "route": "/st-thomas-cleaning",
       "distanceFromLondon": "30 minutes",
       "population": "42,000",
-      "description": "Trydentt Cleaning brings London-quality professional cleaning to St. Thomas, Ontario. Residential and commercial cleaning with eco-friendly products, full insurance, and our 100% satisfaction guarantee, no travel surcharges.",
+      "description": "Trydentt Cleaning brings London-quality professional cleaning to St. Thomas, Ontario. Residential and commercial cleaning with eco-friendly products, full insurance, and our 100% satisfaction guarantee. No travel surcharges.",
       "areas": [
         "Central St. Thomas",
         "North End",
@@ -1409,7 +1409,7 @@
               "name": "How much does house cleaning cost in London, Ontario?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "House cleaning in London, Ontario typically ranges from $120 to $350 depending on the size of your home and type of clean. Trydentt offers free, no-obligation quotes with transparent pricing and no hidden fees."
+                "text": "House cleaning in London, Ontario typically ranges from $150 to $350 depending on the size of your home and type of clean. Trydentt offers free, no-obligation quotes with transparent pricing and no hidden fees."
               }
             },
             {
@@ -1525,7 +1525,7 @@
           },
           {
             "t": "p",
-            "text": "Professional house cleaning in London, Ontario, from apartments to family homes, we handle it all with meticulous detail and eco-friendly products.",
+            "text": "Professional house cleaning in London, Ontario. From apartments to family homes, we handle it all with meticulous detail and eco-friendly products.",
             "s": 1
           },
           {
@@ -1557,7 +1557,7 @@
           },
           {
             "t": "p",
-            "text": "Experience the Trydentt standard, professional cleaning in London, Ontario and surrounding areas. We deliver consistent, detail-oriented service tailored to your schedule, whether it's weekly house cleaning or daily office maintenance.",
+            "text": "Experience the Trydentt standard: professional cleaning in London, Ontario and surrounding areas. We deliver consistent, detail-oriented service tailored to your schedule, whether it's weekly house cleaning or daily office maintenance.",
             "s": 2
           },
           {
@@ -1634,7 +1634,7 @@
           {
             "t": "img",
             "src": "/canada-flag.png",
-            "alt": "Canadian flag, Trydentt Cleaning is proudly Canadian owned and operated",
+            "alt": "Canadian flag. Trydentt Cleaning is proudly Canadian-owned and operated",
             "s": 3
           },
           {
@@ -1734,7 +1734,7 @@
           },
           {
             "t": "p",
-            "text": "From deep cleaning and move-in/move-out services to office janitorial and post-event cleanup, explore our full range of residential and commercial cleaning solutions in London, Ontario.",
+            "text": "Explore our full range of residential and commercial cleaning in London, Ontario, from deep cleaning and move-in/move-out services to office janitorial and post-event cleanup.",
             "s": 4
           },
           {
@@ -1850,7 +1850,7 @@
           },
           {
             "t": "a",
-            "text": "Get a Eco-Friendly Cleaning Quote",
+            "text": "Get an Eco-Friendly Cleaning Quote",
             "s": 4,
             "href": "/quote"
           },
@@ -1882,7 +1882,7 @@
           },
           {
             "t": "p",
-            "text": "Don't just take our word for it, see the Trydentt difference in action. From mold-stained window sills to pristine surfaces, our London cleaning team restores every detail to its original glory.",
+            "text": "Don't just take our word for it. See the Trydentt difference in action. From mold-stained window sills to pristine surfaces, our London cleaning team restores every detail to its original glory.",
             "s": 5
           },
           {
@@ -2012,7 +2012,7 @@
           },
           {
             "t": "text",
-            "text": "House cleaning in London, Ontario typically ranges from $120 to $350 depending on the size of your home and type of clean. Trydentt offers free, no-obligation quotes with transparent pricing and no hidden fees.",
+            "text": "House cleaning in London, Ontario typically ranges from $150 to $350 depending on the size of your home and type of clean. Trydentt offers free, no-obligation quotes with transparent pricing and no hidden fees.",
             "s": 7
           },
           {
@@ -2240,7 +2240,7 @@
           },
           {
             "t": "p",
-            "text": "Stop spending weekends scrubbing floors. Trydentt delivers professional house cleaning in London, Ontario, meticulous, eco-friendly, and family-safe so you can focus on what matters most.",
+            "text": "Stop spending weekends scrubbing floors. Trydentt delivers professional house cleaning in London, Ontario: meticulous, eco-friendly and family-safe, so you can focus on what matters most.",
             "s": 0
           },
           {
@@ -2256,7 +2256,7 @@
           },
           {
             "t": "p",
-            "text": "Experience the Trydentt standard, reliable residential cleaning in London and surrounding areas. We provide consistent, detail-oriented house cleaning tailored to your schedule, from weekly maintenance to one-time deep cleans.",
+            "text": "Experience the Trydentt standard: reliable residential cleaning in London and surrounding areas. We provide consistent, detail-oriented house cleaning tailored to your schedule, from weekly maintenance to one-time deep cleans.",
             "s": 1
           },
           {
@@ -2322,7 +2322,7 @@
           },
           {
             "t": "p",
-            "text": "Tailored home cleaning solutions for every need, general house cleaning, deep cleaning, move-in/move-out, post-construction cleanup, and eco-friendly options for families across London, Ontario.",
+            "text": "Tailored home cleaning solutions for every need: general house cleaning, deep cleaning, move-in/move-out, post-construction cleanup, and eco-friendly options for families across London, Ontario.",
             "s": 2
           },
           {
@@ -2426,7 +2426,7 @@
           },
           {
             "t": "a",
-            "text": "Get a Eco-Friendly Cleaning Quote",
+            "text": "Get an Eco-Friendly Cleaning Quote",
             "s": 2,
             "href": "/quote"
           },
@@ -2771,12 +2771,12 @@
           },
           {
             "t": "p",
-            "text": "Class-A Office Standard commercial cleaning for London businesses where appearance is part of revenue. Book your free 12-Point Office Cleanliness Audit, we walk the floor with you and quote on the spot.",
+            "text": "Class-A Office Standard commercial cleaning for London businesses where appearance is part of revenue. Book your free 12-Point Office Cleanliness Audit. We walk the floor with you and send a written quote within 24 hours.",
             "s": 0
           },
           {
             "t": "text",
-            "text": "Insured & Bonded",
+            "text": "Fully insured",
             "s": 0
           },
           {
@@ -3076,7 +3076,7 @@
           },
           {
             "t": "label",
-            "text": "Approx. sqft",
+            "text": "Approx. sq ft",
             "s": 2
           },
           {
@@ -3085,7 +3085,7 @@
             "type": "text",
             "name": "",
             "id": "",
-            "label": "Approx. sqft",
+            "label": "Approx. sq ft",
             "placeholder": "e.g. 3000",
             "required": false,
             "s": 2
@@ -3202,7 +3202,7 @@
     },
     "/about": {
       "title": "About Trydentt Cleaning | Trusted Ontario Cleaning Company",
-      "description": "Learn about Trydentt Cleaning Services, a trusted, Canadian-owned cleaning company serving Ontario. Over 30 years of combined experience, fully insured, 100% satisfaction guarantee.",
+      "description": "Learn about Trydentt Cleaning Services, a trusted, Canadian-owned cleaning company serving London, Ontario and the towns around it. Fully insured, with a 100% satisfaction guarantee.",
       "robots": "index, follow",
       "canonical": "https://www.trydenttcleaning.ca/about",
       "og": {
@@ -3337,7 +3337,7 @@
     },
     "/quote": {
       "title": "Get a Free Cleaning Quote | Trydentt Cleaning Services",
-      "description": "Get an instant, AI-powered cleaning estimate for your home or business. No phone calls required. Professional cleaning services in London, Ontario and across Ontario.",
+      "description": "Get an instant, AI-powered cleaning estimate for your home or business. No phone calls required. Professional cleaning services in London, Ontario and the towns around it.",
       "robots": "index, follow",
       "canonical": "https://www.trydenttcleaning.ca/quote",
       "og": {
@@ -3793,7 +3793,7 @@
     },
     "/london-ontario-cleaning": {
       "title": "Cleaning Services London Ontario | House & Office Cleaning | Trydentt",
-      "description": "London Ontario's trusted cleaning company. Residential & commercial cleaning in London, ON, Byron, Masonville, Wortley Village, Old North & all neighbourhoods. Eco-friendly, fully insured. Free quotes.",
+      "description": "London Ontario's trusted cleaning company. Residential & commercial cleaning in London, ON: Byron, Masonville, Wortley Village, Old North & all neighbourhoods. Eco-friendly, fully insured. Free quotes.",
       "robots": "index, follow",
       "canonical": "https://www.trydenttcleaning.ca/london-ontario-cleaning",
       "og": {
@@ -3901,7 +3901,7 @@
               "name": "Do you clean homes in Byron and Masonville?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes! We serve all London neighbourhoods including Byron, Masonville, Wortley Village, Old North, Old South, Westmount, Hyde Park, Oakridge, Lambeth, and all surrounding areas within a 40km radius."
+                "text": "Yes! We serve all London neighbourhoods including Byron, Masonville, Wortley Village, Old North, Old South, Westmount, Hyde Park, Oakridge, Lambeth, and the towns around London."
               }
             },
             {
@@ -4099,7 +4099,7 @@
           },
           {
             "t": "p",
-            "text": "EPA-certified, plant-based products safe for your family, pets, and the London community.",
+            "text": "Plant-based products safe for your family, pets, and the London community.",
             "s": 1
           },
           {
@@ -4418,7 +4418,7 @@
           },
           {
             "t": "text",
-            "text": "Yes! We serve all London neighbourhoods including Byron, Masonville, Wortley Village, Old North, Old South, Westmount, Hyde Park, Oakridge, Lambeth, and all surrounding areas within a 40km radius.",
+            "text": "Yes! We serve all London neighbourhoods including Byron, Masonville, Wortley Village, Old North, Old South, Westmount, Hyde Park, Oakridge, Lambeth, and the towns around London.",
             "s": 4
           },
           {
@@ -4593,11 +4593,6 @@
           },
           {
             "t": "text",
-            "text": "Get your quote",
-            "s": 0
-          },
-          {
-            "t": "text",
             "text": "Instant price, no calls",
             "s": 0
           },
@@ -4702,18 +4697,8 @@
             ]
           },
           {
-            "t": "text",
-            "text": "Fully insured and bonded",
-            "s": 1
-          },
-          {
-            "t": "text",
-            "text": "Eco-friendly products",
-            "s": 1
-          },
-          {
-            "t": "text",
-            "text": "Same-week booking",
+            "t": "p",
+            "text": "Fully insured · Eco-friendly products · Same-week booking",
             "s": 1
           },
           {
@@ -4753,7 +4738,7 @@
           },
           {
             "t": "text",
-            "text": "$200, $275",
+            "text": "$200 to $275",
             "s": 2
           },
           {
@@ -4768,7 +4753,7 @@
           },
           {
             "t": "text",
-            "text": "$300, $450",
+            "text": "$300 to $450",
             "s": 2
           },
           {
@@ -6206,7 +6191,7 @@
               "name": "How much does house cleaning cost in St. Thomas?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "House cleaning in St. Thomas, Ontario typically ranges from $120 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for St. Thomas residents."
+                "text": "House cleaning in St. Thomas, Ontario typically ranges from $150 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for St. Thomas residents."
               }
             },
             {
@@ -6256,7 +6241,7 @@
           },
           {
             "t": "p",
-            "text": "Trydentt Cleaning brings London-quality professional cleaning to St. Thomas, Ontario. Residential and commercial cleaning with eco-friendly products, full insurance, and our 100% satisfaction guarantee, no travel surcharges.",
+            "text": "Trydentt Cleaning brings London-quality professional cleaning to St. Thomas, Ontario. Residential and commercial cleaning with eco-friendly products, full insurance, and our 100% satisfaction guarantee. No travel surcharges.",
             "s": 0
           },
           {
@@ -6594,7 +6579,7 @@
               "name": "How much does house cleaning cost in Woodstock?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "House cleaning in Woodstock, Ontario typically ranges from $120 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Woodstock residents."
+                "text": "House cleaning in Woodstock, Ontario typically ranges from $150 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Woodstock residents."
               }
             },
             {
@@ -6982,7 +6967,7 @@
               "name": "How much does house cleaning cost in Strathroy?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "House cleaning in Strathroy, Ontario typically ranges from $120 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Strathroy residents."
+                "text": "House cleaning in Strathroy, Ontario typically ranges from $150 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Strathroy residents."
               }
             },
             {
@@ -7365,7 +7350,7 @@
               "name": "How much does house cleaning cost in Ingersoll?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "House cleaning in Ingersoll, Ontario typically ranges from $120 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Ingersoll residents."
+                "text": "House cleaning in Ingersoll, Ontario typically ranges from $150 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Ingersoll residents."
               }
             },
             {
@@ -7743,7 +7728,7 @@
               "name": "How much does house cleaning cost in Tillsonburg?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "House cleaning in Tillsonburg, Ontario typically ranges from $120 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Tillsonburg residents."
+                "text": "House cleaning in Tillsonburg, Ontario typically ranges from $150 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Tillsonburg residents."
               }
             },
             {
@@ -8126,7 +8111,7 @@
               "name": "How much does house cleaning cost in Aylmer?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "House cleaning in Aylmer, Ontario typically ranges from $120 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Aylmer residents."
+                "text": "House cleaning in Aylmer, Ontario typically ranges from $150 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Aylmer residents."
               }
             },
             {
@@ -8509,7 +8494,7 @@
               "name": "How much does house cleaning cost in Dorchester?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "House cleaning in Dorchester, Ontario typically ranges from $120 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Dorchester residents."
+                "text": "House cleaning in Dorchester, Ontario typically ranges from $150 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Dorchester residents."
               }
             },
             {
@@ -8884,7 +8869,7 @@
           },
           {
             "t": "p",
-            "text": "Last updated: March 11, 2026",
+            "text": "Last updated: November 12, 2026",
             "s": -1
           },
           {
@@ -9131,7 +9116,7 @@
           },
           {
             "t": "p",
-            "text": "Ontario, Canada",
+            "text": "London, Ontario, Canada",
             "s": 10
           },
           {
@@ -9243,7 +9228,7 @@
           },
           {
             "t": "p",
-            "text": "Last updated: March 11, 2026",
+            "text": "Last updated: November 12, 2026",
             "s": -1
           },
           {
@@ -9263,7 +9248,7 @@
           },
           {
             "t": "p",
-            "text": "Trydentt provides professional residential and commercial cleaning services across Ontario, Canada. All services are subject to availability and scheduling confirmation. We reserve the right to decline any service request at our discretion.",
+            "text": "Trydentt provides professional residential and commercial cleaning services in London, Ontario and the towns around it. All services are subject to availability and scheduling confirmation. We reserve the right to decline any service request at our discretion.",
             "s": 1
           },
           {
@@ -9388,7 +9373,7 @@
           },
           {
             "t": "p",
-            "text": "Ontario, Canada",
+            "text": "London, Ontario, Canada",
             "s": 12
           },
           {
@@ -9508,7 +9493,7 @@
     {
       "where": "shared (header, footer, global schema)",
       "before": "London, Ontario & surrounding areas — St. Thomas, Woodstock, Strathroy, Ingersoll & more",
-      "after": "London, Ontario & surrounding areas, St. Thomas, Woodstock, Strathroy, Ingersoll & more"
+      "after": "London, Ontario & surrounding areas: St. Thomas, Woodstock, Strathroy, Ingersoll & more"
     },
     {
       "where": "/",
@@ -9523,27 +9508,27 @@
     {
       "where": "/",
       "before": "Professional house cleaning in London, Ontario — from apartments to family homes, we handle it all with meticulous detail and eco-friendly products.",
-      "after": "Professional house cleaning in London, Ontario, from apartments to family homes, we handle it all with meticulous detail and eco-friendly products."
+      "after": "Professional house cleaning in London, Ontario. From apartments to family homes, we handle it all with meticulous detail and eco-friendly products."
     },
     {
       "where": "/",
       "before": "Experience the Trydentt standard — professional cleaning in London, Ontario and surrounding areas. We deliver consistent, detail-oriented service tailored to your schedule, whether it's weekly house cleaning or daily office maintenance.",
-      "after": "Experience the Trydentt standard, professional cleaning in London, Ontario and surrounding areas. We deliver consistent, detail-oriented service tailored to your schedule, whether it's weekly house cleaning or daily office maintenance."
+      "after": "Experience the Trydentt standard: professional cleaning in London, Ontario and surrounding areas. We deliver consistent, detail-oriented service tailored to your schedule, whether it's weekly house cleaning or daily office maintenance."
     },
     {
       "where": "/",
       "before": "Canadian flag — Trydentt Cleaning is proudly Canadian owned and operated",
-      "after": "Canadian flag, Trydentt Cleaning is proudly Canadian owned and operated"
+      "after": "Canadian flag. Trydentt Cleaning is proudly Canadian-owned and operated"
     },
     {
       "where": "/",
       "before": "From deep cleaning and move-in/move-out services to office janitorial and post-event cleanup — explore our full range of residential and commercial cleaning solutions in London, Ontario.",
-      "after": "From deep cleaning and move-in/move-out services to office janitorial and post-event cleanup, explore our full range of residential and commercial cleaning solutions in London, Ontario."
+      "after": "Explore our full range of residential and commercial cleaning in London, Ontario, from deep cleaning and move-in/move-out services to office janitorial and post-event cleanup."
     },
     {
       "where": "/",
       "before": "Don't just take our word for it — see the Trydentt difference in action. From mold-stained window sills to pristine surfaces, our London cleaning team restores every detail to its original glory.",
-      "after": "Don't just take our word for it, see the Trydentt difference in action. From mold-stained window sills to pristine surfaces, our London cleaning team restores every detail to its original glory."
+      "after": "Don't just take our word for it. See the Trydentt difference in action. From mold-stained window sills to pristine surfaces, our London cleaning team restores every detail to its original glory."
     },
     {
       "where": "/residential",
@@ -9553,17 +9538,17 @@
     {
       "where": "/residential",
       "before": "Stop spending weekends scrubbing floors. Trydentt delivers professional house cleaning in London, Ontario — meticulous, eco-friendly, and family-safe so you can focus on what matters most.",
-      "after": "Stop spending weekends scrubbing floors. Trydentt delivers professional house cleaning in London, Ontario, meticulous, eco-friendly, and family-safe so you can focus on what matters most."
+      "after": "Stop spending weekends scrubbing floors. Trydentt delivers professional house cleaning in London, Ontario: meticulous, eco-friendly and family-safe, so you can focus on what matters most."
     },
     {
       "where": "/residential",
       "before": "Experience the Trydentt standard — reliable residential cleaning in London and surrounding areas. We provide consistent, detail-oriented house cleaning tailored to your schedule, from weekly maintenance to one-time deep cleans.",
-      "after": "Experience the Trydentt standard, reliable residential cleaning in London and surrounding areas. We provide consistent, detail-oriented house cleaning tailored to your schedule, from weekly maintenance to one-time deep cleans."
+      "after": "Experience the Trydentt standard: reliable residential cleaning in London and surrounding areas. We provide consistent, detail-oriented house cleaning tailored to your schedule, from weekly maintenance to one-time deep cleans."
     },
     {
       "where": "/residential",
       "before": "Tailored home cleaning solutions for every need — general house cleaning, deep cleaning, move-in/move-out, post-construction cleanup, and eco-friendly options for families across London, Ontario.",
-      "after": "Tailored home cleaning solutions for every need, general house cleaning, deep cleaning, move-in/move-out, post-construction cleanup, and eco-friendly options for families across London, Ontario."
+      "after": "Tailored home cleaning solutions for every need: general house cleaning, deep cleaning, move-in/move-out, post-construction cleanup, and eco-friendly options for families across London, Ontario."
     },
     {
       "where": "/commercial",
@@ -9583,7 +9568,7 @@
     {
       "where": "/commercial",
       "before": "Class-A Office Standard commercial cleaning for London businesses where appearance is part of revenue. Book your free 12-Point Office Cleanliness Audit — we walk the floor with you and quote on the spot.",
-      "after": "Class-A Office Standard commercial cleaning for London businesses where appearance is part of revenue. Book your free 12-Point Office Cleanliness Audit, we walk the floor with you and quote on the spot."
+      "after": "Class-A Office Standard commercial cleaning for London businesses where appearance is part of revenue. Book your free 12-Point Office Cleanliness Audit. We walk the floor with you and send a written quote within 24 hours."
     },
     {
       "where": "/commercial",
@@ -9653,7 +9638,7 @@
     {
       "where": "/london-ontario-cleaning-offer",
       "before": "$200–$275",
-      "after": "$200, $275"
+      "after": "$200 to $275"
     },
     {
       "where": "/london-ontario-cleaning-offer",
@@ -9663,7 +9648,7 @@
     {
       "where": "/london-ontario-cleaning-offer",
       "before": "$300–$450",
-      "after": "$300, $450"
+      "after": "$300 to $450"
     },
     {
       "where": "/london-ontario-cleaning-offer",
@@ -9693,7 +9678,7 @@
     {
       "where": "/st-thomas-cleaning",
       "before": "Trydentt Cleaning brings London-quality professional cleaning to St. Thomas, Ontario. Residential and commercial cleaning with eco-friendly products, full insurance, and our 100% satisfaction guarantee — no travel surcharges.",
-      "after": "Trydentt Cleaning brings London-quality professional cleaning to St. Thomas, Ontario. Residential and commercial cleaning with eco-friendly products, full insurance, and our 100% satisfaction guarantee, no travel surcharges."
+      "after": "Trydentt Cleaning brings London-quality professional cleaning to St. Thomas, Ontario. Residential and commercial cleaning with eco-friendly products, full insurance, and our 100% satisfaction guarantee. No travel surcharges."
     },
     {
       "where": "/woodstock-cleaning",
@@ -9753,12 +9738,12 @@
     {
       "where": "forms",
       "before": "A Trydentt team member will call within 24 hours to confirm the audit date. Nothing to pay, nothing to sign — we walk your floor and quote on the spot.",
-      "after": "A Trydentt team member will call within 24 hours to confirm the audit date. Nothing to pay, nothing to sign, we walk your floor and quote on the spot."
+      "after": "A Trydentt team member will call within 24 hours to confirm the audit date. Nothing to pay, nothing to sign. We walk your floor and send a written quote within 24 hours."
     },
     {
       "where": "townPages",
       "before": "Trydentt Cleaning brings London-quality professional cleaning to St. Thomas, Ontario. Residential and commercial cleaning with eco-friendly products, full insurance, and our 100% satisfaction guarantee — no travel surcharges.",
-      "after": "Trydentt Cleaning brings London-quality professional cleaning to St. Thomas, Ontario. Residential and commercial cleaning with eco-friendly products, full insurance, and our 100% satisfaction guarantee, no travel surcharges."
+      "after": "Trydentt Cleaning brings London-quality professional cleaning to St. Thomas, Ontario. Residential and commercial cleaning with eco-friendly products, full insurance, and our 100% satisfaction guarantee. No travel surcharges."
     },
     {
       "where": "townPages",
@@ -9767,13 +9752,13 @@
     },
     {
       "where": "/about",
-      "before": "Learn about Trydentt Cleaning Services — a trusted, Canadian-owned cleaning company serving Ontario. Over 30 years of combined experience, fully insured, 100% satisfaction guarantee.",
-      "after": "Learn about Trydentt Cleaning Services, a trusted, Canadian-owned cleaning company serving Ontario. Over 30 years of combined experience, fully insured, 100% satisfaction guarantee."
+      "before": "Learn about Trydentt Cleaning Services — a trusted, Canadian-owned cleaning company serving London, Ontario and the towns around it. Fully insured, with a 100% satisfaction guarantee.",
+      "after": "Learn about Trydentt Cleaning Services, a trusted, Canadian-owned cleaning company serving London, Ontario and the towns around it. Fully insured, with a 100% satisfaction guarantee."
     },
     {
       "where": "/london-ontario-cleaning",
       "before": "London Ontario's trusted cleaning company. Residential & commercial cleaning in London, ON — Byron, Masonville, Wortley Village, Old North & all neighbourhoods. Eco-friendly, fully insured. Free quotes.",
-      "after": "London Ontario's trusted cleaning company. Residential & commercial cleaning in London, ON, Byron, Masonville, Wortley Village, Old North & all neighbourhoods. Eco-friendly, fully insured. Free quotes."
+      "after": "London Ontario's trusted cleaning company. Residential & commercial cleaning in London, ON: Byron, Masonville, Wortley Village, Old North & all neighbourhoods. Eco-friendly, fully insured. Free quotes."
     },
     {
       "where": "/london-ontario-cleaning-offer",

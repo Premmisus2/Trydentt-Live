@@ -100,6 +100,8 @@ section.sec{padding:64px 0}
 .dark .ticks li{border-color:#2A3650}
 .ticks li:before{content:"\2713";position:absolute;left:2px;top:11px;color:var(--blue);font-size:17px}
 .dark .ticks li:before{color:var(--sky)}
+.ticks li.no:before{content:"\2715";color:var(--muted)}
+.dark .ticks li.no:before{color:#8A93A6}
 
 /* ruled item grid (h3 groups) */
 .items{display:grid;gap:30px;margin-top:30px}

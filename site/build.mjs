@@ -74,14 +74,13 @@ const GLOBAL_LD = (D.shared.globalJsonLd || []).map((b) => {
 /* ---------------- helpers ---------------- */
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const SMALL = new Set(['by', 'and', 'to', 'for', 'in', 'of', 'your', 'the', 'is', 'with', 'every', 'you', 'on', 'or', 'at', 'our']);
+// Headlines are plain text (2026-11-12): the auto-picked accent word was the Schnitzelhaus italic
+// trick, and in Jost it only showed as a random blue word ("House cleaning in London").
 function accent(text) {
-  const w = String(text).split(' ');
-  for (let i = 1; i < w.length - 1; i++) {
-    const bare = w[i].toLowerCase().replace(/[^a-z]/g, '');
-    if (SMALL.has(bare) && w[i] === bare) { w[i] = `<em>${esc(w[i])}</em>`; return w.map((x, j) => (j === i ? x : esc(x))).join(' '); }
-  }
   return esc(text);
 }
+/* A tick-list item; items written "✕ ..." (the competitor column) get a cross instead of a tick. */
+const tickLi = (t) => /^✕\s*/.test(t) ? `<li class="no">${esc(t.replace(/^✕\s*/, ''))}</li>` : `<li>${esc(t)}</li>`;
 const shield = (fill = '#3264B9') => `<svg viewBox="0 0 512 512" aria-hidden="true"><path d="M64 64H448V344C448 396 384 448 256 448C128 448 64 396 64 344V64Z" fill="${fill}"/><rect x="112" y="112" width="64" height="200" fill="#fff"/><rect x="224" y="112" width="64" height="280" fill="#fff"/><rect x="336" y="112" width="64" height="200" fill="#fff"/></svg>`;
 const brand = (dark) => `<a class="brand" href="/" aria-label="Trydentt Cleaning Services, home">${shield()}<span><b${dark ? ' style="color:#fff"' : ''}>TRYDENTT</b><small>CLEANING SERVICES</small></span></a>`;
 const asset = (name) => {
@@ -260,7 +259,7 @@ function commercialForm() {
   return `<form class="form" data-form="commercial" novalidate>
   <div class="two">${field('businessName', 'Business name *', inp('businessName', 'text', '', ' autocomplete="organization"'))}${field('role', 'Your role', inp('role', 'text', 'Office mgr, owner, GM'))}</div>
   <div class="two">${field('contactName', 'Contact name *', inp('contactName', 'text', '', ' autocomplete="name"'))}${field('phone', 'Phone *', inp('phone', 'tel', '', ' autocomplete="tel"'))}</div>
-  <div class="two">${field('email', 'Email', inp('email', 'email', '', ' autocomplete="email"'))}${field('sqft', 'Approx. sqft', inp('sqft', 'text', 'e.g. 3000'))}</div>
+  <div class="two">${field('email', 'Email', inp('email', 'email', '', ' autocomplete="email"'))}${field('sqft', 'Approx. sq ft', inp('sqft', 'text', 'e.g. 3000'))}</div>
   <div class="two">${field('buildingType', 'Building type', sel('buildingType'))}${field('frequency', 'Desired frequency', sel('frequency'))}</div>
   <div class="two">${field('currentCleaner', 'Current cleaning setup', sel('currentCleaner'))}${field('preferredAuditDate', 'Preferred audit date', inp('preferredAuditDate', 'date'))}</div>
   <p class="cmsg err" style="display:block" hidden></p>
@@ -289,7 +288,7 @@ function faqFromLd(r) {
 }
 
 /* ---------------- generic section renderer ---------------- */
-const PRICE = /^\$[\d,.]+\+?$|^incl\.$/i;
+const PRICE = /^\$[\d,.]+\+?( to \$[\d,.]+\+?)?$|^incl\.$/i; // "$150", "$489+", "$200 to $275"
 const isFormBlock = (b) => ['field', 'label'].includes(b.t) || (b.t === 'text' && /^🇨🇦/.test(b.text));
 function renderBlocks(blocks, ctx) {
   const out = [];
@@ -332,7 +331,7 @@ function renderBlocks(blocks, ctx) {
       const lis = [];
       const list = b.list;
       while (i < blocks.length && blocks[i].t === 'li' && blocks[i].list === list) { lis.push(blocks[i].text); i++; }
-      out.push(`<ul class="ticks">${lis.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>`); continue;
+      out.push(`<ul class="ticks">${lis.map(tickLi).join('')}</ul>`); continue;
     }
     if (b.t === 'h3' || (b.t === 'p' && blocks[i + 1] && blocks[i + 1].t === 'h3' && b.text.length < 40)) {
       flushBtns();
@@ -349,7 +348,7 @@ function renderBlocks(blocks, ctx) {
           if (c.t === 'p' && !c.text) { i++; continue; }
           if (c.t === 'p' && /^Or call/i.test(c.text)) { it.parts.push(`<p class="note">Or call <a href="${TEL}"><b>${PHONE}</b></a></p>`); i++; continue; }
           if (c.t === 'p') { const big = firstP && /^\$/.test(c.text); it.parts.push(`<p${big ? ' class="big"' : ''}>${esc(c.text)}</p>`); firstP = false; i++; }
-          else if (c.t === 'li') { const lis = []; const l = c.list; while (i < blocks.length && blocks[i].t === 'li' && blocks[i].list === l) { lis.push(blocks[i].text); i++; } it.parts.push(`<ul class="ticks">${lis.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>`); }
+          else if (c.t === 'li') { const lis = []; const l = c.list; while (i < blocks.length && blocks[i].t === 'li' && blocks[i].list === l) { lis.push(blocks[i].text); i++; } it.parts.push(`<ul class="ticks">${lis.map(tickLi).join('')}</ul>`); }
           else if (c.t === 'a') { it.parts.push(`<div class="btns">${linkBtn(c, true)}</div>`); i++; }
           else if (c.t === 'text') { it.parts.push(`<p class="note">${esc(c.text)}</p>`); i++; }
           else i++;
@@ -466,7 +465,7 @@ function heroSection(route, blocks, { img, form, ctaAttr } = {}) {
       <h1>${accent(h1fix)}</h1>
       <div class="bar"></div>
       ${ps.map((p) => `<p>${esc(p)}</p>`).join('')}
-      ${lis.length ? `<ul class="ticks">${lis.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
+      ${lis.length ? `<ul class="ticks">${lis.map(tickLi).join('')}</ul>` : ''}
       ${facts.length ? `<div class="facts">${facts.map((t) => `<span>${esc(t)}</span>`).join('')}</div>` : ''}
       ${form ? '' : btns}
     </div>`;
@@ -632,7 +631,7 @@ function contactPage() {
   const r = D.routes['/contact'];
   const body = `<div class="hero short"><div class="bg"><img src="/images/about-team.jpg" alt=""></div><div class="wrap"><div class="copy">
   <div class="eyebrow">Contact &middot; London, Ontario</div>
-  <h1>Get <em>in</em> touch</h1><div class="bar"></div>
+  <h1>Get in touch</h1><div class="bar"></div>
   <p>Questions, quotes or a clean you need soon. Send a message and we'll come back to you, or call us.</p>
 </div></div></div>
 <section class="sec"><div class="wrap contact">
@@ -643,7 +642,7 @@ function contactPage() {
       <div><b>Email</b><a href="mailto:${SITE.email}">${SITE.email}</a></div>
       <div><b>Homes</b><span>Daytime visits</span></div>
       <div><b>Businesses</b><span>Overnight, after you close</span></div>
-      <div><b>Area</b><span>London, Ontario and 8 towns around it</span></div>
+      <div><b>Area</b><span>London, Ontario and 7 towns around it</span></div>
     </div>
   </div>
 </div></section>`;
