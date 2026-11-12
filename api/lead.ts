@@ -3,10 +3,10 @@ import { createHash, randomUUID } from 'node:crypto';
 
 // Every site form posts here. The lead is delivered to each leg that has its
 // settings: the Trydentt Sheet (row + email from homes@), a text to the owner,
-// GHL (until the Sheet is proven) and Meta CAPI. The form only hears "ok" once
-// the lead has reached a person or a record (Sheet, text or GHL). If nothing
-// got it, the form is told so and shows the phone number instead of a thank-you.
-// GET reports which legs are on.
+// the Trydentt Cleaning Telegram group and Meta CAPI. The form only hears "ok"
+// once the lead has reached a person or a record (Sheet, text or Telegram). If
+// nothing got it, the form is told so and shows the phone number instead of a
+// thank-you. GET reports which legs are on. GHL was switched off 2026-11-12.
 
 // SHA-256 hash per Meta's Customer Information Parameters spec:
 // trim whitespace, lowercase, hash.
@@ -87,35 +87,14 @@ const failed = (err: unknown): LegResult => ({
 
 const GRAPH_API_VERSION = 'v21.0';
 const SHEET_TIMEOUT_MS = 20_000;
+const TELEGRAM_TIMEOUT_MS = 8_000;
 
-// GHL custom field IDs created 2026-05-10 (see synthesis-trydentt-meta-relaunch-2026-05-10.md § 8).
-const GHL_FIELDS = {
-  SKU:                'qAAgvClbJypC2oRytwh0',
-  Bedrooms:           'pilQzcu36c4v8134urN9',
-  Bathrooms:          'iGeeGPLcJKDbBB0TlrPN',
-  Frequency:          'FeYU7YM3vV5pgGAmrvAc',
-  QuotedPrice:        'D8IFqKDvu3apxHx5DePZ',
-  AnnualLockIn:       'pOuYn7R7DaStCgV6FO1C',
-  AddonsSelected:     'Wp6n6dERDHp7sb26ieoT',
-  BusinessName:       'P2WJVApaeym5cI8Jn0Tl',
-  BuildingType:       '7JpUVwjnjLN2WcdstaO4',
-  CurrentCleanerSetup:'joejB67jH5YoMc0ksZpi',
-  DecisionMakerRole:  'XyFbnn4oRYTjosuEfH57',
-};
 const SKU_VALUE_MAP: Record<string, string> = {
   'move-out':       'Move-Out Recovery System',
   'bi-weekly':      'Bi-Weekly Reset Program',
   'friday-reset':   'Friday Reset',
   'class-a-office': 'Class-A Office Standard',
 };
-const FREQUENCY_VALUE_MAP: Record<string, string> = {
-  'one-time': 'One-time',
-  'weekly':   'Weekly',
-  'biweekly': 'Bi-weekly',
-};
-
-// The Contact form never fed the quote workflow, so it doesn't start now.
-const GHL_WEBHOOK_SKIP_SOURCES = new Set(['Contact Page Form']);
 
 const skuLabel = (sku?: string): string | undefined => {
   if (!sku) return undefined;
@@ -140,8 +119,7 @@ const smsRecipients = (): string[] =>
 const legsConfigured = () => ({
   sheet: Boolean(process.env.TC_SHEET_WEBHOOK_URL && process.env.TC_SHEET_WEBHOOK_SECRET),
   sms: Boolean(twilioAuth() && process.env.LEAD_SMS_FROM && smsRecipients().length),
-  ghlWebhook: Boolean(process.env.GHL_QUOTE_WEBHOOK),
-  ghlApi: Boolean(process.env.GHL_API_KEY && process.env.GHL_LOCATION_ID),
+  telegram: Boolean(process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID),
   capi: Boolean(process.env.META_PIXEL_ID && process.env.META_CAPI_TOKEN),
 });
 
@@ -224,82 +202,40 @@ async function sendSms(lead: Lead, sheet: LegResult): Promise<LegResult> {
   return { ok: results.every((r) => r.ok), messages: results };
 }
 
-// GHL inbound webhook: same payload the forms used to send it directly.
-async function sendToGhlWebhook(body: LeadPayload, eventId: string): Promise<LegResult> {
-  const url = process.env.GHL_QUOTE_WEBHOOK;
-  if (!url) return { ok: false, skipped: true, error: 'GHL_QUOTE_WEBHOOK not configured' };
-  if (body.source && GHL_WEBHOOK_SKIP_SOURCES.has(body.source)) return { ok: false, skipped: true, error: 'Not a quote form' };
+// Telegram reads its alert as HTML, so customer text is escaped.
+const escHtml = (raw: unknown): string =>
+  String(raw ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+// The Trydentt Cleaning Telegram group, so the team sees every lead in one place.
+async function sendTelegram(lead: Lead, sheet: LegResult): Promise<LegResult> {
+  const token = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+  if (!token || !chatId) return { ok: false, skipped: true, error: 'Telegram not configured' };
+
+  const lines: (string | null)[] = [
+    `<b>NEW ${lead.tab.toUpperCase()} LEAD</b> (trydenttcleaning.ca)`,
+    '',
+    `<b>${escHtml(lead.name)}</b>`,
+    lead.phone ? escHtml(lead.phone) : null,
+    lead.email ? escHtml(lead.email) : null,
+    escHtml([lead.service, lead.postalCode].filter(Boolean).join(', ')),
+    lead.address ? escHtml(lead.address) : null,
+    lead.estimate ? `Estimate shown: ${escHtml(lead.estimate)}` : null,
+    lead.details ? escHtml(lead.details) : null,
+    '',
+    `Form: ${escHtml(lead.source)}`,
+    sheet.ok ? 'Saved in the Sheet.' : sheet.skipped ? null : '<b>NOT saved to the Sheet, save it by hand.</b>',
+  ];
+
   try {
-    const r = await fetch(url, {
+    const r = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...body, event_id: eventId }),
+      body: JSON.stringify({ chat_id: chatId, parse_mode: 'HTML', text: lines.filter((l) => l !== null).join('\n') }),
+      signal: AbortSignal.timeout(TELEGRAM_TIMEOUT_MS),
     });
-    return { ok: r.ok, status: r.status };
-  } catch (err) {
-    return failed(err);
-  }
-}
-
-// GHL contacts/upsert: maps the SKU custom fields the webhook flow never did
-// (locked 2026-05-12 to fix the W19 launch issue).
-async function sendToGhlApi(body: LeadPayload): Promise<LegResult> {
-  const apiKey = process.env.GHL_API_KEY;
-  const locationId = process.env.GHL_LOCATION_ID;
-  if (!apiKey || !locationId) return { ok: false, skipped: true, error: 'GHL_API_KEY or GHL_LOCATION_ID not configured' };
-
-  const normalizedPhone = normalizePhone(body.phone);
-  const [firstName, ...rest] = (body.name || '').trim().split(/\s+/);
-  const lastName = rest.join(' ') || undefined;
-  const sku = skuLabel(body.sku);
-
-  const customFields: { id: string; field_value: string | number | boolean }[] = [];
-  if (sku) customFields.push({ id: GHL_FIELDS.SKU, field_value: sku });
-  if (typeof body.bedrooms === 'number') customFields.push({ id: GHL_FIELDS.Bedrooms, field_value: body.bedrooms });
-  if (typeof body.bathrooms === 'number') customFields.push({ id: GHL_FIELDS.Bathrooms, field_value: body.bathrooms });
-  if (body.frequency && FREQUENCY_VALUE_MAP[body.frequency]) customFields.push({ id: GHL_FIELDS.Frequency, field_value: FREQUENCY_VALUE_MAP[body.frequency] });
-  if (typeof body.minPrice === 'number') customFields.push({ id: GHL_FIELDS.QuotedPrice, field_value: body.minPrice });
-  if (body.annualLockIn === true) customFields.push({ id: GHL_FIELDS.AnnualLockIn, field_value: 'Yes' });
-  if (Array.isArray(body.addons) && body.addons.length > 0) customFields.push({ id: GHL_FIELDS.AddonsSelected, field_value: body.addons.join(', ') });
-
-  // Commercial-specific (Class-A Office Standard), parsed from serviceDetails per Commercial.tsx.
-  if (body.sku === 'class-a-office' && Array.isArray(body.serviceDetails)) {
-    const detail = (prefix: string) => body.serviceDetails?.find((d) => d.startsWith(prefix))?.replace(prefix, '').trim();
-    const biz = detail('Business: ');
-    const role = detail('Role: ');
-    const building = detail('Building: ');
-    const cleaner = detail('Current cleaner: ');
-    if (biz) customFields.push({ id: GHL_FIELDS.BusinessName, field_value: biz });
-    if (role) customFields.push({ id: GHL_FIELDS.DecisionMakerRole, field_value: role });
-    if (building) customFields.push({ id: GHL_FIELDS.BuildingType, field_value: building });
-    if (cleaner) customFields.push({ id: GHL_FIELDS.CurrentCleanerSetup, field_value: cleaner });
-  }
-
-  try {
-    const r = await fetch('https://services.leadconnectorhq.com/contacts/upsert', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        Version: '2021-07-28',
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        locationId,
-        firstName,
-        lastName,
-        email: body.email || undefined,
-        phone: normalizedPhone ? `+${normalizedPhone}` : body.phone || undefined,
-        address1: body.address,
-        city: body.city,
-        postalCode: body.postalCode || body.zip,
-        source: body.source || 'Trydentt Website',
-        tags: [sku || body.sku, body.utm_campaign].filter(Boolean) as string[],
-        customFields,
-      }),
-    });
-    const json = (await r.json().catch(() => ({}))) as Record<string, unknown>;
-    return { ok: r.ok, status: r.status, contactId: (json.contact as { id?: string } | undefined)?.id };
+    const json = (await r.json().catch(() => ({}))) as { description?: string };
+    return { ok: r.ok, status: r.status, error: r.ok ? undefined : json.description };
   } catch (err) {
     return failed(err);
   }
@@ -369,22 +305,24 @@ async function sendCapi(body: LeadPayload, eventId: string, clientIp?: string, u
 async function deliverLead(body: LeadPayload, eventId: string, clientIp?: string, userAgent?: string) {
   const lead = leadSummary(body, eventId);
 
-  // The Sheet goes first so a duplicate submit doesn't text twice. If the
-  // Sheet is configured but fails, the text says so.
-  const sheetThenSms = sendToSheet(lead).then(async (sheet) => ({
-    sheet,
-    sms: sheet.duplicate ? ({ ok: true, skipped: true, error: 'Duplicate' } as LegResult) : await sendSms(lead, sheet),
-  }));
+  // The Sheet goes first so a duplicate submit doesn't alert twice. If the
+  // Sheet is configured but fails, the text and the Telegram alert say so.
+  const sheetThenAlerts = sendToSheet(lead).then(async (sheet) => {
+    if (sheet.duplicate) {
+      const duplicate: LegResult = { ok: true, skipped: true, error: 'Duplicate' };
+      return { sheet, sms: duplicate, telegram: duplicate };
+    }
+    const [sms, telegram] = await Promise.all([sendSms(lead, sheet), sendTelegram(lead, sheet)]);
+    return { sheet, sms, telegram };
+  });
 
-  const [{ sheet, sms }, ghl, ghlApi, capi] = await Promise.all([
-    sheetThenSms,
-    sendToGhlWebhook(body, eventId),
-    sendToGhlApi(body),
+  const [{ sheet, sms, telegram }, capi] = await Promise.all([
+    sheetThenAlerts,
     sendCapi(body, eventId, clientIp, userAgent),
   ]);
 
-  const results = { eventId, sheet, sms, ghl, ghlApi, capi };
-  const delivered = [sheet, sms, ghl, ghlApi].some((r) => r.ok && !r.skipped);
+  const results = { eventId, sheet, sms, telegram, capi };
+  const delivered = [sheet, sms, telegram].some((r) => r.ok && !r.skipped);
   if (delivered) {
     console.log('lead delivered', JSON.stringify(results));
   } else {
