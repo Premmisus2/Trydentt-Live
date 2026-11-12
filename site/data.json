@@ -11,7 +11,7 @@
     "phone": {
       "display": "(519) 871-3368",
       "tel": "+15198713368",
-      "note": "Stays 519 on this branch. The 548-761-7171 swap is the last step (branch cleaning-548-swap); schema telephone stays 519 to match the Google profile."
+      "note": "Shown numbers and tel: links become (548) 761-7171 at build time (site/build.mjs SCRUB, 2026-11-12). Schema telephone stays 519 to match the Google profile."
     },
     "email": "homes@trydenttbuildingservices.com",
     "ogImage": "https://www.trydenttcleaning.ca/og-image.jpg",

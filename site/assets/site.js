@@ -2,8 +2,8 @@
    moves to /thank-you once the lead is delivered. If it isn't, the visitor is told to call. */
 (function () {
   'use strict';
-  var PHONE = '(519) 871-3368';
-  var TEL = 'tel:+15198713368';
+  var PHONE = '(548) 761-7171';
+  var TEL = 'tel:+15487617171';
   var CALC = window.TC_CALC || null;
 
   function cookie(n) {

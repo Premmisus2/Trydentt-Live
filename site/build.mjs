@@ -33,6 +33,11 @@ const SCRUB = [
   [/,?\s*Over 30 years of combined experience,?/g, ','],
   [/,\s*30\+ years combined experience/g, ''],
   [/\s*Trusted by families & businesses across [^.]+\.\s*/g, ''],
+  // Calls from the site ring the Cleaning tracking line, which forwards to 519 (2026-11-12).
+  // Only shown numbers and tel: links move; the schema telephone stays 519 to match Google.
+  [/\(519\) 871-3368/g, '(548) 761-7171'],
+  [/\+1 519-871-3368/g, '+1 548-761-7171'],
+  [/tel:\+15198713368/g, 'tel:+15487617171'],
   [/\u2014|\u2013/g, ', '],
   [/,\s*,/g, ','],
   [/^,\s*/g, ''],
@@ -48,7 +53,7 @@ function deep(v) {
 const D = deep(raw);
 const SITE = D.site;
 const ORIGIN = SITE.origin;
-const PHONE = '(519) 871-3368', TEL = 'tel:+15198713368';
+const PHONE = '(548) 761-7171', TEL = 'tel:+15487617171';
 const FB = 'https://www.facebook.com/914427345076805';
 const IG = 'https://www.instagram.com/trydenttcleaning';
 const LI = 'https://www.linkedin.com/company/trydentt';
@@ -59,7 +64,7 @@ const GLOBAL_LD = (D.shared.globalJsonLd || []).map((b) => {
   const o = JSON.parse(JSON.stringify(b));
   if (o['@type'] === 'CleaningService') {
     o.openingHoursSpecification = HOURS;
-    o.telephone = '+15198713368';
+    o.telephone = '+15198713368'; // stays 519: matches the Google Business Profile
     o.sameAs = [FB, IG, LI];
     if (o.description) o.description = scrub(o.description);
   }
@@ -89,7 +94,7 @@ const asset = (name) => {
 const OWN_META = {
   '/privacy-policy': { title: 'Privacy Policy | Trydentt Cleaning Services', description: 'How Trydentt Cleaning Services collects, uses and protects the information you share with us through this website, our forms and our phone line.' },
   '/terms': { title: 'Terms of Service | Trydentt Cleaning Services', description: 'The terms that apply when you use the Trydentt Cleaning Services website, request a quote or book a clean in London, Ontario and area.' },
-  '/404': { title: 'Page Not Found | Trydentt Cleaning Services', description: 'That page does not exist. Find Trydentt Cleaning Services in London, Ontario, or call (519) 871-3368.' },
+  '/404': { title: 'Page Not Found | Trydentt Cleaning Services', description: 'That page does not exist. Find Trydentt Cleaning Services in London, Ontario, or call (548) 761-7171.' },
 };
 function head(route, r) {
   const own = OWN_META[route];
