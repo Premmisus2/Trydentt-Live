@@ -1,6 +1,6 @@
-# Trydentt Cleaning Services — trydenttcleaning.ca
+# Trydentt Cleaning Services: trydenttcleaning.ca
 
-# AI Search Crawlers — ALLOWED (for visibility in AI search results)
+# AI Search Crawlers: ALLOWED (for visibility in AI search results)
 User-agent: GPTBot
 Allow: /
 
@@ -19,7 +19,7 @@ Allow: /
 User-agent: Applebot
 Allow: /
 
-# AI Training Crawlers — BLOCKED (training only, no search benefit)
+# AI Training Crawlers: BLOCKED (training only, no search benefit)
 User-agent: CCBot
 Disallow: /
 

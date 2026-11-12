@@ -6,10 +6,11 @@
   "scripts": {
     "postinstall": "npx puppeteer browsers install chrome",
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "vite build",
+    "build": "node site/build.mjs",
     "preview": "vite preview",
     "clean": "rm -rf dist",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "build:react": "vite build"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",

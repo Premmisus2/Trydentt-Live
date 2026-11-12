@@ -1,11 +1,12 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { waitUntil } from '@vercel/functions';
 import { createHash, randomUUID } from 'node:crypto';
 
-// Every site form posts here. The form gets its answer straight away; the lead
-// is then delivered after the response (waitUntil) to each leg that has its
+// Every site form posts here. The lead is delivered to each leg that has its
 // settings: the Trydentt Sheet (row + email from homes@), a text to the owner,
-// GHL (until the Sheet is proven) and Meta CAPI. GET reports which legs are on.
+// GHL (until the Sheet is proven) and Meta CAPI. The form only hears "ok" once
+// the lead has reached a person or a record (Sheet, text or GHL). If nothing
+// got it, the form is told so and shows the phone number instead of a thank-you.
+// GET reports which legs are on.
 
 // SHA-256 hash per Meta's Customer Information Parameters spec:
 // trim whitespace, lowercase, hash.
@@ -383,13 +384,14 @@ async function deliverLead(body: LeadPayload, eventId: string, clientIp?: string
   ]);
 
   const results = { eventId, sheet, sms, ghl, ghlApi, capi };
-  const delivered = [sheet, sms, ghl, ghlApi].some((r) => r.ok);
+  const delivered = [sheet, sms, ghl, ghlApi].some((r) => r.ok && !r.skipped);
   if (delivered) {
     console.log('lead delivered', JSON.stringify(results));
   } else {
     // Nothing reached a person or a record: keep the lead in the logs so it can be recovered.
     console.error('LEAD NOT DELIVERED', JSON.stringify({ ...results, lead }));
   }
+  return delivered;
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -434,7 +436,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     (req.headers['user-agent'] as string | undefined) ||
     undefined;
 
-  // Answer the form now; deliver after the response so a slow leg never keeps the customer waiting.
-  waitUntil(deliverLead(body, eventId, clientIp, userAgent));
+  // Wait for delivery: the visitor only sees a thank-you once someone has the lead.
+  let delivered = false;
+  try {
+    delivered = await deliverLead(body, eventId, clientIp, userAgent);
+  } catch (err) {
+    console.error('LEAD DELIVERY CRASHED', err instanceof Error ? err.message : String(err));
+  }
+  if (!delivered) {
+    res.status(502).json({ ok: false, eventId, error: 'Not delivered. Please call (519) 871-3368.' });
+    return;
+  }
   res.status(200).json({ ok: true, eventId });
 }
