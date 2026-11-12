@@ -1207,8 +1207,8 @@
       },
       {
         "name": "Eco-Friendly Cleaning",
-        "desc": "Non-toxic solutions for a healthy, green home.",
-        "details": "We use only EPA-certified, plant-based products that are tough on dirt but safe for pets and children. Breathe easy knowing your home is toxin-free."
+        "desc": "Gentler products for a greener home.",
+        "details": "We use plant-based products that are tough on dirt and chosen with pets and children in mind."
       },
       {
         "name": "Seasonal Cleaning",
@@ -1417,7 +1417,7 @@
               "name": "Is Trydentt Cleaning fully insured?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes. Trydentt Cleaning Services is fully insured and bonded. We carry comprehensive general liability insurance and workers' compensation coverage to protect your property and our team."
+                "text": "Yes. Trydentt Cleaning Services is fully insured and bonded. We carry general liability insurance to protect your property."
               }
             },
             {
@@ -1425,7 +1425,7 @@
               "name": "Do you use eco-friendly cleaning products?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Absolutely. We use EPA-certified, plant-based cleaning products that are safe for children, pets, and the environment. Our eco-friendly approach delivers the same powerful clean without harsh chemicals."
+                "text": "Yes. We use plant-based cleaning products, chosen with children, pets and the environment in mind."
               }
             },
             {
@@ -1494,7 +1494,7 @@
           },
           {
             "t": "h1",
-            "text": "Modern Cleaning for Modern Lives.",
+            "text": "Modern cleaning for modern lives.",
             "s": 0
           },
           {
@@ -1520,7 +1520,7 @@
           },
           {
             "t": "h3",
-            "text": "Residential Cleaning",
+            "text": "Residential cleaning",
             "s": 1
           },
           {
@@ -1536,7 +1536,7 @@
           },
           {
             "t": "h3",
-            "text": "Commercial Cleaning",
+            "text": "Commercial cleaning",
             "s": 1
           },
           {
@@ -1552,7 +1552,7 @@
           },
           {
             "t": "h2",
-            "text": "The Difference is in the Detail",
+            "text": "The difference is in the detail",
             "s": 2
           },
           {
@@ -1562,7 +1562,7 @@
           },
           {
             "t": "h3",
-            "text": "Unreliable Service",
+            "text": "Unreliable service",
             "s": 2
           },
           {
@@ -1572,7 +1572,7 @@
           },
           {
             "t": "h3",
-            "text": "Missed Spots",
+            "text": "Missed spots",
             "s": 2
           },
           {
@@ -1598,7 +1598,7 @@
           },
           {
             "t": "h3",
-            "text": "Affordable Excellence",
+            "text": "Affordable excellence",
             "s": 2
           },
           {
@@ -1608,7 +1608,7 @@
           },
           {
             "t": "h3",
-            "text": "Zero Stress",
+            "text": "Zero stress",
             "s": 2
           },
           {
@@ -1618,7 +1618,7 @@
           },
           {
             "t": "h2",
-            "text": "Why Choose Trydentt?",
+            "text": "Why choose Trydentt?",
             "s": 3
           },
           {
@@ -1649,7 +1649,7 @@
           },
           {
             "t": "h3",
-            "text": "Qualified Professionals",
+            "text": "Qualified professionals",
             "s": 3
           },
           {
@@ -1659,7 +1659,7 @@
           },
           {
             "t": "h3",
-            "text": "Consistent Reliability",
+            "text": "Consistent reliability",
             "s": 3
           },
           {
@@ -1669,7 +1669,7 @@
           },
           {
             "t": "h3",
-            "text": "Budget Friendly",
+            "text": "Budget friendly",
             "s": 3
           },
           {
@@ -1689,7 +1689,7 @@
           },
           {
             "t": "h3",
-            "text": "Qualified Professionals",
+            "text": "Qualified professionals",
             "s": 3
           },
           {
@@ -1699,7 +1699,7 @@
           },
           {
             "t": "h3",
-            "text": "Consistent Reliability",
+            "text": "Consistent reliability",
             "s": 3
           },
           {
@@ -1709,7 +1709,7 @@
           },
           {
             "t": "h3",
-            "text": "Budget Friendly",
+            "text": "Budget friendly",
             "s": 3
           },
           {
@@ -1729,7 +1729,7 @@
           },
           {
             "t": "h2",
-            "text": "Exclusive Services",
+            "text": "Exclusive services",
             "s": 4
           },
           {
@@ -1751,7 +1751,7 @@
           },
           {
             "t": "h3",
-            "text": "General House Cleaning",
+            "text": "General house cleaning",
             "s": 4
           },
           {
@@ -1772,7 +1772,7 @@
           },
           {
             "t": "h3",
-            "text": "Deep Cleaning",
+            "text": "Deep cleaning",
             "s": 4
           },
           {
@@ -1793,7 +1793,7 @@
           },
           {
             "t": "h3",
-            "text": "Move-In/Move-Out",
+            "text": "Move-in/move-out",
             "s": 4
           },
           {
@@ -1814,7 +1814,7 @@
           },
           {
             "t": "h3",
-            "text": "Post-Construction",
+            "text": "Post-construction",
             "s": 4
           },
           {
@@ -1835,17 +1835,17 @@
           },
           {
             "t": "h3",
-            "text": "Eco-Friendly Cleaning",
+            "text": "Eco-friendly cleaning",
             "s": 4
           },
           {
             "t": "p",
-            "text": "Non-toxic solutions for a healthy, green home.",
+            "text": "Gentler products for a greener home.",
             "s": 4
           },
           {
             "t": "p",
-            "text": "We use only EPA-certified, plant-based products that are tough on dirt but safe for pets and children. Breathe easy knowing your home is toxin-free.",
+            "text": "We use plant-based products that are tough on dirt and chosen with pets and children in mind.",
             "s": 4
           },
           {
@@ -1856,7 +1856,7 @@
           },
           {
             "t": "h3",
-            "text": "Seasonal Cleaning",
+            "text": "Seasonal cleaning",
             "s": 4
           },
           {
@@ -1877,7 +1877,7 @@
           },
           {
             "t": "h2",
-            "text": "Visual Proof of Excellence",
+            "text": "Visual proof of excellence",
             "s": 5
           },
           {
@@ -1887,7 +1887,7 @@
           },
           {
             "t": "h3",
-            "text": "Uncompromising Quality",
+            "text": "Uncompromising quality",
             "s": 5
           },
           {
@@ -1897,7 +1897,7 @@
           },
           {
             "t": "h3",
-            "text": "100% Satisfaction Guarantee",
+            "text": "100% satisfaction guarantee",
             "s": 5
           },
           {
@@ -1949,7 +1949,7 @@
           },
           {
             "t": "h3",
-            "text": "Get Your Price in Seconds",
+            "text": "Get your price in seconds",
             "s": 6
           },
           {
@@ -1997,7 +1997,7 @@
           },
           {
             "t": "h2",
-            "text": "Frequently Asked Questions",
+            "text": "Frequently asked questions",
             "s": 7
           },
           {
@@ -2022,7 +2022,7 @@
           },
           {
             "t": "text",
-            "text": "Yes. Trydentt Cleaning Services is fully insured and bonded. We carry comprehensive general liability insurance and workers' compensation coverage to protect your property and our team.",
+            "text": "Yes. Trydentt Cleaning Services is fully insured and bonded. We carry general liability insurance to protect your property.",
             "s": 7
           },
           {
@@ -2032,7 +2032,7 @@
           },
           {
             "t": "text",
-            "text": "We use EPA-certified, plant-based cleaning products that are safe for children, pets, and the environment. Our eco-friendly approach delivers the same powerful clean without harsh chemicals.",
+            "text": "We use plant-based cleaning products, chosen with children, pets and the environment in mind.",
             "s": 7
           },
           {
@@ -2077,7 +2077,7 @@
           },
           {
             "t": "h3",
-            "text": "Get Your Free Quote",
+            "text": "Get your free quote",
             "s": 8
           },
           {
@@ -2186,7 +2186,7 @@
               "name": "Are your cleaning products safe for pets and children?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes. We use only EPA-certified, plant-based products that are tough on dirt but completely safe for pets and children. No harsh chemicals, ever."
+                "text": "We use plant-based products, chosen with pets and children in mind."
               }
             }
           ]
@@ -2235,12 +2235,12 @@
           },
           {
             "t": "h1",
-            "text": "Your Home, Your Sanctuary. Reclaim Your Weekends.",
+            "text": "Your home, your sanctuary. Reclaim your weekends.",
             "s": 0
           },
           {
             "t": "p",
-            "text": "Stop spending weekends scrubbing floors. Trydentt delivers professional house cleaning in London, Ontario: meticulous, eco-friendly and family-safe, so you can focus on what matters most.",
+            "text": "Stop spending weekends scrubbing floors. Trydentt delivers professional house cleaning in London, Ontario: meticulous and eco-friendly, so you can focus on what matters most.",
             "s": 0
           },
           {
@@ -2251,7 +2251,7 @@
           },
           {
             "t": "h2",
-            "text": "The Difference is in the Detail",
+            "text": "The difference is in the detail",
             "s": 1
           },
           {
@@ -2261,7 +2261,7 @@
           },
           {
             "t": "h3",
-            "text": "Unreliable Service",
+            "text": "Unreliable service",
             "s": 1
           },
           {
@@ -2271,7 +2271,7 @@
           },
           {
             "t": "h3",
-            "text": "Missed Spots",
+            "text": "Missed spots",
             "s": 1
           },
           {
@@ -2297,7 +2297,7 @@
           },
           {
             "t": "h3",
-            "text": "Affordable Excellence",
+            "text": "Affordable excellence",
             "s": 1
           },
           {
@@ -2307,7 +2307,7 @@
           },
           {
             "t": "h3",
-            "text": "Zero Stress",
+            "text": "Zero stress",
             "s": 1
           },
           {
@@ -2317,7 +2317,7 @@
           },
           {
             "t": "h2",
-            "text": "Residential Services",
+            "text": "Residential services",
             "s": 2
           },
           {
@@ -2327,7 +2327,7 @@
           },
           {
             "t": "h3",
-            "text": "General House Cleaning",
+            "text": "General house cleaning",
             "s": 2
           },
           {
@@ -2348,7 +2348,7 @@
           },
           {
             "t": "h3",
-            "text": "Deep Cleaning",
+            "text": "Deep cleaning",
             "s": 2
           },
           {
@@ -2369,7 +2369,7 @@
           },
           {
             "t": "h3",
-            "text": "Move-In/Move-Out",
+            "text": "Move-in/move-out",
             "s": 2
           },
           {
@@ -2390,7 +2390,7 @@
           },
           {
             "t": "h3",
-            "text": "Post-Construction",
+            "text": "Post-construction",
             "s": 2
           },
           {
@@ -2411,17 +2411,17 @@
           },
           {
             "t": "h3",
-            "text": "Eco-Friendly Cleaning",
+            "text": "Eco-friendly cleaning",
             "s": 2
           },
           {
             "t": "p",
-            "text": "Non-toxic solutions for a healthy, green home.",
+            "text": "Gentler products for a greener home.",
             "s": 2
           },
           {
             "t": "p",
-            "text": "We use only EPA-certified, plant-based products that are tough on dirt but safe for pets and children. Breathe easy knowing your home is toxin-free.",
+            "text": "We use plant-based products that are tough on dirt and chosen with pets and children in mind.",
             "s": 2
           },
           {
@@ -2432,7 +2432,7 @@
           },
           {
             "t": "h3",
-            "text": "Seasonal Cleaning",
+            "text": "Seasonal cleaning",
             "s": 2
           },
           {
@@ -2453,7 +2453,7 @@
           },
           {
             "t": "h2",
-            "text": "Visual Proof of Excellence",
+            "text": "Visual proof of excellence",
             "s": 3
           },
           {
@@ -2463,7 +2463,7 @@
           },
           {
             "t": "h3",
-            "text": "Dedicated Home Care",
+            "text": "Dedicated home care",
             "s": 3
           },
           {
@@ -2473,12 +2473,12 @@
           },
           {
             "t": "h3",
-            "text": "Family & Pet Safe",
+            "text": "Family & pet friendly",
             "s": 3
           },
           {
             "t": "p",
-            "text": "100% non-toxic cleaning agents used in every home.",
+            "text": "Products chosen with kids and pets in mind.",
             "s": 3
           },
           {
@@ -2525,7 +2525,7 @@
           },
           {
             "t": "h3",
-            "text": "Get Your Price in Seconds",
+            "text": "Get your price in seconds",
             "s": 4
           },
           {
@@ -2573,7 +2573,7 @@
           },
           {
             "t": "h2",
-            "text": "Residential Cleaning Across Southwestern Ontario",
+            "text": "Residential cleaning across Southwestern Ontario",
             "s": 5
           },
           {
@@ -2631,7 +2631,7 @@
           },
           {
             "t": "h2",
-            "text": "Frequently Asked Questions",
+            "text": "Frequently asked questions",
             "s": 6
           },
           {
@@ -2676,7 +2676,7 @@
           },
           {
             "t": "text",
-            "text": "Yes. We use only EPA-certified, plant-based products that are tough on dirt but completely safe for pets and children. No harsh chemicals, ever.",
+            "text": "We use plant-based products, chosen with pets and children in mind.",
             "s": 6
           },
           {
@@ -2701,7 +2701,7 @@
           },
           {
             "t": "h3",
-            "text": "Get Started in Seconds",
+            "text": "Get started in seconds",
             "s": 7
           },
           {
@@ -3254,7 +3254,7 @@
         "blocks": [
           {
             "t": "h1",
-            "text": "The Trydentt Story",
+            "text": "The Trydentt story",
             "s": 0
           },
           {
@@ -3310,7 +3310,7 @@
           },
           {
             "t": "h2",
-            "text": "Our Quality Guarantee",
+            "text": "Our quality guarantee",
             "s": 2
           },
           {
@@ -3436,7 +3436,7 @@
         "blocks": [
           {
             "t": "h1",
-            "text": "Get Your Free Cleaning Estimate",
+            "text": "Get your free cleaning estimate",
             "s": -1
           },
           {
@@ -3451,7 +3451,7 @@
           },
           {
             "t": "h3",
-            "text": "Get Your Price in Seconds",
+            "text": "Get your price in seconds",
             "s": -1
           },
           {
@@ -3600,7 +3600,7 @@
         "blocks": [
           {
             "t": "h1",
-            "text": "Let's Talk.",
+            "text": "Let's talk.",
             "s": 0
           },
           {
@@ -3610,7 +3610,7 @@
           },
           {
             "t": "h4",
-            "text": "Email Us",
+            "text": "Email us",
             "s": 0
           },
           {
@@ -3620,7 +3620,7 @@
           },
           {
             "t": "h4",
-            "text": "Call Us",
+            "text": "Call us",
             "s": 0
           },
           {
@@ -3770,7 +3770,7 @@
         "blocks": [
           {
             "t": "h1",
-            "text": "Thank You for Your Request!",
+            "text": "Thank you for your request!",
             "s": -1
           },
           {
@@ -3958,7 +3958,7 @@
           },
           {
             "t": "h1",
-            "text": "Professional Cleaning Services in London, Ontario",
+            "text": "Professional cleaning services in London, Ontario",
             "s": 0
           },
           {
@@ -3979,7 +3979,7 @@
           },
           {
             "t": "h2",
-            "text": "Get Your Free Residential Cleaning Quote",
+            "text": "Get your free residential cleaning quote",
             "s": 0
           },
           {
@@ -4074,7 +4074,7 @@
           },
           {
             "t": "h2",
-            "text": "Why London Trusts Trydentt",
+            "text": "Why London trusts Trydentt",
             "s": 1
           },
           {
@@ -4084,27 +4084,27 @@
           },
           {
             "t": "h3",
-            "text": "Fully Insured & Bonded",
+            "text": "Fully insured",
             "s": 1
           },
           {
             "t": "p",
-            "text": "Complete liability coverage and workers' comp. Your property is protected every visit.",
+            "text": "Liability insurance on every job. Your property is protected every visit.",
             "s": 1
           },
           {
             "t": "h3",
-            "text": "Eco-Friendly Products",
+            "text": "Eco-friendly products",
             "s": 1
           },
           {
             "t": "p",
-            "text": "Plant-based products safe for your family, pets, and the London community.",
+            "text": "Plant-based products, chosen with your family and pets in mind.",
             "s": 1
           },
           {
             "t": "h3",
-            "text": "Reliable & Punctual",
+            "text": "Reliable & punctual",
             "s": 1
           },
           {
@@ -4114,7 +4114,7 @@
           },
           {
             "t": "h2",
-            "text": "Cleaning Services in London, Ontario",
+            "text": "Cleaning services in London, Ontario",
             "s": 2
           },
           {
@@ -4124,7 +4124,7 @@
           },
           {
             "t": "h3",
-            "text": "Residential Cleaning",
+            "text": "Residential cleaning",
             "s": 2
           },
           {
@@ -4171,7 +4171,7 @@
           },
           {
             "t": "h3",
-            "text": "Commercial Cleaning",
+            "text": "Commercial cleaning",
             "s": 2
           },
           {
@@ -4218,7 +4218,7 @@
           },
           {
             "t": "h2",
-            "text": "London Neighbourhoods We Serve",
+            "text": "London neighbourhoods we serve",
             "s": 3
           },
           {
@@ -4328,7 +4328,7 @@
           },
           {
             "t": "h3",
-            "text": "Plus Surrounding Areas",
+            "text": "Plus surrounding areas",
             "s": 3
           },
           {
@@ -4383,7 +4383,7 @@
           },
           {
             "t": "h2",
-            "text": "Frequently Asked Questions",
+            "text": "Frequently asked questions",
             "s": 4
           },
           {
@@ -4468,7 +4468,7 @@
           },
           {
             "t": "h3",
-            "text": "Get Your Free Quote",
+            "text": "Get your free quote",
             "s": 5
           },
           {
@@ -4554,7 +4554,7 @@
           },
           {
             "t": "li",
-            "text": "Eco-friendly products, safe for kids and pets",
+            "text": "Eco-friendly products, chosen with kids and pets in mind",
             "s": 0,
             "list": 0
           },
@@ -4603,7 +4603,7 @@
           },
           {
             "t": "h2",
-            "text": "Get Your Free Residential Cleaning Quote",
+            "text": "Get your free residential cleaning quote",
             "s": 0
           },
           {
@@ -5003,11 +5003,6 @@
             "s": 1
           },
           {
-            "t": "p",
-            "text": "We take 6 move-out cleans a week. Mondays book first.",
-            "s": 1
-          },
-          {
             "t": "h2",
             "text": "Flat-rate move-out pricing",
             "s": 2
@@ -5308,7 +5303,7 @@
           },
           {
             "t": "p",
-            "text": "What if every day felt like cleaning day, without the work? The Bi-Weekly Reset keeps your London home in a steady state of clean, with a locked rate and the same team every visit.",
+            "text": "What if your home always felt freshly cleaned? The Bi-Weekly Reset keeps your London home in a steady state of clean, with a locked rate and the same team every visit.",
             "s": 0
           },
           {
@@ -5557,7 +5552,7 @@
           },
           {
             "t": "text",
-            "text": "Prefer weekly? Add 20% per visit and keep the same locked rate. Your exact price takes 60 seconds above.",
+            "text": "Prefer weekly? It costs less per visit. Ask us for the weekly rate.",
             "s": 3
           },
           {
@@ -6236,7 +6231,7 @@
           },
           {
             "t": "h1",
-            "text": "Professional Cleaning in St. Thomas, Ontario",
+            "text": "Professional cleaning in St. Thomas, Ontario",
             "s": 0
           },
           {
@@ -6258,7 +6253,7 @@
           },
           {
             "t": "h2",
-            "text": "Why St. Thomas Chooses Trydentt",
+            "text": "Why St. Thomas chooses Trydentt",
             "s": 1
           },
           {
@@ -6268,7 +6263,7 @@
           },
           {
             "t": "h3",
-            "text": "Fully Insured & Bonded",
+            "text": "Fully insured",
             "s": 1
           },
           {
@@ -6278,17 +6273,17 @@
           },
           {
             "t": "h3",
-            "text": "Eco-Friendly Products",
+            "text": "Eco-friendly products",
             "s": 1
           },
           {
             "t": "p",
-            "text": "Plant-based, EPA-certified products safe for families, pets, and the environment.",
+            "text": "Plant-based products, chosen with families and pets in mind.",
             "s": 1
           },
           {
             "t": "h3",
-            "text": "No Travel Surcharges",
+            "text": "No travel surcharges",
             "s": 1
           },
           {
@@ -6298,7 +6293,7 @@
           },
           {
             "t": "h2",
-            "text": "Cleaning Services Available in St. Thomas",
+            "text": "Cleaning services available in St. Thomas",
             "s": 2
           },
           {
@@ -6308,7 +6303,7 @@
           },
           {
             "t": "h3",
-            "text": "Residential Cleaning",
+            "text": "Residential cleaning",
             "s": 2
           },
           {
@@ -6355,7 +6350,7 @@
           },
           {
             "t": "h3",
-            "text": "Commercial Cleaning",
+            "text": "Commercial cleaning",
             "s": 2
           },
           {
@@ -6402,7 +6397,7 @@
           },
           {
             "t": "h2",
-            "text": "Areas We Serve in St. Thomas",
+            "text": "Areas we serve in St. Thomas",
             "s": 3
           },
           {
@@ -6472,7 +6467,7 @@
           },
           {
             "t": "h3",
-            "text": "Get Your Free Quote",
+            "text": "Get your free quote",
             "s": 4
           },
           {
@@ -6624,7 +6619,7 @@
           },
           {
             "t": "h1",
-            "text": "Professional Cleaning in Woodstock, Ontario",
+            "text": "Professional cleaning in Woodstock, Ontario",
             "s": 0
           },
           {
@@ -6646,7 +6641,7 @@
           },
           {
             "t": "h2",
-            "text": "Why Woodstock Chooses Trydentt",
+            "text": "Why Woodstock chooses Trydentt",
             "s": 1
           },
           {
@@ -6656,7 +6651,7 @@
           },
           {
             "t": "h3",
-            "text": "Fully Insured & Bonded",
+            "text": "Fully insured",
             "s": 1
           },
           {
@@ -6666,17 +6661,17 @@
           },
           {
             "t": "h3",
-            "text": "Eco-Friendly Products",
+            "text": "Eco-friendly products",
             "s": 1
           },
           {
             "t": "p",
-            "text": "Plant-based, EPA-certified products safe for families, pets, and the environment.",
+            "text": "Plant-based products, chosen with families and pets in mind.",
             "s": 1
           },
           {
             "t": "h3",
-            "text": "No Travel Surcharges",
+            "text": "No travel surcharges",
             "s": 1
           },
           {
@@ -6686,7 +6681,7 @@
           },
           {
             "t": "h2",
-            "text": "Cleaning Services Available in Woodstock",
+            "text": "Cleaning services available in Woodstock",
             "s": 2
           },
           {
@@ -6696,7 +6691,7 @@
           },
           {
             "t": "h3",
-            "text": "Residential Cleaning",
+            "text": "Residential cleaning",
             "s": 2
           },
           {
@@ -6743,7 +6738,7 @@
           },
           {
             "t": "h3",
-            "text": "Commercial Cleaning",
+            "text": "Commercial cleaning",
             "s": 2
           },
           {
@@ -6790,7 +6785,7 @@
           },
           {
             "t": "h2",
-            "text": "Areas We Serve in Woodstock",
+            "text": "Areas we serve in Woodstock",
             "s": 3
           },
           {
@@ -6860,7 +6855,7 @@
           },
           {
             "t": "h3",
-            "text": "Get Your Free Quote",
+            "text": "Get your free quote",
             "s": 4
           },
           {
@@ -7012,7 +7007,7 @@
           },
           {
             "t": "h1",
-            "text": "Professional Cleaning in Strathroy, Ontario",
+            "text": "Professional cleaning in Strathroy, Ontario",
             "s": 0
           },
           {
@@ -7034,7 +7029,7 @@
           },
           {
             "t": "h2",
-            "text": "Why Strathroy Chooses Trydentt",
+            "text": "Why Strathroy chooses Trydentt",
             "s": 1
           },
           {
@@ -7044,7 +7039,7 @@
           },
           {
             "t": "h3",
-            "text": "Fully Insured & Bonded",
+            "text": "Fully insured",
             "s": 1
           },
           {
@@ -7054,17 +7049,17 @@
           },
           {
             "t": "h3",
-            "text": "Eco-Friendly Products",
+            "text": "Eco-friendly products",
             "s": 1
           },
           {
             "t": "p",
-            "text": "Plant-based, EPA-certified products safe for families, pets, and the environment.",
+            "text": "Plant-based products, chosen with families and pets in mind.",
             "s": 1
           },
           {
             "t": "h3",
-            "text": "No Travel Surcharges",
+            "text": "No travel surcharges",
             "s": 1
           },
           {
@@ -7074,7 +7069,7 @@
           },
           {
             "t": "h2",
-            "text": "Cleaning Services Available in Strathroy",
+            "text": "Cleaning services available in Strathroy",
             "s": 2
           },
           {
@@ -7084,7 +7079,7 @@
           },
           {
             "t": "h3",
-            "text": "Residential Cleaning",
+            "text": "Residential cleaning",
             "s": 2
           },
           {
@@ -7131,7 +7126,7 @@
           },
           {
             "t": "h3",
-            "text": "Commercial Cleaning",
+            "text": "Commercial cleaning",
             "s": 2
           },
           {
@@ -7178,7 +7173,7 @@
           },
           {
             "t": "h2",
-            "text": "Areas We Serve in Strathroy",
+            "text": "Areas we serve in Strathroy",
             "s": 3
           },
           {
@@ -7243,7 +7238,7 @@
           },
           {
             "t": "h3",
-            "text": "Get Your Free Quote",
+            "text": "Get your free quote",
             "s": 4
           },
           {
@@ -7395,7 +7390,7 @@
           },
           {
             "t": "h1",
-            "text": "Professional Cleaning in Ingersoll, Ontario",
+            "text": "Professional cleaning in Ingersoll, Ontario",
             "s": 0
           },
           {
@@ -7417,7 +7412,7 @@
           },
           {
             "t": "h2",
-            "text": "Why Ingersoll Chooses Trydentt",
+            "text": "Why Ingersoll chooses Trydentt",
             "s": 1
           },
           {
@@ -7427,7 +7422,7 @@
           },
           {
             "t": "h3",
-            "text": "Fully Insured & Bonded",
+            "text": "Fully insured",
             "s": 1
           },
           {
@@ -7437,17 +7432,17 @@
           },
           {
             "t": "h3",
-            "text": "Eco-Friendly Products",
+            "text": "Eco-friendly products",
             "s": 1
           },
           {
             "t": "p",
-            "text": "Plant-based, EPA-certified products safe for families, pets, and the environment.",
+            "text": "Plant-based products, chosen with families and pets in mind.",
             "s": 1
           },
           {
             "t": "h3",
-            "text": "No Travel Surcharges",
+            "text": "No travel surcharges",
             "s": 1
           },
           {
@@ -7457,7 +7452,7 @@
           },
           {
             "t": "h2",
-            "text": "Cleaning Services Available in Ingersoll",
+            "text": "Cleaning services available in Ingersoll",
             "s": 2
           },
           {
@@ -7467,7 +7462,7 @@
           },
           {
             "t": "h3",
-            "text": "Residential Cleaning",
+            "text": "Residential cleaning",
             "s": 2
           },
           {
@@ -7514,7 +7509,7 @@
           },
           {
             "t": "h3",
-            "text": "Commercial Cleaning",
+            "text": "Commercial cleaning",
             "s": 2
           },
           {
@@ -7561,7 +7556,7 @@
           },
           {
             "t": "h2",
-            "text": "Areas We Serve in Ingersoll",
+            "text": "Areas we serve in Ingersoll",
             "s": 3
           },
           {
@@ -7621,7 +7616,7 @@
           },
           {
             "t": "h3",
-            "text": "Get Your Free Quote",
+            "text": "Get your free quote",
             "s": 4
           },
           {
@@ -7773,7 +7768,7 @@
           },
           {
             "t": "h1",
-            "text": "Professional Cleaning in Tillsonburg, Ontario",
+            "text": "Professional cleaning in Tillsonburg, Ontario",
             "s": 0
           },
           {
@@ -7795,7 +7790,7 @@
           },
           {
             "t": "h2",
-            "text": "Why Tillsonburg Chooses Trydentt",
+            "text": "Why Tillsonburg chooses Trydentt",
             "s": 1
           },
           {
@@ -7805,7 +7800,7 @@
           },
           {
             "t": "h3",
-            "text": "Fully Insured & Bonded",
+            "text": "Fully insured",
             "s": 1
           },
           {
@@ -7815,17 +7810,17 @@
           },
           {
             "t": "h3",
-            "text": "Eco-Friendly Products",
+            "text": "Eco-friendly products",
             "s": 1
           },
           {
             "t": "p",
-            "text": "Plant-based, EPA-certified products safe for families, pets, and the environment.",
+            "text": "Plant-based products, chosen with families and pets in mind.",
             "s": 1
           },
           {
             "t": "h3",
-            "text": "No Travel Surcharges",
+            "text": "No travel surcharges",
             "s": 1
           },
           {
@@ -7835,7 +7830,7 @@
           },
           {
             "t": "h2",
-            "text": "Cleaning Services Available in Tillsonburg",
+            "text": "Cleaning services available in Tillsonburg",
             "s": 2
           },
           {
@@ -7845,7 +7840,7 @@
           },
           {
             "t": "h3",
-            "text": "Residential Cleaning",
+            "text": "Residential cleaning",
             "s": 2
           },
           {
@@ -7892,7 +7887,7 @@
           },
           {
             "t": "h3",
-            "text": "Commercial Cleaning",
+            "text": "Commercial cleaning",
             "s": 2
           },
           {
@@ -7939,7 +7934,7 @@
           },
           {
             "t": "h2",
-            "text": "Areas We Serve in Tillsonburg",
+            "text": "Areas we serve in Tillsonburg",
             "s": 3
           },
           {
@@ -8004,7 +7999,7 @@
           },
           {
             "t": "h3",
-            "text": "Get Your Free Quote",
+            "text": "Get your free quote",
             "s": 4
           },
           {
@@ -8156,7 +8151,7 @@
           },
           {
             "t": "h1",
-            "text": "Professional Cleaning in Aylmer, Ontario",
+            "text": "Professional cleaning in Aylmer, Ontario",
             "s": 0
           },
           {
@@ -8178,7 +8173,7 @@
           },
           {
             "t": "h2",
-            "text": "Why Aylmer Chooses Trydentt",
+            "text": "Why Aylmer chooses Trydentt",
             "s": 1
           },
           {
@@ -8188,7 +8183,7 @@
           },
           {
             "t": "h3",
-            "text": "Fully Insured & Bonded",
+            "text": "Fully insured",
             "s": 1
           },
           {
@@ -8198,17 +8193,17 @@
           },
           {
             "t": "h3",
-            "text": "Eco-Friendly Products",
+            "text": "Eco-friendly products",
             "s": 1
           },
           {
             "t": "p",
-            "text": "Plant-based, EPA-certified products safe for families, pets, and the environment.",
+            "text": "Plant-based products, chosen with families and pets in mind.",
             "s": 1
           },
           {
             "t": "h3",
-            "text": "No Travel Surcharges",
+            "text": "No travel surcharges",
             "s": 1
           },
           {
@@ -8218,7 +8213,7 @@
           },
           {
             "t": "h2",
-            "text": "Cleaning Services Available in Aylmer",
+            "text": "Cleaning services available in Aylmer",
             "s": 2
           },
           {
@@ -8228,7 +8223,7 @@
           },
           {
             "t": "h3",
-            "text": "Residential Cleaning",
+            "text": "Residential cleaning",
             "s": 2
           },
           {
@@ -8275,7 +8270,7 @@
           },
           {
             "t": "h3",
-            "text": "Commercial Cleaning",
+            "text": "Commercial cleaning",
             "s": 2
           },
           {
@@ -8322,7 +8317,7 @@
           },
           {
             "t": "h2",
-            "text": "Areas We Serve in Aylmer",
+            "text": "Areas we serve in Aylmer",
             "s": 3
           },
           {
@@ -8387,7 +8382,7 @@
           },
           {
             "t": "h3",
-            "text": "Get Your Free Quote",
+            "text": "Get your free quote",
             "s": 4
           },
           {
@@ -8539,7 +8534,7 @@
           },
           {
             "t": "h1",
-            "text": "Professional Cleaning in Dorchester, Ontario",
+            "text": "Professional cleaning in Dorchester, Ontario",
             "s": 0
           },
           {
@@ -8561,7 +8556,7 @@
           },
           {
             "t": "h2",
-            "text": "Why Dorchester Chooses Trydentt",
+            "text": "Why Dorchester chooses Trydentt",
             "s": 1
           },
           {
@@ -8571,7 +8566,7 @@
           },
           {
             "t": "h3",
-            "text": "Fully Insured & Bonded",
+            "text": "Fully insured",
             "s": 1
           },
           {
@@ -8581,17 +8576,17 @@
           },
           {
             "t": "h3",
-            "text": "Eco-Friendly Products",
+            "text": "Eco-friendly products",
             "s": 1
           },
           {
             "t": "p",
-            "text": "Plant-based, EPA-certified products safe for families, pets, and the environment.",
+            "text": "Plant-based products, chosen with families and pets in mind.",
             "s": 1
           },
           {
             "t": "h3",
-            "text": "No Travel Surcharges",
+            "text": "No travel surcharges",
             "s": 1
           },
           {
@@ -8601,7 +8596,7 @@
           },
           {
             "t": "h2",
-            "text": "Cleaning Services Available in Dorchester",
+            "text": "Cleaning services available in Dorchester",
             "s": 2
           },
           {
@@ -8611,7 +8606,7 @@
           },
           {
             "t": "h3",
-            "text": "Residential Cleaning",
+            "text": "Residential cleaning",
             "s": 2
           },
           {
@@ -8658,7 +8653,7 @@
           },
           {
             "t": "h3",
-            "text": "Commercial Cleaning",
+            "text": "Commercial cleaning",
             "s": 2
           },
           {
@@ -8705,7 +8700,7 @@
           },
           {
             "t": "h2",
-            "text": "Areas We Serve in Dorchester",
+            "text": "Areas we serve in Dorchester",
             "s": 3
           },
           {
@@ -8765,7 +8760,7 @@
           },
           {
             "t": "h3",
-            "text": "Get Your Free Quote",
+            "text": "Get your free quote",
             "s": 4
           },
           {
@@ -8874,7 +8869,7 @@
           },
           {
             "t": "h2",
-            "text": "1. Who We Are",
+            "text": "1. Who we are",
             "s": 0
           },
           {
@@ -8899,7 +8894,7 @@
           },
           {
             "t": "h2",
-            "text": "2. Information We Collect",
+            "text": "2. Information we collect",
             "s": 1
           },
           {
@@ -8950,7 +8945,7 @@
           },
           {
             "t": "h2",
-            "text": "3. How We Use Your Information",
+            "text": "3. How we use your information",
             "s": 2
           },
           {
@@ -8996,7 +8991,7 @@
           },
           {
             "t": "h2",
-            "text": "4. Sharing Your Information",
+            "text": "4. Sharing your information",
             "s": 3
           },
           {
@@ -9006,7 +9001,7 @@
           },
           {
             "t": "h2",
-            "text": "5. Data Retention",
+            "text": "5. Data retention",
             "s": 4
           },
           {
@@ -9026,7 +9021,7 @@
           },
           {
             "t": "h2",
-            "text": "7. Your Rights (PIPEDA)",
+            "text": "7. Your rights (PIPEDA)",
             "s": 6
           },
           {
@@ -9081,7 +9076,7 @@
           },
           {
             "t": "h2",
-            "text": "9. Third-Party Links",
+            "text": "9. Third-party links",
             "s": 8
           },
           {
@@ -9091,7 +9086,7 @@
           },
           {
             "t": "h2",
-            "text": "10. Changes to This Policy",
+            "text": "10. Changes to this policy",
             "s": 9
           },
           {
@@ -9101,7 +9096,7 @@
           },
           {
             "t": "h2",
-            "text": "11. Contact Us",
+            "text": "11. Contact us",
             "s": 10
           },
           {
@@ -9233,7 +9228,7 @@
           },
           {
             "t": "h2",
-            "text": "1. Acceptance of Terms",
+            "text": "1. Acceptance of terms",
             "s": 0
           },
           {
@@ -9253,7 +9248,7 @@
           },
           {
             "t": "h2",
-            "text": "3. Bookings & Quotes",
+            "text": "3. Bookings & quotes",
             "s": 2
           },
           {
@@ -9263,7 +9258,7 @@
           },
           {
             "t": "h2",
-            "text": "4. Cancellations & Rescheduling",
+            "text": "4. Cancellations & rescheduling",
             "s": 3
           },
           {
@@ -9273,7 +9268,7 @@
           },
           {
             "t": "h2",
-            "text": "5. Satisfaction Guarantee",
+            "text": "5. Satisfaction guarantee",
             "s": 4
           },
           {
@@ -9283,7 +9278,7 @@
           },
           {
             "t": "h2",
-            "text": "6. Access to Property",
+            "text": "6. Access to property",
             "s": 5
           },
           {
@@ -9318,7 +9313,7 @@
           },
           {
             "t": "h2",
-            "text": "9. Website Use",
+            "text": "9. Website use",
             "s": 8
           },
           {
@@ -9328,7 +9323,7 @@
           },
           {
             "t": "h2",
-            "text": "10. Intellectual Property",
+            "text": "10. Intellectual property",
             "s": 9
           },
           {
@@ -9338,7 +9333,7 @@
           },
           {
             "t": "h2",
-            "text": "11. Governing Law",
+            "text": "11. Governing law",
             "s": 10
           },
           {
@@ -9348,7 +9343,7 @@
           },
           {
             "t": "h2",
-            "text": "12. Changes to These Terms",
+            "text": "12. Changes to these terms",
             "s": 11
           },
           {
@@ -9432,7 +9427,7 @@
           },
           {
             "t": "h2",
-            "text": "Page Not Found",
+            "text": "Page not found",
             "s": -1
           },
           {
@@ -9538,7 +9533,7 @@
     {
       "where": "/residential",
       "before": "Stop spending weekends scrubbing floors. Trydentt delivers professional house cleaning in London, Ontario — meticulous, eco-friendly, and family-safe so you can focus on what matters most.",
-      "after": "Stop spending weekends scrubbing floors. Trydentt delivers professional house cleaning in London, Ontario: meticulous, eco-friendly and family-safe, so you can focus on what matters most."
+      "after": "Stop spending weekends scrubbing floors. Trydentt delivers professional house cleaning in London, Ontario: meticulous and eco-friendly, so you can focus on what matters most."
     },
     {
       "where": "/residential",
