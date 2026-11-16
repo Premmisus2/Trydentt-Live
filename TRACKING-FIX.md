@@ -63,6 +63,8 @@ The "Request quote" action is type `GOOGLE_ANALYTICS_4_CUSTOM` (GA4-imported). I
 
 Right now even the fixed tracking only counts the **form fill**, not the booked job. To optimize Google toward *paying customers* (Elliott's instinct, and best practice):
 
+> **Note 2026-11-16:** GoHighLevel was cancelled and n8n retired, so the GHL fields and the n8n job in steps 1 and 2 no longer exist. Leads now land in the Trydentt Sheet through `/api/lead`. This plan needs a new home before it can run.
+
 1. **Capture `gclid`** on landing into a GHL field. The main quote form (`SKUCalculator.tsx`) currently passes only `landing_page` — add `gclid` / `fbclid` from the URL into the `/api/lead` payload and store it as a GHL custom field. *(Not yet staged — needs a GHL custom-field ID created first.)*
 2. **Offline Conversion Import:** an n8n job uploads **won/booked** GHL opportunities back to Google via the existing `Request quote (offline)` action (ID `7592419841`) using the stored `gclid` + booked value. Google then optimizes for real revenue, not form-fills.
 

@@ -78,8 +78,7 @@ const PrivacyPolicy: React.FC = () => {
             <h2 className="text-xl font-bold text-slate-900 mb-3">6. Cookies</h2>
             <p>
               Our website uses cookies and similar tracking technologies to analyse site traffic
-              and improve your experience. We use tools including GoHighLevel (GHL) for marketing
-              tracking. By using our site, you consent to our use of cookies. You can disable
+              and improve your experience. By using our site, you consent to our use of cookies. You can disable
               cookies through your browser settings, though some features of the site may not
               function properly as a result.
             </p>

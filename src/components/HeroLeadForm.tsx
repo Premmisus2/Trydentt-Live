@@ -17,11 +17,11 @@ const getCookie = (name: string): string | undefined => {
 };
 
 interface HeroLeadFormProps {
-  /** CRM source label written to GHL. Lets each SKU landing page attribute its own leads. */
+  /** Source label sent to /api/lead. Lets each SKU landing page attribute its own leads. */
   source?: string;
-  /** SKU name (e.g. "Move-Out Recovery System") passed through to GHL when set. */
+  /** SKU name (e.g. "Move-Out Recovery System") sent to /api/lead when set. */
   sku?: string;
-  /** GHL niche field. */
+  /** Niche sent to /api/lead. */
   niche?: string;
   /** Small pill above the heading. */
   badge?: string;

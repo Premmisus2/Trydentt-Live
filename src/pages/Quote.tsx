@@ -14,11 +14,6 @@ declare global {
   }
 }
 
-const GHL_WEBHOOK_URL = import.meta.env.VITE_GHL_QUOTE_WEBHOOK;
-// Always route through /api/lead — server-side Meta CAPI + GHL upsert with SKU custom fields.
-// (Previously gated on VITE_USE_LEAD_API; locked to true 2026-05-14 to fix W19 attribution gap.)
-const USE_LEAD_API = true;
-
 const getCookie = (name: string): string | undefined => {
   if (typeof document === 'undefined') return undefined;
   const match = document.cookie.match(new RegExp(`(^|;\\s*)${name}=([^;]+)`));
@@ -153,9 +148,8 @@ const Quote: React.FC = () => {
       return;
     }
 
-    const endpoint = USE_LEAD_API ? '/api/lead' : GHL_WEBHOOK_URL;
     const eventId =
-      USE_LEAD_API && typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
+      typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
         ? crypto.randomUUID()
         : undefined;
 
@@ -176,25 +170,21 @@ const Quote: React.FC = () => {
       utm_term: searchParams.get('utm_term') || '',
       utm_content: searchParams.get('utm_content') || '',
       landing_page: window.location.href,
-      ...(USE_LEAD_API
-        ? {
-            event_id: eventId,
-            fbp: getCookie('_fbp'),
-            fbc: getCookie('_fbc'),
-            client_user_agent: navigator.userAgent,
-          }
-        : {}),
+      event_id: eventId,
+      fbp: getCookie('_fbp'),
+      fbc: getCookie('_fbc'),
+      client_user_agent: navigator.userAgent,
     };
 
     try {
-      const response = await fetch(endpoint, {
+      const response = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
 
       if (response.ok) {
-        if (USE_LEAD_API && eventId) {
+        if (eventId) {
           try {
             const data = await response.clone().json();
             sessionStorage.setItem('trydentt_lead_event_id', data?.eventId || eventId);
@@ -208,7 +198,7 @@ const Quote: React.FC = () => {
         }
         navigate('/thank-you');
       } else {
-        console.error('Webhook submission failed');
+        console.error('Lead submission failed');
         alert('Something went wrong. Please try again later.');
       }
     } catch (error) {
