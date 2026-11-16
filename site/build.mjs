@@ -11,9 +11,6 @@ const raw = JSON.parse(fs.readFileSync(path.join(ROOT, 'site/data.json'), 'utf8'
 
 /* ---------------- claims and dashes (Google recovery checklist, 2026-11-11) ---------------- */
 const SCRUB = [
-  [/We use only EPA-certified, plant-based/g, 'We use plant-based'],
-  [/EPA-certified, plant-based/g, 'plant-based'],
-  [/Plant-based, EPA-certified products/g, 'Plant-based products'],
   [/\s*Our team uses HEPA filtration to ensure the air is as clean as the surfaces\./g, ''],
   [/an instant, AI-powered cleaning estimate/gi, 'an instant cleaning estimate'],
   [/a precise, AI-powered estimate/g, 'a quick estimate'],
@@ -699,5 +696,12 @@ for (const t of D.townPages) pages[t.route] = townPage(t);
 for (const [route, html] of Object.entries(pages)) {
   const file = route === '/' ? 'index.html' : route.slice(1) + '.html';
   fs.writeFileSync(path.join(DIST, file), html);
+}
+// Claims Umesh ruled out (Nov 13): no "plant-based", no promise that products are safe for pets or children.
+// The build stops if either comes back on any page or in llms.txt (2026-11-16).
+const BANNED = [/plant[- ]based/i, /safe for (your )?(pets|children|kids|famil)/i, /EPA[- ]certified/i, /toxin[- ]free/i];
+for (const f of fs.readdirSync(DIST).filter(n => n.endsWith('.html') || n === 'llms.txt')) {
+  const text = fs.readFileSync(path.join(DIST, f), 'utf8');
+  for (const re of BANNED) if (re.test(text)) throw new Error(`banned claim ${re} in dist/${f}`);
 }
 console.log(`built ${Object.keys(pages).length} pages into dist/`);

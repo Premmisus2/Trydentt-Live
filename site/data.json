@@ -1208,7 +1208,7 @@
       {
         "name": "Eco-Friendly Cleaning",
         "desc": "Gentler products for a greener home.",
-        "details": "We use plant-based products that are tough on dirt and chosen with pets and children in mind."
+        "details": "We use eco-friendly products where they fit the job. Tell us about pets, children or allergies when you book."
       },
       {
         "name": "Seasonal Cleaning",
@@ -1425,7 +1425,7 @@
               "name": "Do you use eco-friendly cleaning products?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes. We use plant-based cleaning products, chosen with children, pets and the environment in mind."
+                "text": "We use a mix of professional products, with eco-friendly ones where they fit the job. Tell us about pets, children or allergies when you book."
               }
             },
             {
@@ -1845,7 +1845,7 @@
           },
           {
             "t": "p",
-            "text": "We use plant-based products that are tough on dirt and chosen with pets and children in mind.",
+            "text": "We use eco-friendly products where they fit the job. Tell us about pets, children or allergies when you book.",
             "s": 4
           },
           {
@@ -2032,7 +2032,7 @@
           },
           {
             "t": "text",
-            "text": "We use plant-based cleaning products, chosen with children, pets and the environment in mind.",
+            "text": "We use a mix of professional products, with eco-friendly ones where they fit the job. Tell us about pets, children or allergies when you book.",
             "s": 7
           },
           {
@@ -2183,10 +2183,10 @@
             },
             {
               "@type": "Question",
-              "name": "Are your cleaning products safe for pets and children?",
+              "name": "What cleaning products do you use?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "We use plant-based products, chosen with pets and children in mind."
+                "text": "We use a mix of professional products, with eco-friendly ones where they fit the job. Tell us about pets, children or allergies when you book."
               }
             }
           ]
@@ -2421,7 +2421,7 @@
           },
           {
             "t": "p",
-            "text": "We use plant-based products that are tough on dirt and chosen with pets and children in mind.",
+            "text": "We use eco-friendly products where they fit the job. Tell us about pets, children or allergies when you book.",
             "s": 2
           },
           {
@@ -2671,12 +2671,12 @@
           },
           {
             "t": "summary",
-            "text": "Are your cleaning products safe for pets and children?",
+            "text": "What cleaning products do you use?",
             "s": 6
           },
           {
             "t": "text",
-            "text": "We use plant-based products, chosen with pets and children in mind.",
+            "text": "We use a mix of professional products, with eco-friendly ones where they fit the job. Tell us about pets, children or allergies when you book.",
             "s": 6
           },
           {
@@ -4099,7 +4099,7 @@
           },
           {
             "t": "p",
-            "text": "Plant-based products, chosen with your family and pets in mind.",
+            "text": "Used where they fit the job. Tell us about pets or allergies when you book.",
             "s": 1
           },
           {
@@ -6278,7 +6278,7 @@
           },
           {
             "t": "p",
-            "text": "Plant-based products, chosen with families and pets in mind.",
+            "text": "Used where they fit the job. Tell us about pets or allergies when you book.",
             "s": 1
           },
           {
@@ -6666,7 +6666,7 @@
           },
           {
             "t": "p",
-            "text": "Plant-based products, chosen with families and pets in mind.",
+            "text": "Used where they fit the job. Tell us about pets or allergies when you book.",
             "s": 1
           },
           {
@@ -7054,7 +7054,7 @@
           },
           {
             "t": "p",
-            "text": "Plant-based products, chosen with families and pets in mind.",
+            "text": "Used where they fit the job. Tell us about pets or allergies when you book.",
             "s": 1
           },
           {
@@ -7437,7 +7437,7 @@
           },
           {
             "t": "p",
-            "text": "Plant-based products, chosen with families and pets in mind.",
+            "text": "Used where they fit the job. Tell us about pets or allergies when you book.",
             "s": 1
           },
           {
@@ -7815,7 +7815,7 @@
           },
           {
             "t": "p",
-            "text": "Plant-based products, chosen with families and pets in mind.",
+            "text": "Used where they fit the job. Tell us about pets or allergies when you book.",
             "s": 1
           },
           {
@@ -8198,7 +8198,7 @@
           },
           {
             "t": "p",
-            "text": "Plant-based products, chosen with families and pets in mind.",
+            "text": "Used where they fit the job. Tell us about pets or allergies when you book.",
             "s": 1
           },
           {
@@ -8581,7 +8581,7 @@
           },
           {
             "t": "p",
-            "text": "Plant-based products, chosen with families and pets in mind.",
+            "text": "Used where they fit the job. Tell us about pets or allergies when you book.",
             "s": 1
           },
           {
