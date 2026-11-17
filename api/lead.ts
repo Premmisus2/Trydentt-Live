@@ -3,7 +3,8 @@ import { createHash, randomUUID } from 'node:crypto';
 
 // Every site form posts here. The lead is delivered to each leg that has its
 // settings: the Trydentt Sheet (row + email from homes@), a text to the owner,
-// the Trydentt Cleaning Telegram group and Meta CAPI. The form only hears "ok"
+// the Trydentt Cleaning Telegram group and Meta CAPI, plus a text back to the
+// customer from the Cleaning number (2026-11-17). The form only hears "ok"
 // once the lead has reached a person or a record (Sheet, text or Telegram). If
 // nothing got it, the form is told so and shows the phone number instead of a
 // thank-you. GET reports which legs are on. GHL was switched off 2026-11-12.
@@ -120,6 +121,7 @@ const legsConfigured = () => ({
   sheet: Boolean(process.env.TC_SHEET_WEBHOOK_URL && process.env.TC_SHEET_WEBHOOK_SECRET),
   sms: Boolean(twilioAuth() && process.env.LEAD_SMS_FROM && smsRecipients().length),
   telegram: Boolean(process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID),
+  reply: Boolean(twilioAuth() && process.env.LEAD_SMS_FROM),
   capi: Boolean(process.env.META_PIXEL_ID && process.env.META_CAPI_TOKEN),
 });
 
@@ -200,6 +202,39 @@ async function sendSms(lead: Lead, sheet: LegResult): Promise<LegResult> {
     )
   );
   return { ok: results.every((r) => r.ok), messages: results };
+}
+
+// A text back to the customer from the Cleaning number, so they know the request
+// landed (Elliott, 2026-11-17). Replies to 548 reach the Telegram group through
+// the Twilio function /sms. It reaches the customer, not us, so it never counts
+// toward "delivered", and a failure here never stops the thank-you.
+const replyText = (lead: Lead): string => {
+  const first = lead.name.split(' ')[0].replace(/[^\p{L}'-]/gu, '').slice(0, 20);
+  return `Hi${first ? ` ${first}` : ''}, thanks for reaching out to Trydentt Cleaning! We got your request and will be in touch soon. Questions? Just reply here. Reply STOP to opt out.`;
+};
+
+async function sendReply(lead: Lead): Promise<LegResult> {
+  const auth = twilioAuth();
+  const from = process.env.LEAD_SMS_FROM;
+  if (!auth || !from) return { ok: false, skipped: true, error: 'SMS not configured' };
+  const digits = normalizePhone(lead.phone);
+  if (!digits || digits.length !== 11 || !digits.startsWith('1')) return { ok: false, skipped: true, error: 'No North American phone' };
+  const to = `+${digits}`;
+  if (to === from) return { ok: false, skipped: true, error: 'Our own number' };
+  try {
+    const r = await fetch(`https://api.twilio.com/2010-04-01/Accounts/${auth.accountSid}/Messages.json`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Basic ${Buffer.from(`${auth.user}:${auth.pass}`).toString('base64')}`,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({ From: from, To: to, Body: replyText(lead) }).toString(),
+    });
+    const json = (await r.json().catch(() => ({}))) as { sid?: string; code?: number; message?: string };
+    return { ok: r.ok, status: r.status, sid: json.sid, error: r.ok ? undefined : `${json.code ?? ''} ${json.message ?? ''}`.trim() };
+  } catch (err) {
+    return failed(err);
+  }
 }
 
 // Telegram reads its alert as HTML, so customer text is escaped.
@@ -310,18 +345,18 @@ async function deliverLead(body: LeadPayload, eventId: string, clientIp?: string
   const sheetThenAlerts = sendToSheet(lead).then(async (sheet) => {
     if (sheet.duplicate) {
       const duplicate: LegResult = { ok: true, skipped: true, error: 'Duplicate' };
-      return { sheet, sms: duplicate, telegram: duplicate };
+      return { sheet, sms: duplicate, telegram: duplicate, reply: duplicate };
     }
-    const [sms, telegram] = await Promise.all([sendSms(lead, sheet), sendTelegram(lead, sheet)]);
-    return { sheet, sms, telegram };
+    const [sms, telegram, reply] = await Promise.all([sendSms(lead, sheet), sendTelegram(lead, sheet), sendReply(lead)]);
+    return { sheet, sms, telegram, reply };
   });
 
-  const [{ sheet, sms, telegram }, capi] = await Promise.all([
+  const [{ sheet, sms, telegram, reply }, capi] = await Promise.all([
     sheetThenAlerts,
     sendCapi(body, eventId, clientIp, userAgent),
   ]);
 
-  const results = { eventId, sheet, sms, telegram, capi };
+  const results = { eventId, sheet, sms, telegram, reply, capi };
   const delivered = [sheet, sms, telegram].some((r) => r.ok && !r.skipped);
   if (delivered) {
     console.log('lead delivered', JSON.stringify(results));
