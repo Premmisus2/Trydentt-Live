@@ -79,9 +79,13 @@
       e.preventDefault();
       var r = box._r;
       if (document.body.getAttribute('data-route') === '/quote') { openBooking(r, true); return; }
+      // the /quote builder is homes only; commercial goes to the audit form on /commercial
+      if (r.niche === 'commercial') { location.href = '/commercial?' + new URLSearchParams({ sqft: String(r.sqft) }).toString() + '#audit-form'; return; }
       location.href = '/quote?' + new URLSearchParams({ niche: r.niche, service: r.service, sqft: String(r.sqft), min: String(r.min), max: String(r.max) }).toString();
     });
   });
+  var cSq = document.querySelector('[data-form="commercial"] [name="sqft"]'), qSq = qs().get('sqft');
+  if (cSq && qSq && /^\d{3,6}$/.test(qSq)) cSq.value = qSq;
 
   /* ---------- quote booking (on /quote) ---------- */
   var booking = document.querySelector('[data-form="booking"]');
