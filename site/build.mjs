@@ -199,7 +199,8 @@ ${header()}
 ${body}
 </main>
 ${footer()}
-${calc}<script src="${asset('site.js')}" defer></script>
+${calc}${opts.quote ? `<script src="${asset('quote.js')}" defer></script>
+` : ''}<script src="${asset('site.js')}" defer></script>
 </body>
 </html>
 `;
@@ -597,31 +598,44 @@ function commercialPage() {
 }
 
 function quotePage() {
+  // The price builder (2026-11-18): assets/quote.js draws it and works out the price; site.js sends it
+  // to /api/lead as data-form="builder". A quote request for now: nothing is charged online.
   const r = D.routes['/quote'];
+  const blk = (id, step, title, hint, inner) => `<section class="qb-blk" id="${id}">${step ? `<div class="kick">${step}</div>` : ''}<h2>${title}</h2>${hint ? `<p class="hint">${hint}</p>` : ''}${inner}</section>`;
   const body = `<div class="hero short"><div class="bg"><img src="/images/hero-friday.jpg" alt=""></div><div class="wrap"><div class="copy">
-  <div class="eyebrow">Instant estimate &middot; London, Ontario</div>
-  <h1>Get your free <em>cleaning</em> estimate</h1>
+  <div class="eyebrow">Instant price &middot; London, Ontario</div>
+  <h1>Get your <em>cleaning</em> price</h1>
   <div class="bar"></div>
-  <p>Instant quotes for homes and businesses across London, Ontario. No phone calls required.</p>
+  <p>Pick the clean, your home and any extras. Your price updates as you go, with HST shown. Nothing is charged online.</p>
 </div></div></div>
-<section class="sec step-calc" id="price"><div class="wrap calc-wrap"><div><div class="kick">Step 1 of 2</div><h2>Your price <em>in</em> seconds</h2><p>Choose home or business, the kind of clean and the size of the space. Then lock in the price and tell us where to come.</p><p class="note">The estimate is worked out from your square footage. Final pricing is confirmed with you before we start.</p></div>${calcBox('quote')}</div></section>
-<section class="sec step-book" hidden><div class="wrap calc-wrap">
-  <div><div class="kick">Step 2 of 2</div><h2>Complete <em>your</em> booking</h2>
-    <div class="summary"><span class="kick">Your selected package</span><b></b><ul></ul></div>
-    <p class="note"><a href="#" data-back>&larr; Change the clean or size</a></p>
-  </div>
-  <form class="form" data-form="booking" novalidate>
-    ${field('name', 'Full name', inp('name', 'text', '', ' autocomplete="name"'))}
-    <div class="two">${field('email', 'Email address', inp('email', 'email', '', ' autocomplete="email"'))}${field('phone', 'Phone number', `<div class="pre"><span>+1</span>${inp('phone', 'tel', '555-555-5555', ' autocomplete="tel-national"')}</div>`)}</div>
-    ${field('address', 'Street address', inp('address', 'text', '', ' autocomplete="street-address"'))}
-    <div class="two">${field('city', 'City', inp('city', 'text', '', ' autocomplete="address-level2"'))}${field('postalCode', 'Postal code', inp('postalCode', 'text', 'A1A 1A1', ' autocomplete="postal-code" style="text-transform:uppercase"'))}</div>
-    <div class="fail" role="alert"></div>
-    <button class="btn" type="submit" data-busy="Sending...">Confirm booking</button>
-    <p class="small">We confirm the final price with you before we start. Nothing is charged online.</p>
+<section class="sec qb-sec" id="price"><div class="wrap qb-grid">
+  <form class="qb" data-form="builder" novalidate>
+    ${blk('qb-s-kind', 'Step 1 of 5', 'Kind of clean', '', '<div class="qb-choices" id="qb-kinds"></div>')}
+    ${blk('qb-s-often', '', 'How often', 'Regular visits cost less each time. The saving comes off the whole visit, extras included.', '<div class="qb-freq" id="qb-freq"></div>')}
+    ${blk('qb-s-home', 'Step 2 of 5', 'Your home', '', '<div class="qb-rows" id="qb-rooms"></div>')}
+    ${blk('qb-s-extras', 'Step 3 of 5', 'Extras', 'Add anything you want done on top. Each one shows its price.', '<div class="qb-tiles" id="qb-extras"></div>')}
+    ${blk('qb-s-when', 'Step 4 of 5', 'Preferred day and time', 'Pick a day, then a window for the team to arrive. We confirm it with you.', '<div class="qb-months" id="qb-months"></div><div class="qb-days" id="qb-days"></div><div class="qb-choices qb-wins" id="qb-wins"></div>')}
+    ${blk('qb-s-you', 'Step 5 of 5', 'Your details', '', `<div class="form">
+      <div class="two">${field('name', 'Full name', inp('name', 'text', '', ' autocomplete="name"'))}${field('phone', 'Mobile', `<div class="pre"><span>+1</span>${inp('phone', 'tel', '519-555-0142', ' autocomplete="tel-national"')}</div>`)}</div>
+      ${field('email', 'Email', inp('email', 'email', '', ' autocomplete="email"'))}
+      ${field('address', 'Street address', inp('address', 'text', '', ' autocomplete="street-address"'))}
+      <div class="two">${field('unit', 'Unit or buzzer', inp('unit', 'text'))}${field('city', 'City', inp('city', 'text', 'London', ' autocomplete="address-level2"'))}</div>
+      <div class="two">${field('postalCode', 'Postal code', inp('postalCode', 'text', 'N6A 1A1', ' autocomplete="postal-code" style="text-transform:uppercase"'))}<div></div></div>
+      ${field('entry', 'How do we get in?', '<textarea id="f-entry" name="entry" placeholder="Key under the mat, lockbox code, someone home, parking..."></textarea>')}
+    </div>`)}
+    <section class="qb-blk" id="qb-s-send">
+      <h2>Send your request</h2>
+      <div class="fail" role="alert"></div>
+      <button class="btn qb-send" id="qb-send" type="submit" data-busy="Sending...">Send my request</button>
+      <p class="qb-note"><b>No payment now.</b> We'll be in touch to confirm your day before we come.</p>
+    </section>
   </form>
+  <aside class="qb-side"><div class="qb-sum" id="qb-sum"></div></aside>
 </div></section>
-<section class="sec alt"><div class="wrap"><div class="kick">Questions</div><h2>About <em>the</em> estimate</h2>${faqHtml(faqFromLd(r))}</div></section>`;
-  return page('/quote', r, body, { calc: true });
+<div class="qb-totbar"><div><small id="qb-tb-sub">Total incl. HST</small><b id="qb-tb-tot">$0.00</b></div><button type="button" id="qb-tb-open">See breakdown</button></div>
+<div class="qb-sheet" id="qb-sheet" role="dialog" aria-label="Price breakdown"><div class="top"><b>Your price</b><button type="button" id="qb-sh-close">Close</button></div><div class="qb-sum" id="qb-sum2"></div></div>
+<section class="sec alt"><div class="wrap"><div class="kick">Questions</div><h2>About <em>the</em> price</h2>${faqHtml(faqFromLd(r))}</div></section>`;
+  return page('/quote', r, body, { quote: true });
 }
 
 function contactPage() {

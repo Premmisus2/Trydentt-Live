@@ -3336,8 +3336,8 @@
       }
     },
     "/quote": {
-      "title": "Get a Free Cleaning Quote | Trydentt Cleaning Services",
-      "description": "Get an instant, AI-powered cleaning estimate for your home or business. No phone calls required. Professional cleaning services in London, Ontario and the towns around it.",
+      "title": "Cleaning Price Calculator | Trydentt Cleaning Services",
+      "description": "See your house cleaning price in London, Ontario as you choose: the kind of clean, your rooms and any extras, with HST shown. Nothing is charged online.",
       "robots": "index, follow",
       "canonical": "https://www.trydenttcleaning.ca/quote",
       "og": {
@@ -3347,8 +3347,8 @@
         "og:locale": "en_CA",
         "twitter:card": "summary_large_image",
         "twitter:image": "https://www.trydenttcleaning.ca/og-image.jpg",
-        "og:title": "Get a Free Cleaning Quote | Trydentt Cleaning Services",
-        "og:description": "Instant cleaning estimates for your home or business. No phone calls, no hassle. Get your free quote now.",
+        "og:title": "Cleaning Price Calculator | Trydentt Cleaning Services",
+        "og:description": "Pick the clean, your home and any extras, and see your price with HST as you go.",
         "og:url": "https://www.trydenttcleaning.ca/quote"
       },
       "jsonld": [
@@ -3373,8 +3373,8 @@
         {
           "@context": "https://schema.org",
           "@type": "Service",
-          "name": "Free Cleaning Estimate",
-          "description": "Get an instant, AI-powered cleaning estimate for your home or business in London, Ontario. No phone calls required.",
+          "name": "Cleaning price calculator",
+          "description": "See your house cleaning price in London, Ontario as you choose: the kind of clean, your rooms and any extras, with HST shown. Nothing is charged online.",
           "url": "https://www.trydenttcleaning.ca/quote",
           "provider": {
             "@id": "https://www.trydenttcleaning.ca/#organization"
@@ -3389,7 +3389,7 @@
             "@type": "Offer",
             "price": "0",
             "priceCurrency": "CAD",
-            "description": "Free cleaning estimate, no obligation"
+            "description": "Free price, no obligation"
           }
         },
         {
@@ -3398,34 +3398,42 @@
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "How do I get a free cleaning estimate?",
+              "name": "How do I get my cleaning price?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Use our online quote tool to get an instant AI-powered estimate. Select your service type, enter your home or office size, and receive a price range in seconds. No phone call required."
+                "text": "Pick the kind of clean, how often, your rooms and any extras. The price updates as you go, with HST shown. Then send it to us with your preferred day."
               }
             },
             {
               "@type": "Question",
-              "name": "How quickly will I receive my cleaning quote?",
+              "name": "Do I pay online?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Instantly. Our AI-powered estimator generates a price range in seconds based on your property size and cleaning needs. You can then book directly online."
+                "text": "No. Nothing is charged online. We get in touch to confirm your day before we come."
               }
             },
             {
               "@type": "Question",
-              "name": "Is the online cleaning estimate binding?",
+              "name": "Is the price final?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "The online estimate gives you an accurate price range based on typical properties in London, Ontario. Final pricing is confirmed after a brief consultation and may vary slightly depending on property condition."
+                "text": "It is worked out from the rooms and extras you pick. We confirm it with you before we start."
               }
             },
             {
               "@type": "Question",
-              "name": "What cleaning services can I get a quote for?",
+              "name": "Do regular cleans cost less?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "You can get instant estimates for residential cleaning (regular house cleaning, deep cleaning, move-in/move-out) and commercial cleaning (offices, retail spaces). Trydentt serves London, Ontario and surrounding areas."
+                "text": "Yes. Every week saves 22%, every 2 weeks 16%, every 3 weeks 12% and every 4 weeks 10%, on the whole visit including extras."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What about offices and other businesses?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "This calculator is for homes. For offices and other businesses, use our commercial page or call (548) 761-7171."
               }
             }
           ]

@@ -282,3 +282,99 @@ footer.foot .brand b{color:#fff}
   .head2{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:end}
 }
 @media (prefers-reduced-motion:reduce){.ticker div{animation:none}}
+
+/* quote builder (/quote, assets/quote.js). Everything is under .qb so no other page changes. */
+body[data-route="/quote"] .callbar{display:none}
+.qb-sec{padding-top:34px}
+.qb-grid{display:grid;gap:30px}
+.qb-blk{background:#fff;border:1px solid var(--rule);border-top:5px solid var(--blue);padding:24px 20px;margin-bottom:18px}
+.qb-blk h2{font-size:26px;margin:4px 0 4px;color:var(--ink)}
+.qb-blk .kick{font-size:14px}
+.qb-blk .hint{font-size:15px;color:var(--muted);margin-bottom:14px}
+.qb-choices{border-top:2px solid var(--ink)}
+.qb-choice{display:grid;grid-template-columns:28px 1fr auto;gap:2px 12px;align-items:start;width:100%;text-align:left;background:#fff;border:0;border-bottom:1px solid var(--rule);padding:16px 4px;font:inherit;color:inherit;cursor:pointer}
+.qb-box{width:22px;height:22px;border:2px solid var(--ink);margin-top:3px;display:flex;align-items:center;justify-content:center;font-size:14px;font-style:normal;line-height:1;color:#fff}
+.qb-choice.on .qb-box{background:var(--blue);border-color:var(--blue)}
+.qb-choice.on .qb-box:after{content:"\2713"}
+.qb-choice b{font-weight:500;font-size:18px;color:var(--ink)}
+.qb-choice span{grid-column:2/3;font-size:15px;color:var(--muted)}
+.qb-choice strong{font-weight:500;font-size:16px;color:var(--blue);white-space:nowrap;margin-top:2px}
+.qb-freq{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.qb-freq button{font:500 16px Jost,sans-serif;padding:14px 10px;border:2px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer;text-align:left;line-height:1.25}
+.qb-freq button small{display:block;font-size:14px;font-weight:400;color:var(--blue);margin-top:2px}
+.qb-freq button.on{background:var(--ink);color:#fff}
+.qb-freq button.on small{color:var(--sky)}
+.qb-freq button.once{grid-column:1/-1}
+.qb-rows{border-top:2px solid var(--ink)}
+.qb-row{display:grid;grid-template-columns:42px 1fr auto;gap:2px 14px;align-items:center;padding:13px 0;border-bottom:1px solid var(--rule)}
+.qb-ri{width:38px;height:38px}
+.qb-nm b{display:block;font-weight:500;font-size:17px;color:var(--ink)}
+.qb-nm span{display:block;font-size:14px;color:var(--muted)}
+.qb-step{display:flex;align-items:center;border:2px solid var(--ink)}
+.qb-step button{width:44px;height:42px;border:0;background:#fff;font:500 22px Jost,sans-serif;color:var(--ink);cursor:pointer;line-height:1}
+.qb-step button:disabled{color:#B6BCC8;cursor:default}
+.qb-step output{min-width:40px;text-align:center;font:500 18px Jost,sans-serif;color:var(--ink);border-left:2px solid var(--ink);border-right:2px solid var(--ink);height:42px;line-height:42px}
+.qb-tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;border-top:2px solid var(--ink);padding-top:14px}
+.qb-tile{display:flex;flex-direction:column;background:#fff;border:1px solid var(--rule);padding:14px 12px 12px}
+.qb-ib{width:88px;height:88px;display:flex;align-items:center;justify-content:center;background:var(--paper-2);margin-bottom:12px}
+.qb-ti{width:72px;height:72px}
+.qb-tile b{font-weight:500;font-size:16px;line-height:1.25;color:var(--ink)}
+.qb-tile .pr{font-size:14px;margin-top:2px}
+.qb-tile .pr em{font-style:normal;color:var(--blue);font-weight:500}
+.qb-tile .nt{font-size:13px;line-height:1.35;color:var(--muted);margin-top:4px}
+.qb-tile .ctl{margin-top:auto;padding-top:12px}
+.qb-tile .qb-step{display:grid;grid-template-columns:42px 1fr 42px;width:100%}
+.qb-tile .qb-step button{width:auto}
+.qb-tile.has{border:2px solid var(--blue);padding:13px 11px 11px;background:#F4F8FE}
+.qb-tile.has .qb-step output{background:var(--blue);color:#fff}
+.qb-add{width:100%;font:500 15px Jost,sans-serif;padding:11px 16px;border:2px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer}
+.qb-add.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.qb-add.on:before{content:"\2713  "}
+.qb-months{font-weight:500;font-size:15px;color:var(--ink);margin-bottom:8px}
+.qb-days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.qb-days button{font:400 12px Jost,sans-serif;padding:9px 0 8px;border:1px solid var(--rule);background:var(--paper);color:var(--text);cursor:pointer;line-height:1.2}
+.qb-days button b{display:block;font-weight:500;font-size:19px;color:var(--ink);margin:2px 0}
+.qb-days button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.qb-days button.on b{color:#fff}
+.qb-wins{margin-top:14px}
+.qb-wins .qb-choice{grid-template-columns:28px 1fr}
+.qb .form{margin-top:4px}
+.qb-send{width:100%;margin-top:6px;font-size:18px;padding:19px}
+.qb-note{margin-top:12px;font-size:15px}
+.qb-note b{font-weight:600}
+.qb-sum{background:#fff;border:1px solid var(--rule);border-top:5px solid var(--ink);padding:22px 20px}
+.qb-sum h3{font-size:22px;color:var(--ink)}
+.qb-sum .what{margin-top:6px;font-size:15px;color:var(--muted)}
+.qb-sum .lines{margin-top:14px;border-top:2px solid var(--ink)}
+.qb-sum .l{display:grid;grid-template-columns:1fr auto;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.qb-sum .l span:last-child{text-align:right;white-space:nowrap}
+.qb-sum .l.sub{font-weight:500}
+.qb-sum .l.off span:last-child{color:var(--blue);font-weight:500}
+.qb-sum .tot{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0 4px}
+.qb-sum .tot b{font-weight:500;font-size:18px;color:var(--ink)}
+.qb-sum .tot strong{font-weight:600;font-size:36px;color:var(--ink);line-height:1}
+.qb-sum .each{font-size:14px;color:var(--muted)}
+.qb-sum .call{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);font-size:15px}
+.qb-sum .call a{font-weight:600;color:var(--blue)}
+.qb-totbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--ink);color:#fff;border-top:1px solid #24304A}
+.qb-totbar small{display:block;font-size:13px;color:#AEB7C9}
+.qb-totbar b{font-weight:600;font-size:26px;line-height:1.1}
+.qb-totbar button{font:500 16px Jost,sans-serif;padding:14px 18px;border:2px solid rgba(255,255,255,.5);background:transparent;color:#fff;cursor:pointer}
+.qb-sheet{display:none;position:fixed;inset:0;z-index:70;background:var(--paper);overflow-y:auto;padding:16px 16px 40px}
+.qb-sheet.open{display:block}
+.qb-sheet .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.qb-sheet .top b{font-weight:500;font-size:20px;color:var(--ink)}
+.qb-sheet .top button{font:500 15px Jost,sans-serif;padding:10px 14px;border:2px solid var(--ink);background:#fff;cursor:pointer}
+@media (max-width:999px){.qb-side{display:none}}
+@media (min-width:1000px){
+  .qb-grid{grid-template-columns:1fr 380px;gap:40px;align-items:start}
+  .qb-side{position:sticky;top:96px}
+  .qb-totbar{display:none}
+  .qb-freq{grid-template-columns:repeat(5,1fr)}
+  .qb-freq button.once{grid-column:auto}
+  .qb-tiles{grid-template-columns:repeat(3,1fr);gap:12px}
+  .qb-days{gap:6px}
+  .qb-days button{font-size:13px;padding:10px 0}
+  .qb-days button b{font-size:21px}
+  .qb-blk{padding:28px 30px}
+}

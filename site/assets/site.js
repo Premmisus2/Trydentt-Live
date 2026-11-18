@@ -199,6 +199,30 @@
           estimate: result.estimate, serviceDetails: result.recommendations, niche: result.niche, service: result.service, sqft: result.sqft,
           minPrice: result.minPrice, maxPrice: result.maxPrice, source: 'Website Smart Estimator' }, utm(), { landing_page: location.href, event_id: id, fbp: cookie('_fbp'), fbc: cookie('_fbc'), client_user_agent: navigator.userAgent });
         send(form, payload, id, result.minPrice);
+      } else if (kind === 'builder') {
+        var Q = window.TC_QUOTE, qf = form.querySelector('.fail');
+        if (!Q) return;
+        var qp = val(form, 'phone'), qe = val(form, 'email'), qz = val(form, 'postalCode');
+        var errs = {
+          name: val(form, 'name') ? '' : 'Please enter your name.', phone: vPhone(qp), email: vEmail(qe),
+          address: val(form, 'address') ? '' : 'Please enter the street address.', postalCode: vPostal(qz, 'N6A 1A1')
+        };
+        Object.keys(errs).forEach(function (n) { setErr(form, n, errs[n]); });
+        var firstBad = Object.keys(errs).filter(function (n) { return errs[n]; })[0];
+        if (qf) qf.classList.remove('show');
+        if (!Q.ready()) {
+          if (qf) { qf.textContent = 'Pick a preferred day and an arrival window above.'; qf.setAttribute('data-why', 'when'); qf.classList.add('show'); }
+          document.getElementById('qb-s-when').scrollIntoView({ block: 'start', behavior: 'smooth' });
+          return;
+        }
+        if (firstBad) { form.querySelector('[data-f="' + firstBad + '"]').scrollIntoView({ block: 'center', behavior: 'smooth' }); return; }
+        if (qf) qf.removeAttribute('data-why');
+        var qunit = val(form, 'unit');
+        payload = assign({ name: val(form, 'name'), email: qe, phone: '+1 ' + qp, phonePrefix: '+1',
+          address: val(form, 'address') + (qunit ? ', unit ' + qunit : ''), city: val(form, 'city'), postalCode: qz.toUpperCase(),
+          niche: 'residential', service: Q.service(), estimate: Q.estimate(), serviceDetails: Q.details(), message: val(form, 'entry'),
+          source: 'Website Price Builder' }, utm(), { landing_page: location.href, event_id: id, fbp: cookie('_fbp'), fbc: cookie('_fbc'), client_user_agent: navigator.userAgent });
+        send(form, payload, id, Q.price().after);
       } else if (kind === 'contact') {
         var ce = val(form, 'email'), cz = val(form, 'zip');
         var ex = vEmail(ce); setErr(form, 'email', ex);
