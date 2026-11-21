@@ -1409,7 +1409,7 @@
               "name": "How much does house cleaning cost in London, Ontario?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "House cleaning in London, Ontario typically ranges from $150 to $350 depending on the size of your home and type of clean. Trydentt offers free, no-obligation quotes with transparent pricing and no hidden fees."
+                "text": "House cleaning in London, Ontario starts at $155 for a standard clean of a 1-bedroom, 1-bath home. A deep clean of a 4-bedroom, 3-bath home is $380. Both are before HST. Trydentt offers free, no-obligation quotes with transparent pricing and no hidden fees."
               }
             },
             {
@@ -2012,7 +2012,7 @@
           },
           {
             "t": "text",
-            "text": "House cleaning in London, Ontario typically ranges from $150 to $350 depending on the size of your home and type of clean. Trydentt offers free, no-obligation quotes with transparent pricing and no hidden fees.",
+            "text": "House cleaning in London, Ontario starts at $155 for a standard clean of a 1-bedroom, 1-bath home. A deep clean of a 4-bedroom, 3-bath home is $380. Both are before HST. Trydentt offers free, no-obligation quotes with transparent pricing and no hidden fees.",
             "s": 7
           },
           {
@@ -3901,7 +3901,7 @@
               "name": "How much does a house cleaner cost in London, Ontario?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "House cleaning in London, Ontario typically starts at $150 and ranges up to $350 depending on home size and cleaning type. Regular maintenance cleaning is more affordable, while deep cleaning and move-out cleaning are priced higher. Trydentt offers free, transparent quotes with no hidden fees."
+                "text": "House cleaning in London, Ontario starts at $155 for a standard clean of a 1-bedroom, 1-bath home. A deep clean of a 4-bedroom, 3-bath home is $380. Both are before HST. Trydentt offers free, transparent quotes with no hidden fees."
               }
             },
             {
@@ -4416,7 +4416,7 @@
           },
           {
             "t": "text",
-            "text": "House cleaning in London, Ontario typically starts at $150 and ranges up to $350 depending on home size and cleaning type. Regular maintenance cleaning is more affordable, while deep cleaning and move-out cleaning are priced higher. Trydentt offers free, transparent quotes with no hidden fees.",
+            "text": "House cleaning in London, Ontario starts at $155 for a standard clean of a 1-bedroom, 1-bath home. A deep clean of a 4-bedroom, 3-bath home is $380. Both are before HST. Trydentt offers free, transparent quotes with no hidden fees.",
             "s": 4
           },
           {
@@ -4509,8 +4509,8 @@
       }
     },
     "/london-ontario-cleaning-offer": {
-      "title": "House Cleaning London Ontario from $150 | Instant Quote | Trydentt",
-      "description": "Professional house cleaning in London, Ontario from $150. Transparent pricing, no hidden fees. Free online quote in 60 seconds, no sales calls. Eco-friendly, fully insured.",
+      "title": "House Cleaning London Ontario from $155 | Instant Quote | Trydentt",
+      "description": "Professional house cleaning in London, Ontario from $155. Transparent pricing, no hidden fees. Free online quote in 60 seconds, no sales calls. Eco-friendly, fully insured.",
       "robots": "noindex, follow",
       "canonical": "https://www.trydenttcleaning.ca/london-ontario-cleaning-offer",
       "og": {
@@ -4520,7 +4520,7 @@
         "og:locale": "en_CA",
         "twitter:card": "summary_large_image",
         "twitter:image": "https://www.trydenttcleaning.ca/og-image.jpg",
-        "og:title": "House Cleaning London Ontario from $150 | Trydentt",
+        "og:title": "House Cleaning London Ontario from $155 | Trydentt",
         "og:description": "Transparent flat-rate cleaning in London, ON. See your exact price before you book. Eco-friendly, fully insured, satisfaction guaranteed.",
         "og:url": "https://www.trydenttcleaning.ca/london-ontario-cleaning-offer"
       },
@@ -4552,7 +4552,7 @@
           },
           {
             "t": "h1",
-            "text": "House cleaning in London from $150.",
+            "text": "House cleaning in London from $155.",
             "s": 0
           },
           {
@@ -4731,12 +4731,12 @@
           },
           {
             "t": "text",
-            "text": "$150",
+            "text": "$155",
             "s": 2
           },
           {
             "t": "text",
-            "text": "Up to 1,000 sq ft",
+            "text": "1 bath",
             "s": 2
           },
           {
@@ -4746,12 +4746,12 @@
           },
           {
             "t": "text",
-            "text": "$200 to $275",
+            "text": "$185 to $250",
             "s": 2
           },
           {
             "t": "text",
-            "text": "1,000 to 2,000 sq ft",
+            "text": "1 to 2 baths",
             "s": 2
           },
           {
@@ -4761,17 +4761,17 @@
           },
           {
             "t": "text",
-            "text": "$300 to $450",
+            "text": "$285+",
             "s": 2
           },
           {
             "t": "text",
-            "text": "2,000+ sq ft",
+            "text": "2+ baths",
             "s": 2
           },
           {
             "t": "text",
-            "text": "Final price depends on bedrooms, bathrooms, and condition. Exact quote in 60 seconds, above.",
+            "text": "Standard clean, one visit, plus HST. Your exact price depends on bedrooms and bathrooms, in 60 seconds above.",
             "s": 2
           },
           {
@@ -5082,17 +5082,17 @@
           },
           {
             "t": "text",
-            "text": "Extra bathrooms add $25 each. Your exact price takes 60 seconds above.",
+            "text": "Prices before HST. Extra bathrooms add $25 each. Your exact price takes 60 seconds above.",
             "s": 2
           },
           {
             "t": "text",
-            "text": "Over $100 of bonuses, already included",
+            "text": "Paid extras in the builder, included free here",
             "s": 3
           },
           {
             "t": "text",
-            "text": "Everywhere else these are paid add-ons. Here they are part of the clean.",
+            "text": "On a standard or deep clean you add these yourself. On a move-out they come with the clean.",
             "s": 3
           },
           {
@@ -5102,22 +5102,12 @@
           },
           {
             "t": "text",
-            "text": "$35",
+            "text": "$30",
             "s": 3
           },
           {
             "t": "text",
             "text": "Inside fridge",
-            "s": 3
-          },
-          {
-            "t": "text",
-            "text": "$45",
-            "s": 3
-          },
-          {
-            "t": "text",
-            "text": "Baseboards + walls spot wipe",
             "s": 3
           },
           {
@@ -5132,7 +5122,17 @@
           },
           {
             "t": "text",
-            "text": "incl.",
+            "text": "$5 each",
+            "s": 3
+          },
+          {
+            "t": "text",
+            "text": "Walls, spot cleaned",
+            "s": 3
+          },
+          {
+            "t": "text",
+            "text": "$8 each",
             "s": 3
           },
           {
@@ -5334,7 +5334,7 @@
           },
           {
             "t": "li",
-            "text": "Annual lock-in: your first deep clean free, a $299 value",
+            "text": "Annual lock-in: your first deep clean free, worth $225 to $380",
             "s": 0,
             "list": 0
           },
@@ -5510,7 +5510,7 @@
           },
           {
             "t": "p",
-            "text": "No frequency games, no discount that quietly expires. One honest rate, locked.",
+            "text": "No discount that quietly expires. Your rate is locked.",
             "s": 3
           },
           {
@@ -5520,12 +5520,12 @@
           },
           {
             "t": "text",
-            "text": "$179",
+            "text": "$155.40",
             "s": 3
           },
           {
             "t": "text",
-            "text": "per visit, flat",
+            "text": "2 bed, 1 bath, every 2 weeks. A 1 bed is $130.20.",
             "s": 3
           },
           {
@@ -5535,12 +5535,12 @@
           },
           {
             "t": "text",
-            "text": "$219",
+            "text": "$210",
             "s": 3
           },
           {
             "t": "text",
-            "text": "per visit, flat",
+            "text": "3 bed, 2 bath, every 2 weeks",
             "s": 3
           },
           {
@@ -5550,17 +5550,17 @@
           },
           {
             "t": "text",
-            "text": "$259",
+            "text": "$252",
             "s": 3
           },
           {
             "t": "text",
-            "text": "per visit, flat",
+            "text": "4 bed, 2.5 bath, every 2 weeks",
             "s": 3
           },
           {
             "t": "text",
-            "text": "Prefer weekly? It costs less per visit. Ask us for the weekly rate.",
+            "text": "Prices before HST. Prefer weekly? It is 22% off instead of 16%, so $9 to $18 less a visit.",
             "s": 3
           },
           {
@@ -5956,12 +5956,12 @@
           },
           {
             "t": "text",
-            "text": "$229",
+            "text": "$285",
             "s": 3
           },
           {
             "t": "text",
-            "text": "top to bottom, Friday delivery",
+            "text": "2 bed, 1 bath, Friday delivery. A 1 bed is $255.",
             "s": 3
           },
           {
@@ -5971,12 +5971,12 @@
           },
           {
             "t": "text",
-            "text": "$289",
+            "text": "$350",
             "s": 3
           },
           {
             "t": "text",
-            "text": "top to bottom, Friday delivery",
+            "text": "3 bed, 2 bath, Friday delivery",
             "s": 3
           },
           {
@@ -5986,17 +5986,17 @@
           },
           {
             "t": "text",
-            "text": "$359",
+            "text": "$400",
             "s": 3
           },
           {
             "t": "text",
-            "text": "top to bottom, Friday delivery",
+            "text": "4 bed, 2.5 bath, Friday delivery",
             "s": 3
           },
           {
             "t": "text",
-            "text": "Extra bathrooms add $25 each. Your exact price takes 60 seconds above.",
+            "text": "Prices before HST. Extra bathrooms add $25 each. Your exact price takes 60 seconds above.",
             "s": 3
           },
           {
@@ -6194,7 +6194,7 @@
               "name": "How much does house cleaning cost in St. Thomas?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "House cleaning in St. Thomas, Ontario typically ranges from $150 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for St. Thomas residents."
+                "text": "House cleaning in St. Thomas, Ontario starts at $155 for a standard clean of a 1-bedroom, 1-bath home. A deep clean of a 4-bedroom, 3-bath home is $380. Both are before HST. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for St. Thomas residents."
               }
             },
             {
@@ -6582,7 +6582,7 @@
               "name": "How much does house cleaning cost in Woodstock?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "House cleaning in Woodstock, Ontario typically ranges from $150 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Woodstock residents."
+                "text": "House cleaning in Woodstock, Ontario starts at $155 for a standard clean of a 1-bedroom, 1-bath home. A deep clean of a 4-bedroom, 3-bath home is $380. Both are before HST. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Woodstock residents."
               }
             },
             {
@@ -6970,7 +6970,7 @@
               "name": "How much does house cleaning cost in Strathroy?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "House cleaning in Strathroy, Ontario typically ranges from $150 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Strathroy residents."
+                "text": "House cleaning in Strathroy, Ontario starts at $155 for a standard clean of a 1-bedroom, 1-bath home. A deep clean of a 4-bedroom, 3-bath home is $380. Both are before HST. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Strathroy residents."
               }
             },
             {
@@ -7353,7 +7353,7 @@
               "name": "How much does house cleaning cost in Ingersoll?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "House cleaning in Ingersoll, Ontario typically ranges from $150 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Ingersoll residents."
+                "text": "House cleaning in Ingersoll, Ontario starts at $155 for a standard clean of a 1-bedroom, 1-bath home. A deep clean of a 4-bedroom, 3-bath home is $380. Both are before HST. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Ingersoll residents."
               }
             },
             {
@@ -7731,7 +7731,7 @@
               "name": "How much does house cleaning cost in Tillsonburg?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "House cleaning in Tillsonburg, Ontario typically ranges from $150 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Tillsonburg residents."
+                "text": "House cleaning in Tillsonburg, Ontario starts at $155 for a standard clean of a 1-bedroom, 1-bath home. A deep clean of a 4-bedroom, 3-bath home is $380. Both are before HST. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Tillsonburg residents."
               }
             },
             {
@@ -8114,7 +8114,7 @@
               "name": "How much does house cleaning cost in Aylmer?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "House cleaning in Aylmer, Ontario typically ranges from $150 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Aylmer residents."
+                "text": "House cleaning in Aylmer, Ontario starts at $155 for a standard clean of a 1-bedroom, 1-bath home. A deep clean of a 4-bedroom, 3-bath home is $380. Both are before HST. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Aylmer residents."
               }
             },
             {
@@ -8497,7 +8497,7 @@
               "name": "How much does house cleaning cost in Dorchester?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "House cleaning in Dorchester, Ontario typically ranges from $150 to $350 depending on home size and cleaning type. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Dorchester residents."
+                "text": "House cleaning in Dorchester, Ontario starts at $155 for a standard clean of a 1-bedroom, 1-bath home. A deep clean of a 4-bedroom, 3-bath home is $380. Both are before HST. Trydentt offers free, transparent quotes with no hidden fees or travel surcharges for Dorchester residents."
               }
             },
             {

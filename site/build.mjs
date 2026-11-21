@@ -308,7 +308,7 @@ function faqFromLd(r) {
 }
 
 /* ---------------- generic section renderer ---------------- */
-const PRICE = /^\$[\d,.]+\+?( to \$[\d,.]+\+?)?$|^incl\.$/i; // "$150", "$489+", "$200 to $275"
+const PRICE = /^\$[\d,.]+\+?( to \$[\d,.]+\+?)?( each)?$|^incl\.$/i; // "$155", "$489+", "$185 to $250", "$5 each"
 const isFormBlock = (b) => ['field', 'label'].includes(b.t) || (b.t === 'text' && /^🇨🇦/.test(b.text));
 function renderBlocks(blocks, ctx) {
   const out = [];
