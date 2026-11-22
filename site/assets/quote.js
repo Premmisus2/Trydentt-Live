@@ -57,6 +57,9 @@
   };
 
   function $(id) { return document.getElementById(id); }
+  // Google Analytics: one event per builder step, once per page view, so its funnel report shows where people stop.
+  var seen = {};
+  function step(name) { if (seen[name]) return; seen[name] = 1; if (typeof window.gtag === 'function') window.gtag('event', name); }
   function money(n) { return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
   function short(n) { return money(n).replace('.00', ''); }
   function round2(n) { return Math.round(n * 100) / 100; }
@@ -165,15 +168,15 @@
     if (b.id === 'qb-tb-open') { $('qb-sheet').classList.add('open'); document.body.style.overflow = 'hidden'; return; }
     if (b.id === 'qb-sh-close') { $('qb-sheet').classList.remove('open'); document.body.style.overflow = ''; return; }
     if (!form.contains(b) || b.type === 'submit') return;
-    if (b.dataset.k) st.svc = b.dataset.k;
-    else if (b.dataset.f) st.freq = b.dataset.f;
-    else if (b.dataset.d) st.day = +b.dataset.d;
-    else if (b.dataset.w) st.win = b.dataset.w;
-    else if (b.dataset.t) st.x[b.dataset.t] = st.x[b.dataset.t] ? 0 : 1;
+    if (b.dataset.k) { st.svc = b.dataset.k; step('quote_kind'); }
+    else if (b.dataset.f) { st.freq = b.dataset.f; step('quote_often'); }
+    else if (b.dataset.d) { st.day = +b.dataset.d; step('quote_day'); }
+    else if (b.dataset.w) { st.win = b.dataset.w; step('quote_time'); }
+    else if (b.dataset.t) { st.x[b.dataset.t] = st.x[b.dataset.t] ? 0 : 1; step('quote_extra'); }
     else if (b.dataset.up || b.dataset.dn) {
       var key = b.dataset.up || b.dataset.dn, dir = b.dataset.up ? 1 : -1, kind = key.split(':')[0], id = key.split(':')[1];
-      if (kind === 'r') { var r = ROOMS.filter(function (x) { return x.id === id; })[0]; st.rooms[id] = Math.min(r.max, Math.max(r.min, st.rooms[id] + dir * r.step)); }
-      else st.x[id] = Math.max(0, (st.x[id] || 0) + dir);
+      if (kind === 'r') { var r = ROOMS.filter(function (x) { return x.id === id; })[0]; st.rooms[id] = Math.min(r.max, Math.max(r.min, st.rooms[id] + dir * r.step)); step('quote_rooms'); }
+      else { st.x[id] = Math.max(0, (st.x[id] || 0) + dir); step('quote_extra'); }
     } else return;
     if (st.day >= 0 && st.win) { var f = form.querySelector('.fail'); if (f && f.getAttribute('data-why') === 'when') f.classList.remove('show'); }
     render();
@@ -196,4 +199,7 @@
     }
   };
   render();
+  step('quote_open');
+  form.addEventListener('focusin', function (e) { if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) step('quote_details'); });
+  form.addEventListener('submit', function () { step('quote_send_tap'); });
 })();
