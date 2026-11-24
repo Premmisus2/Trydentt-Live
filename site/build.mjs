@@ -26,6 +26,28 @@ const SCRUB = [
   [/([Ff])ully insured and bonded/g, '$1ully insured'],
   [/Insured and bonded/g, 'Fully insured'],
   [/insured and bonded/g, 'insured'],
+  // Eco claims (Umesh, Nov 13): products are a mix, so no blanket "eco-friendly". Kept: "eco-friendly
+  // products where they fit the job", "eco-friendly options", and the optional add-on (2026-11-24).
+  [/Eco-friendly products, fully insured, and backed by/g, 'Fully insured and backed by'],
+  [/\bEco-friendly(?: products)?, fully insured/g, 'Fully insured'],
+  [/\bEco-friendly(?: products)?, insured/g, 'Insured'],
+  [/\beco-friendly, fully insured/g, 'fully insured'],
+  [/(insured), eco-friendly,/gi, '$1,'],
+  [/with eco-friendly products, full insurance, and/g, 'with full insurance and'],
+  [/ with eco-friendly products and a/g, ' with a'],
+  [/offers eco-friendly products, fully insured team members, and/g, 'offers fully insured team members and'],
+  [/(brings|provides) eco-friendly (residential)/g, '$1 $2'],
+  [/meticulous, eco-friendly /g, 'meticulous '],
+  [/professional house cleaning in London, Ontario: meticulous and eco-friendly, so/g, 'meticulous house cleaning in London, Ontario, so'],
+  [/meticulous and eco-friendly,/g, 'meticulous,'],
+  [/ and eco-friendly products\./g, '.'],
+  [/^Eco-friendly products, chosen with kids and pets in mind$/, 'Eco-friendly options'],
+  [/^Family & pet friendly$/, 'Homes with kids and pets'],
+  [/^Products chosen with kids and pets in mind\.$/, 'Tell us about pets, children or allergies when you book.'],
+  [/Gentler products for a greener home\./g, 'Eco-friendly products on request.'],
+  [/\s*·\s*Eco-friendly(?: products)?(?=\s*·|$)/g, ''],
+  [/^Eco-friendly(?: products)?$/, 'Eco-friendly options'],
+  [/^Insured$/, 'Fully insured'],
   [/Join (hundreds of|families across)[^.!]*[.!]\s*/g, ''],
   [/,?\s*Over 30 years of combined experience,?/g, ','],
   [/,\s*30\+ years combined experience/g, ''],
@@ -713,7 +735,11 @@ for (const [route, html] of Object.entries(pages)) {
 }
 // Claims Umesh ruled out (Nov 13): no "plant-based", no promise that products are safe for pets or children.
 // The build stops if either comes back on any page or in llms.txt (2026-11-16).
-const BANNED = [/plant[- ]based/i, /safe for (your )?(pets|children|kids|famil)/i, /EPA[- ]certified/i, /toxin[- ]free/i];
+// Blanket eco claims joined the list 2026-11-24; "where they fit the job" and "eco-friendly options" still pass.
+const BANNED = [/plant[- ]based/i, /safe for (your )?(pets|children|kids|famil)/i, /EPA[- ]certified/i, /toxin[- ]free/i,
+  /eco-friendly(?: products)?, (?:fully )?insured/i, /insured, eco-friendly/i, /with eco-friendly products/i,
+  /(?:brings|provides|offers|delivers)(?: meticulous,)? eco-friendly/i, /meticulous,? (?:and )?eco-friendly/i,
+  /greener home/i, /chosen with (?:kids|children) and pets/i, /·\s*Eco-friendly/i, />\s*Eco-friendly(?: products)?\s*</i];
 for (const f of fs.readdirSync(DIST).filter(n => n.endsWith('.html') || n === 'llms.txt')) {
   const text = fs.readFileSync(path.join(DIST, f), 'utf8');
   for (const re of BANNED) if (re.test(text)) throw new Error(`banned claim ${re} in dist/${f}`);
