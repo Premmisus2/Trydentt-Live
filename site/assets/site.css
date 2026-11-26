@@ -173,9 +173,10 @@ section.sec{padding:64px 0}
 .calc .est .n{font-weight:800;font-size:44px;line-height:1;color:var(--ink)}
 .calc .est small{display:block;margin-top:8px;font-size:14px;color:var(--muted)}
 .calc .btn{width:100%}
-.calc .kinds{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.calc .kinds button{font:500 16px Jost,sans-serif;padding:12px 4px;border:2px solid var(--rule);background:#fff;color:var(--ink);cursor:pointer;line-height:1.2}
+.calc .kinds{display:flex;gap:6px}
+.calc .kinds button{flex:1 1 auto;font:500 16px Jost,sans-serif;padding:12px 6px;border:2px solid var(--rule);background:#fff;color:var(--ink);cursor:pointer;line-height:1.2}
 .calc .kinds button.on{border-color:var(--ink);background:var(--ink);color:#fff}
+@media (max-width:380px){.calc .kinds{gap:4px}.calc .kinds button{font-size:15px;padding:12px 4px}}
 .calc .kdesc{margin:8px 0 0;font-size:14px;line-height:1.4;color:var(--muted)}
 .calc .rooms{margin-top:10px;border-top:1px solid var(--rule)}
 .calc .room{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule)}

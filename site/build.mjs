@@ -236,7 +236,7 @@ ${calc}${opts.calc || opts.quote ? `<script src="${asset('prices.js')}" defer></
 // The price box (2026-11-25, mockup Clients/Trydentt/Strategy/one-price-2026-11-21/price-box/). Home side: kind of
 // clean and rooms, priced from prices.js, carried into /quote. Business side: the square-foot estimate, carried into
 // the audit form on /commercial. site.js keeps both sides live; this draws the starting state (standard, 2 bed, 1 bath).
-const KINDS = [['standard', 'Standard', 'Standard clean'], ['deep', 'Deep', 'Deep clean'], ['post', 'Renovation', 'Renovation clean']];
+const KINDS = [['standard', 'Standard', 'Standard clean'], ['deep', 'Deep', 'Deep clean'], ['post', 'Post-construction', 'Post-construction clean']];
 const round2 = (n) => Math.round(n * 100) / 100;
 const boxMoney = (n) => { const t = n.toFixed(2); return '$' + (t.endsWith('.00') ? t.slice(0, -3) : t); };
 function calcBox(id = 'price', { page: pg = '', cta = 'price_box_quote' } = {}) {
@@ -244,7 +244,7 @@ function calcBox(id = 'price', { page: pg = '', cta = 'price_box_quote' } = {}) 
   const bi = PRICES.freq.find((f) => f.id === 'biweekly').off;
   const rep = round2(once - round2(once * bi));
   const bizRate = D.calculator.niches.commercial[0][1], sqft = D.calculator.slider.default, F = D.calculator.floors;
-  const lo = Math.floor(sqft * bizRate * 0.9), hi = Math.ceil(sqft * bizRate * 1.1);
+  const lo = Math.floor(Math.round(sqft * bizRate * 90) / 100), hi = Math.ceil(Math.round(sqft * bizRate * 110) / 100); // same as site.js estimate()
   const biz = hi <= F.MIN_FLOOR ? [F.MIN_FLOOR, F.MIN_FLOOR_MAX] : lo < F.MIN_FLOOR ? [F.MIN_FLOOR, hi] : [lo, hi];
   const track = (c) => ` data-cta="${c}"${pg ? ` data-page="${esc(pg)}"` : ''}`;
   const room = (k, name, note, n, min) => `<div class="room"><div><b>${name}</b>${note ? `<span>${note}</span>` : ''}</div><div class="qb-step"><button type="button" data-dn="${k}" aria-label="One less ${name.toLowerCase().slice(0, -1)}"${n <= min ? ' disabled' : ''}>&minus;</button><output data-o="${k}" aria-live="polite">${n}</output><button type="button" data-up="${k}" aria-label="One more ${name.toLowerCase().slice(0, -1)}">+</button></div></div>`;

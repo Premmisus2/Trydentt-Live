@@ -46,7 +46,7 @@
   function estimate(niche, service, sqft) {
     var list = CALC.niches[niche], m = 0;
     for (var i = 0; i < list.length; i++) if (list[i][0] === service) m = list[i][1];
-    var base = sqft * m, lo = Math.floor(base * 0.9), hi = Math.ceil(base * 1.1);
+    var base = sqft * m, lo = Math.floor(Math.round(base * 90) / 100), hi = Math.ceil(Math.round(base * 110) / 100); // cents first: 1,500 x 0.12 x 1.1 is 198.00000000000003
     var F = CALC.floors.MIN_FLOOR, FM = CALC.floors.MIN_FLOOR_MAX;
     if (hi <= F) return [F, FM];
     if (lo < F) return [F, hi];
