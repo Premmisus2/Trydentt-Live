@@ -52,37 +52,56 @@
     if (lo < F) return [F, hi];
     return [lo, hi];
   }
+  // The price box (home, /residential, London and towns). Home side: the builder's own prices (prices.js), and
+  // "Lock in this price" opens /quote at step 1 with the same picks. Business side: the square-foot estimate above,
+  // carried into the audit form on /commercial (the builder is homes only). The buttons are plain links kept current.
+  var PR = window.TC_PRICES || null;
+  function boxMoney(n) { var t = n.toFixed(2); return '$' + (t.slice(-3) === '.00' ? t.slice(0, -3) : t); }
+  function r2(n) { return Math.round(n * 100) / 100; }
   document.querySelectorAll('.calc').forEach(function (box) {
-    if (!CALC) return;
-    var niche = 'residential';
+    var home = box.querySelector('[data-side="residential"]'), biz = box.querySelector('[data-side="commercial"]');
+    if (!CALC || !PR || !home || !biz) return;
+    var st = { svc: 'standard', bed: 2, bath: 1 }, LIM = { bed: [1, 6, 1], bath: [1, 4, 0.5] };
+    var bi = PR.freq.filter(function (f) { return f.id === 'biweekly'; })[0].off;
+    var sel = biz.querySelector('select'), sq = biz.querySelector('input[type=range]');
+    function side(n) {
+      box.querySelectorAll('.seg button').forEach(function (b) { var on = b.getAttribute('data-n') === n; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
+      home.hidden = n !== 'residential'; biz.hidden = n !== 'commercial';
+    }
+    function drawHome() {
+      var once = PR.svc[st.svc].base + PR.add.bed[st.bed] + PR.add.bath[st.bath];
+      var kind = home.querySelector('[data-k="' + st.svc + '"]');
+      home.querySelector('[data-total]').textContent = boxMoney(once);
+      home.querySelector('[data-kdesc]').textContent = PR.svc[st.svc].desc;
+      home.querySelector('[data-what]').textContent = kind.getAttribute('data-name') + ', one visit, before HST. Includes 1 kitchen and 1 living room.';
+      home.querySelector('[data-rep] b').textContent = boxMoney(r2(once - r2(once * bi)));
+      home.querySelectorAll('[data-k]').forEach(function (b) { var on = b === kind; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
+      ['bed', 'bath'].forEach(function (k) {
+        home.querySelector('[data-o="' + k + '"]').textContent = st[k];
+        home.querySelector('[data-dn="' + k + '"]').disabled = st[k] <= LIM[k][0];
+        home.querySelector('[data-up="' + k + '"]').disabled = st[k] >= LIM[k][1];
+      });
+      home.querySelector('[data-go]').setAttribute('href', '/quote?' + new URLSearchParams({ service: st.svc, bed: String(st.bed), bath: String(st.bath) }).toString() + '#qb-s-kind');
+    }
+    function drawBiz() {
+      var v = +sq.value, r = estimate('commercial', sel.value, v);
+      biz.querySelector('.sqv').textContent = v.toLocaleString('en-CA') + ' sq ft';
+      biz.querySelector('[data-range]').textContent = '$' + r[0] + ' to $' + r[1];
+      biz.querySelector('[data-biz]').setAttribute('href', '/commercial?' + new URLSearchParams({ sqft: String(v) }).toString() + '#audit-form');
+    }
+    box.addEventListener('click', function (e) {
+      var t = e.target.closest('button'); if (!t) return;
+      if (t.hasAttribute('data-n')) { side(t.getAttribute('data-n')); return; }
+      if (t.hasAttribute('data-k')) st.svc = t.getAttribute('data-k');
+      else if (t.hasAttribute('data-up')) { var u = t.getAttribute('data-up'); st[u] = Math.min(LIM[u][1], st[u] + LIM[u][2]); }
+      else if (t.hasAttribute('data-dn')) { var d = t.getAttribute('data-dn'); st[d] = Math.max(LIM[d][0], st[d] - LIM[d][2]); }
+      else return;
+      drawHome();
+    });
+    sel.addEventListener('change', drawBiz); sq.addEventListener('input', drawBiz);
     var p = qs().get('niche');
-    if (p && /^(residential|commercial)$/i.test(p)) niche = p.toLowerCase();
-    var sel = box.querySelector('select'), sq = box.querySelector('input[type=range]');
-    var out = box.querySelector('.n'), sqv = box.querySelector('.sqv'), lock = box.querySelector('[data-lock]');
-    function fill() {
-      sel.innerHTML = CALC.niches[niche].map(function (s) { return '<option>' + s[0] + '</option>'; }).join('');
-      box.querySelectorAll('.seg button').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-n') === niche); });
-      calc();
-    }
-    function calc() {
-      var v = +sq.value, r = estimate(niche, sel.value, v);
-      sqv.textContent = v.toLocaleString('en-CA') + ' sq ft';
-      out.textContent = '$' + r[0] + ' to $' + r[1];
-      box._r = { niche: niche, service: sel.value, sqft: v, min: r[0], max: r[1] };
-    }
-    box.querySelectorAll('.seg button').forEach(function (b) {
-      b.addEventListener('click', function () { niche = b.getAttribute('data-n'); fill(); });
-    });
-    sel.addEventListener('change', calc); sq.addEventListener('input', calc);
-    fill();
-    if (lock) lock.addEventListener('click', function (e) {
-      e.preventDefault();
-      var r = box._r;
-      if (document.body.getAttribute('data-route') === '/quote') { openBooking(r, true); return; }
-      // the /quote builder is homes only; commercial goes to the audit form on /commercial
-      if (r.niche === 'commercial') { location.href = '/commercial?' + new URLSearchParams({ sqft: String(r.sqft) }).toString() + '#audit-form'; return; }
-      location.href = '/quote?' + new URLSearchParams({ niche: r.niche, service: r.service, sqft: String(r.sqft), min: String(r.min), max: String(r.max) }).toString();
-    });
+    side(p && /^commercial$/i.test(p) ? 'commercial' : 'residential');
+    drawHome(); drawBiz();
   });
   var cSq = document.querySelector('[data-form="commercial"] [name="sqft"]'), qSq = qs().get('sqft');
   if (cSq && qSq && /^\d{3,6}$/.test(qSq)) cSq.value = qSq;

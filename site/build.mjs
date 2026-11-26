@@ -8,6 +8,9 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
 const raw = JSON.parse(fs.readFileSync(path.join(ROOT, 'site/data.json'), 'utf8'));
+// The one price list (site/assets/prices.js). The /quote builder and the price box read it in the browser;
+// the build reads the same file to draw the box, so the box and the builder can never disagree.
+const PRICES = (() => { const w = {}; new Function('window', fs.readFileSync(path.join(ROOT, 'site/assets/prices.js'), 'utf8'))(w); return w.TC_PRICES; })();
 
 /* ---------------- claims and dashes (Google recovery checklist, 2026-11-11) ---------------- */
 const SCRUB = [
@@ -221,7 +224,8 @@ ${header()}
 ${body}
 </main>
 ${footer()}
-${calc}${opts.quote ? `<script src="${asset('quote.js')}" defer></script>
+${calc}${opts.calc || opts.quote ? `<script src="${asset('prices.js')}" defer></script>
+` : ''}${opts.quote ? `<script src="${asset('quote.js')}" defer></script>
 ` : ''}<script src="${asset('site.js')}" defer></script>
 </body>
 </html>
@@ -229,18 +233,51 @@ ${calc}${opts.quote ? `<script src="${asset('quote.js')}" defer></script>
 }
 
 /* ---------------- components ---------------- */
-function calcBox(id = 'price') {
+// The price box (2026-11-25, mockup Clients/Trydentt/Strategy/one-price-2026-11-21/price-box/). Home side: kind of
+// clean and rooms, priced from prices.js, carried into /quote. Business side: the square-foot estimate, carried into
+// the audit form on /commercial. site.js keeps both sides live; this draws the starting state (standard, 2 bed, 1 bath).
+const KINDS = [['standard', 'Standard', 'Standard clean'], ['deep', 'Deep', 'Deep clean'], ['post', 'Renovation', 'Renovation clean']];
+const round2 = (n) => Math.round(n * 100) / 100;
+const boxMoney = (n) => { const t = n.toFixed(2); return '$' + (t.endsWith('.00') ? t.slice(0, -3) : t); };
+function calcBox(id = 'price', { page: pg = '', cta = 'price_box_quote' } = {}) {
+  const once = PRICES.svc.standard.base + PRICES.add.bed[2] + PRICES.add.bath[1];
+  const bi = PRICES.freq.find((f) => f.id === 'biweekly').off;
+  const rep = round2(once - round2(once * bi));
+  const bizRate = D.calculator.niches.commercial[0][1], sqft = D.calculator.slider.default, F = D.calculator.floors;
+  const lo = Math.floor(sqft * bizRate * 0.9), hi = Math.ceil(sqft * bizRate * 1.1);
+  const biz = hi <= F.MIN_FLOOR ? [F.MIN_FLOOR, F.MIN_FLOOR_MAX] : lo < F.MIN_FLOOR ? [F.MIN_FLOOR, hi] : [lo, hi];
+  const track = (c) => ` data-cta="${c}"${pg ? ` data-page="${esc(pg)}"` : ''}`;
+  const room = (k, name, note, n, min) => `<div class="room"><div><b>${name}</b>${note ? `<span>${note}</span>` : ''}</div><div class="qb-step"><button type="button" data-dn="${k}" aria-label="One less ${name.toLowerCase().slice(0, -1)}"${n <= min ? ' disabled' : ''}>&minus;</button><output data-o="${k}" aria-live="polite">${n}</output><button type="button" data-up="${k}" aria-label="One more ${name.toLowerCase().slice(0, -1)}">+</button></div></div>`;
   return `<div class="calc" id="${id}-calc">
-  <div class="seg" role="group" aria-label="Home or business"><button type="button" class="on" data-n="residential">Home</button><button type="button" data-n="commercial">Business</button></div>
-  <label for="${id}-svc">Kind of clean</label>
-  <select id="${id}-svc"></select>
-  <label for="${id}-sq">Size of the space</label>
-  <input id="${id}-sq" type="range" min="${D.calculator.slider.min}" max="${D.calculator.slider.max}" step="${D.calculator.slider.step}" value="${D.calculator.slider.default}">
-  <div class="size"><span>500 sq ft</span><b class="sqv">1,500 sq ft</b><span>10,000+</span></div>
-  <div class="est"><div class="n">$202 to $248</div><small>An estimate, not a quote. Final price confirmed with you first.</small></div>
-  <div class="btns"><a class="btn" href="/quote" data-lock>Lock in this price</a></div>
+  <div class="seg" role="group" aria-label="Home or business"><button type="button" class="on" data-n="residential" aria-pressed="true">Home</button><button type="button" data-n="commercial" aria-pressed="false">Business</button></div>
+  <div data-side="residential">
+    <label>Kind of clean</label>
+    <div class="kinds">${KINDS.map(([k, label, name], i) => `<button type="button"${i ? '' : ' class="on"'} data-k="${k}" data-name="${name}" aria-pressed="${!i}">${label}</button>`).join('')}</div>
+    <p class="kdesc" data-kdesc>${esc(PRICES.svc.standard.desc)}</p>
+    <div class="rooms">
+      ${room('bed', 'Bedrooms', '', 2, 1)}
+      ${room('bath', 'Bathrooms', 'Half bath: no shower', 1, 1)}
+    </div>
+    <div class="est"><div class="n" data-total>${boxMoney(once)}</div>
+      <small data-what>${KINDS[0][2]}, one visit, before HST. Includes 1 kitchen and 1 living room.</small>
+      <span class="rep" data-rep>Every 2 weeks: <b>${boxMoney(rep)}</b> a visit.</span>
+    </div>
+    <div class="btns"><a class="btn" href="/quote?service=standard&amp;bed=2&amp;bath=1#qb-s-kind" data-go${track(cta)}>Lock in this price</a></div>
+    <p class="more">Moving out? <a href="/move-out">See move-out prices.</a></p>
+  </div>
+  <div data-side="commercial" hidden>
+    <label for="${id}-svc">Kind of clean</label>
+    <select id="${id}-svc">${D.calculator.niches.commercial.map(([n]) => `<option>${esc(n)}</option>`).join('')}</select>
+    <label for="${id}-sq">Size of the space</label>
+    <input id="${id}-sq" type="range" min="${D.calculator.slider.min}" max="${D.calculator.slider.max}" step="${D.calculator.slider.step}" value="${D.calculator.slider.default}">
+    <div class="size"><span>500 sq ft</span><b class="sqv">${sqft.toLocaleString('en-CA')} sq ft</b><span>10,000+</span></div>
+    <div class="est"><div class="n" data-range>$${biz[0]} to $${biz[1]}</div><small>An estimate, not a quote. Final price confirmed with you first.</small></div>
+    <div class="btns"><a class="btn" href="/commercial?sqft=${sqft}#audit-form" data-biz${track('price_box_business')}>Lock in this price</a></div>
+  </div>
 </div>`;
 }
+const PRICE_INTRO = `<div><div class="kick">Price in 30 seconds</div><h2>What will it <em>cost</em>?</h2><p>For a home, pick the kind of clean and your rooms. That's your price, the same one our price page gives. For a business, slide to the size of the space and we confirm the final price with you before we start.</p></div>`;
+const priceSection = (id, opts) => `<section class="sec alt" id="price"><div class="wrap calc-wrap">${PRICE_INTRO}${calcBox(id, opts)}</div></section>`;
 const field = (name, label, input, extra = '') => `<div class="f" data-f="${name}"><label for="f-${name}">${esc(label)}</label>${input}<span class="err" role="alert"></span>${extra}</div>`;
 const inp = (name, type = 'text', ph = '', more = '') => `<input id="f-${name}" name="${name}" type="${type}"${ph ? ` placeholder="${esc(ph)}"` : ''}${more}>`;
 function heroForm(route) {
@@ -439,7 +476,7 @@ function bodySections(route, r, list, opts = {}) {
   return list.map((sec) => {
     const blocks = sec.blocks.filter((b) => !isFormBlock(b) && b.t !== 'button');
     if (isCalc(sec.blocks)) {
-      return `<section class="sec alt" id="price"><div class="wrap calc-wrap"><div><div class="kick">Price in 30 seconds</div><h2>What will it <em>cost</em>?</h2><p>Pick home or business, the kind of clean, and the size of the space. The range is worked out from the square footage, and we confirm the final price with you before we start.</p></div>${calcBox('s' + sec.s)}</div></section>`;
+      return priceSection('s' + sec.s, { page: route });
     }
     const dark = isCta(sec.blocks);
     const cls = dark ? 'sec dark' : (tone++ % 2 ? 'sec alt' : 'sec');
@@ -553,12 +590,7 @@ function homePage() {
     </div>
   </div>
 </section>
-<section class="sec alt" id="price">
-  <div class="wrap calc-wrap">
-    <div><div class="kick">Price in 30 seconds</div><h2>What will it <em>cost</em>?</h2><p>Pick home or business, the kind of clean, and the size of the space. The range is worked out from the square footage, and we confirm the final price with you before we start.</p></div>
-    ${calcBox('home').replace('data-lock>', 'data-lock data-cta="bottom_start_quote" data-page="home">')}
-  </div>
-</section>
+${priceSection('home', { page: 'home', cta: 'bottom_start_quote' })}
 <section class="sec">
   <div class="wrap">
     <div class="kick">Service area</div>
@@ -590,13 +622,15 @@ function homePage() {
   return page('/', r, body, { calc: true });
 }
 
-function genericPage(route, { form = false, calc = false, extra = {}, cta } = {}) {
+// priceTop: the price box straight under the headline, for visitors who want the number first (London and towns).
+function genericPage(route, { form = false, calc = false, extra = {}, cta, priceTop = false } = {}) {
   const r = D.routes[route];
   const secs = sectionsOf(r);
   const first = secs[0];
   const hero = heroSection(route, first.blocks, { img: HERO_IMG[route], form, ctaAttr: cta });
+  const top = priceTop ? priceSection('top', { page: route }) + '\n' : '';
   const rest = bodySections(route, r, secs.slice(1), { hasForm: form, faq: faqFromLd(r), extra });
-  return page(route, r, hero + '\n' + rest, { calc: calc || secs.some((s) => isCalc(s.blocks)) });
+  return page(route, r, hero + '\n' + top + rest, { calc: calc || priceTop || secs.some((s) => isCalc(s.blocks)) });
 }
 
 function townPage(t) {
@@ -604,7 +638,7 @@ function townPage(t) {
   const secs = sectionsOf(r);
   const hero = heroSection(t.route, secs[0].blocks, { img: '/images/hero-biweekly.jpg' });
   const rest = bodySections(t.route, r, secs.slice(1), {});
-  return page(t.route, r, hero + '\n' + rest);
+  return page(t.route, r, hero + '\n' + priceSection('top', { page: t.route }) + '\n' + rest, { calc: true });
 }
 
 function commercialPage() {
@@ -718,7 +752,7 @@ const pages = {
   '/quote': quotePage(),
   '/contact': contactPage(),
   '/thank-you': simplePage('/thank-you'),
-  '/london-ontario-cleaning': genericPage('/london-ontario-cleaning', { form: true }),
+  '/london-ontario-cleaning': genericPage('/london-ontario-cleaning', { form: true, priceTop: true }),
   '/london-ontario-cleaning-offer': genericPage('/london-ontario-cleaning-offer', { form: true }),
   '/move-out': genericPage('/move-out', { form: true }),
   '/reset': genericPage('/reset', { form: true }),

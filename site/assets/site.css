@@ -173,6 +173,20 @@ section.sec{padding:64px 0}
 .calc .est .n{font-weight:800;font-size:44px;line-height:1;color:var(--ink)}
 .calc .est small{display:block;margin-top:8px;font-size:14px;color:var(--muted)}
 .calc .btn{width:100%}
+.calc .kinds{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.calc .kinds button{font:500 16px Jost,sans-serif;padding:12px 4px;border:2px solid var(--rule);background:#fff;color:var(--ink);cursor:pointer;line-height:1.2}
+.calc .kinds button.on{border-color:var(--ink);background:var(--ink);color:#fff}
+.calc .kdesc{margin:8px 0 0;font-size:14px;line-height:1.4;color:var(--muted)}
+.calc .rooms{margin-top:10px;border-top:1px solid var(--rule)}
+.calc .room{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule)}
+.calc .room:last-child{border-bottom:0}
+.calc .room b{font-weight:500;font-size:17px;color:var(--ink)}
+.calc .room span{display:block;font-size:14px;color:var(--muted)}
+.calc [data-side=residential] .est{margin-top:4px;padding-top:16px}
+.calc .est .rep{display:block;margin-top:10px;font-size:16px;color:var(--ink)}
+.calc .est .rep b{color:var(--blue)}
+.calc .more{margin-top:14px;font-size:15px;color:var(--muted);text-align:center}
+.calc .more a{color:var(--blue)}
 
 /* forms */
 .form{display:grid;gap:14px;margin-top:22px}
@@ -287,7 +301,7 @@ footer.foot .brand b{color:#fff}
 body[data-route="/quote"] .callbar{display:none}
 .qb-sec{padding-top:34px}
 .qb-grid{display:grid;gap:30px}
-.qb-blk{background:#fff;border:1px solid var(--rule);border-top:5px solid var(--blue);padding:24px 20px;margin-bottom:18px}
+.qb-blk{background:#fff;border:1px solid var(--rule);border-top:5px solid var(--blue);padding:24px 20px;margin-bottom:18px;scroll-margin-top:96px}
 .qb-blk h2{font-size:26px;margin:4px 0 4px;color:var(--ink)}
 .qb-blk .kick{font-size:14px}
 .qb-blk .hint{font-size:15px;color:var(--muted);margin-bottom:14px}

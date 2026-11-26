@@ -7,25 +7,16 @@
   var form = document.querySelector('form[data-form="builder"]');
   if (!form) return;
 
-  var SVC = {
-    standard: { name: 'Standard cleaning', base: 155, desc: 'Regular upkeep: dusting, floors, kitchen and bathrooms.' }, // base est
-    deep:     { name: 'Deep cleaning',     base: 225, desc: 'Top to bottom, including the corners a regular clean skips.' },
-    post:     { name: 'Post-construction', base: 340, desc: 'Fine dust and debris after a renovation.' } // base est
-  };
-  // What each count adds to the base price. Exact: bed 2 and 3, bath 1.5 and 2, kitchen 2. The rest est.
+  // Prices come from prices.js, the one list the price box on the other pages reads too.
+  var P = window.TC_PRICES;
+  var SVC = P.svc;
   var ROOMS = [
-    { id: 'bed',  icon: 'bed',     name: 'Bedrooms',     min: 1, max: 6, step: 1,   add: { 1: 0, 2: 30, 3: 70, 4: 105, 5: 140, 6: 175 } },
-    { id: 'bath', icon: 'bath',    name: 'Bathrooms',    min: 1, max: 4, step: 0.5, add: { 1: 0, 1.5: 15, 2: 25, 2.5: 40, 3: 50, 3.5: 65, 4: 75 }, note: 'A half bath has a toilet and sink, no shower.' },
-    { id: 'kit',  icon: 'kitchen', name: 'Kitchens',     min: 1, max: 3, step: 1,   add: { 1: 0, 2: 30, 3: 60 } },
-    { id: 'liv',  icon: 'sofa',    name: 'Living rooms', min: 1, max: 3, step: 1,   add: { 1: 0, 2: 20, 3: 40 } }
+    { id: 'bed',  icon: 'bed',     name: 'Bedrooms',     min: 1, max: 6, step: 1,   add: P.add.bed },
+    { id: 'bath', icon: 'bath',    name: 'Bathrooms',    min: 1, max: 4, step: 0.5, add: P.add.bath, note: 'A half bath has a toilet and sink, no shower.' },
+    { id: 'kit',  icon: 'kitchen', name: 'Kitchens',     min: 1, max: 3, step: 1,   add: P.add.kit },
+    { id: 'liv',  icon: 'sofa',    name: 'Living rooms', min: 1, max: 3, step: 1,   add: P.add.liv }
   ];
-  var FREQ = [
-    { id: 'once',     name: 'One time',      off: 0 },
-    { id: 'weekly',   name: 'Every week',    off: 0.22 },
-    { id: 'biweekly', name: 'Every 2 weeks', off: 0.16 },
-    { id: 'every3',   name: 'Every 3 weeks', off: 0.12 },
-    { id: 'every4',   name: 'Every 4 weeks', off: 0.10 }
-  ];
+  var FREQ = P.freq;
   var EXTRAS = [
     { id: 'oven',     icon: 'oven',       name: 'Inside oven',                 price: 30,  count: true },
     { id: 'fridge',   icon: 'fridge',     name: 'Inside fridge',               price: 30,  count: true },
@@ -46,13 +37,15 @@
   var HST = 0.13;
   var TZ = 'America/Toronto';
 
-  // The home page and /residential calculators still send ?service=; start on the matching clean.
+  // The price box on the other pages sends ?service=standard|deep|post&bed=&bath=; start on those picks.
+  // Older links sent a service name ("Deep Cleaning", "Post-Construction"), so those still match.
   var q = new URLSearchParams(location.search);
   var fromCalc = (q.get('service') || '').toLowerCase();
+  function room(id, dflt) { var v = +q.get(id); return Object.prototype.hasOwnProperty.call(P.add[id], String(v)) ? v : dflt; }
   var st = {
-    svc: /deep/.test(fromCalc) ? 'deep' : /construction/.test(fromCalc) ? 'post' : 'standard',
+    svc: SVC[fromCalc] ? fromCalc : /deep/.test(fromCalc) ? 'deep' : /construction/.test(fromCalc) ? 'post' : 'standard',
     freq: 'once',
-    rooms: { bed: 2, bath: 1, kit: 1, liv: 1 },
+    rooms: { bed: room('bed', 2), bath: room('bath', 1), kit: 1, liv: 1 },
     x: {}, day: -1, win: ''
   };
 
